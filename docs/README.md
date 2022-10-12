@@ -1,7 +1,3 @@
-![Build Status](https://img.shields.io/github/workflow/status/ansible-lockdown/RHEL8-CIS/CommunityToDevel?label=Devel%20Build%20Status&style=plastic)
-![Build Status](https://img.shields.io/github/workflow/status/ansible-lockdown/RHEL8-CIS/DevelToMain?label=Main%20Build%20Status&style=plastic)
-![Release](https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic)
-
 # Documentation for Ansible lockdown documentation
 
 This is presented by readthedocs.io
