@@ -1,7 +1,6 @@
 STIG Benchmarks
 ---------------
 
-
 Operating Systems
 ^^^^^^^^^^^^^^^^^
 
@@ -11,6 +10,7 @@ Operating Systems
   
    "RHEL7-STIG_", "True", "True", "True"
    "RHEL8-STIG_", "True", "True", "True"
+   "UBUNTU18-STIG_", "True", "True", "True"
 
 .. csv-table:: STIG Windows Benchmark availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
@@ -42,7 +42,7 @@ Applications
    "Postgres-9-STIG_", "True", "True", "False"
    "Windows_Advance_Firewall-STIG_", "True", "True", "False"
 
-Archived
+Archived Roles
 ^^^^^^^^^
 
 .. csv-table:: STIG Retired Benchmark
@@ -53,11 +53,9 @@ Archived
    "RHEL6-STIG_", "False", "True", "False"
    "Windows-2008R2-Member-Server-STIG_", "False", "True", "False"
 
-
-
-
 .. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG
+.. _UBUNTU18-STIG: https://github.com/ansible-lockdown/UBUNTU18-STIG
 
 .. _Windows-10-STIG: https://github.com/ansible-lockdown/Windows-10-STIG
 .. _Windows-2012-Member-Server-STIG: https://github.com/ansible-lockdown/Windows-2012-Member-Server-STIG
