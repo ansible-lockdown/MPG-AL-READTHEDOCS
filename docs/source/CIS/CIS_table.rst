@@ -1,7 +1,8 @@
 CIS Benchmarks
-==============
+---------------
+
 Operating Systems
------------------
+^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CIS Linux Benchmark availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Build State", "Release" 
@@ -22,7 +23,7 @@ Operating Systems
    "Windows-2019-CIS_", "True", "True", "True"
    "Windows-2022-CIS_", "True", "True", "True"
 
-Platforms
+Cloud Platforms
 ^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CIS Platform Benchmark availability
@@ -42,7 +43,6 @@ Applications
    "Apache-2.4-CIS_", "True", "True", "False"
    "Postgres-12-CIS_", "True", "True", "False"
    "Kubernetes1.6.1-CIS_", "True", "True", "False"
-
 
 Archived 
 ^^^^^^^^^
