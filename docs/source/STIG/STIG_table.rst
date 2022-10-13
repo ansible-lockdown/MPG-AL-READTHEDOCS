@@ -10,7 +10,7 @@ Operating Systems
   
    "RHEL7-STIG_", "True", "True", "True"
    "RHEL8-STIG_", "True", "True", "True"
-   "UBUNTU18-STIG_", "True", "True", "True"
+   "UBUNTU18-STIG_", "True", "True", "False"
 
 .. csv-table:: STIG Windows Benchmark availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
