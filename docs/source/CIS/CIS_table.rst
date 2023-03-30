@@ -5,7 +5,7 @@ Operating Systems
 ^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CIS Linux Benchmark availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Build State", "Release" 
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Build State", "Release"
    :widths: 25, 15, 15, 15, 25, 25
 
    "AMAZON2-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/AMAZON2-CIS/DevelToMain?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
@@ -14,6 +14,7 @@ Operating Systems
    "RHEL9-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/RHEL9-CIS/DevelToMain?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
    "UBUNTU18-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/UBUNTU18-CIS/DevelToMaster?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
    "UBUNTU20-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/UBUNTU20-CIS/DevelToMaster?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
+   "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/UBUNTU22-CIS/DevelToMaster?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
 
 .. csv-table:: CIS Windows Benchmark availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
@@ -44,8 +45,8 @@ Applications
    "Postgres-12-CIS_", "True", "True", "False"
    "Kubernetes1.6.1-CIS_", "True", "True", "False"
 
-Archived 
-^^^^^^^^^
+Archived Roles
+^^^^^^^^^^^^^^
 None currently
 
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
@@ -54,6 +55,7 @@ None currently
 .. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
 .. _UBUNTU18-CIS: https://github.com/ansible-lockdown/UBUNTU18-CIS
 .. _UBUNTU20-CIS: https://github.com/ansible-lockdown/UBUNTU20-CIS
+.. _UBUNTU22-CIS: https://github.com/ansible-lockdown/UBUNTU22-CIS
 
 .. _Windows-2016-CIS: https://github.com/ansible-lockdown/Windows-2016-CIS
 .. _Windows-2019-CIS: https://github.com/ansible-lockdown/Windows-2019-CIS
