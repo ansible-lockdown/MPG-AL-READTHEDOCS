@@ -11,7 +11,7 @@ Operating Systems
    "RHEL7-STIG_", "True", "True", "True"
    "RHEL8-STIG_", "True", "True", "True"
    "UBUNTU18-STIG_", "True", "True", "False"
-   "UBUNTU22-STIG_", "True", "True", "False"
+   "UBUNTU20-STIG_", "True", "True", "False"
 
 .. csv-table:: STIG Windows Benchmark availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
@@ -58,7 +58,7 @@ Archived Roles
 .. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG
 .. _UBUNTU18-STIG: https://github.com/ansible-lockdown/UBUNTU18-STIG
-.. _UBUNTU22-STIG: https://github.com/ansible-lockdown/UBUNTU22-STIG
+.. _UBUNTU20-STIG: https://github.com/ansible-lockdown/UBUNTU20-STIG
 
 
 .. _Windows-10-STIG: https://github.com/ansible-lockdown/Windows-10-STIG

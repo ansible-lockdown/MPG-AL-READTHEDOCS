@@ -9,7 +9,7 @@ Center for Internet Security
 
 CIS is home to the Multi-State Information Sharing and Analysis Center® (MS-ISAC®), 
 the trusted resource for cyber threat prevention, protection, response, and recovery 
-for U.S. State, Local, Tribal, and Territorial government entities, 
+for U.S. State, Local, Tribal, and Territorial government entities,
 and the Elections Infrastructure Information Sharing and Analysis Center® (EI-ISAC®), which supports the rapidly changing cybersecurity needs of U.S. elections offices.
 
 
@@ -45,6 +45,6 @@ Controls are divided into groups based on the following properties:
 
    All of the default configurations are found within is_container.yml and this is where they should be adjusted. Do not adjust within the tasks themselves
    - remediation - ``defaults/main.yml``
-   - audit 
+   - audit
      - standalone ``vars/CIS.yml``
      - combined ``vars/[system_hostname].yml``
