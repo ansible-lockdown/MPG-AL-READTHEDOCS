@@ -5,24 +5,24 @@ Operating Systems
 ^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CIS Linux Benchmark availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Build State", "Release"
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy", "Release"
    :widths: 25, 15, 15, 15, 25, 25
 
-   "AMAZON2-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/AMAZON2-CIS/DevelToMain?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
-   "RHEL7-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/RHEL7-CIS/DevelToMain?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
-   "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/RHEL8-CIS/DevelToMain?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
-   "RHEL9-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/RHEL9-CIS/DevelToMain?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
-   "UBUNTU18-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/UBUNTU18-CIS/DevelToMaster?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
-   "UBUNTU20-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/UBUNTU20-CIS/DevelToMaster?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
-   "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/workflow/status/ansible-lockdown/UBUNTU22-CIS/DevelToMaster?label=Main%20Build%20Status&style=plastic", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
+   "AMAZON2-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/ansible/quality/61757?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
+   "RHEL7-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56324?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
+   "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56380?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
+   "RHEL9-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/61781?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
+   "UBUNTU18-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/54776?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
+   "UBUNTU20-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/54777?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
+   "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
 
 .. csv-table:: CIS Windows Benchmark availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit"
-   :widths: 35, 15, 15, 15
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy"
+   :widths: 35, 15, 15, 15, 15
 
-   "Windows-2016-CIS_", "True", "True", "True"
-   "Windows-2019-CIS_", "True", "True", "True"
-   "Windows-2022-CIS_", "True", "True", "True"
+   "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/55061?label=Quality&&logo=ansible"
+   "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56324?label=Quality&&logo=ansible"
+   "Windows-2022-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible"
 
 Cloud Platforms
 ^^^^^^^^^^^^^^^^^
