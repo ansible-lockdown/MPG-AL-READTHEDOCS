@@ -19,9 +19,9 @@ MindPoint Group Offical Site and Services
 
   - `engage@mindpointgroup.com <engage@mindpointgroup.com>`_ : via Email
 
--  `LinkedIn <https://www.linkedin.com/company/mindpoint-group-llc/>`_ : Our official LinkedIn Business Page
+  -  `LinkedIn <https://www.linkedin.com/company/mindpoint-group-llc/>`_ : Our official LinkedIn Business Page
 
-- `Twitter@MindPointGroup <https://twitter.com/MindPointGroup>`_ : Get the latest news from our Twitter feed on everything MindPointGroup.
+  - `Twitter@MindPointGroup <https://twitter.com/MindPointGroup>`_ : Get the latest news from our Twitter feed on everything MindPointGroup.
     .. image:: https://img.shields.io/twitter/url/https/twitter.com/MindPointGroup.svg?style=social&label=Follow%20%40MindPointGroup
      :target: https://img.shields.io/twitter/url/https/twitter.com/MindPointGroup.svg?style=social&label=Follow%20%40MindPointGroup
 
