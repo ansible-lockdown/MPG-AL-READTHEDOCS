@@ -3,8 +3,9 @@ Automated Security Benchmark - Auditing and Remediation
 
 Why should this role be applied to a system?
 --------------------------------------------
-![Org Stars](https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social)
 
+.. image:: https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social
+  :target: https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social
 
 There are three main reasons to apply this role to systems:
 

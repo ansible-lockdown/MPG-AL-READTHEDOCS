@@ -45,7 +45,7 @@ Currently enabled playbooks
 Setup auditing as standalone
 ----------------------------
 
-It is presumed that you have the script downloaded and the audit content ready from 
+It is presumed that you have the script downloaded and the audit content ready from
 source control or your own configured location.
 
 The following requirements are needed (OS dependant)
@@ -56,8 +56,8 @@ The following requirements are needed (OS dependant)
   - Windows ability to run security audits and query group or local policy.
 
 - goss binary appropriate for the OS
-  
-  - The binary must be accessible by the OS so the scripts can run smoothly with appropriate rights. 
+
+  - The binary must be accessible by the OS so the scripts can run smoothly with appropriate rights.
 
     - The expected path for the binary is found inside the relevant OS script and can be adjusted as required.
 
@@ -72,7 +72,7 @@ The following requirements are needed (OS dependant)
     - `checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe.sha265>`_
 
 .. note::
-    The binary only needs to be accessible to the host with ability to use. 
+    The binary only needs to be accessible to the host with ability to use.
     The relevant script needs to be adjust to point to the path of the binary.
 
 Defining the audit
@@ -101,7 +101,7 @@ If more than one server group is analyzed, groups can be separated with commas.
 Running on Linux
 ~~~~~~~~~~~~~~~~
 
-- Script 
+- Script
 
   - run_audit.sh (found in content directory)
 
