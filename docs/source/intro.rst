@@ -3,6 +3,8 @@ Automated Security Benchmark - Auditing and Remediation
 
 Why should this role be applied to a system?
 --------------------------------------------
+![Org Stars](https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social)
+
 
 There are three main reasons to apply this role to systems:
 
@@ -30,19 +32,32 @@ There are three main reasons to apply this role to systems:
 
 What is security hardening?
 ---------------------------
+Based upon industry recognized benchmarks and best practices, Using leading products to enable highly adjustable configurations to bring your systems/platforms into security compliance.
+
+- Open Source (MIT licensed)
+
+  - Community supported as standard
+  - Enterprise support available
+
+- Configuration-as-code
+
+  - Assist in bringing your systems/platform into compliance through the use of [Ansible]
+  - Audit your current system/platform using `Goss<https://goss.rocks/>`_
+
+- Highly configurable to work with your systems
 
 The content delivered is based upon either one of the two major contributors to the security best practices in the IT industry.
 
 - Center for Internet Security (CIS): `CIS <https://www.cisecurity.org/cis-benchmarks/>`_
 
-  - A global IT community of experts helping to build, document sets of benchmarks to produce industry best security practices. 
+  - A global IT community of experts helping to build, document sets of benchmarks to produce industry best security practices.
     CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
 
 or
 
 - Security Technical Implementation Guide (STIG): `STIG <https://public.cyber.mil/stigs/downloads/>`_
 
-  - From the Defense Information Systems Agency (DISA) 
+  - From the Defense Information Systems Agency (DISA)
   - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
 
 Both are well known and respected benchmarks created for the industry to assist in achieving recognised compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) 
@@ -103,9 +118,9 @@ Development Process
 Branches
 ^^^^^^^^
 
-- devel 
+- devel
   - This is the default branch and the working development branch. Community pull requests will pull into this branch
-- main 
+- main
   - This is the release branch
 
 Lifecycle of releases and branches
