@@ -4,16 +4,16 @@ STIG Benchmarks
 Operating Systems
 ^^^^^^^^^^^^^^^^^
 
-.. csv-table:: STIG Linux Benchmark availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit"
-   :widths: 40, 20, 20, 20
+.. csv-table:: STIG Linux Benchmark Availability
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy"
+   :widths: 40, 20, 20, 20, 20
 
-   "RHEL7-STIG_", "True", "True", "True"
-   "RHEL8-STIG_", "True", "True", "True"
-   "UBUNTU18-STIG_", "True", "True", "False"
-   "UBUNTU20-STIG_", "True", "True", "False"
+   "RHEL7-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/61792?label=Quality&&logo=ansible"
+   "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56380?label=Quality&&logo=ansible"
+   "UBUNTU18-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/ansible/quality/61237?label=Quality&&logo=ansible"
+   "UBUNTU20-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/ansible/quality/61237?label=Quality&&logo=ansible"
 
-.. csv-table:: STIG Windows Benchmark availability
+.. csv-table:: STIG Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
    :widths: 40, 20, 20, 20
 
