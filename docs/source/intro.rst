@@ -43,20 +43,20 @@ Based upon industry recognized benchmarks and best practices, Using leading prod
 - Configuration-as-code
 
   - Assist in bringing your systems/platform into compliance through the use of [Ansible]
-  - Audit your current system/platform using **`goss <https://goss.rocks>`_**
+  - Audit your current system/platform using `goss <https://goss.rocks>`_
 
 - Highly configurable to work with your systems
 
 The content delivered is based upon either one of the two major contributors to the security best practices in the IT industry.
 
-- **Center for Internet Security (CIS): `CIS <https://www.cisecurity.org/cis-benchmarks/>`_**
+- Center for Internet Security (CIS): `CIS <https://www.cisecurity.org/cis-benchmarks/>`_
 
   - A global IT community of experts helping to build, document sets of benchmarks to produce industry best security practices.
     CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
 
 or
 
-- **Security Technical Implementation Guide (STIG): `STIG <https://public.cyber.mil/stigs/downloads/>`_**
+- Security Technical Implementation Guide (STIG): `STIG <https://public.cyber.mil/stigs/downloads/>`_
 
   - From the Defense Information Systems Agency (DISA)
   - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
@@ -147,4 +147,4 @@ we have direct customer requests and requirements that takes priority in release
 
    - Once a new benchmark gets released by the provider, we aim to get to a new tagged release between 2-4 weeks.
 
-   - This is also where the releases are sourced and linked with `ansible-galaxy<https://galaxy.ansible.com/MindPointGroup>_`.
+   - This is also where the releases are sourced and linked with `ansible-galaxy <https://galaxy.ansible.com/MindPointGroup>_`.
