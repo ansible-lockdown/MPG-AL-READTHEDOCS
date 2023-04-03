@@ -120,11 +120,11 @@ Branches
 ^^^^^^^^
 
 - devel
-  - Default and working development branch.
-  - Community Collaboration PR (Pull Request) Branch.
+   - Default and working development branch.
+   - Community Collaboration PR (Pull Request) Branch.
 
 - main
-  - The release branch.
+   - The release branch.
 
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
