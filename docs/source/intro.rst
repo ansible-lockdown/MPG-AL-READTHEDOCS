@@ -84,14 +84,14 @@ What is provided?
 
 The content provided is open source licensed configurations to assist in achieving or auditing compliance to one of the benchmark providers listed above.
 
-This consists of two components
+This consists of two components:
 
-- Audit
+- **Audit**
 
-  - runs a small single binary on the system written in go called GOSS_
-  - enables you to very quickly scan your host and output the status of compliance for your host.
+  - Runs a small single binary on the system written in GO called GOSS_.
+  - Enables you to very quickly scan your host and output the status of compliance for your host.
 
-- Remediate
+- **Remediate**
 
   - Has the ability to run from a central location using the configuration management tool ansible.
   - Can assist with bringing your host into compliance for the relevant benchmark.

@@ -41,7 +41,7 @@ Applications
    "Apache-2.4-STIG_", "True", "True", "False"
    "Postgres-9-STIG_", "True", "True", "False"
    "TOMCAT-9-STIG_", "True", "True", "False"
-   "Windows_Advance_Firewall-STIG_", "True", "True", "False"
+   "Windows_Advance_Firewall-STIG_", "True", "True", "True"
    "KUBERNETES-STIG_", "True", "True", "False"
 
 Archived Roles
