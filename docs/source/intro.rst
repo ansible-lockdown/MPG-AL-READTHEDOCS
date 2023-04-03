@@ -110,7 +110,7 @@ Every control item has an associated variable that can be used to switch it on o
 
 Additionally, the items that have configurable values, i.e. number of password attempts, will generally have a corresponding variable that allows for 
 customization of the applied value.
-It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific 
+It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific
 environments are responsible for meeting in order to effectively implement the controls in the relevant benchmark.
 
 Development Process
@@ -127,7 +127,7 @@ Branches
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-While Remediate and Audit are individually managed processes, nevertheless, some of the content is linked. 
+While Remediate and Audit are individually managed processes, nevertheless, some of the content is linked.
 There are occasions where both need updating or just one of them.
 
 As a rule, we try to abide to the following lifecycle process for branches and releases that include ansible-galaxy sync updates. Being community, 
@@ -147,4 +147,4 @@ we have direct customer requests and requirements that takes priority in release
 
    - Once a new benchmark gets released by the provider, we aim to get to a new tagged release between 2-4 weeks.
 
-   - This is also where the releases are sourced and linked with `ansible-galaxy <https://galaxy.ansible.com/MindPointGroup>_`.
+   - This is also where the releases are sourced and linked with `ansible-galaxy <https://galaxy.ansible.com/MindPointGroup>`_.
