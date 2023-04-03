@@ -25,7 +25,7 @@ Operating Systems
 Networking
 ^^^^^^^^^^
 
-.. csv-table:: STIG Hardware Benchmark availability
+.. csv-table:: STIG Hardware Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
    :widths: 40, 20, 20, 20
 
@@ -34,7 +34,7 @@ Networking
 Applications
 ^^^^^^^^^^^^
 
-.. csv-table:: STIG Application Benchmark availability
+.. csv-table:: STIG Application Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
    :widths: 40, 20, 20, 20
 
@@ -42,7 +42,7 @@ Applications
    "Postgres-9-STIG_", "True", "True", "False"
    "TOMCAT-9-STIG_", "True", "True", "False"
    "Windows_Advance_Firewall-STIG_", "True", "True", "False"
-   "KUBERNETES-STIG_", "True", "True", "False"
+   "KUBERNETES-STIG_", "True", "True", "False", "False"
 
 Archived Roles
 ^^^^^^^^^^^^^^
@@ -51,9 +51,11 @@ Archived Roles
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
    :widths: 40, 20, 20, 20
 
-   "RHEL5-STIG_", "False", "True", "False"
-   "RHEL6-STIG_", "False", "True", "False"
-   "Windows-2008R2-Member-Server-STIG_", "False", "True", "False"
+   "RHEL5-STIG_", "False", "True", "False", "False"
+   "RHEL6-STIG_", "False", "False", "False", "False"
+   "Windows-2008R2-Member-Server-STIG_", "False", "False", "False", "False"
+   "Windows-2012-Member-Server-STIG_", "False", "False", "False", "False"
+   "Windows-2012-Domain-Controller-STIG_", "False", "False", "False", "False"
 
 .. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG

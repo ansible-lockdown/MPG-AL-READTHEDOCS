@@ -4,7 +4,7 @@ CIS Benchmarks
 Operating Systems
 ^^^^^^^^^^^^^^^^^
 
-.. csv-table:: CIS Linux Benchmark availability
+.. csv-table:: CIS Linux Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy", "Release"
    :widths: 25, 15, 15, 15, 25, 25
 
@@ -16,7 +16,7 @@ Operating Systems
    "UBUNTU20-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/54777?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
    "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
 
-.. csv-table:: CIS Windows Benchmark availability
+.. csv-table:: CIS Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy"
    :widths: 35, 15, 15, 15, 15
 
@@ -27,7 +27,7 @@ Operating Systems
 Cloud Platforms
 ^^^^^^^^^^^^^^^^^
 
-.. csv-table:: CIS Platform Benchmark availability
+.. csv-table:: CIS Platform Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
    :widths: 35, 15, 15, 15
 
@@ -37,7 +37,7 @@ Cloud Platforms
 Applications
 ^^^^^^^^^^^^^^^^^
 
-.. csv-table:: CIS Application Benchmark availability
+.. csv-table:: CIS Application Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
    :widths: 35, 15, 15, 15
 
