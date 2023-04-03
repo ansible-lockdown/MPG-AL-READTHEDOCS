@@ -120,9 +120,11 @@ Branches
 ^^^^^^^^
 
 - devel
-   - This is the default branch and the working development branch. Community pull requests will pull into this branch
+   - This is the default branch and working development branch.
+   - Community PRs(pull requests) pulls into this branch.
+
 - main
-   - This is the release branch
+   - This is the release branch.
 
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
