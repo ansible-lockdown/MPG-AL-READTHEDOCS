@@ -10,6 +10,11 @@ Why should this role be applied to a system?
 .. image:: https://img.shields.io/github/followers/ansible-lockdown?style=social
   :target: https://img.shields.io/github/followers/ansible-lockdown?style=social
 
+.. image:: https://img.shields.io/discord/925818806838919229?logo=discord
+  :target: https://img.shields.io/discord/925818806838919229?logo=discord
+
+
+
 There are **three** main reasons to apply this role to systems:
 
 - **1. Improve security posture**
