@@ -42,7 +42,7 @@ Based upon industry recognized benchmarks and best practices, Using leading prod
 
 - Configuration-as-code
 
-  - Assist in bringing your systems/platform into compliance through the use of [Ansible]
+  - Assist in bringing your systems/platform into compliance through the use of Ansible_
   - Audit your current system/platform using GOSS_
 
 - Highly configurable to work with your systems
@@ -120,11 +120,11 @@ Branches
 ^^^^^^^^
 
 - devel
-   - This is the default branch and working development branch.
-   - Community PRs(pull requests) pulls into this branch.
+   - Default and working development branch.
+   - Community Collaboration PRs(pull requests) Branch.
 
 - main
-   - This is the release branch.
+   - The release branch.
 
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -151,6 +151,7 @@ Being community, we have direct customer requests and requirements that takes pr
 
    - This is also where the releases are sourced and linked with ansible-galaxy_ Roles.
 
+.. _Ansible: https://www.ansible.com/
 .. _GOSS: https://goss.rocks
 .. _STIG: https://public.cyber.mil/stigs/downloads/
 .. _CIS: https://www.cisecurity.org/cis-benchmarks/
