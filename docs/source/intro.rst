@@ -127,12 +127,9 @@ Development Process
 Branches
 ^^^^^^^^
 
-- devel
-   - Default and working development branch.
-   - Community Collaboration PR (Pull Request) Branch.
+- devel: Default and working development branch. Community Collaboration PR (Pull Request) Branch.
 
-- main
-   - The release branch.
+- main: The release branch.
 
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
