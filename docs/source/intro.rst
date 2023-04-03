@@ -43,22 +43,22 @@ Based upon industry recognized benchmarks and best practices, Using leading prod
 - Configuration-as-code
 
   - Assist in bringing your systems/platform into compliance through the use of [Ansible]
-  - Audit your current system/platform using `goss <https://goss.rocks>`_
+  - Audit your current system/platform using GOSS_
 
 - Highly configurable to work with your systems
 
 The content delivered is based upon either one of the two major contributors to the security best practices in the IT industry.
 
-- Center for Internet Security (CIS): `CIS <https://www.cisecurity.org/cis-benchmarks/>`_
+- Center for Internet Security (CIS_):
 
   - A global IT community of experts helping to build, document sets of benchmarks to produce industry best security practices.
     CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
 
 or
 
-- Security Technical Implementation Guide (STIG): `STIG <https://public.cyber.mil/stigs/downloads/>`_
+- Security Technical Implementation Guide (STIG_):
 
-  - From the Defense Information Systems Agency (DISA)
+  - From the Defense Information Systems Agency (DISA_)
   - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
 
 Both are well known and respected benchmarks created for the industry to assist in achieving recognised compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) 
@@ -80,7 +80,7 @@ This consists of two components
 
 - Audit
 
-  - runs a small single binary on the system written in go called `goss <https://goss.rocks>`_
+  - runs a small single binary on the system written in go called GOSS_
   - enables you to very quickly scan your host and output the status of compliance for your host.
 
 - Remediate
@@ -130,8 +130,8 @@ Lifecycle of releases and branches
 While Remediate and Audit are individually managed processes, nevertheless, some of the content is linked.
 There are occasions where both need updating or just one of them.
 
-As a rule, we try to abide to the following lifecycle process for branches and releases that include ansible-galaxy sync updates. Being community, 
-we have direct customer requests and requirements that takes priority in releases.
+As a rule, we try to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
+Being community, we have direct customer requests and requirements that takes priority in releases.
 
 - **devel branch**
    - Staging area for bug fixes, PRs and new benchmarks.
@@ -147,4 +147,10 @@ we have direct customer requests and requirements that takes priority in release
 
    - Once a new benchmark gets released by the provider, we aim to get to a new tagged release between 2-4 weeks.
 
-   - This is also where the releases are sourced and linked with `ansible-galaxy <https://galaxy.ansible.com/MindPointGroup>`_.
+   - This is also where the releases are sourced and linked with ansible-galaxy_ Roles.
+
+.. _GOSS: https://goss.rocks
+.. _STIG: https://public.cyber.mil/stigs/downloads/
+.. _CIS: https://www.cisecurity.org/cis-benchmarks/
+.. _ansible-galaxy: https://galaxy.ansible.com/MindPointGroup
+.. _DISA: https://disa.mil/
