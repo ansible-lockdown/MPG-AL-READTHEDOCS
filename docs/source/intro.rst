@@ -5,13 +5,13 @@ Why should this role be applied to a system?
 --------------------------------------------
 
 .. image:: https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social
-  :target: https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social
+  :target: https://github.com/ansible-lockdown
 
 .. image:: https://img.shields.io/github/followers/ansible-lockdown?style=social
-  :target: https://img.shields.io/github/followers/ansible-lockdown?style=social
+  :target: https://github.com/ansible-lockdown
 
 .. image:: https://img.shields.io/discord/925818806838919229?logo=discord
-  :target: https://img.shields.io/discord/925818806838919229?logo=discord
+  :target: https://discord.io/ansible-lockdown/
 
 
 
