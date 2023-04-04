@@ -39,8 +39,8 @@ It can be run in two ways:
    :maxdepth: 2
    :caption: Currently Enabled Playbooks
 
-   CIS/CIS_table.rst
-   STIG/STIG_table.rst
+    CIS/CIS_table.rst
+    STIG/STIG_table.rst
 
 `CIS Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/CIS/benchmarks_CIS.html>`_
 
