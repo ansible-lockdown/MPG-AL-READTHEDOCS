@@ -37,9 +37,9 @@ It can be run in two ways:
 
 
 
-- `CIS Benchmarks <../CIS/CIS_table.rst>`_
+- `CIS Benchmarks <../CIS/CIS_table.html>`_
 
-- `STIG Benchmarks <../STIG/STIG_table.rst>`_
+- `STIG Benchmarks <../STIG/STIG_table.html>`_
 
 `CIS Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/CIS/benchmarks_CIS.html>`_
 
