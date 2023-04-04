@@ -14,7 +14,7 @@ standalone role or it can be used along with other Ansible roles, playbooks, or 
 
     It is strongly recommended to run the role in a test environment first. There are controls that could introduce
     breaking changes. Check mode might not always catch these changes. The best way to confirm how the role will change
-    your system is to fully test. 
+    your system is to fully test.
 
 Requirements
 ------------

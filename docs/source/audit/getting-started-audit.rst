@@ -34,16 +34,13 @@ It can be run in two ways:
   - run_audit.sh (Linux (shell))
   - run_audit.ps1 (Windows(powershell))
 
-Currently enabled playbooks
----------------------------
 
 .. toctree::
    :maxdepth: 2
+   :caption: Currently Enabled Playbooks
 
    CIS/CIS_table.rst
    STIG/STIG_table.rst
-
-
 
 `CIS Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/CIS/benchmarks_CIS.html>`_
 
