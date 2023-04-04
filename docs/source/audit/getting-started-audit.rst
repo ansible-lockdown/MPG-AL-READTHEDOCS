@@ -37,6 +37,13 @@ It can be run in two ways:
 Currently enabled playbooks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. toctree::
+   :maxdepth: 3
+
+   CIS/CIS_table.rst
+   STIG/STIG_table
+
+
 `CIS Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/CIS/benchmarks_CIS.html>`_
 
 `STIG Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/STIG/STIG_table.html>`_
@@ -63,13 +70,13 @@ The following requirements are needed (OS dependant)
 
   - Linux
 
-    - `binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64>`_
-    - `checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64.sha256>`_
+    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64>`_
+    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64.sha256>`_
 
   - Windows
 
     - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe>`_
-    - `checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe.sha265>`_
+    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe.sha265>`_
 
 .. note::
     The binary only needs to be accessible to the host with ability to use.

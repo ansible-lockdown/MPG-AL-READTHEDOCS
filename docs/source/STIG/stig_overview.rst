@@ -26,18 +26,18 @@ Control Severities
 
 Controls are divided into groups based on the following properties:
 
-- High (CAT I)
+- **High (CAT I)**
   These controls have a large impact on the security of a
   system. They also have the largest operational impact to a system and
   deployers should test them thoroughly in non-production environments.
 
-- Medium (CAT II)
+- **Medium (CAT II)**
   These controls are the bulk of the items in the STIG and
   they have a moderate level of impact on the security of a system.
   Many controls in this category will have an operational impact on
   a system and should be tested thoroughly before implementation.
 
-- Low (CAT III)
+- **Low (CAT III)**
   These controls have a smaller impact on overall security, but they
   are generally easier to implement with a much lower operational impact.
 
