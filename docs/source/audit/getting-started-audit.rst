@@ -26,8 +26,8 @@ Considerations
 
 It can be run in two ways:
 
-- Enabled to run as part of the ansible playbook and is setup to capture pre remediation and post remediation states. 
-  Using the same configured variables as used in remediation See `Using Audit and Remediate at the same time <https://lockdown-readthedocs.readthedocs.io/en/latest/combined/comb-getting-started.html>`_
+- Enabled to run as part of the ansible playbook and is setup to capture pre remediation and post remediation states.
+  Using the same configured variables as used in remediation See `Using Audit and Remediate at the same time <../combined/comb-getting-started.html>`_
 
 - Standalone script
 
@@ -37,13 +37,10 @@ It can be run in two ways:
 
 
 
+
 - `CIS Benchmarks <../CIS/CIS_table.html>`_
 
 - `STIG Benchmarks <../STIG/STIG_table.html>`_
-
-`CIS Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/CIS/benchmarks_CIS.html>`_
-
-`STIG Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/STIG/STIG_table.html>`_
 
 
 Setup auditing as standalone
