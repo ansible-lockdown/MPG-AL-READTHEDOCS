@@ -38,8 +38,12 @@ Currently enabled playbooks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. toctree::
-   CIS/CIS_table.rst
-   STIG/STIG_table
+   :maxdepth: 5
+
+   CIS_table.rst
+   STIG_table
+
+
 
 `CIS Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/CIS/benchmarks_CIS.html>`_
 
