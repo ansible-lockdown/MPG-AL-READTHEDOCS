@@ -17,7 +17,7 @@ checked by the audit.
 
 
 Considerations
-~~~~~~~~~~~~~~
+--------------
 
 - The audit runs using the host only compute resources (memory/cpu).
 - Please be aware this may have adverse effect running on a heavily utilized system.
@@ -35,13 +35,13 @@ It can be run in two ways:
   - run_audit.ps1 (Windows(powershell))
 
 Currently enabled playbooks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
 
-   CIS_table.rst
-   STIG_table
+   CIS/CIS_table.rst
+   STIG/STIG_table.rst
 
 
 
@@ -84,7 +84,7 @@ The following requirements are needed (OS dependant)
     The relevant script needs to be adjust to point to the path of the binary.
 
 Defining the audit
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Each script runs against a configures variables file found in the content location in
 
@@ -107,7 +107,7 @@ If more than one server group is analyzed, groups can be separated with commas.
 - The full audit report has the saved output filename and location information.
 
 Running on Linux
-~~~~~~~~~~~~~~~~
+----------------
 
 - Script
 
@@ -146,7 +146,7 @@ script help
    Other options can be assigned in the script itself
 
 Running on Windows
-~~~~~~~~~~~~~~~~~~
+------------------
 
 - Script
 
