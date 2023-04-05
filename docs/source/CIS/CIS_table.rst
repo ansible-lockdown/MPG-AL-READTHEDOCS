@@ -22,7 +22,7 @@ Operating Systems
 
    "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/55061?label=Quality&&logo=ansible"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56324?label=Quality&&logo=ansible"
-   "Windows-2022-CIS_", "True", "False", "False", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible"
+   "Windows-2022-CIS_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible"
 
 Cloud Platforms
 ^^^^^^^^^^^^^^^^^

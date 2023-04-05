@@ -20,7 +20,7 @@ Operating Systems
    "Windows-10-STIG_", "True", "True", "False"
    "Windows-2016-STIG_", "True", "True", "False"
    "Windows-2019-STIG_", "True", "True", "False"
-   "Windows-2022-STIG_", "True", "False", "False"
+   "Windows-2022-STIG_", "True", "WIP", "WIP"
 
 Networking
 ^^^^^^^^^^
