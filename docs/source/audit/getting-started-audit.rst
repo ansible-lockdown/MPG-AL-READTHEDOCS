@@ -36,7 +36,8 @@ It can be run in two ways:
 
 
 
-
+Currently Enabled Playbooks
+---------------------------
 
 - `CIS Benchmarks <../CIS/CIS_table.html>`_
 
