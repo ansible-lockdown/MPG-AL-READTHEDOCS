@@ -5,10 +5,10 @@ CIS Overview
 What is CIS?
 ~~~~~~~~~~~~
 
-Center for Internet Security
+**Center for Internet Security**
 
-CIS is home to the Multi-State Information Sharing and Analysis Center® (MS-ISAC®), 
-the trusted resource for cyber threat prevention, protection, response, and recovery 
+**CIS** is home to the Multi-State Information Sharing and Analysis Center® (MS-ISAC®),
+the trusted resource for cyber threat prevention, protection, response, and recovery
 for U.S. State, Local, Tribal, and Territorial government entities,
 and the Elections Infrastructure Information Sharing and Analysis Center® (EI-ISAC®), which supports the rapidly changing cybersecurity needs of U.S. elections offices.
 

@@ -10,8 +10,8 @@ Operating Systems
 
    "RHEL7-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/61792?label=Quality&&logo=ansible"
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56380?label=Quality&&logo=ansible"
-   "UBUNTU18-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/ansible/quality/61237?label=Quality&&logo=ansible"
-   "UBUNTU20-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/ansible/quality/61237?label=Quality&&logo=ansible"
+   "UBUNTU18-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/ansible/quality/61237?label=Quality&&logo=ansible"
+   "UBUNTU20-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/ansible/quality/61237?label=Quality&&logo=ansible"
 
 .. csv-table:: STIG Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit"
