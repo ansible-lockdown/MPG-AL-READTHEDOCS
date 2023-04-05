@@ -156,6 +156,17 @@ Being community, we have direct customer requests and requirements that takes pr
 
    - This is also where the releases are sourced and linked with ansible-galaxy_ Roles.
 
+.. image:: https://img.youtube.com/vi/sbIfaNsoszM/maxresdefault.jpg
+    :alt: Ansible Lockdown - RHEL 9 CIS Baseline Demo
+    :target: https://www.youtube.com/watch?v=sbIfaNsoszM
+
+.. image:: https://img.youtube.com/vi/5OdT3k2IDVo/maxresdefault.jpg
+    :alt: Ansible Lockdown - M. Bolwell Audit and Compliance Benchmarks Demo/Q and A
+    :target: https://www.youtube.com/watch?v=5OdT3k2IDVo
+
+
+
+
 .. _Ansible: https://www.ansible.com/
 .. _GOSS: https://goss.rocks
 .. _STIG: https://public.cyber.mil/stigs/downloads/
