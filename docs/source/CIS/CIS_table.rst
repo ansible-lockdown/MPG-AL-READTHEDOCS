@@ -44,6 +44,8 @@ Applications
    "Apache-2.4-CIS_", "True", "True", "False"
    "Postgres-12-CIS_", "True", "True", "False"
    "Kubernetes1.6.1-CIS_", "True", "True", "False"
+   "NGINX-CIS_", "True", "True", "False"
+
 
 Archived Roles
 ^^^^^^^^^^^^^^
@@ -68,3 +70,5 @@ None currently
 .. _Apache-2.4-CIS: https://github.com/ansible-lockdown/APACHE-2.4-CIS
 .. _Postgres-12-CIS: https://github.com/ansible-lockdown/POSTGRES-12-CIS
 .. _Kubernetes1.6.1-CIS: https://github.com/ansible-lockdown/Kubernetes1.6.1-CIS
+.. _NGINX-CIS: https://github.com/ansible-lockdown/NGINX-CIS
+
