@@ -17,34 +17,34 @@ Operating Systems
    "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
 
 .. csv-table:: CIS Windows Benchmark Availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy"
-   :widths: 35, 15, 15, 15, 15
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy",  "Release"
+   :widths: 25, 15, 15, 15, 25, 25
 
-   "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/55061?label=Quality&&logo=ansible"
-   "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56324?label=Quality&&logo=ansible"
-   "Windows-2022-CIS_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible"
+   "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/55061?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
+   "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56324?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
+   "Windows-2022-CIS_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
 
 Cloud Platforms
 ^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CIS Platform Benchmark Availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit"
-   :widths: 35, 15, 15, 15
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
+   :widths: 35, 15, 15, 15, 15
 
-   "AWS-Foundations_", "True", "True", "False"
-   "Azure-CIS_", "True", "True", "False"
+   "AWS-Foundations_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AWS-FOUNDATIONS-CIS?style=plastic"
+   "Azure-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AZURE-CIS?style=plastic"
 
 Applications
 ^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CIS Application Benchmark Availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit"
-   :widths: 35, 15, 15, 15
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
+   :widths: 35, 15, 15, 15, 15
 
-   "Apache-2.4-CIS_", "True", "True", "False"
-   "Postgres-12-CIS_", "True", "True", "False"
-   "Kubernetes1.6.1-CIS_", "True", "True", "False"
-   "NGINX-CIS_", "True", "True", "False"
+   "Apache-2.4-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/APACHE-2.4-CIS?style=plastic"
+   "Postgres-12-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/POSTGRES-12-CIS?style=plastic"
+   "Kubernetes1.6.1-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Kubernetes1.6.1-CIS?style=plastic"
+   "NGINX-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/NGINX-CIS?style=plastic"
 
 
 Archived Roles
