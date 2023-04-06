@@ -14,7 +14,7 @@ Operating Systems
    "RHEL9-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/61781?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
    "UBUNTU18-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/54776?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
    "UBUNTU20-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/54777?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
-   "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
+   "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", "N/A"
 
 .. csv-table:: CIS Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy",  "Release"
@@ -22,7 +22,7 @@ Operating Systems
 
    "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/55061?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56324?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
-   "Windows-2022-CIS_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
+   "Windows-2022-CIS_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", "N/A"
 
 Cloud Platforms
 ^^^^^^^^^^^^^^^^^
@@ -44,7 +44,7 @@ Applications
    "Apache-2.4-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/APACHE-2.4-CIS?style=plastic"
    "Postgres-12-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/POSTGRES-12-CIS?style=plastic"
    "Kubernetes1.6.1-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Kubernetes1.6.1-CIS?style=plastic"
-   "NGINX-CIS_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/NGINX-CIS?style=plastic"
+   "NGINX-CIS_", "True", "WIP", "WIP", "N/A"
 
 
 Archived Roles
