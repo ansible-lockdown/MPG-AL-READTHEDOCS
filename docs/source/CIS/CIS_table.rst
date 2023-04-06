@@ -44,7 +44,7 @@ Applications
    "Apache-2.4-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/APACHE-2.4-CIS?style=plastic"
    "Postgres-12-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/POSTGRES-12-CIS?style=plastic"
    "Kubernetes1.6.1-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Kubernetes1.6.1-CIS?style=plastic"
-   "NGINX-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/NGINX-CIS?style=plastic"
+   "NGINX-CIS_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/NGINX-CIS?style=plastic"
 
 
 Archived Roles
