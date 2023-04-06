@@ -29,7 +29,7 @@ Cloud Platforms
 
 .. csv-table:: CIS Platform Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
-   :widths: 35, 15, 15, 15, 15
+   :widths: 25, 15, 15, 15, 25
 
    "AWS-Foundations_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AWS-FOUNDATIONS-CIS?style=plastic"
    "Azure-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AZURE-CIS?style=plastic"
@@ -39,7 +39,7 @@ Applications
 
 .. csv-table:: CIS Application Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
-   :widths: 35, 15, 15, 15, 15
+   :widths: 25, 15, 15, 15, 25
 
    "Apache-2.4-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/APACHE-2.4-CIS?style=plastic"
    "Postgres-12-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/POSTGRES-12-CIS?style=plastic"
