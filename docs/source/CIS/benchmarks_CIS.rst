@@ -13,13 +13,14 @@ RedHat Enterprise Linux
 
   - RHEL7-CIS_
   - RHEL8-CIS_
-  - RHEL9-CIS_ (WIP) OS not yet released
+  - RHEL9-CIS_
 
 Ubuntu
 ~~~~~~
 
   - UBUNTU18-CIS_
   - UBUNTU20-CIS_
+  - UBUNTU22-CIS_
 
 Windows
 ~~~~~~~
@@ -42,7 +43,7 @@ Applications
   - Kubernetes1.6.1-CIS_
 
 
-Archived (No Longer Maintained)
+Archived Roles (No Longer Maintained)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 None currently
 
@@ -52,6 +53,8 @@ None currently
 .. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
 .. _UBUNTU18-CIS: https://github.com/ansible-lockdown/UBUNTU18-CIS
 .. _UBUNTU20-CIS: https://github.com/ansible-lockdown/UBUNTU20-CIS
+.. _UBUNTU22-CIS: https://github.com/ansible-lockdown/UBUNTU22-CIS
+
 
 .. _Windows-2016-CIS: https://github.com/ansible-lockdown/Windows-2016-CIS
 .. _Windows-2019-CIS: https://github.com/ansible-lockdown/Windows-2019-CIS

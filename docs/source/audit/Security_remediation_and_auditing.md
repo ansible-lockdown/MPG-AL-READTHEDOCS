@@ -62,10 +62,12 @@ It can be run in two ways:
 
 - RHEL 7
 - RHEL 8
-- RHEL 9 (this is not yet GA as an OS but based on rh8)
+- RHEL 9
 - Ubuntu 20.04
-- Windows 2016 Standalone, Member and Controller (in testing August 21)
-- Windows 2019 Standalone, Member and Controller (in testing August 21)
+- Ubuntu 22.04
+- Windows 2016 Standalone, Member and Controller
+- Windows 2019 Standalone, Member and Controller
+- Windows 2022 Standalone, Member and Controller (In Progress April 2023)
 
 **STIG:**
 

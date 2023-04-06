@@ -17,7 +17,7 @@ checked by the audit.
 
 
 Considerations
-~~~~~~~~~~~~~~
+--------------
 
 - The audit runs using the host only compute resources (memory/cpu).
 - Please be aware this may have adverse effect running on a heavily utilized system.
@@ -26,26 +26,28 @@ Considerations
 
 It can be run in two ways:
 
-- Enabled to run as part of the ansible playbook and is setup to capture pre remediation and post remediation states. 
-  Using the same configured variables as used in remediation See `Using Audit and Remediate at the same time <https://lockdown-readthedocs.readthedocs.io/en/latest/combined/comb-getting-started.html>`_
+- Enabled to run as part of the ansible playbook and is setup to capture pre remediation and post remediation states.
+  Using the same configured variables as used in remediation See `Using Audit and Remediate at the same time <../combined/comb-getting-started.html>`_
 
 - Standalone script
 
   - run_audit.sh (Linux (shell))
   - run_audit.ps1 (Windows(powershell))
 
-Currently enabled playbooks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`CIS Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/CIS/benchmarks_CIS.html>`_
 
-`STIG Benchmarks <https://lockdown-readthedocs.readthedocs.io/en/latest/STIG/STIG_table.html>`_
+Currently Enabled Playbooks
+---------------------------
+
+- `CIS Benchmarks <../CIS/CIS_table.html>`_
+
+- `STIG Benchmarks <../STIG/STIG_table.html>`_
 
 
 Setup auditing as standalone
 ----------------------------
 
-It is presumed that you have the script downloaded and the audit content ready from 
+It is presumed that you have the script downloaded and the audit content ready from
 source control or your own configured location.
 
 The following requirements are needed (OS dependant)
@@ -56,27 +58,27 @@ The following requirements are needed (OS dependant)
   - Windows ability to run security audits and query group or local policy.
 
 - goss binary appropriate for the OS
-  
-  - The binary must be accessible by the OS so the scripts can run smoothly with appropriate rights. 
+
+  - The binary must be accessible by the OS so the scripts can run smoothly with appropriate rights.
 
     - The expected path for the binary is found inside the relevant OS script and can be adjusted as required.
 
   - Linux
 
-    - `binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64>`_
-    - `checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64.sha256>`_
+    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64>`_
+    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64.sha256>`_
 
   - Windows
 
     - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe>`_
-    - `checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe.sha265>`_
+    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe.sha265>`_
 
 .. note::
-    The binary only needs to be accessible to the host with ability to use. 
+    The binary only needs to be accessible to the host with ability to use.
     The relevant script needs to be adjust to point to the path of the binary.
 
 Defining the audit
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Each script runs against a configures variables file found in the content location in
 
@@ -99,9 +101,9 @@ If more than one server group is analyzed, groups can be separated with commas.
 - The full audit report has the saved output filename and location information.
 
 Running on Linux
-~~~~~~~~~~~~~~~~
+----------------
 
-- Script 
+- Script
 
   - run_audit.sh (found in content directory)
 
@@ -138,7 +140,7 @@ script help
    Other options can be assigned in the script itself
 
 Running on Windows
-~~~~~~~~~~~~~~~~~~
+------------------
 
 - Script
 
