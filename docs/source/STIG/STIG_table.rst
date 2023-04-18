@@ -39,7 +39,6 @@ Applications
    :widths: 25, 15, 15, 15, 20
 
    "Apache-2.4-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/APACHE-2.4-STIG?style=plastic"
-   "Postgres-9-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/POSTGRES-9-STIG?style=plastic"
    "TOMCAT-9-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/TOMCAT-9-STIG?style=plastic"
    "Windows_Advance_Firewall-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/WinFWADV-STIG?style=plastic"
    "KUBERNETES-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/KUBERNETES-STIG?style=plastic"
@@ -56,6 +55,7 @@ Archived Roles
    "Windows-2008R2-Member-Server-STIG_", "False", "False", "False", "N/A"
    "Windows-2012-Member-Server-STIG_", "False", "False", "False", "N/A"
    "Windows-2012-Domain-Controller-STIG_", "False", "False", "False", "N/A"
+   "Postgres-9-STIG_", "True", "True", "False", "N/A"
 
 .. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG
