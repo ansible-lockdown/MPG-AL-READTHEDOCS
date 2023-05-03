@@ -14,7 +14,7 @@ This is split across multiple folders and strutures
   - conf.py - this is the build file how things are put together
   - audit.rst - table of contents for the audit section
   - remediate.rst - TOC for the remediate section
-  
+
 - source/audit/      # dir for audit content
 - source/remediate/  # dir for the remediate content
 - source/_static/MPG-logo-mono-blue.svg

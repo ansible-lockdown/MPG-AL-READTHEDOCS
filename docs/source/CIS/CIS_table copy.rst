@@ -45,7 +45,7 @@ Applications
    "Kubernetes1.6.1-CIS_", "True", "True", "False"
 
 
-Archived 
+Archived
 ^^^^^^^^^
 None currently
 

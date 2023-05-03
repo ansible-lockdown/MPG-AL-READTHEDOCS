@@ -14,10 +14,9 @@ Windows
 ~~~~~~~
 
   - Windows-10-STIG_
-  - Windows-2012-Member-Server-STIG_
-  - Windows-2012-Domain-Controller-STIG_
   - Windows-2016-STIG_
   - Windows-2019-STIG_
+  - Windows-2022-STIG_
 
 Hardware
 ^^^^^^^^
@@ -31,12 +30,14 @@ Applications
 - Postgres-9-STIG_
 - Windows_Advance_Firewall-STIG_
 
-Archived(No Longer Maintained)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Archived Roles (No Longer Maintained)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - RHEL5
 - RHEL6
 - 2008R2-Member
+- Windows-2012-Member-Server-STIG_
+- Windows-2012-Domain-Controller-STIG_
 
 
 
@@ -47,6 +48,7 @@ Archived(No Longer Maintained)
 .. _Windows-2012-Domain-Controller-STIG: https://github.com/ansible-lockdown/Windows-2012-Domain-Controller-STIG
 .. _Windows-2016-STIG: https://github.com/ansible-lockdown/Windows-2016-STIG
 .. _Windows-2019-STIG: https://github.com/ansible-lockdown/Windows-2019-STIG
+.. _Windows-2022-STIG: https://github.com/ansible-lockdown/Windows-2022-STIG
 
 
 .. _Apache-2.4-STIG: https://github.com/ansible-lockdown/APACHE-2.4-STIG

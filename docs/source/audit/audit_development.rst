@@ -18,7 +18,7 @@ Layout
 - Each control should be in its own file.
 - Use variables wherever possible.
 - Some controls were associated; possibly grouped.
-  
+
   - Multiple stages test (config and running tests)
   - Similar tests (filesystem mount options)
 
@@ -45,9 +45,9 @@ Content
 
   - Title
   - At least one control variable (whether control ID is to be run or not).
-    
+
     - If only one test add the variable prior to to the goss_module itself
-  
+
   - Use appropriate goss_modules before using command
 
     - There are circumstances when command allows discovery/filters results
@@ -68,13 +68,13 @@ For a full list of goss and how to use the goss_modules (tests).
         title: 1.1.10 | Disable USB Storage
         exit-status: 0
         exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"
-        stdout: 
+        stdout:
         - install /bin/true
         meta:
           server: 1
           workstation: 2
           CIS_ID: 1.1.10
-          CISv8: 
+          CISv8:
           - 10.3
           CISv8_IG1: true
           CISv8_IG2: true
@@ -100,7 +100,7 @@ For a full list of goss and how to use the goss_modules (tests).
           server: 1
           workstation: 2
           CIS_ID: 1.1.10
-          CISv8: 
+          CISv8:
           - 10.3
           CISv8_IG1: true
           CISv8_IG2: true
@@ -157,8 +157,8 @@ Contains:
   - If run via remediate, it uses host group memberships
   - If run via script, it is an optional value or null
 
-**Control Metadata** (required) 
-  
+**Control Metadata** (required)
+
   - This consists of data found in the benchmark documentation
   - This potentially changes with each release update (this will need to be correct for the release being worked on)
 
@@ -212,8 +212,8 @@ All can be found in the details of the control itself
 Gotchas
 ~~~~~~~
 
-If you have two tasks that refer to the same file or command 
-(this is currently the unique identifier used in goss), 
+If you have two tasks that refer to the same file or command
+(this is currently the unique identifier used in goss),
 it will only give you the result of one test (the last one ran).
 
 e.g.
@@ -230,9 +230,9 @@ e.g.
       meta:
         server: 1
         workstation: 1
-        CIS_ID: 
+        CIS_ID:
         - 1.6.1.4
-        CISv8: 
+        CISv8:
         - 3.3
         CISv8_IG1: true
         CISv8_IG2: true
@@ -252,9 +252,9 @@ and
     meta:
       server: 2
       workstation: 2
-      CIS_ID: 
+      CIS_ID:
       - 1.6.1.5
-      CISv8: 
+      CISv8:
       - 3.3
       CISv8_IG1: true
       CISv8_IG2: true

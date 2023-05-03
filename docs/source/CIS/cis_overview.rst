@@ -5,11 +5,11 @@ CIS Overview
 What is CIS?
 ~~~~~~~~~~~~
 
-Center for Internet Security
+**Center for Internet Security**
 
-CIS is home to the Multi-State Information Sharing and Analysis Center® (MS-ISAC®), 
-the trusted resource for cyber threat prevention, protection, response, and recovery 
-for U.S. State, Local, Tribal, and Territorial government entities, 
+**CIS** is home to the Multi-State Information Sharing and Analysis Center® (MS-ISAC®),
+the trusted resource for cyber threat prevention, protection, response, and recovery
+for U.S. State, Local, Tribal, and Territorial government entities,
 and the Elections Infrastructure Information Sharing and Analysis Center® (EI-ISAC®), which supports the rapidly changing cybersecurity needs of U.S. elections offices.
 
 
@@ -29,12 +29,12 @@ Control Severities
 
 Controls are divided into groups based on the following properties:
 
-- Level 1
+- **Level 1**
   The majority of control are based at this level.
   These controls have are considered to have a low impact to a system.
   By implementing these controls is considered low to medium risk of disruption.
 
-- Level 2
+- **Level 2**
   These controls are considered high risk with a chance of system disruption if implemented.
 
 .. note::
@@ -45,6 +45,6 @@ Controls are divided into groups based on the following properties:
 
    All of the default configurations are found within is_container.yml and this is where they should be adjusted. Do not adjust within the tasks themselves
    - remediation - ``defaults/main.yml``
-   - audit 
+   - audit
      - standalone ``vars/CIS.yml``
      - combined ``vars/[system_hostname].yml``
