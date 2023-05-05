@@ -2,10 +2,10 @@
 
 This is presented by readthedocs.io
 
-This is split across multiple folders and strutures
+This is split across multiple folders and structures
 
 - .readthedocs.yaml - doc for configuration used by read the docs
-- requirements.txt - pip requirements file to stipulate the verions on the runner this is built with
+- requirements.txt - pip requirements file to stipulate the versions on the runner this is built with
 - Makefile  - Future use maybe use to assist to build own docs
 
 - source/
