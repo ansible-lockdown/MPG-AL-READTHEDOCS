@@ -14,7 +14,7 @@ Operating Systems
    "RHEL9-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/61781?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
    "UBUNTU18-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/54776?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
    "UBUNTU20-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/54777?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
-   "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/1?label=Quality&&logo=ansible", "N/A"
+   "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/62237?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
 
 .. csv-table:: CIS Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy",  "Release"
