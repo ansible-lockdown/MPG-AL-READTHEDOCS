@@ -1,9 +1,9 @@
 Additional Controls
 ===================
 
-Although the |benchmark_name|  documentation guide contains a 
+Although the |benchmark_name|  documentation guide contains a
 comprehensive set of security configurations, some contributors want to add
-extra security configurations to the role. The *contrib* portion of the 
+extra security configurations to the role. The *contrib* portion of the
 role is designed to implement those configurations as an optional set of tasks.
 
 In general, *contrib* controls are limited to items to meet backwards compatibility

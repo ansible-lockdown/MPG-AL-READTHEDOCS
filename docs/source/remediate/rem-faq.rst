@@ -7,7 +7,7 @@ Does this role work only with |benchmark_os_short|?
 No -- it works on multiple distributions!
 
 The |benchmark_name| guidance is designed to ONLY be applicable to |benchmark os|
-systems and if you are using this role in a regulated organization you should be aware 
+systems and if you are using this role in a regulated organization you should be aware
 that applying these settings to distributions other than listed is unsupported
 and may run afoul of your organization or regulatory bodies guidelines during a compliance
 audit. It is on YOU to understand your organizations requirements and the laws and regulations

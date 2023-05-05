@@ -13,15 +13,15 @@ Remediate Code Considerations
 
 - Keep it as simple as possible
 
-  - This is to aid investigation and debugging. Overly complicated tasks/controls are harder to troubleshoot when things go wrong. 
+  - This is to aid investigation and debugging. Overly complicated tasks/controls are harder to troubleshoot when things go wrong.
 - Readability is key
-  
+
   - This means the most clever way to write something might lead to the task being complicated and hard to read.
   - For example if you have a multi-axis loop, with vars spread across the role that reference tasks of their own, with jinja filters on top of json filters to do something in one task instead of having three tasks to accomplish the same thing. (Please create the three tasks for readability)
 - Controls only do what the control ask for
 
   - Our Audit tool and Remediate are intrinsically linked when combined. Things like variables and how the search is executed in our Audit rely on the Remediate being correct when run from the Remediate playbook.
-  - Scanners also use the Fix Text and/or intent of the control (sometimes the Fix Text has mistakes...)to check for compliance. If you deviate from this, scanners find false positives. 
+  - Scanners also use the Fix Text and/or intent of the control (sometimes the Fix Text has mistakes...)to check for compliance. If you deviate from this, scanners find false positives.
   - There should be no extra security settings set (even if they are good ideas to set). This role expects to only set what is defined in the STIG benchmark. If other security settings are set, it can cause confusion.
 
 Remediate Code Layout
@@ -42,28 +42,28 @@ STIG Control Task Layout
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Name (- name:)
-  
+
   - Each control gets it's own task and that task needs a name. The name format is category | STIG ID | PATCH or AUDIT | title of control copied from STIG.
-  
+
   - PATCH or AUDIT - This is in reference to the task making a change (PATCH) or not making a change (AUDIT). Tasks that don't make changes are one that generally gather information to be used later
 - Block
-  
+
   - If there are more than one task to complete a control please keep those in a single task but using a block format. 
-  
+
   - When using blocks the steps should have a pipe ( | ) after the title followed by a description of what that task is doing in the block. 
 - Module
-  
+
   - This is just the module being used to execute that task, nothing special here
 - Parameters
-  
+
   - When using the ``shell`` module to gather information please set ``changed_when`` and ``failed_when`` to false. This will cause the task to always run and register which always creates the variable registering. The action parts of the task that use that var should handle the var if a fail occured during the ``command`` or ``shell`` function
-  
+
     - Please always use ``shell`` over ``command``. The ``command`` module is being phased out, but also for consistency please use ``shell``
-  
+
   - When using modules that have alias's, please do not use the alias since those are often not part of the module documentation
-  
+
   - When using modules that require a path type of parameter please use that first
-  
+
   - When using modules that regex, please use that second after path where applies
 - Registers
 
@@ -88,7 +88,7 @@ STIG Control Task Layout
 
   - The control should have the when set to run when the var for the individual task toggle set to true. That toggle is the STIG ID, all lower case with underscores instead of dashes
 
-  - When you are outside of the block please stack the ``when`` values under the ``when`` call, see example below for clarification. 
+  - When you are outside of the block please stack the ``when`` values under the ``when`` call, see example below for clarification.
 
   - When you are inside of the block you can use use single line for ``when`` and value in a single ``when`` instance. If there are and/or whens please stack those under the when
 

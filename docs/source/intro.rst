@@ -69,7 +69,7 @@ or
   - From the Defense Information Systems Agency (DISA_)
   - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
 
-Both are well known and respected benchmarks created for the industry to assist in achieving recognised compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) 
+Both are well known and respected benchmarks created for the industry to assist in achieving recognised compliance (e.g. PCI DSS, HIPAA, SOC2, NIST)
 and adopting security best practices.
 
 .. toctree::
@@ -96,7 +96,7 @@ This consists of two components:
   - Has the ability to run from a central location using the configuration management tool ansible.
   - Can assist with bringing your host into compliance for the relevant benchmark.
 
-Both can be run alone or inconjunction with each other.
+Both can be run alone or in conjunction with each other.
 
 .. image:: _static/simple_workflow.png
    :height: 400px

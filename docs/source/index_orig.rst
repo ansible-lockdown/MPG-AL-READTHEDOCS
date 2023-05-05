@@ -43,7 +43,7 @@ or
 
 - Security Technical Implementation Guide (STIG): `STIG <https://public.cyber.mil/stigs/downloads/>`_
 
-  - From the Defense Information Systems Agency (DISA) 
+  - From the Defense Information Systems Agency (DISA)
   - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
 
 Both are well known and respected benchmarks created for the industry to assist in achieving recognised compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) 
@@ -166,4 +166,4 @@ We do however ask the following:
    :maxdepth: 2
    :caption: Reference & Appendices
 
-   glossary.rst   
+   glossary.rst

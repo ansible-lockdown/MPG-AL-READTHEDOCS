@@ -23,7 +23,7 @@ Using ``group_vars``
 The easiest way to tailor this role to your environment is by using ``group_vars``:
 
     **NEED CONTENT**
-    
+
     *insert example for group_vars tailoring*
 
 Variables
@@ -108,7 +108,7 @@ Graphical User Interface items
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This variable enables or disables all tasks related to *GUI* packages. i.e. These
 generally would only apply to a system with the ``GNOME`` package installed. This
-is not to say that ``KDE``, ``XFCE``, or one of the many other desktop systems 
+is not to say that ``KDE``, ``XFCE``, or one of the many other desktop systems
 would not need to have similar controls in place, but the STIG currently only
 covers ``GNOME`` settings.
 

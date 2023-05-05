@@ -15,12 +15,12 @@ Documentation for individual controls is automatically generated where possible.
 There is also the ability to add deployer notes for individual tasks that discuss
 the specific implementation or risks with running the task/etc. Variables that
 control the execution of each task are automatically pulled from the Ansible task
-files themselves. 
+files themselves.
 
 Deployer notes
 ~~~~~~~~~~~~~~
 Deployer notes are optional and can be added for each control that needs
-additional data to be provided to role users. The notes are simply rST 
+additional data to be provided to role users. The notes are simply rST
 (reStructuredText) fragments and can contain simple blocks of text or
 more complex rST formatted text. The system matches deployer notes to STIG
 controls based on the note filename, which should follow the format

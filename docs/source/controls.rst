@@ -20,9 +20,9 @@ Control Severities
   deployers should test them thoroughly in non-production environments.
 
 :ref:`Medium (CAT II) <severity-medium>`
-  These controls are the bulk of the items in the STIG and 
+  These controls are the bulk of the items in the STIG and
   they have a moderate level of impact on the security of a system.
-  Many controls in this category will have an operational impact on 
+  Many controls in this category will have an operational impact on
   a system and should be tested thoroughly before implementation.
 
 :ref:`Low (CAT III) <severity-low>`
@@ -65,7 +65,7 @@ changes need to be made to meet the STIG control.
   and how to enable it if needed.
 
   .. code-block:: yaml
-  
+
       rhel7stig_disruption_high: no
       rhel7stig_audit_disruptive: yes
 
@@ -75,7 +75,7 @@ changes need to be made to meet the STIG control.
   will be fully implemented. Just that 100% of the controls will be in one of the
   above status categories. We welcome any help in getting these controls implemented.
 
-Deployers should review the full list of controls 
+Deployers should review the full list of controls
 :ref:`sorted by implementation status <controls-by-status>`.
 
 

@@ -12,18 +12,18 @@ How to Edit Variables
 ---------------------
 
 With using the ``defaults/main.yml`` it gives users much more control on where they these variables. This translates to users changing the variables directly in the
-``defaults/main.yml`` file, via ``--extra-vars`` when run from the command line, assigned to hosts/groups in inventory, extra vars in Tower/AAP2 Templates or Projects, and more. 
+``defaults/main.yml`` file, via ``--extra-vars`` when run from the command line, assigned to hosts/groups in inventory, extra vars in Tower/AAP2 Templates or Projects, and more.
 
 Directly (``defaults/main.yml``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is the most basic way to make the change. The file has all of the available variables along with comments on what task the variable is for, a description on what the variable is, and 
-the formatting for the value in the variable. 
+This is the most basic way to make the change. The file has all of the available variables along with comments on what task the variable is for, a description on what the variable is, and
+the formatting for the value in the variable.
 
 Extra-Vars
 ~~~~~~~~~~
 
-This is where the power of using variables via ``defaults/main.yml`` come into play. Anywhere you can use or set an extra var is place you can set these variables. 
+This is where the power of using variables via ``defaults/main.yml`` come into play. Anywhere you can use or set an extra var is place you can set these variables.
 
 CLI In-Line setting (Only run STIG CAT1)
 .. code-block:: console
