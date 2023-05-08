@@ -1,7 +1,7 @@
 Remediate
 ==============================
 
-This role is part of the `Ansible Lockdown`_ project and can be used as a 
+This role is part of the `Ansible Lockdown`_ project and can be used as a
 standalone role or it can be used along with other Ansible roles, playbooks, or collections.
 
 .. _Ansible Lockdown: https://github.com/ansible-lockdown
@@ -144,7 +144,7 @@ Using Variables
 Modifying Variables Directly (``defaults/main.yml``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is the most basic way to make the change. The file has all of the available variables along with comments on what task the variable is for, a description on what the variable is, and 
+This is the most basic way to make the change. The file has all of the available variables along with comments on what task the variable is for, a description on what the variable is, and
 the formatting for the value in the variable. Just update the values as needed
 
 Modifying Variables with Extra-Vars

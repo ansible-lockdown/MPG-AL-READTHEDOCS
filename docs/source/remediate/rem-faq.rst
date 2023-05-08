@@ -67,3 +67,12 @@ Again for those in the back...applying this role against a container
 in order to secure it is generally a *BAD* idea. You should be applying this
 role to your container hosts and then using other hardening guidance that is
 specific to the container technology you are using (docker, lxc, lxd, etc)
+
+
+.. |benchmark_name| replace:: CIS
+.. |benchmark_os| replace:: RedHat Enterprise Linux 9
+.. |benchmark_os_short| replace:: RHEL9
+.. |benchmark_version| replace:: v1.0.0
+.. |benchmark_release_date| replace:: 11-30-2022
+.. |lockdown_url| replace:: https://github.com/ansible-lockdown/|benchmark_os_short|-|benchmark_name|
+.. |tested_oss| replace:: RHEL9
