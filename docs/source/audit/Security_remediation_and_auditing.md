@@ -37,7 +37,7 @@
 
 # Overview
 
-Ansible remediation for security benchmarks now utilises an opensource
+Ansible remediation for security benchmarks now utilizes an opensource
 go binary called [goss](https://github.com/aelsabbahy/goss) to audit the
 system.
 
@@ -76,7 +76,7 @@ It can be run in two ways:
 
 # Setup auditing - Remediation
 
-By Default, this is not enabled but this can be simply setup and run. This will set the system up for you and will utilise the same variables used in the remediation steps to also run the audit.
+By Default, this is not enabled but this can be simply setup and run. This will set the system up for you and will utilize the same variables used in the remediation steps to also run the audit.
 When the audit is run, this calls the same script as the standalone method with the data populated based on the variables below.
 
 ## Requirements
@@ -131,7 +131,7 @@ Minimal setup -- needs access to github
   place these on the system and run the audit both pre and post.
 
 - This also copies over the goss control file for all the variables as
-  setup for each control and variables utilised for your environment
+  setup for each control and variables utilized for your environment
 
 ## Alternate source options
 
@@ -194,7 +194,7 @@ Alternate options
 
 - local or none
 
-  > This assumes content is already on the system and utilises the check
+  > This assumes content is already on the system and utilizes the check
   > that are already there (see audit_conf_dir setting)
 
 ## Other audit settings
@@ -247,9 +247,9 @@ may have adverse effect on other products or services.
 
 # Setup auditing - Standalone
 
-It is assumed that as you have the script you have downloaded the audit content already from source control or your own configired location.
+It is assumed that as you have the script you have downloaded the audit content already from source control or your own configured location.
 
-The following requirements are needed OS independant
+The following requirements are needed OS independent
 
 - Super user or permissions to run privilege commands
   - Linux sudo can work
@@ -278,8 +278,8 @@ There is also switch options to allow you to run a couple of these at run time.
 
 Script runtime options
 
-- The group option allows a meta feild to be assigned against the report for use in analysis if servers can be grouped together.
-If more than one group this can be comma seperated
+- The group option allows a meta field to be assigned against the report for use in analysis if servers can be grouped together.
+If more than one group this can be comma separated
 
 - The outfile is the filename and location to save the full audit report to.
 
@@ -311,7 +311,7 @@ options:
 -f     optional - change the format output (default value = json)
 -g     optional - Add a group that the server should be grouped with (default value = ungrouped)
 -o     optional - file to output audit data
--v     optional - relative path to thevars file to load (default e.g. /var/tmp/RHEL7-CIS/vars/CIS.yml)
+-v     optional - relative path to the vars file to load (default e.g. /var/tmp/RHEL7-CIS/vars/CIS.yml)
 -w     optional - Sets the system_type to workstation (Default - Server)
 -h     Print this Help.
 
@@ -406,7 +406,7 @@ benchmark.
 
 [Remediation and Audit content](https://github.com/ansible-lockdown)
 
-### Security benchmark remediations
+### Security benchmark remediation
 
 [Remediation Download](https://engage.mindpointgroup.com/download-ansible-stig-cis-baseline-automation)
 

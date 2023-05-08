@@ -189,9 +189,9 @@ This contains the following:
 All can be found in the details of the control itself
 
 - Cat: the category control is associated with either (1|2|3)
-- CCI: Common identifier is found in the stig documentation
+- CCI: Common identifier is found in the STIG documentation
 - Group_Title: is the associated group that particular control is a part of
-- Rule_ID: changes with every interation of the control details
+- Rule_ID: changes with every iteration of the control details
 - STIG_ID: control ID known by STIG
 - Vul_ID: vulnernability identifier
 

@@ -3,7 +3,7 @@ Role Customization
 
 This role can be fully customized to fit your specific environment. In fact
 for most users it is recommended that they customize/tweak the role variables
-before applying across their envirnoment.
+before applying across their environment.
 
 .. contents::
    :local:

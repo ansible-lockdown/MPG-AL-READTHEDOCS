@@ -10,7 +10,8 @@ What is CIS?
 **CIS** is home to the Multi-State Information Sharing and Analysis Center® (MS-ISAC®),
 the trusted resource for cyber threat prevention, protection, response, and recovery
 for U.S. State, Local, Tribal, and Territorial government entities,
-and the Elections Infrastructure Information Sharing and Analysis Center® (EI-ISAC®), which supports the rapidly changing cybersecurity needs of U.S. elections offices.
+and the Elections Infrastructure Information Sharing and Analysis Center® (EI-ISAC®),
+which supports the rapidly changing cybersecurity needs of U.S. elections offices.
 
 
 What do the CIS roles do?
@@ -18,8 +19,8 @@ What do the CIS roles do?
 
 
 The roles follow the CIS provided guide (benchmark) released for the OS/platform/application.
-Each guide is different, some have in excess of 200 controls and apply to various parts of an OS/platform/application. Each guide is
-updated regularly by CIS.
+Each guide is different, some have in excess of 200 controls and apply to various parts of an
+OS/platform/application. Each guide is updated regularly by CIS.
 
 .. note::
    CIS is often used if there is absence for an appropriate released STIG version.

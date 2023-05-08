@@ -133,7 +133,7 @@ script help
    -f     optional - change the format output (default value = json)
    -g     optional - Add a group that the server should be grouped with (default value = ungrouped)
    -o     optional - file to output audit data
-   -v     optional - relative path to thevars file to load (default e.g. /var/tmp/RHEL7-CIS/vars/CIS.yml)
+   -v     optional - relative path to the vars file to load (default e.g. /var/tmp/RHEL7-CIS/vars/CIS.yml)
    -w     optional - Sets the system_type to workstation (Default - Server)
    -h     Print this Help.
 
