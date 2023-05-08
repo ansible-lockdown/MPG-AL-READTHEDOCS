@@ -35,7 +35,7 @@ Implementation Status
 It is important to understand the implementation status of each control and
 the potential impact each task can have on a system. Some controls are not
 implemented for various technical reasons. Some are implemented but disabled
-by default. And others are just peform a check and report back if manual
+by default. And others are just perform a check and report back if manual
 changes need to be made to meet the STIG control.
 
 :ref:`Implemented <status-Implemented>`
@@ -44,11 +44,11 @@ changes need to be made to meet the STIG control.
   options are available.
 
 :ref:`Complexity High <status-Complexity-High>`
-  These controls are deemed too complex to safely rememdiate via automated
+  These controls are deemed too complex to safely remediate via automated
   controls. The tasks for these controls perform automated checks and will
   report the result of the check in Ansible task output. The purpose of this
   output is to alert deployers to items that would fail an audit against the
-  STIG and should be rememdiated manually. Execution and reporting from these
+  STIG and should be remediated manually. Execution and reporting from these
   tasks can be enabled or disabled via the appropriate variables.
 
   .. code-block:: yaml
@@ -57,8 +57,8 @@ changes need to be made to meet the STIG control.
       rhel7stig_audit_complex: yes
 
 :ref:`Disruption High <status-Disruption-High>`
-  These controls are classified as having a high likelihood of distruption on a
-  system and disabled by default. Automatic rememdiation can be enabled by
+  These controls are classified as having a high likelihood of disruption on a
+  system and disabled by default. Automatic remediation can be enabled by
   setting the appropriate variables, however the deployer should be aware
   that they are often disabled because they could cause harm to a subset of
   systems. Each control has notes that explains the caveats of the control

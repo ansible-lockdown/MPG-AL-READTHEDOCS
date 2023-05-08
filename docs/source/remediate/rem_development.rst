@@ -4,7 +4,7 @@ How to contribute to remediate development
 Remediate Code Summary
 ~~~~~~~~~~~~~~~~~~~~~~
 
-We are trying to maintain a set of standards and consistency for all code that is written. Please review the formatting of previously written controls
+We strive to maintain a set of standards and consistency for all code that is written. Please review the formatting of previously written controls
 and follow the formatting currently in place. We do have a style guide on writing controls that document standard linting, parameter use/order, tagging, etc.
 
 
