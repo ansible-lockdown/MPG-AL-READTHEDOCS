@@ -6,12 +6,12 @@ Does this role work only with |benchmark_os_short|?
 
 No -- it works on multiple distributions!
 
-The |benchmark_name| guidance is designed to ONLY be applicable to |benchmark_os|
-systems and if you are using this role in a regulated organization you should be aware
-that applying these settings to distributions other than listed is unsupported
+The |benchmark_name| guidance is designed to ONLY apply to |benchmark_os|
+systems. If you are using this role in a regulated organization you should be aware
+that applying these settings to distributions other than those listed is unsupported
 and may run afoul of your organization or regulatory bodies guidelines during a compliance
-audit. It is on *YOU* to understand your organizations requirements and the laws and regulations
-you must adhere to before applying this role.
+audit. Due diligence is *YOUR BURDEN* to understand your organization's requirements, laws,
+and regulations you must adhere to before applying for this role.
 
 See :ref:`system_applicability_ref_label` below for more details on applying this role to non-|benchmark_os|.
 
@@ -59,15 +59,14 @@ Which systems are not covered?
 ------------------------------
 
 This role will run properly against a container (docker or other), however
-this is not recommended and is only really useful during the development and
+this is not recommended and is only useful during the development and
 testing of this role (ie most CI systems provide containers and not full VMs),
 so this role must be able to run on and test against containers.
 
 *Again for those in the back* ...applying this role against a container
-in order to secure it is generally a *BAD* idea. You should be applying this
+to secure it is generally a *BAD* idea. You should be applying this
 role to your container's hosts and then using other hardening guidance that is
 specific to the container technology you are using (docker, lxc, lxd, etc).
-
 
 .. |benchmark_name| replace:: CIS
 .. |benchmark_os| replace:: RedHat Enterprise Linux 9
