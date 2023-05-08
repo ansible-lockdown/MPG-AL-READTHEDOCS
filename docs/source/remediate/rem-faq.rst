@@ -13,8 +13,8 @@ and may run afoul of your organization or regulatory bodies guidelines during a 
 audit. It is on YOU to understand your organizations requirements and the laws and regulations
 you must adhere to before applying this role.
 
-See :ref:`system_applicability_ref_label` below for more details on applying this role to non-RedHat EL 7
-or CentOS 7 systems.
+See :ref:`system_applicability_ref_label` below for more details on applying this role to non-|benchmark_os|.
+
 
 Why should this role be applied to a system?
 --------------------------------------------
