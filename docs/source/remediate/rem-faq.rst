@@ -10,7 +10,7 @@ The |benchmark_name| guidance is designed to ONLY be applicable to |benchmark_os
 systems and if you are using this role in a regulated organization you should be aware
 that applying these settings to distributions other than listed is unsupported
 and may run afoul of your organization or regulatory bodies guidelines during a compliance
-audit. It is on YOU to understand your organizations requirements and the laws and regulations
+audit. It is on *YOU* to understand your organizations requirements and the laws and regulations
 you must adhere to before applying this role.
 
 See :ref:`system_applicability_ref_label` below for more details on applying this role to non-|benchmark_os|.
@@ -52,8 +52,8 @@ This role and the |benchmark_name| guidance it implements are fully applicable t
 
 
 The role is tested against each distribution to ensure that tasks run properly.
-it is idempotent, and  an Audit is used to run a compliance scan after the role
-is applied to test compliance with the STIG standard.
+It is idempotent, and an Audit is used to run a compliance scan after the role
+is applied to test compliance with the |benchmark_name| standard.
 
 Which systems are not covered?
 ------------------------------
@@ -63,10 +63,10 @@ this is not recommended and is only really useful during the development and
 testing of this role (ie most CI systems provide containers and not full VMs),
 so this role must be able to run on and test against containers.
 
-Again for those in the back...applying this role against a container
+*Again for those in the back* ...applying this role against a container
 in order to secure it is generally a *BAD* idea. You should be applying this
-role to your container hosts and then using other hardening guidance that is
-specific to the container technology you are using (docker, lxc, lxd, etc)
+role to your container's hosts and then using other hardening guidance that is
+specific to the container technology you are using (docker, lxc, lxd, etc).
 
 
 .. |benchmark_name| replace:: CIS
@@ -75,4 +75,3 @@ specific to the container technology you are using (docker, lxc, lxd, etc)
 .. |benchmark_version| replace:: v1.0.0
 .. |benchmark_release_date| replace:: 11-30-2022
 .. |lockdown_url| replace:: https://github.com/ansible-lockdown/|benchmark_os_short|-|benchmark_name|
-.. |tested_oss| replace:: RHEL9
