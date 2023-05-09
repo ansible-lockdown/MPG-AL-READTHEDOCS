@@ -165,7 +165,17 @@ Being community, we have direct customer requests and requirements that takes pr
     :target: https://www.youtube.com/watch?v=5OdT3k2IDVo
 
 
-
+Overview
+^^^^^^^^
+- Our ReadtheDocs discusses the significance and objective of using an Automated Security
+Benchmark for auditing and remediation of system security. Our Ansible roles can be applied
+to systems to improve security posture, meet compliance requirements, and deploy without disruption
+after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
+**CIS** and **DISA STIG**, which provide open source licensed configurations to bring systems
+into security compliance. The content delivered consists of an audit component that scans a host
+for compliance and a remediate component that can be run centrally using **Ansible Controller**
+to bring the host into compliance. Our open source development/release process composes of
+GitHub main/devel branches and **Ansible Galaxy** updates that aligned with new benchmark versions.
 
 .. _Ansible: https://www.ansible.com/
 .. _GOSS: https://goss.rocks
