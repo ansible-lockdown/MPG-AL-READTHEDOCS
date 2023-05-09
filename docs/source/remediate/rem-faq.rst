@@ -10,7 +10,7 @@ The |benchmark_name| guidance is designed to ONLY apply to |benchmark_os|
 systems. If you are using this role in a regulated organization you should be aware
 that applying these settings to distributions other than those listed is unsupported
 and may run afoul of your organization or regulatory bodies guidelines during a compliance
-audit. Due diligence is *YOUR BURDEN* to understand your organization's requirements, laws,
+audit. Due diligence is **YOUR BURDEN** to understand your organization's requirements, laws,
 and regulations you must adhere to before applying for this role.
 
 See :ref:`system_applicability_ref_label` below for more details on applying this role to non-|benchmark_os|.
@@ -63,8 +63,8 @@ this is not recommended and is only useful during the development and
 testing of this role (ie most CI systems provide containers and not full VMs),
 so this role must be able to run on and test against containers.
 
-*Again for those in the back* ...applying this role against a container
-to secure it is generally a *BAD* idea. You should be applying this
+**Again for those in the back** ...applying this role against a container
+to secure it is generally a **BAD** idea. You should be applying this
 role to your container's hosts and then using other hardening guidance that is
 specific to the container technology you are using (docker, lxc, lxd, etc).
 

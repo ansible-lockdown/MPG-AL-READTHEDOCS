@@ -11,14 +11,14 @@ and follow the formatting currently in place. We do have a style guide on writin
 Remediate Code Considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Keep it as simple as possible
+- **Keep it as simple as possible**
   - This is to aid investigation and debugging. Overly complicated tasks/controls are harder to troubleshoot when things go wrong.
 
-- Readability is key
+- **Readability is key**
   - This means the most clever way to write something might lead to the task being complicated and hard to read.
   - For example if you have a multi-axis loop, with vars spread across the role that reference tasks of their own, with jinja filters on top of json filters to do something in one task instead of having three tasks to accomplish the same thing. (Please create the three tasks for readability)
 
-- Controls only do what the control ask for
+- **Controls only do what the control ask for**
   - Our Audit tool and Remediate are intrinsically linked when combined. Things like variables and how the search is executed in our Audit rely on the Remediate being correct when run from the Remediate playbook.
   - Scanners also use the Fix Text and/or intent of the control (sometimes the Fix Text has mistakes...) to check for compliance. If you deviate from this, scanners find false positives.
   - There should be no extra security settings set (even if they are good ideas to set). These roles expect to only set what is defined in the STIG or CIS benchmarks. If other security settings are set, it can cause confusion.
@@ -110,13 +110,13 @@ STIG Control Task Layout
     - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel."
       block:
           - name: "MEDIUM | RHEL-08-010382 | AUDIT | RHEL 8 must restrict privilege elevation to authorized personnel. | Get ALL settings"
-            shell: grep -iws 'ALL' /etc/sudoers /etc/sudoers.d/* | cut -d":" -f1 | uniq | sort
+            ansible.builtin.shell: grep -iws 'ALL' /etc/sudoers /etc/sudoers.d/* | cut -d":" -f1 | uniq | sort
             changed_when: false
             failed_when: false
             register: rhel_08_010382_sudoers_all
 
           - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel. | Remove format 1"
-            lineinfile:
+            ansible.builtin.lineinfile:
                 path: "{{ item }}"
                 regexp: 'ALL ALL=(ALL) ALL'
                 state: absent
@@ -126,7 +126,7 @@ STIG Control Task Layout
             when: rhel_08_010382_sudoers_all.stdout | length > 0
 
           - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel. | Remove format 2"
-            lineinfile:
+            ansible.builtin.lineinfile:
                 path: "{{ item }}"
                 regexp: 'ALL ALL=(ALL:ALL) ALL'
                 state: absent
@@ -216,14 +216,14 @@ CIS Control Task Layout
   - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled"
     block:
         - name: "4.1.1.3 | AUDIT | Ensure auditing for processes that start prior to auditd is enabled | Get GRUB_CMDLINE_LINUX"
-          shell: grep 'GRUB_CMDLINE_LINUX=' /etc/default/grub | sed 's/.$//'
+          ansible.builtin.shell: grep 'GRUB_CMDLINE_LINUX=' /etc/default/grub | sed 's/.$//'
           changed_when: false
           failed_when: false
           check_mode: no
           register: rhel8cis_4_1_1_3_grub_cmdline_linux
 
         - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled | Replace existing setting"
-          replace:
+          ansible.builtin.replace:
               path: /etc/default/grub
               regexp: 'audit=.'
               replace: 'audit=1'
@@ -231,7 +231,7 @@ CIS Control Task Layout
           when: "'audit=' in rhel8cis_4_1_1_3_grub_cmdline_linux.stdout"
 
         - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled | Add audit setting if missing"
-          lineinfile:
+          ansible.builtin.lineinfile:
               path: /etc/default/grub
               regexp: '^GRUB_CMDLINE_LINUX='
               line: '{{ rhel8cis_4_1_1_3_grub_cmdline_linux.stdout }} audit=1"'
