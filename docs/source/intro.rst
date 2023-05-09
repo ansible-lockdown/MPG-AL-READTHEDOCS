@@ -167,11 +167,11 @@ Being community, we have direct customer requests and requirements that takes pr
 
 Overview
 ^^^^^^^^
-- Our ReadtheDocs discusses the significance and objective of using an Automated Security
+Our ReadtheDocs discusses the significance and objective of using an Automated Security
 Benchmark for auditing and remediation of system security. Our Ansible_ roles can be applied
 to systems to improve security posture, meet compliance requirements, and deploy without disruption
 after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
-CIS_ and **DISA** STIG_, which provide open source licensed configurations to bring systems
+CIS_ and DISA_ STIG_, which provide open source licensed configurations to bring systems
 into security compliance. The content delivered consists of an audit component that scans a host
 for compliance and a remediate component that can be run centrally using **Ansible Controller**
 to bring the host into compliance. Our open source development/release process composes of
