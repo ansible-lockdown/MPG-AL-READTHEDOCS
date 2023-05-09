@@ -1,9 +1,6 @@
 Automated Security Benchmark - Auditing and Remediation
 =======================================================
 
-Why should this role be applied to a system?
---------------------------------------------
-
 .. image:: https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social
   :target: https://github.com/ansible-lockdown
 
@@ -14,6 +11,21 @@ Why should this role be applied to a system?
   :target: https://discord.io/ansible-lockdown/
 
 
+Overview
+--------
+Our ReadtheDocs discusses the significance and objective of using an Automated Security
+Benchmark for auditing and remediation of system security. Our Ansible_ roles can be applied
+to systems to improve security posture, meet compliance requirements, and deploy without disruption
+after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
+CIS_ and DISA_ STIG_, which provide open source licensed configurations to bring systems
+into security compliance. The content delivered consists of an audit component that scans a host
+for compliance and a remediate component that can be run centrally using **Ansible Controller**
+to bring the host into compliance. Our open source development/release process composes of
+MindPoint Group's Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates
+that aligned with new benchmark versions.
+
+Why should this role be applied to a system?
+--------------------------------------------
 
 There are **three** main reasons to apply this role to systems:
 
@@ -165,18 +177,7 @@ Being community, we have direct customer requests and requirements that takes pr
     :target: https://www.youtube.com/watch?v=5OdT3k2IDVo
 
 
-Overview
-^^^^^^^^
-Our ReadtheDocs discusses the significance and objective of using an Automated Security
-Benchmark for auditing and remediation of system security. Our Ansible_ roles can be applied
-to systems to improve security posture, meet compliance requirements, and deploy without disruption
-after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
-CIS_ and DISA_ STIG_, which provide open source licensed configurations to bring systems
-into security compliance. The content delivered consists of an audit component that scans a host
-for compliance and a remediate component that can be run centrally using **Ansible Controller**
-to bring the host into compliance. Our open source development/release process composes of
-MindPoint Group's Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates
-that aligned with new benchmark versions.
+
 
 .. _Ansible: https://www.ansible.com/
 .. _GOSS: https://goss.rocks
