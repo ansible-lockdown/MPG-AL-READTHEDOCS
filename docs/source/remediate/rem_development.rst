@@ -78,7 +78,7 @@ STIG Control Task Layout
   - Please use ``loop_control`` on wordy loops
   - Please put the loop list below the ``with_items`` like in the example
 
-- When - Please use when statements on all controls
+- **When** - *(Please use when statements on all controls)*
   - The control should have the when set to run when the var for the individual task toggle set to true. That toggle is the STIG ID, all lower case with underscores instead of dashes
   - When you are outside of the block please stack the ``when`` values under the ``when`` call, see example below for clarification.
   - When you are inside of the block you can use use single line for ``when`` and value in a single ``when`` instance. If there are and/or whens please stack those under the when
@@ -189,7 +189,8 @@ since it covers all uses
 
     - Server Level
     - Workstation Level
-    - Automated or Manual. This is from the CIS control in the benchmark documentation and is their assessment of the control being able to be automated or a manual control. If we automate or don't automate the control itself we use the value from the benchmark itself here
+    - Automated or Manual. This is from the CIS control in the benchmark documentation and is their assessment of the control being able to be automated or a manual control.
+    If we automate or don't automate the control itself we use the value from the benchmark itself here
     - Patch or Audit. Does the overall task make any changes or just audit/message out
     - Descriptor of what the task is involved with. For example ssh, selinux, pamd, gui, etc. This tag is always lowercase
     - Number of the control. The format is rule_< the number>, rule_4.1.1.3 for example

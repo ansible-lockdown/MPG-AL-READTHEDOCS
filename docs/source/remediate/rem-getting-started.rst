@@ -58,7 +58,8 @@ Ansible playbooks.
 Using ``git``
 ~~~~~~~~~~~~~
 
-Start by cloning the role into a directory of your choice, this example uses ~/.ansible/roles which can be changed out for any folder. That folder needs to be empty:
+Start by cloning the role into a directory of your choice, this example uses ~/.ansible/roles which can be changed out for any folder.
+That folder needs to be empty:
 
 To clone and create a folder with the same name as the repo:
 
@@ -133,7 +134,8 @@ Variables and the Role
 
 The role is fully customizable by setting the variables provided in the ``defaults/main.yml`` file. These variables range in usage from toggling entire sections (CIS), categories (STIG), general groups (GUI related), individual controls, localized settings, etc.
 There are comments around these variables that have a description of what the variable does, what the value options are, and what controls are associated with the variable.
-Variables are also listed in order of appearance in the execution of the role, variables used early in the are listed earlier in the file. Variables in this location are also very low in precedence, `here is the official list of variable precedence. <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence>`_
+Variables are also listed in order of appearance in the execution of the role, variables used early in the are listed earlier in the file. Variables in this location are also very low in precedence,
+`here is the official list of variable precedence. <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence>`_
 This means they are over-written very easily via extra vars
 
 This role has been written with ease of use in mind, which means it's written in a way that requires as little user interaction as possible. No need to modify any tasks at all!
@@ -150,7 +152,7 @@ the formatting for the value in the variable. Just update the values as needed
 Modifying Variables with Extra-Vars
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is where the power of using variables via ``defaults/main.yml`` come into play. Anywhere you can use or set an extra var is place you can set these variables. 
+This is where the power of using variables via ``defaults/main.yml`` come into play. Anywhere you can use or set an extra var is place you can set these variables.
 
 CLI In-Line setting (Set to only run STIG CAT1)
 
@@ -160,7 +162,8 @@ CLI In-Line setting (Set to only run STIG CAT1)
 
 Using Tags
 ~~~~~~~~~~
-Each  control is tagged with various pieces of information about the control to allow for more refined use with skipping or running controls. For STIG this includes all of the ID's, CIS has the level2 data, and both have info related to what the control relates to. For example all controls related to SSH will have the ``ssh`` tag. 
+Each  control is tagged with various pieces of information about the control to allow for more refined use with skipping or running controls.
+For STIG this includes all of the ID's, CIS has the level2 data, and both have info related to what the control relates to. For example all controls related to SSH will have the ``ssh`` tag.
 
 STIG Example:
 

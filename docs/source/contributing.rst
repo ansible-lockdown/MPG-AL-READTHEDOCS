@@ -1,7 +1,7 @@
 Contributing
 ------------
 
-As with all opensource repositories to work community contributions from issues and pull requests.
+As with all open source repositories to work community contributions from issues and pull requests.
 
 We do ask the following:
 
