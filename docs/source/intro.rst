@@ -20,7 +20,7 @@ after due diligence. Security hardening is achieved through the use of industry-
 CIS_ and DISA_ STIG_, which provide open source licensed configurations to bring systems
 into security compliance. The content delivered consists of an audit component that scans a host
 for compliance and a remediate component that can be run centrally using an **Ansible Server**
-to bring the host into compliance. Our open source development/release process composes of
+to bring host(s) into compliance. Our open source development/release process composes of
 MPG_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
 with new benchmark versions.
 
