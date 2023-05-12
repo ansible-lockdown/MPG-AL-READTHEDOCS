@@ -17,10 +17,10 @@ Our ReadtheDocs elaborates the resources, significance and objective of using ou
 Benchmark for auditing and remediation of system security. Our MPG_ Ansible_ roles can be applied
 to systems to improve security posture, meet compliance requirements, and deploy without disruption
 after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
-CIS_ and DISA_ STIG_, which provide open source licensed configurations to bring systems
+CIS_ and DISA_ STIG_, which provide open-source licensed configurations to bring systems
 into security compliance. The content delivered consists of an audit component based on GOSS_
 that scans a host for compliance and a remediate component that can be run centrally using an
-**Ansible Deployment Server** to bring host(s) into compliance. Our open source development/release process
+**Ansible Deployment Server** to bring host(s) into compliance. Our open-source development/release process
 composes of MPG_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
 with new benchmark versions.
 
@@ -57,7 +57,7 @@ Based upon industry recognized benchmarks and best practices,
 using leading products to enable highly adjustable configurations
 to bring your systems/platforms into security compliance.
 
-- Open Source (MIT licensed)
+- open-source (MIT licensed)
 
   - Community supported as standard
   - Enterprise support available
@@ -97,7 +97,7 @@ in achieving recognized compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) and adoptin
 What is provided?
 -----------------
 
-The content provided is open source licensed configurations to assist in
+The content provided is open-source licensed configurations to assist in
 achieving or auditing compliance to one of the benchmark providers listed above.
 
 This consists of two components:

@@ -1,7 +1,8 @@
 Contributing
 ------------
 
-As with all open source repositories to work community contributions from issues and pull requests.
+Commonly with GitHub open-source repositories and projects,
+community contributions are via GitHub Issues and Pull Requests.
 
 We do ask the following:
 

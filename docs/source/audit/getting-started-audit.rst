@@ -8,7 +8,7 @@ Audit
 Overview
 --------
 
-Ansible remediation for security benchmarks now utilizes an open source
+Ansible remediation for security benchmarks now utilizes an open-source
 go binary called `goss <https://goss.rocks>`_ to audit the system.
 
 Ensuring consistency in checks by using the same settings and controls

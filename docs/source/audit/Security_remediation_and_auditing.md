@@ -37,7 +37,7 @@
 
 # Overview
 
-Ansible remediation for security benchmarks now utilizes an open source
+Ansible remediation for security benchmarks now utilizes an open-source
 go binary called [goss](https://github.com/aelsabbahy/goss) to audit the
 system.
 
@@ -397,7 +397,7 @@ script itself
 
 ### Community
 
-Being open source via the version control issues pages for the relevant
+Being open-source via the version control issues pages for the relevant
 benchmark.
 
 [Ansible by Red Hat](https://www.ansible.com)
