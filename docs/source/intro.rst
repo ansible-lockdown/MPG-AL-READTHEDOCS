@@ -53,7 +53,9 @@ There are **three** main reasons to apply this role to systems:
 
 What is security hardening?
 ---------------------------
-Based upon industry recognized benchmarks and best practices, Using leading products to enable highly adjustable configurations to bring your systems/platforms into security compliance.
+Based upon industry recognized benchmarks and best practices,
+using leading products to enable highly adjustable configurations
+to bring your systems/platforms into security compliance.
 
 - Open Source (MIT licensed)
 
@@ -79,10 +81,11 @@ or
 - Security Technical Implementation Guide (STIG_):
 
   - From the Defense Information Systems Agency (DISA_)
-  - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
+  - The STIG is released with a public domain license and it is commonly used to
+  secure systems at public and private organizations around the world.
 
-Both are well known and respected benchmarks created for the industry to assist in achieving recognised compliance (e.g. PCI DSS, HIPAA, SOC2, NIST)
-and adopting security best practices.
+Both are well known and respected benchmarks created for the industry to assist
+in achieving recognized compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) and adopting security best practices.
 
 .. toctree::
    :maxdepth: 2
@@ -94,7 +97,8 @@ and adopting security best practices.
 What is provided?
 -----------------
 
-The content provided is open source licensed configurations to assist in achieving or auditing compliance to one of the benchmark providers listed above.
+The content provided is open source licensed configurations to assist in
+achieving or auditing compliance to one of the benchmark providers listed above.
 
 This consists of two components:
 
@@ -136,38 +140,36 @@ environments are responsible for meeting in order to effectively implement the c
 Development Process
 -------------------
 
-Branches
-^^^^^^^^
-
-- devel: Default and working development branch. Community Collaboration PR (Pull Request) Branch.
-
-- main: The release branch.
-
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While Remediate and Audit are individually managed processes, nevertheless, some of the content is linked.
 There are occasions where both need updating or just one of them.
 
-As a rule, we try to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
-Being community, we have direct customer requests and requirements that takes priority in releases.
+As a rule, our goal is to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
+Being community, we have direct customer requests and requirements that take priority in releases.
+
+Branches
+^^^^^^^^
 
 - **devel branch**
+
    - Staging area for bug fixes, PRs and new benchmarks.
-
+   - Default and working development branch.
    - We aim to get majority of PRs merged to devel between 2-4 weeks.
+   - Community Collaboration PR (Pull Request) Branch.
 
-- **main branch**
+- **main branch** *(The release branch)*
+
    - Merge of devel in to main.
-
-   - This is dependent on the severity and impact of issues closed. Routinely, a release alignment is every 8-12 weeks (sometimes much quicker).
-
+   - This is dependent on the severity and impact of issues closed.
+   - Routinely, a release alignment is every 8-12 weeks (sometimes much quicker).
    - New benchmark version release.
-
-   - Once a new benchmark gets released by the provider, we aim to get to a new tagged release between 2-4 weeks.
-
+   - Once a new benchmark gets released by the provider,
+   we aim to get to a new tagged release between 2-4 weeks.
    - This is also where the releases are sourced and linked with ansible-galaxy_ Roles.
 
+**Demos**
 .. image:: https://img.youtube.com/vi/sbIfaNsoszM/maxresdefault.jpg
     :alt: Ansible Lockdown - RHEL 9 CIS Baseline Demo
     :target: https://www.youtube.com/watch?v=sbIfaNsoszM
