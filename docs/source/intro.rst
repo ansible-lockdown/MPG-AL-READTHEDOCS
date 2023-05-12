@@ -169,7 +169,9 @@ Branches
    we aim to get to a new tagged release between 2-4 weeks.
    - This is also where the releases are sourced and linked with ansible-galaxy_ Roles.
 
-**Demos**
+Demos
+^^^^^
+
 .. image:: https://img.youtube.com/vi/sbIfaNsoszM/maxresdefault.jpg
     :alt: Ansible Lockdown - RHEL 9 CIS Baseline Demo
     :target: https://www.youtube.com/watch?v=sbIfaNsoszM
