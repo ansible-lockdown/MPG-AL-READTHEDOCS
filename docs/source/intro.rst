@@ -83,8 +83,8 @@ The content delivered is based upon either one of the two major contributors to 
   - From the Defense Information Systems Agency (DISA_)
   - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
 
-Both are well known and respected benchmarks created for the industry to assist
-in achieving recognized compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) and adopting security best practices.
+.. note::
+  Both CIS_ and STIG_ are well-known and respected benchmarks created for the industry to assist in achieving recognized compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) and adopting security best practices.
 
 .. toctree::
    :maxdepth: 2
@@ -131,7 +131,7 @@ why it was changed, and what deployers need to understand about the change.
 Deployers have the option to enable/disable every control that does not suit their environments needs.
 Every control item has an associated variable that can be used to switch it on or off.
 
-Additionally, the items that have configurable values, i.e. number of password attempts, will generally have a corresponding variable that allows for 
+Additionally, the items that have configurable values, i.e. number of password attempts, will generally have a corresponding variable that allows for
 customization of the applied value.
 It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific
 environments are responsible for meeting in order to effectively implement the controls in the relevant benchmark.

@@ -5,11 +5,11 @@ STIG Overview
 What is STIG?
 ~~~~~~~~~~~~~
 
-Sometimes refered to as DISA STIG.
+Sometimes referred to as DISA STIG.
 DISA STIG refers to an organization (DISA — Defense Information Systems Agency) that provides technical guides (STIG — Security Technical Implementation Guide).
 
 
-What does this role do?
+What do the STIG roles do?
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 
