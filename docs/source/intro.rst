@@ -57,7 +57,7 @@ Based upon industry recognized benchmarks and best practices,
 using leading products to enable highly adjustable configurations
 to bring your systems/platforms into security compliance.
 
-- open-source (MIT licensed)
+- Open-Source (MIT licensed)
 
   - Community supported as standard
   - Enterprise support available
@@ -74,15 +74,14 @@ The content delivered is based upon either one of the two major contributors to 
 - **Center for Internet Security** (CIS_):
 
   - A global IT community of experts helping to build, document sets of benchmarks to produce industry best security practices.
-    CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
+  - CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
 
 **or**
 
 - **Security Technical Implementation Guide** (STIG_):
 
   - From the Defense Information Systems Agency (DISA_)
-  - The STIG is released with a public domain license and it is commonly used to
-  secure systems at public and private organizations around the world.
+  - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
 
 Both are well known and respected benchmarks created for the industry to assist
 in achieving recognized compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) and adopting security best practices.
