@@ -71,14 +71,14 @@ to bring your systems/platforms into security compliance.
 
 The content delivered is based upon either one of the two major contributors to the security best practices in the IT industry.
 
-- Center for Internet Security (CIS_):
+- **Center for Internet Security** (CIS_):
 
   - A global IT community of experts helping to build, document sets of benchmarks to produce industry best security practices.
     CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
 
-or
+**or**
 
-- Security Technical Implementation Guide (STIG_):
+- **Security Technical Implementation Guide** (STIG_):
 
   - From the Defense Information Systems Agency (DISA_)
   - The STIG is released with a public domain license and it is commonly used to
@@ -161,13 +161,11 @@ Branches
 
 - **main branch** *(The release branch)*
 
-   - Merge of devel in to main.
-   - This is dependent on the severity and impact of issues closed.
+   - We merge from devel to main branch.
+   - main branch is dependent on the severity and impact of issues closed.
    - Routinely, a release alignment is every 8-12 weeks (sometimes much quicker).
-   - New benchmark version release.
-   - Once a new benchmark gets released by the provider,
-   we aim to get to a new tagged release between 2-4 weeks.
-   - This is also where the releases are sourced and linked with ansible-galaxy_ Roles.
+   - Once a new CIS_/STIG_ benchmark gets released, we aim to merge the new tagged release (2-4 weeks).
+   - The major releases are sourced and linked to ansible-galaxy_ Roles.
 
 Demos
 ^^^^^
