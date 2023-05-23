@@ -10,8 +10,8 @@ We do ask the following:
 - Provide as much information as possible with issues or pull request.
 - Pull Requests:
 
-  - signed-off-by (user is provided)
-  - signed-by (gpg key signed)
+  - **signed-off-by (user is provided)**
+  - **signed-by (gpg key signed)**
 
 .. toctree::
    :maxdepth: 3
