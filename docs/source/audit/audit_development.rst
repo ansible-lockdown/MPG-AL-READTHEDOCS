@@ -4,13 +4,13 @@ How to contribute to audit development
 Adding code
 ~~~~~~~~~~~
 
-We are trying to maintain a set of standards we would like to achieve for all code written.
+We strive to maintain a set of standards we would like to achieve for all code written.
 
 Considerations
 ~~~~~~~~~~~~~~
 
 - Keep it as simple as possible to aid investigation and debug.
-- Ensure it aligns with the remediate portion (the two are intrinsically linked when combined).
+- Ensure it aligns with the remediate portion **(the remediate and audit repos are intrinsically linked when combined)**.
 
 Layout
 ~~~~~~
@@ -124,16 +124,16 @@ Metadata
 This is added to the audit benchmark for reference across compliance requirements.
 There are two levels of metadata:
 
-- audit metadata - this is general system information and audit information.
-- control metadata - this is added to every audit control and is specific to each control.
+- **audit metadata** - this is general system information and audit information.
+- **control metadata** - this is added to every audit control and is specific to each control.
 
 
-**Audit Metadata** (required)
+**Audit Metadata** *(required)*
 
   - These are items set/discovered about the system within the script set via vars in the script.
   - Referenced in the goss.yml file.
 
-Contains:
+**Contains:**
 
 ..  csv-table:: Discovered audit variables
     :header: "Variable Title", "Script variable name", "Purpose"
@@ -151,7 +151,7 @@ Contains:
 
 **Special Variables**
 
-- host_automation_group: {{ .Vars.auto_group }}
+- **host_automation_group:** {{ .Vars.auto_group }}
 
   - Used to group like systems when reporting
   - If run via remediate, it uses host group memberships
@@ -162,15 +162,15 @@ Contains:
   - This consists of data found in the benchmark documentation
   - This potentially changes with each release update (this will need to be correct for the release being worked on)
 
-*CIS Specific*
+**CIS Specific**
 
 This contains the following:
 
-- server: cis level options: (1|2)
-- workstation: cis level: (1|2|NA)
-- CIS_ID: control reference
-- CISv8: list of associated groups the control is associated with
-- CISv8_IG1: Boolean (if meets that association)
+- ``server:`` cis level options: (1|2)
+- ``workstation:`` cis level: (1|2|NA)
+- ``CIS_ID:`` control reference
+- ``CISv8:`` list of associated groups the control is associated with
+- ``CISv8_IG1:`` Boolean (if meets that association)
 
 ..  code-block:: yaml
 
@@ -184,16 +184,16 @@ This contains the following:
       CISv8_IG2: true
       CISv8_IG3: true
 
-*STIG Specific*
+**STIG Specific**
 
 All can be found in the details of the control itself
 
-- Cat: the category control is associated with either (1|2|3)
-- CCI: Common identifier is found in the stig documentation
-- Group_Title: is the associated group that particular control is a part of
-- Rule_ID: changes with every interation of the control details
-- STIG_ID: control ID known by STIG
-- Vul_ID: vulnernability identifier
+- ``Cat:`` the category control is associated with either (1|2|3)
+- ``CCI:`` Common identifier is found in the STIG documentation
+- ``Group_Title:`` is the associated group that particular control is a part of
+- ``Rule_ID:`` changes with every iteration of the control details
+- ``STIG_ID:`` control ID known by STIG
+- ``Vul_ID:`` vulnerability identifier
 
 ..  code-block:: yaml
 

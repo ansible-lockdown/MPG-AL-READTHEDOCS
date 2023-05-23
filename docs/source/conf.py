@@ -6,8 +6,8 @@ BENCHMARK_TYPE = "CIS"
 BENCHMARK_OS = 'RedHat Enterprise Linux 9'
 BENCHMARK_OS_SHORT = "RHEL9"
 BENCHMARK_NAME = BENCHMARK_OS_SHORT+'-'+BENCHMARK_TYPE
-BENCHMARK_VERSION = 'V0.5 beta'
-BENCHMARK_REL_DATE = 'TBC'
+BENCHMARK_VERSION = 'v1.0.0'
+BENCHMARK_REL_DATE = '11-30-2022'
 LOCKDOWN_URL = 'https://github.com/ansible-lockdown/{BENCHMARK_OS_SHORT}-{BENCHMARK_TYPE}'
 TESTED_OS = '''\
 * RHEL9
@@ -115,7 +115,7 @@ rst_prolog ="\n.. include:: .variables.rst\n"
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
