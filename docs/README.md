@@ -1,12 +1,12 @@
-# Documentation for Ansible lockdown documentation
+# Documentation for Ansible-Lockdown documentation
 
 This is presented by readthedocs.io
 
-This is split across multiple folders and strutures
+This is split across multiple folders and structures
 
 - .readthedocs.yaml - doc for configuration used by read the docs
-- requirements.txt - pip requirements file to stipulate the verions on the runner this is built with
-- Makefile  - Future use maybe use to assist to build own docs
+- requirements.txt - pip requirements file to stipulate the versions on the runner this is built with
+- Makefile  - Future use (potential use to assist to build own docs)
 
 - source/
   - index.rst - main landing page on readthedocs.io
@@ -46,4 +46,4 @@ The file(s) that need to be adjusted are
 - source/benchmarks_CIS.rst
 - source/benchmarks_STIG.rst
 
-This autopopulates into the index and anywhere else it is required
+This auto populates into the index and anywhere else it is required

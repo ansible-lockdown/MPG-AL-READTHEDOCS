@@ -1,7 +1,8 @@
 Contributing
 ------------
 
-As with all opensource repositories to work community contributions from issues and pull requests.
+Commonly with GitHub open-source repositories and projects,
+community contributions are via GitHub Issues and Pull Requests.
 
 We do ask the following:
 
@@ -9,8 +10,8 @@ We do ask the following:
 - Provide as much information as possible with issues or pull request.
 - Pull Requests:
 
-  - signed-off-by (user is provided)
-  - signed-by (gpg key signed)
+  - **signed-off-by (user is provided)**
+  - **signed-by (gpg key signed)**
 
 .. toctree::
    :maxdepth: 3

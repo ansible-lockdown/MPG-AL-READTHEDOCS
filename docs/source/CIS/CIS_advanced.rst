@@ -6,7 +6,7 @@ Advanced Options
 ~~~~~~~~~~~~~~~~
 
 .. note::
-   These are advanced options and required a greater understanding of all aspects of implementing
+   These are advanced options and required a greater understanding of all aspects of implementation.
 
 - auditd_exclusion:
 
@@ -15,7 +15,7 @@ Whether scanners/automation or and job that needs to run against a system with p
 
 There is the ability to change this for specific users to exclude anything in user space.
 This will still capture login/logout and sshd process but anything else will be excluded for that user.
-This can be enabled with the following (this needs to be set in an alternate variable location) 
+This can be enabled with the following (this needs to be set in an alternate variable location):
 
 .. code-block:: console
 

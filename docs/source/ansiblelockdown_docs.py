@@ -33,7 +33,7 @@ DOC_SOURCE_DIR = "{0}/..".format(os.path.dirname(os.path.abspath(__file__)))
 
 
 def split_at_linelen(line, length):
-    """Split a line at specific length for code blocks or 
+    """Split a line at specific length for code blocks or
        other formatted RST sections.
     """
     # Get number of splits we should have in line

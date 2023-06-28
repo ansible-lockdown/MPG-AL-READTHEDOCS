@@ -1,9 +1,6 @@
 Automated Security Benchmark - Auditing and Remediation
 =======================================================
 
-Why should this role be applied to a system?
---------------------------------------------
-
 .. image:: https://img.shields.io/github/stars/ansible-lockdown?label=Org%20Stars&style=social
   :target: https://github.com/ansible-lockdown
 
@@ -14,6 +11,21 @@ Why should this role be applied to a system?
   :target: https://discord.io/ansible-lockdown/
 
 
+MindPoint Group's (MPG_) Ansible-Lockdown Overview
+--------------------------------------------------
+Our ReadtheDocs elaborates the resources, significance and objective of using our Automated Security
+Benchmark for auditing and remediation of system security. Our MPG_ Ansible_ roles can be applied
+to systems to improve security posture, meet compliance requirements, and deploy without disruption
+after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
+CIS_ and DISA_ STIG_, which provide open-source licensed configurations to bring systems
+into security compliance. The content delivered consists of an audit component based on GOSS_
+that scans a host for compliance and a remediate component that can be run centrally using an
+**Ansible Deployment Server** to bring host(s) into compliance. Our open-source development/release process
+composes of MPG_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
+with new benchmark versions.
+
+Why should this role be applied to a system?
+--------------------------------------------
 
 There are **three** main reasons to apply this role to systems:
 
@@ -41,9 +53,11 @@ There are **three** main reasons to apply this role to systems:
 
 What is security hardening?
 ---------------------------
-Based upon industry recognized benchmarks and best practices, Using leading products to enable highly adjustable configurations to bring your systems/platforms into security compliance.
+Based upon industry recognized benchmarks and best practices,
+using leading products to enable highly adjustable configurations
+to bring your systems/platforms into security compliance.
 
-- Open Source (MIT licensed)
+- Open-Source (MIT licensed)
 
   - Community supported as standard
   - Enterprise support available
@@ -57,20 +71,20 @@ Based upon industry recognized benchmarks and best practices, Using leading prod
 
 The content delivered is based upon either one of the two major contributors to the security best practices in the IT industry.
 
-- Center for Internet Security (CIS_):
+- **Center for Internet Security** (CIS_):
 
   - A global IT community of experts helping to build, document sets of benchmarks to produce industry best security practices.
-    CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
+  - CIS Benchmarks are vendor agnostic, consensus-based security configuration guides both developed and accepted by government, business, industry, and academia.
 
-or
+**or**
 
-- Security Technical Implementation Guide (STIG_):
+- **Security Technical Implementation Guide** (STIG_):
 
   - From the Defense Information Systems Agency (DISA_)
   - The STIG is released with a public domain license and it is commonly used to secure systems at public and private organizations around the world.
 
-Both are well known and respected benchmarks created for the industry to assist in achieving recognised compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) 
-and adopting security best practices.
+.. note::
+  Both CIS_ and STIG_ are well-known and respected benchmarks created for the industry to assist in achieving recognized compliance (e.g. PCI DSS, HIPAA, SOC2, NIST) and adopting security best practices.
 
 .. toctree::
    :maxdepth: 2
@@ -82,7 +96,8 @@ and adopting security best practices.
 What is provided?
 -----------------
 
-The content provided is open source licensed configurations to assist in achieving or auditing compliance to one of the benchmark providers listed above.
+The content provided is open-source licensed configurations to assist in
+achieving or auditing compliance to one of the benchmark providers listed above.
 
 This consists of two components:
 
@@ -96,7 +111,7 @@ This consists of two components:
   - Has the ability to run from a central location using the configuration management tool ansible.
   - Can assist with bringing your host into compliance for the relevant benchmark.
 
-Both can be run alone or inconjunction with each other.
+Both can be run alone or in conjunction with each other.
 
 .. image:: _static/simple_workflow.png
    :height: 400px
@@ -116,7 +131,7 @@ why it was changed, and what deployers need to understand about the change.
 Deployers have the option to enable/disable every control that does not suit their environments needs.
 Every control item has an associated variable that can be used to switch it on or off.
 
-Additionally, the items that have configurable values, i.e. number of password attempts, will generally have a corresponding variable that allows for 
+Additionally, the items that have configurable values, i.e. number of password attempts, will generally have a corresponding variable that allows for
 customization of the applied value.
 It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific
 environments are responsible for meeting in order to effectively implement the controls in the relevant benchmark.
@@ -124,37 +139,35 @@ environments are responsible for meeting in order to effectively implement the c
 Development Process
 -------------------
 
-Branches
-^^^^^^^^
-
-- devel: Default and working development branch. Community Collaboration PR (Pull Request) Branch.
-
-- main: The release branch.
-
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While Remediate and Audit are individually managed processes, nevertheless, some of the content is linked.
 There are occasions where both need updating or just one of them.
 
-As a rule, we try to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
-Being community, we have direct customer requests and requirements that takes priority in releases.
+As a rule, our goal is to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
+Being community, we have direct customer requests and requirements that take priority in releases.
+
+Branches
+^^^^^^^^
 
 - **devel branch**
+
    - Staging area for bug fixes, PRs and new benchmarks.
-
+   - Default and working development branch.
    - We aim to get majority of PRs merged to devel between 2-4 weeks.
+   - Community Collaboration PR (Pull Request) Branch.
 
-- **main branch**
-   - Merge of devel in to main.
+- **main branch** *(The release branch)*
 
-   - This is dependent on the severity and impact of issues closed. Routinely, a release alignment is every 8-12 weeks (sometimes much quicker).
+   - We merge from devel to main branch.
+   - main branch is dependent on the severity and impact of issues closed.
+   - Routinely, a release alignment is every 8-12 weeks (sometimes much quicker).
+   - Once a new CIS_/STIG_ benchmark gets released, we aim to merge the new tagged release (2-4 weeks).
+   - The major releases are sourced and linked to ansible-galaxy_ Roles.
 
-   - New benchmark version release.
-
-   - Once a new benchmark gets released by the provider, we aim to get to a new tagged release between 2-4 weeks.
-
-   - This is also where the releases are sourced and linked with ansible-galaxy_ Roles.
+Demos
+^^^^^
 
 .. image:: https://img.youtube.com/vi/sbIfaNsoszM/maxresdefault.jpg
     :alt: Ansible Lockdown - RHEL 9 CIS Baseline Demo
@@ -173,3 +186,5 @@ Being community, we have direct customer requests and requirements that takes pr
 .. _CIS: https://www.cisecurity.org/cis-benchmarks/
 .. _ansible-galaxy: https://galaxy.ansible.com/MindPointGroup
 .. _DISA: https://disa.mil/
+.. _GitHub: https://github.com/ansible-lockdown
+.. _MPG: https://www.mindpointgroup.com/cybersecurity-products/ansible-counselor
