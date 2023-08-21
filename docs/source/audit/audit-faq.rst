@@ -5,6 +5,7 @@ Why does goss run manually fail?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 example:
+
 .. code-block:: bash
     goss -g goss.yml -v
 
