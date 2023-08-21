@@ -4,7 +4,7 @@ Audit - FAQ
 Why does goss run manually fail?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-example:
+e.g.
 
 .. code-block:: bash
     goss -g goss.yml -v
