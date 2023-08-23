@@ -53,6 +53,7 @@ Archived Roles
 None currently
 
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
+.. _AMAZON2023-CIS: https://github.com/ansible-lockdown/AMAZON2023-CIS
 .. _RHEL7-CIS: https://github.com/ansible-lockdown/RHEL7-CIS
 .. _RHEL8-CIS: https://github.com/ansible-lockdown/RHEL8-CIS
 .. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
