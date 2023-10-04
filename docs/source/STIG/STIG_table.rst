@@ -5,12 +5,12 @@ Operating Systems
 ^^^^^^^^^^^^^^^^^
 
 .. csv-table:: STIG Linux Benchmark Availability
-   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Ansible Galaxy", "Release"
-   :widths: 25, 15, 15, 15, 25, 25
+   :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
+   :widths: 25, 15, 15, 15, 25
 
-   "RHEL7-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/61792?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
-   "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/ansible/quality/56380?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
-   "UBUNTU18-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/ansible/quality/61237?label=Quality&&logo=ansible", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
+   "RHEL7-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
+   "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
+   "UBUNTU18-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
    "UBUNTU20-STIG_", "True", "True", "WIP", "N/A", "N/A"
 
 .. csv-table:: STIG Windows Benchmark Availability
