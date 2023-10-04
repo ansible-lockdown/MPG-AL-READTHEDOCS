@@ -30,6 +30,6 @@ Example
    :header: "Benchmark", "Vendor Release", "Subscriber release", "Public Release"
    :widths: 25, 25, 25, 25
 
-   "RHEL8-STIG, 27th January, 27th February, 27th May"
+   "RHEL8-STIG", "27th January", "27th February", "27th May"
 
 Becoming a subscriber is simple, visit https://lockdownenterprise.com for more information.
