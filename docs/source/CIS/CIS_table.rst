@@ -10,6 +10,7 @@ Operating Systems
 
    "AMAZON2-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
    "AMAZON2023-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
+   "DEBIAN11-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN11-CIS-CIS?style=plastic"
    "RHEL7-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
    "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
    "RHEL9-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
@@ -56,6 +57,7 @@ None currently
 
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
 .. _AMAZON2023-CIS: https://github.com/ansible-lockdown/AMAZON2023-CIS
+.. _DEBIAN11-CIS: https://github.com/ansible-lockdown/DEBIAN11-CIS
 .. _RHEL7-CIS: https://github.com/ansible-lockdown/RHEL7-CIS
 .. _RHEL8-CIS: https://github.com/ansible-lockdown/RHEL8-CIS
 .. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
