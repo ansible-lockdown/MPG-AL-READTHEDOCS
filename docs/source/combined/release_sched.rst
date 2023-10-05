@@ -18,6 +18,7 @@ Playbook releases
 ^^^^^^^^^^^^^^^^^
 
 We aim to release remediate benchmarks within 30 days of vendor release to subscribers, this is subject to number of changes, with new benchmarks often taking significantly longer. Public releases will be approximately three months after subscriber release.
+
 Example
 ^^^^^^^
 
