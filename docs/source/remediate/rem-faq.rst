@@ -10,7 +10,7 @@ Missing "jmespath" Fatal Error
 
 This can occur during a playbook run on certain operating systems when patching takes place as part of the playbook due to the way python is implemented.
 
-* `You Need to install jmespath <https://serverfault.com/questions/1114638/ansible-you-need-to-install-jmespath-prior-to-running-json-query-filter-bu>`_ : A great article and explaination written by discord community member baassssiiee
+* `You Need to install jmespath <https://serverfault.com/questions/1114638/ansible-you-need-to-install-jmespath-prior-to-running-json-query-filter-bu>`_ : A great article and explanation written by Discord community member baassssiiee
 
 Missing Sudo Password (Linux OS Based)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

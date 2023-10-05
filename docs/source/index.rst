@@ -19,6 +19,7 @@ Documentation
    :maxdepth: 2
    :caption: Available Content
 
+   combined/release_sched.rst
    CIS/CIS_table.rst
    CIS/CIS_advanced.rst
    STIG/STIG_table.rst
