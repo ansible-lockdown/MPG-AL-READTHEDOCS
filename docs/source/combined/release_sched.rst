@@ -7,7 +7,7 @@ Vendor Benchmark Schedule
 CIS
 ^^^
 
-CIS (Center for Internet Security) release developed security configurations best practices that are validated by community. There is no official schedule, although CIS tends to release new or updates into a draft format, which you can subscribe prior to official release.
+CIS (Center for Internet Security) release developed security configurations best practices that are validated by community. There is no official schedule, although CIS tends to release new or updated benchmarks into a draft format, which you can subscribe prior to official release.
 
 STIG
 ^^^^

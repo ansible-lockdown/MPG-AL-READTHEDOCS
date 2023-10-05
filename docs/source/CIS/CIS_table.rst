@@ -9,6 +9,8 @@ Operating Systems
    :widths: 25, 15, 15, 15, 25
 
    "AMAZON2-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
+   "AMAZON2023-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
+   "DEBIAN11-CIS_", "True", "True", "WIP", "N/A"
    "RHEL7-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
    "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
    "RHEL9-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
@@ -20,9 +22,11 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 25
 
+   "Windows-10-CIS_", "True", "True", "WIP", "N/A"
+   "Windows-11-CIS_", "True", "True", "WIP", "N/A"
    "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
-   "Windows-2022-CIS_", "True", "WIP", "WIP", "N/A"
+   "Windows-2022-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
 
 Cloud Platforms
 ^^^^^^^^^^^^^^^^^
@@ -53,6 +57,7 @@ None currently
 
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
 .. _AMAZON2023-CIS: https://github.com/ansible-lockdown/AMAZON2023-CIS
+.. _DEBIAN11-CIS: https://github.com/ansible-lockdown/DEBIAN11-CIS
 .. _RHEL7-CIS: https://github.com/ansible-lockdown/RHEL7-CIS
 .. _RHEL8-CIS: https://github.com/ansible-lockdown/RHEL8-CIS
 .. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
@@ -63,6 +68,8 @@ None currently
 .. _Windows-2016-CIS: https://github.com/ansible-lockdown/Windows-2016-CIS
 .. _Windows-2019-CIS: https://github.com/ansible-lockdown/Windows-2019-CIS
 .. _Windows-2022-CIS: https://github.com/ansible-lockdown/Windows-2022-CIS
+.. _Windows-10-CIS: https://github.com/ansible-lockdown/Windows-10-CIS
+.. _Windows-11-CIS: https://github.com/ansible-lockdown/Windows-11-CIS
 
 .. _Cisco-IOS-L2S: https://github.com/ansible-lockdown/CISCO-IOS-L2S-STIG
 .. _AWS-Foundations: https://github.com/ansible-lockdown/AWS-FOUNDATIONS-CIS

@@ -8,7 +8,7 @@ Automated Security Benchmark - Auditing and Remediation
   :target: https://github.com/ansible-lockdown
 
 .. image:: https://img.shields.io/discord/925818806838919229?logo=discord
-  :target: https://discord.io/ansible-lockdown/
+  :target: https://www.lockdownenterprise.com/discord
 
 
 MindPoint Group's (MPG_) Ansible-Lockdown Overview
