@@ -43,7 +43,6 @@ make singlehtml
 
 The file(s) that need to be adjusted are
 
-- source/benchmarks_CIS.rst
 - source/benchmarks_STIG.rst
 
 This auto populates into the index and anywhere else it is required
