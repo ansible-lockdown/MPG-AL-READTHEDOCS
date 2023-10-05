@@ -7,22 +7,17 @@ Vendor Benchmark Schedule
 CIS
 ^^^
 
-CIS (Centre for Internet Security) releases are created and validated by communities, providing security and best practice configurations.
-There is no official schedule although they do sometimes place new or updates into a draft formot which you can subscribe and ableto see priori to official release.
+CIS (Center for Internet Security) release developed security configurations best practices that are validated by community. There is no official schedule, although CIS tends to release new or updates into a draft format, which you can subscribe prior to official release.
 
 STIG
 ^^^^
 
-STIG (Security Technical Implementation Guide) releases are created by Vendors in conjuction with requirements from DISA and are released to a schedule.
-This schedule in is normally 1 per quarter if needed.
-
+STIG (Security Technical Implementation Guide) releases are developed by vendors in conjunction with requirements from DISA. STIG release schedule is managed and released on a quarterly schedule.
 
 Playbook releases
 ^^^^^^^^^^^^^^^^^
 
-We aim to release remediate benchmarks within 30days of vendor release to subscribers, This is subject to number of changes and new benchmarks can take significantly longer.
-Public releases approximatley 3months after subscriber release.
-
+We aim to release remediate benchmarks within 30 days of vendor release to subscribers, this is subject to number of changes, with new benchmarks often taking significantly longer. Public releases will be approximately three months after subscriber release.
 Example
 ^^^^^^^
 
