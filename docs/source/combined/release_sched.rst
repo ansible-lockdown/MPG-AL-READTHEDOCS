@@ -1,4 +1,4 @@
-Release schedule
+Release Schedule
 ================
 
 Vendor Benchmark Schedule
@@ -13,7 +13,8 @@ There is no official schedule, although CIS tends to release new or updated benc
 STIG
 ^^^^
 
-STIG (Security Technical Implementation Guide) releases are developed by vendors in conjunction with requirements from DISA. STIG release schedule is managed and released on a quarterly schedule.
+STIG (Security Technical Implementation Guide) releases are developed by vendors in conjunction with requirements from DISA.
+STIG release schedule is managed and released on a quarterly schedule.
 
 Playbook releases
 ^^^^^^^^^^^^^^^^^
