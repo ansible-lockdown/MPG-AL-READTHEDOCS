@@ -16,7 +16,7 @@ STIG
 STIG (Security Technical Implementation Guide) releases are developed by vendors in conjunction with requirements from DISA.
 STIG release schedule is managed and released on a quarterly schedule.
 
-Playbook releases
+Playbook Releases
 ^^^^^^^^^^^^^^^^^
 
 We aim to release remediate benchmarks within 30 days of vendor release to subscribers, this is subject to the number of changes, with new benchmarks often taking significantly longer.
