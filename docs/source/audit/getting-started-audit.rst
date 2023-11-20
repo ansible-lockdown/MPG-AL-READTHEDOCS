@@ -82,20 +82,22 @@ Running the Audit Only as part of remediate playbook
 
 It is possible to just run the audit on some playbooks (being rolled out across them all). This is a variable set
 
-```
+.. code-block:: yaml
+
 audit_only: true
-```
+
 
 This will run the audit based on the same release as the playbook and will then stop.
 Extra variables also enable the ability to copy back the audit output to the control node and create a directory structure.
 
-```
+.. code-block:: yaml
+
 # As part of audit_only
 # This will enable files to be copied back to control node
 fetch_audit_files: false
 # Path to copy the files to will create dir structure
 audit_capture_files_dir: /some/location to copy to on control node
-```
+
 
 Defining the audit
 ------------------
