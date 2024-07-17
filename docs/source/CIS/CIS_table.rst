@@ -10,7 +10,8 @@ Operating Systems
 
    "AMAZON2-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
    "AMAZON2023-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
-   "DEBIAN11-CIS_", "True", "True", "WIP", "N/A"
+   "DEBIAN11-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN11-CIS?style=plastic"
+   "DEBIAN12-CIS_", "True", "True", "WIP", "N/A"
    "RHEL7-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
    "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
    "RHEL9-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
@@ -22,8 +23,8 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 25
 
-   "Windows-10-CIS_", "True", "True", "WIP", "N/A"
-   "Windows-11-CIS_", "True", "True", "WIP", "N/A"
+   "Windows-10-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-CIS?style=plastic"
+   "Windows-11-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-CIS?style=plastic"
    "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
    "Windows-2022-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
