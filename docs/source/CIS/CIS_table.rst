@@ -59,6 +59,7 @@ None currently
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
 .. _AMAZON2023-CIS: https://github.com/ansible-lockdown/AMAZON2023-CIS
 .. _DEBIAN11-CIS: https://github.com/ansible-lockdown/DEBIAN11-CIS
+.. _DEBIAN12-CIS: https://github.com/ansible-lockdown/DEBIAN12-CIS
 .. _RHEL7-CIS: https://github.com/ansible-lockdown/RHEL7-CIS
 .. _RHEL8-CIS: https://github.com/ansible-lockdown/RHEL8-CIS
 .. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
@@ -80,4 +81,3 @@ None currently
 .. _Postgres-12-CIS: https://github.com/ansible-lockdown/POSTGRES-12-CIS
 .. _Kubernetes1.6.1-CIS: https://github.com/ansible-lockdown/Kubernetes1.6.1-CIS
 .. _NGINX-CIS: https://github.com/ansible-lockdown/NGINX-CIS
-
