@@ -6,12 +6,13 @@ Operating Systems
 
 .. csv-table:: STIG Linux Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
-   :widths: 25, 15, 15, 15, 25
+   :widths: 25, 15, 15, 15, 20
 
    "RHEL7-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
-   "UBUNTU18-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
-   "UBUNTU20-STIG_", "True", "True", "WIP", "N/A", "N/A"
+   "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
+   "UBUNTU18-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
+   "UBUNTU20-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-STIG?style=plastic"
 
 .. csv-table:: STIG Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
@@ -20,7 +21,7 @@ Operating Systems
    "Windows-10-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-STIG?style=plastic"
    "Windows-2016-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-STIG?style=plastic"
    "Windows-2019-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-STIG?style=plastic"
-   "Windows-2022-STIG_", "True", "WIP", "WIP", "N/A"
+   "Windows-2022-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-STIG?style=plastic"
 
 Networking
 ^^^^^^^^^^
@@ -59,6 +60,7 @@ Archived Roles
 
 .. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG
+.. _RHEL9-STIG: https://github.com/ansible-lockdown/RHEL9-STIG
 .. _UBUNTU18-STIG: https://github.com/ansible-lockdown/UBUNTU18-STIG
 .. _UBUNTU20-STIG: https://github.com/ansible-lockdown/UBUNTU20-STIG
 
