@@ -8,8 +8,8 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 25
 
-   "AMAZON2-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
-   "AMAZON2023-CIS_", "True", "True", "True",  ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
+   "AMAZON2-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
+   "AMAZON2023-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
    "DEBIAN11-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN11-CIS?style=plastic"
    "DEBIAN12-CIS_", "True", "True", "WIP", "N/A"
    "RHEL7-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
@@ -18,13 +18,14 @@ Operating Systems
    "UBUNTU18-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
    "UBUNTU20-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
    "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
+   "UBUNTU24-CIS_", "True", "True", "True", "N/A"
 
 .. csv-table:: CIS Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 25
 
-   "Windows-10-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-CIS?style=plastic"
-   "Windows-11-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-CIS?style=plastic"
+   "Windows-10-CIS_", "True", "True", "NA", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-CIS?style=plastic"
+   "Windows-11-CIS_", "True", "True", "NA", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-CIS?style=plastic"
    "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
    "Windows-2022-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
