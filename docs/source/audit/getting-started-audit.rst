@@ -8,8 +8,7 @@ Audit
 Overview
 --------
 
-Ansible remediation for security benchmarks now utilizes an open-source
-go binary called `goss <https://goss.rocks>`_ to audit the system.
+Ansible remediation for security benchmarks now utilizes an open-source go binary called `goss <https://goss.rocks>`_ to audit the system.
 
 Ensuring consistency in checks by using the same settings and controls
 that have been enabled in the remediation steps, are the same ones
@@ -33,7 +32,6 @@ It can be run in two ways:
 
   - run_audit.sh (Linux (shell))
   - run_audit.ps1 (Windows(powershell))
-
 
 
 Currently Enabled Playbooks
@@ -65,17 +63,18 @@ The following requirements are needed (OS dependant)
 
   - Linux
 
-    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64>`_
-    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64.sha256>`_
+    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64>`_
+    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64.sha256>`_
 
   - Windows
 
-    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe>`_
-    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe.sha265>`_
+    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe>`_
+    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe.sha265>`_
 
 .. note::
     The binary only needs to be accessible to the host with ability to use.
     The relevant script needs to be adjust to point to the path of the binary.
+    Ensure you have the correct binary for your architecture examples above are AMD64, but also works on ARM64 (may have bad results with auditd settings)
 
 Running the Audit Only as part of remediate playbook
 ----------------------------------------------------
@@ -160,6 +159,98 @@ script help
    -h     Print this Help.
 
    Other options can be assigned in the script itself
+
+**Running goss without script**
+
+This assumes you have goss and access to super user privileges.
+
+It is possible to run goss in its raw form, while this is not recommended, for consistency it is added here.
+
+The script discovers and adds extra inline variablesto the goss output in the form of the metadata fields as found in the goss.yml
+This needs to be amended before being able to run in raw form.
+
+- Edit goss.yml remove the lines starting at #metadata and the command tests Vars below
+
+Goss can then be run manually
+
+- full check
+
+.. code-block:: shell
+
+    # {{path to your goss binary}} --vars {{ path to the vars file }} -g {{path to your clone of this repo }}/goss.yml --validate
+
+
+example:
+
+.. code-block:: shell
+    # /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh8_cis_goss/goss.yml validate
+    ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
+
+    Failures/Skipped:
+
+    Title: 1.6.1 Ensure core dumps are restricted (Automated)_sysctl
+    Command: suid_dumpable_2: exit-status:
+    Expected
+        <int>: 1
+    to equal
+        <int>: 0
+    Command: suid_dumpable_2: stdout: patterns not found: [fs.suid_dumpable = 0]
+
+
+    Title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
+    Service: aidecheck: enabled:
+    Expected
+        <bool>: false
+    to equal
+        <bool>: true
+    Service: aidecheck: running:
+    Expected
+        <bool>: false
+    to equal
+        <bool>: true
+
+    < ---------cut ------- >
+
+    Title: 1.1.22 Ensure sticky bit is set on all world-writable directories
+    Command: version: exit-status:
+    Expected
+        <int>: 0
+    to equal
+        <int>: 123
+
+    Total Duration: 5.102s
+    Count: 124, Failed: 21, Skipped: 5
+
+
+- running a particular section of tests
+
+.. code-block:: shell
+
+    # /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate
+    ............
+
+    Total Duration: 0.033s
+    Count: 12, Failed: 0, Skipped: 0
+
+
+- changing the output
+
+.. code-block:: shell
+
+    # /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
+    Title: 1.1.20 Check for removeable media nodev
+    Command: floppy_nodev: exit-status: matches expectation: [0]
+    Command: floppy_nodev: stdout: matches expectation: [OK]
+    < -------cut ------- >
+    Title: 1.1.20 Check for removeable media noexec
+    Command: floppy_noexec: exit-status: matches expectation: [0]
+    Command: floppy_noexec: stdout: matches expectation: [OK]
+
+
+    Total Duration: 0.022s
+    Count: 12, Failed: 0, Skipped: 0
+
+
 
 Running on Windows
 ------------------
