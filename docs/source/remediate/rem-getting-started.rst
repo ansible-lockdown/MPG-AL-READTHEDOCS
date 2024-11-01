@@ -104,7 +104,7 @@ CLI - Notice the reference to site.yml
 .. code-block:: console
 
   cd roles
-  ansible-playbook -i hosts -e '{ "rhel8stig_cat2_patch":false,"rhel8stig_cat3_patch":false }' ./RHEL8-STIG/site.yml'
+  ansible-playbook -i hosts -e '{ "rhel8stig_cat2_patch":false,"rhel8stig_cat3_patch":false }' ./RHEL8-STIG/site.yml
 
 Tower Steps
 
