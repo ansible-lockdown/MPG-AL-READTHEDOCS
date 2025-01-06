@@ -11,7 +11,8 @@ Contact Us
 
 * `Twitter@AnsibleLockdown <https://twitter.com/AnsibleLockdown>`_ : Get the latest news from our Twitter feed on everything Ansible Lockdown.
 .. image:: https://img.shields.io/twitter/url/https/twitter.com/AnsibleLockdown.svg?style=social&label=Follow%20%40AnsibleLockdown
-  :target: https://twitter.com/AnsibleLockdown
+
+:target: https://twitter.com/AnsibleLockdown
 
 MindPoint Group Official Site and Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,8 +29,6 @@ MindPoint Group Official Site and Services
 
 .. toctree::
    :maxdepth: 3
-
-
 
    known_issues.rst
    audit/audit-faq.rst
