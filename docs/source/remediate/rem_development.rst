@@ -71,10 +71,9 @@ General Layout
 
     - While these can be overridden, these will be rare and these are usually set as a default for a value.
 
-Dynamic Variables (register or set_facts)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Dynamic Variables (register or set_facts)
 
-- These are labelled from where/how they are set, This will assist with:
+  - These are labelled from where/how they are set, This will assist with:
 
     - reuseablity across repositories
     - assist in debugging knowing where the value is set
