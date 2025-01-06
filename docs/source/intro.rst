@@ -147,7 +147,7 @@ There are occasions where both need updating or just one of them.
 
 As a rule, our goal is to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
 Being community, we have direct customer requests and requirements that take priority in releases.
-For a more indepth Overview
+For a more in depth Overview
   :doc:`combined/release_sched`
 
 Branches
