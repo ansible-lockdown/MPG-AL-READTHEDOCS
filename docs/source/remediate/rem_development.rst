@@ -17,8 +17,7 @@ Remediate Code Considerations
 - **Readability is key**
 
   - This means the most clever way to write something might lead to the task being complicated and hard to read.
-  - For example if you have a multi-axis loop, with vars spread across the role that reference tasks of their own, with jinja filters on top of json filters
-  to do something in one task instead of having three tasks to accomplish the same thing. (Please create the three tasks for readability)
+  - For example if you have a multi-axis loop, with vars spread across the role that reference tasks of their own, with jinja filters on top of json filters to do something in one task instead of having three tasks to accomplish the same thing. (Please create the three tasks for readability)
 
 - **Controls only do what the control ask for**
 

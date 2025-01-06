@@ -117,6 +117,7 @@ There are also switch options to allow you to run a couple of these benchmarks a
 Script runtime options
 
 - The group option allows a meta field that can be assigned against the report for use in the analysis if servers are under the same group.
+
 If more than one server group is analyzed, groups can be separated with commas.
 
 - The full audit report has the saved output filename and location information.

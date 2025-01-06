@@ -112,7 +112,8 @@ Tower Steps
 
 
 With Existing Playbooks
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+
 This role works well with existing playbooks. The following is an
 example of a basic playbook that uses this role:
 
