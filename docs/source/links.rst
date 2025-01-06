@@ -14,8 +14,7 @@ Support
     - Ticketed support
 
   - `Lockdown Enterprise <https://lockdownenterprise.com>`_
-
-
+  - `engage@mindpointgroup.com <engage@mindpointgroup.com>`_ : Email Enquiry
 
 - Community
 
