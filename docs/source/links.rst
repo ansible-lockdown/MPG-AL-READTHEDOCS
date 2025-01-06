@@ -7,17 +7,19 @@ Support
 
 - Commercial
 
-  - `Lockdown Enterprise <https://lockdownenterprise.com>`_
-
   Providing:
 
     - Early Releases
     - Priority big fixes
     - Ticketed support
 
+  - `Lockdown Enterprise <https://lockdownenterprise.com>`_
+
+
+
 - Community
 
-  - `Discord <https://lockdownenterprise.com/discord>`_
+  - `Discord Invite Link <https://lockdownenterprise.com/discord>`_
 
 Main Content site
 ~~~~~~~~~~~~~~~~~
