@@ -57,19 +57,19 @@ General Layout
 - **Module**
   - This is just the module being used to execute that task, nothing special here
 
-- **Variables**
+- Variables
+  ^^^^^^^^^
 
-Defaults
-^^^^^^^^
-  - Any value that can deviate from the example used in the fix text. For example tasks that ask to set permissions X or more restrictive that the permissions value should be a variable
-  - Any value that has multiple value options should be a variable
-  - These variables should be defined in the ``defaults/main.yml`` file
-  - These variables should be formatted as role name followed by the descriptor, rhel8stig_disruption_high for example
+  - Defaults
 
-vars/main.yml
-^^^^^^^^^^^^^
+    - Any value that can deviate from the example used in the fix text. For example tasks that ask to set permissions X or more restrictive that the permissions value should be a variable
+    - Any value that has multiple value options should be a variable
+    - These variables should be defined in the ``defaults/main.yml`` file
+    - These variables should be formatted as role name followed by the descriptor, rhel8stig_disruption_high for example
 
-  - While these can be overridden, these will be rare and these are usually set as a default for a value.
+  - vars/main.yml
+
+    - While these can be overridden, these will be rare and these are usually set as a default for a value.
 
 Dynamic Variables (register or set_facts)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
