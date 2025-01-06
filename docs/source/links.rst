@@ -7,11 +7,13 @@ Support
 
 - Commercial
 
-  - Early Releases
-  - Priority big fixes
-  - Ticketed support
+  - `Lockdown Enterprise <https://lockdownenterprise.com>`_
 
-  - `lockdownenterprise <https://lockdownenterprise.com>`_
+  Providing:
+
+    - Early Releases
+    - Priority big fixes
+    - Ticketed support
 
 - Community
 
@@ -38,6 +40,6 @@ Remediate
 Linting
 ^^^^^^^
 
-  - `ansible-lint <https://ansible.readthedocs.io/projects/lint/>`_
-  - `yamllint <https://yamllint.readthedocs.io/en/stable/>`_
-  - `pre-commit <https://pre-commit.com>`_
+- `ansible-lint <https://ansible.readthedocs.io/projects/lint/>`_
+- `yamllint <https://yamllint.readthedocs.io/en/stable/>`_
+- `pre-commit <https://pre-commit.com>`_

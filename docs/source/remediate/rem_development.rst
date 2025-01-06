@@ -23,13 +23,13 @@ Remediate Code Considerations
   - Scanners also use the Fix Text and/or intent of the control (sometimes the Fix Text has mistakes...) to check for compliance. If you deviate from this, scanners find false positives.
   - There should be no extra security settings set (even if they are good ideas to set). These roles expect to only set what is defined in the STIG or CIS benchmarks. If other security settings are set, it can cause confusion.
 
-Remediate Code Layout
-~~~~~~~~~~~~~~~~~~~~~
+- **Keep it clean**
+  - Linting
 
-We utilise both
+We utilise both:
 
-- ansible-lint
-- yamllint
+  - ansible-lint
+  - yamllint
 
 We also run `pre-commit <https://pre-commit.com>`_ checks on all PRs to ensure this is met in requests.
 
@@ -41,8 +41,7 @@ General Layout
 - Follow the specific structure listed in the Layout sections
 - For controls that install/uninstall packages please use package module and use ansible_facts.packages in the when where required
 
-  - The package module will use the default package manager for that system, for example ``yum`` (RHEL 7), ``dnf`` (RHEL 8+), ``apt`` (Ubuntu), etc.
-  This allows for a more unified use of tasks between all roles
+  - The package module will use the default package manager for that system, for example ``yum`` (RHEL 7), ``dnf`` (RHEL 8+), ``apt`` (Ubuntu), etc. This allows for a more unified use of tasks between all roles
   - The use of ``ansible_facts.packages`` will skip if it does not need to run and add efficiency to run time
 
 - **Name** ``- name:``
@@ -57,17 +56,20 @@ General Layout
 - **Module**
   - This is just the module being used to execute that task, nothing special here
 
-- Variables
-  ^^^^^^^^^
+- **Mode**
+  - To try and ensure idempotency and the changes to permssions should be X of more restricitive - we use symbolic logic e.g. ``mode: 'u-x,go-wx'``
 
-  - Defaults
+Variables
+^^^^^^^^^
+
+  - ``defaults/main.yml``
 
     - Any value that can deviate from the example used in the fix text. For example tasks that ask to set permissions X or more restrictive that the permissions value should be a variable
     - Any value that has multiple value options should be a variable
     - These variables should be defined in the ``defaults/main.yml`` file
     - These variables should be formatted as role name followed by the descriptor, rhel8stig_disruption_high for example
 
-  - vars/main.yml
+  - ``vars/main.yml``
 
     - While these can be overridden, these will be rare and these are usually set as a default for a value.
 
@@ -78,18 +80,14 @@ General Layout
     - reuseablity across repositories
     - assist in debugging knowing where the value is set
 
-Example naming:
-
-prelim_some_test
+**Example naming**
 
 - tasks/prelim.yml
 
   - These are often used in multiple locations so set in prelim
   - When set here as registered as prelim_description e.g. prelim_apparmor_enforce_status
 
-discovered_another_test
-
-- tasks/*/*.yml
+- tasks/\*/\*.yml
 
   - Set by registering output and used within that task
   - descriptive naming e.g. discovered_auditd_conf_files
