@@ -25,7 +25,7 @@ Branches
 
 Refer to:
 
-- :doc:`../intro`
+- :ref:`../intro:Branches`.
 
 
 Example
