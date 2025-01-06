@@ -5,8 +5,17 @@ Useful links
 Support
 ~~~~~~~
 
-- `lockdownenterprise <https://lockdownenterprise.com>`_
-- `Discord <https://lockdownenterprise.com/discord>`_
+- Commercial
+
+  - Early Releases
+  - Priority big fixes
+  - Ticketed support
+
+  - `lockdownenterprise <https://lockdownenterprise.com>`_
+
+- Community
+
+  - `Discord <https://lockdownenterprise.com/discord>`_
 
 Main Content site
 ~~~~~~~~~~~~~~~~~
