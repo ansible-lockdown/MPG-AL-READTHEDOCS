@@ -83,7 +83,7 @@ master_doc = 'index'
 # General information about the project.
 author = 'MindPoint Group'
 category = 'Security'
-copyright = '2023, MindPoint Group'
+copyright = '2025, MindPoint Group - A Tyto Athene Company'
 description = BENCHMARK_TYPE + " " + 'compliance for' + " " + BENCHMARK_OS_SHORT + " " + 'systems'
 project = 'Ansible-lockdown '
 role_name = BENCHMARK_NAME
