@@ -24,7 +24,8 @@ Branches
 --------
 
 Refer to:
- - :doc:`../intro:branches`
+
+- :doc:`../intro`
 
 
 Example
