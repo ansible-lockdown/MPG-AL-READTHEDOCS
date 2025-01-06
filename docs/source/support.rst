@@ -14,7 +14,7 @@ Contact Us
   :target: https://twitter.com/AnsibleLockdown
 
 MindPoint Group Official Site and Services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * `MindPoint Group Official Website <https://www.mindpointgroup.com/company/contact-us>`_ : If your organization has general questions regarding Cybersecurity or our Organization.
 
 * `engage@mindpointgroup.com <engage@mindpointgroup.com>`_ : via Email
@@ -22,6 +22,7 @@ MindPoint Group Official Site and Services
 *  `LinkedIn <https://www.linkedin.com/company/mindpoint-group-llc/>`_ : Our official LinkedIn Business Page
 
 * `Twitter@MindPointGroup <https://twitter.com/MindPointGroup>`_ : Get the latest news from our Twitter feed on everything MindPointGroup.
+
 .. image:: https://img.shields.io/twitter/url/https/twitter.com/MindPointGroup.svg?style=social&label=Follow%20%40MindPointGroup
   :target: https://twitter.com/MindPointGroup
 

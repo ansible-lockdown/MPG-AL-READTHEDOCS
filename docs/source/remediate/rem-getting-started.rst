@@ -1,5 +1,5 @@
 Remediate
-==============================
+=========
 
 This role is part of the `Ansible Lockdown`_ project and can be used as a
 standalone role or it can be used along with other Ansible roles, playbooks, or collections.
@@ -18,6 +18,7 @@ standalone role or it can be used along with other Ansible roles, playbooks, or 
 
 Requirements
 ------------
+
 This documentation assumes that the reader has completed the steps within the
 
 * `Ansible installation guide <https://docs.ansible.com/ansible/latest/installation_guide/index.html>`_.

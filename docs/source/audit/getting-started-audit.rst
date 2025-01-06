@@ -183,6 +183,7 @@ Goss can then be run manually
 example:
 
 .. code-block:: shell
+
     # /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh8_cis_goss/goss.yml validate
     ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
 
