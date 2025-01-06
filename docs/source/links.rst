@@ -1,6 +1,13 @@
 Useful links
 ==============
 
+
+Support
+~~~~~~~
+
+- `lockdownenterprise <https://lockdownenterprise.com>`_
+- `Discord <https://lockdownenterprise.com/discord>`_
+
 Main Content site
 ~~~~~~~~~~~~~~~~~
 
