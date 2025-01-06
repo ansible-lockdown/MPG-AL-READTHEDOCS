@@ -10,6 +10,7 @@ Contact Us
 * `G2 <https://www.g2.com/products/ansible-lockdown/reviews>`_ : Read and Write our reviews at G2
 
 * `Twitter@AnsibleLockdown <https://twitter.com/AnsibleLockdown>`_ : Get the latest news from our Twitter feed on everything Ansible Lockdown.
+
 .. image:: https://img.shields.io/twitter/url/https/twitter.com/AnsibleLockdown.svg?style=social&label=Follow%20%40AnsibleLockdown
 
 :target: https://twitter.com/AnsibleLockdown
