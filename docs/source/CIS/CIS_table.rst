@@ -73,7 +73,7 @@ Archived Roles
 .. _UBUNTU18-CIS: https://github.com/ansible-lockdown/UBUNTU18-CIS
 .. _UBUNTU20-CIS: https://github.com/ansible-lockdown/UBUNTU20-CIS
 .. _UBUNTU22-CIS: https://github.com/ansible-lockdown/UBUNTU22-CIS
-.. _UBUNTU22-CIS: https://github.com/ansible-lockdown/UBUNTU24-CIS
+.. _UBUNTU24-CIS: https://github.com/ansible-lockdown/UBUNTU24-CIS
 
 .. _Windows-2016-CIS: https://github.com/ansible-lockdown/Windows-2016-CIS
 .. _Windows-2019-CIS: https://github.com/ansible-lockdown/Windows-2019-CIS

@@ -60,9 +60,11 @@ General Layout
   - When using blocks the steps should have a pipe ( | ) after the title followed by a description of what that task is doing in the block.
 
 - **Module**
+
   - This is just the module being used to execute that task, nothing special here
 
 - **Mode**
+
   - To try and ensure idempotency and the changes to permssions should be X of more restrictive - we use symbolic logic e.g. ``mode: 'u-x,go-wx'``
 
 Variables
@@ -86,7 +88,7 @@ Variables
     - reuseablity across repositories
     - assist in debugging knowing where the value is set
 
-**Example naming**
+**Naming of variables**
 
 - ``tasks/prelim.yml``
 
@@ -100,9 +102,7 @@ Variables
 
 - **Parameters**
 
-  - When using the ``command`` module to gather information please set ``changed_when`` and ``failed_when`` accordingly. This will cause the task to always
-  run and register which always creates the variable registering. The action parts of the task that use that var should handle the var if a fail occurred
-  during the ``command`` or ``shell`` function
+  - When using the ``command`` module to gather information please set ``changed_when`` and ``failed_when`` accordingly. This will cause the task to always run and register which always creates the variable registering. The action parts of the task that use that var should handle the var if a fail occurred during the ``command`` or ``shell`` function
   - Please always use ``command`` over ``shell``, except when using ( | ) in the command as this will cause issues.
   - When using modules that have alias's, please do not use the alias since those are often not part of the module documentation
   - When using modules that require a path type of parameter please use that first
@@ -187,8 +187,7 @@ CIS Control Task Layout
 
     - Server Level
     - Workstation Level
-    - Automated or Manual. This is from the CIS control in the benchmark documentation and is their assessment of the control being able to be automated or a manual control.
-    If we automate or don't automate the control itself we use the value from the benchmark itself here
+    - Automated or Manual. This is from the CIS control in the benchmark documentation and is their assessment of the control being able to be automated or a manual control. If we automate or don't automate the control itself we use the value from the benchmark itself here
     - Patch or Audit. Does the overall task make any changes or just audit/message out
     - Descriptor of what the task is involved with. For example ssh, selinux, pamd, gui, etc. This tag is always lowercase
     - Number of the control. The format is rule_< the number>, rule_4.1.1.3 for example
