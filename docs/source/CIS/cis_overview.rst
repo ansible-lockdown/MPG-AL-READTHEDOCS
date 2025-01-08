@@ -15,7 +15,7 @@ which supports the rapidly changing cybersecurity needs of U.S. elections office
 
 
 What do the CIS roles do?
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 The roles follow the CIS provided guide (benchmark) released for the OS/platform/application.
@@ -45,7 +45,9 @@ Controls are divided into groups based on the following properties:
 .. note::
 
    All of the default configurations are found within is_container.yml and this is where they should be adjusted. Do not adjust within the tasks themselves
+
    - remediation - ``defaults/main.yml``
    - audit
+
      - standalone ``vars/CIS.yml``
      - combined ``vars/[system_hostname].yml``

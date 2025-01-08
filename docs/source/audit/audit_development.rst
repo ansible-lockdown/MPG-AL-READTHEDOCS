@@ -114,6 +114,7 @@ Variables should be added higher in the test based on the level of impact.
 
 
 ..  code-block:: raw
+
     {{ .Vars.section_1 }}
       {{ .Vars.rhelcis8_1_1_1_1 }}
 

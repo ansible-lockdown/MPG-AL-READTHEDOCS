@@ -1,5 +1,5 @@
 Audit
-==========================
+=====
 
 .. contents::
    :local:
@@ -117,6 +117,7 @@ There are also switch options to allow you to run a couple of these benchmarks a
 Script runtime options
 
 - The group option allows a meta field that can be assigned against the report for use in the analysis if servers are under the same group.
+
 If more than one server group is analyzed, groups can be separated with commas.
 
 - The full audit report has the saved output filename and location information.
@@ -183,6 +184,7 @@ Goss can then be run manually
 example:
 
 .. code-block:: shell
+
     # /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh8_cis_goss/goss.yml validate
     ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
 
