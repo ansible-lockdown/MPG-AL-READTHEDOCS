@@ -1,3 +1,7 @@
+# Layout of lines
+
+``` yaml
+
 ******
 LAYOUT
 ******
@@ -28,3 +32,5 @@ Rules
 - If under and overline are used, their length must be identical
 
 - The length of the underline must be at least as long as the title itself
+
+```

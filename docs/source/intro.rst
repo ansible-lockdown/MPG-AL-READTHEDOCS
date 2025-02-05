@@ -125,7 +125,7 @@ How is this written?
 
 We analyze each configuration control from the applicable benchmark to determine what impact it has on a live production environment and how to
 best implement a way to audit the current configuration and how to achieve those requirements using Ansible.
-Tasks are added to the role that configure a host to meet the configuration requirements. Each task is documented to explain what was changed, 
+Tasks are added to the role that configure a host to meet the configuration requirements. Each task is documented to explain what was changed,
 why it was changed, and what deployers need to understand about the change.
 
 Deployers have the option to enable/disable every control that does not suit their environments needs.
@@ -147,10 +147,15 @@ There are occasions where both need updating or just one of them.
 
 As a rule, our goal is to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
 Being community, we have direct customer requests and requirements that take priority in releases.
+For a more in depth Overview
+
+- :doc:`combined/release_sched`
 
 Branches
 ^^^^^^^^
 
+Remediate
+^^^^^^^^^
 - **devel branch**
 
    - Staging area for bug fixes, PRs and new benchmarks.
@@ -165,6 +170,16 @@ Branches
    - Routinely, a release alignment is every 8-12 weeks (sometimes much quicker).
    - Once a new CIS_/STIG_ benchmark gets released, we aim to merge the new tagged release (2-4 weeks).
    - The major releases are sourced and linked to ansible-galaxy_ Roles.
+
+Audit
+^^^^^
+
+- **benchmark_version**
+
+As these are very bespoke for each release the branches are named after the version of the benchmark it is to test.
+Allowing the playbook to test for he correct settings for that version
+
+- RHEL9-CIS e.g. benchmark_v2.0.0
 
 Demos
 ^^^^^
