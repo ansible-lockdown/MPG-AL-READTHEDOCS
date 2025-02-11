@@ -136,6 +136,10 @@ customization of the applied value.
 It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific
 environments are responsible for meeting in order to effectively implement the controls in the relevant benchmark.
 
+Baselines are often written for x86_64 architecture, with that advancement in ARM64/aarch64 based system now running workloads, we have started to adopt supporting of hardening
+on those systems also. This does come with some challenges for the audit component and while not officially covered by the baseline provider. We will endevour to provide
+support for this architecture as part of the content we supply.
+
 Development Process
 -------------------
 
