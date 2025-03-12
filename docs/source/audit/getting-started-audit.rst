@@ -445,16 +445,16 @@ The script supports the following parameters:
 
 **Usage Examples**
 
-.. code-block:: shell
+.. code-block:: console
 
     # Run the script with default settings
     .\run_audit.ps1
 
     # Specify a custom path for the audit binary
-    .\run_audit.ps1 -auditbin C:\\path_to\\binary.exe
+    .\run_audit.ps1 -auditbin C:\path_to\binary.exe
 
     # Define a custom audit directory
-    .\run_audit.ps1 -auditdir C:\\somepath_for_audit_content
+    .\run_audit.ps1 -auditdir C:\somepath_for_audit_content
 
     # Use a specific variables file
     .\run_audit.ps1 -varsfile myvars.yml
