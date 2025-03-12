@@ -139,12 +139,10 @@ It is designed to be **Linux OS-agnostic**, configurable, and ensures compliance
 
 
 **1. Script Metadata and Change Log**
-
 At the top, the script includes comments detailing changes made over time.
 This is useful for **tracking updates, fixes, and enhancements**.
 
 **2. Benchmark and Audit Variables**
-
 Understanding variables:
 
 - Uppercase variables are the only ones that should require changes.
@@ -170,7 +168,6 @@ Defines **benchmark name**, **version**, and **target OS**.
 Defines **Goss binary location** and **audit file paths**.
 
 **3. Help Function**
-
 .. code-block:: bash
 
     Help()
@@ -189,7 +186,6 @@ Defines **Goss binary location** and **audit file paths**.
 Displays **usage instructions** when `-h` is provided.
 
 **4. Command-Line Arguments Handling**
-
 .. code-block:: bash
 
     while getopts f:g:o:v::wh option; do
@@ -207,7 +203,6 @@ Displays **usage instructions** when `-h` is provided.
 Uses `getopts` to process **command-line arguments**.
 
 **5. Pre-Checks**
-
 .. code-block:: bash
 
     if [ "$(/usr/bin/id -u)" -ne 0 ]; then
@@ -228,7 +223,6 @@ Ensures the script runs with **root privileges**.
 Detects the **OS vendor**.
 
 **6. Audit Variables and File Paths**
-
 .. code-block:: bash
 
     audit_content_version=$os_vendor$os_maj_ver-$BENCHMARK-Audit
@@ -238,7 +232,6 @@ Detects the **OS vendor**.
 Defines paths for **storing audit results**.
 
 **7. Output File Handling**
-
 .. code-block:: bash
 
     if [ -z "$OUTFILE" ]; then
@@ -250,7 +243,6 @@ Defines paths for **storing audit results**.
 Dynamically sets the output filename based on system details.
 
 **8. Pre-Check for Goss Availability**
-
 .. code-block:: bash
 
     if [ -s "${AUDIT_BIN}" ]; then
@@ -270,7 +262,6 @@ Dynamically sets the output filename based on system details.
 Checks if **Goss is installed** and meets the minimum version requirement.
 
 **9. Running the Audit**
-
 .. code-block:: bash
 
     echo "Audit Started"
@@ -279,7 +270,6 @@ Checks if **Goss is installed** and meets the minimum version requirement.
 Executes the **Goss audit** with the specified **configuration file**.
 
 **10. Displaying the Audit Results**
-
 .. code-block:: bash
 
     output_summary="tail -2 $audit_out"
@@ -429,22 +419,21 @@ content, binary, and output files.
 The script supports the following parameters:
 
 - **auditdir** (default: `$DEFAULT_CONTENT_DIR`):
-  Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
+  - Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
 
 - **binpath** (default: `$DEFAULT_AUDIT_BIN`):
-  Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\goss.exe`).
+  - Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\goss.exe`).
 
 - **varsfile** (default: `$DEFAULT_VARS_FILE`):
-  Allows specifying a variable file containing settings for the audit.
+  - Allows specifying a variable file containing settings for the audit.
 
 - **group** (default: `none`):
-  Used to categorize the system into a specific group for comparison.
+  - Used to categorize the system into a specific group for comparison.
 
 - **outfile** (default: `$AUDIT_CONTENT_DIR\\audit_$host_os_hostname_$host_epoch.json`):
-  Defines the output file path for storing the full audit results.
+  - Defines the output file path for storing the full audit results.
 
 **Usage Examples**
-
 .. code-block:: console
 
     # Run the script with default settings
