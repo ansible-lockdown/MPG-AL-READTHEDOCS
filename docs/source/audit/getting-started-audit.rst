@@ -430,7 +430,7 @@ The script supports the following parameters:
     - Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
 
 - **binpath** (default: `$DEFAULT_AUDIT_BIN`):
-    - Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\goss.exe`).
+    - Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\\goss.exe`).
 
 - **varsfile** (default: `$DEFAULT_VARS_FILE`):
     - Allows specifying a variable file containing settings for the audit.
@@ -505,3 +505,13 @@ The script supports the following parameters:
   The script summarizes the audit results:
     - If successful, it displays the last few lines of the audit report.
     - If failed, it prompts the user to investigate.
+
+.. csv-table:: **PowerShell Script Summary**
+   :header: "Feature", "Description"
+   :widths: 15, 30
+
+   "Purpose", "Runs a Goss-based OS security audit per parameters"
+   "Supported Windows Versions", "Standalone Server, Member Server, Primary Domain Controller"
+   "Collect System Metadata", "OS Version, Hostname, Epoch time"
+   "Pre-checks", "Verifies the existence of essential audit binary and content files"
+   "Error Handling", "Alerts for missing files and vars"
