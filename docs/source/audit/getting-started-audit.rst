@@ -468,42 +468,42 @@ The script supports the following parameters:
 **Script Functionality**
 
 **1. Define Default Values**
-   The script sets default values for:
-   - The benchmark type (`CIS or STIG`).
-   - The Windows version (`Windows 20XX`).
-   - The default content directory, audit binary path, and variable file.
+  The script sets default values for:
+    - The benchmark type (`CIS or STIG`).
+    - The Windows version (`Windows 20XX`).
+    - The default content directory, audit binary path, and variable file.
 
 **2. Validate File Paths**
-   The script verifies the existence of essential files, such as the audit binary and content files. If any file is missing, it displays a warning and exits.
+  The script verifies the existence of essential files, such as the audit binary and content files. If any file is missing, it displays a warning and exits.
 
 **3. Identify Server Type**
-   Using `wmic.exe`, the script determines the server role, which could be:
-   - Standalone Server
-   - Member Server
-   - Primary Domain Controller (PDC)
-   - Backup Domain Controller (BDC)
-   - Workstation
+  Using `wmic.exe`, the script determines the server role, which could be:
+    - Standalone Server
+    - Member Server
+    - Primary Domain Controller (PDC)
+    - Backup Domain Controller (BDC)
+    - Workstation
 
 **4. Collect System Metadata**
-   The script gathers system information such as:
-   - Machine UUID
-   - OS Version & Locale
-   - Hostname
-   - Epoch time for timestamping output files
+  The script gathers system information such as:
+    - Machine UUID
+    - OS Version & Locale
+    - Hostname
+    - Epoch time for timestamping output files
 
 **5. Run System Audit Commands**
-   Depending on the server type, the script executes:
-   - `auditpol.exe` to capture audit policies.
-   - `secedit.exe` for security configuration exports (on standalone servers).
-   - `gpresult.exe` for Group Policy results (on domain-connected machines).
+  Depending on the server type, the script executes:
+    - `auditpol.exe` to capture audit policies.
+    - `secedit.exe` for security configuration exports (on standalone servers).
+    - `gpresult.exe` for Group Policy results (on domain-connected machines).
 
 **6. Generate JSON Metadata**
-   The script constructs a JSON object containing system metadata for the audit.
+  The script constructs a JSON object containing system metadata for the audit.
 
 **7. Execute the Audit**
-   The script runs the `goss` audit using the collected metadata, storing the results in the specified output file.
+  The script runs the `goss` audit using the collected metadata, storing the results in the specified output file.
 
 **8. Output Summary**
-   The script summarizes the audit results:
-   - If successful, it displays the last few lines of the audit report.
-   - If failed, it prompts the user to investigate.
+  The script summarizes the audit results:
+    - If successful, it displays the last few lines of the audit report.
+    - If failed, it prompts the user to investigate.
