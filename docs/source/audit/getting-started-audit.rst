@@ -425,10 +425,12 @@ example:
     Total Duration: 0.022s
     Count: 12, Failed: 0, Skipped: 0
 
-
-
 Running on Windows
 ------------------
+
+===============================
+PowerShell Script Explanation: Goss Security Audit
+===============================
 
 - Script
 
@@ -436,70 +438,109 @@ Running on Windows
 
 Variables can be set within the script
 
-**Variables for Audit**
+This PowerShell script serves as a wrapper to run an audit on a system using `goss`.
+It allows users to set custom variables for the audit, including paths for the audit
+content, binary, and output files.
 
-.. code-block:: shell
+Parameters
+----------
 
-    $DEFAULT_CONTENT_DIR = "C:\remediation_audit_logs"  # This can be changed using cli
-    $DEFAULT_AUDIT_BIN = "$DEFAULT_CONTENT_DIR\goss.exe"  # This can be changed using cli option
+The script supports the following parameters:
 
-**script help**
+- **auditdir** (default: `$DEFAULT_CONTENT_DIR`):
+  Specifies the location where the audit content is stored (e.g., `C:\windows_audit`).
 
-.. code-block:: shell
+- **binpath** (default: `$DEFAULT_AUDIT_BIN`):
+  Defines the path to the audit binary (e.g., `C:\$DEFAULT_CONTENT_DIR\goss.exe`).
 
-   NAME
-       C:\remediation_audit_logs\Windows-2019-CIS-Audit\run_audit.ps1
+- **varsfile** (default: `$DEFAULT_VARS_FILE`):
+  Allows specifying a variable file containing settings for the audit.
 
-   SYNOPSIS
-       Wrapper script to run an audit
+- **group** (default: `none`):
+  Used to categorize the system into a specific group for comparison.
 
+- **outfile** (default: `$AUDIT_CONTENT_DIR\audit_$host_os_hostname_$host_epoch.json`):
+  Defines the output file path for storing the full audit results.
 
-   SYNTAX
-       C:\remediation_audit_logs\Windows-2016-CIS-Audit\run_audit.ps1 [[-auditbin] <String>] [[-auditdir] <String>]
-       [[-varsfile] <String>] [[-group] <String>] [[-outfile] <String>] [<CommonParameters>]
+Usage Examples
+--------------
 
+Run the script with default settings:
 
-   DESCRIPTION
-       Wrapper script to run an audit on the system using goss.
-       This allows for bespoke variables to be set
+```
+.\run_audit.ps1
+```
 
+Specify a custom path for the audit binary:
 
-   PARAMETERS
-       -auditbin <String>
+```
+.\run_audit.ps1 -auditbin C:\path_to\binary.exe
+```
 
-       -auditdir <String>
-           default: $DEFAULT_CONTENT_DIR
-           Ability to change the location of where the content can be found
-           This is where the audit content is stored
-           e.g. c:/windows_audit
+Define a custom audit directory:
 
-       -varsfile <String>
-           default: $DEFAULT_VARS_FILE
-           Ability to set a variable file defined with the settings to match your requirements
+```
+.\run_audit.ps1 -auditdir C:\somepath_for_audit_content
+```
 
-       -group <String>
-           default: none
-           Ability to set a group that the system belongs to
-           Can be used when matching similar system in that same group
+Use a specific variables file:
 
-       -outfile <String>
-           default: $AUDIT_CONTENT_DIR\audit_$host_os_hostname_$host_epoch.json
-           Ability to set an outfile to send the full audit output to
-           Requires path to be set.
-           e.g. c:/windows_audit_reports
+```
+.\run_audit.ps1 -varsfile myvars.yml
+```
 
-       <CommonParameters>
-           This cmdlet supports the common parameters: Verbose, Debug,
-           ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-           OutBuffer, PipelineVariable, and OutVariable. For more information, see
-           about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+Set a custom output file path:
 
-       -------------------------- EXAMPLE 1 --------------------------
+```
+.\run_audit.ps1 -outfile C:\audit\output.json
+```
 
-       PS C:\>./run_audit.ps1
+Assign the system to a group:
 
-       ./run_audit.ps1 -auditbin c:\path_to\binary.name
-       ./run_audit.ps1 -auditdir c:\somepath_for_audit_content
-       ./run_audit.ps1 -varsfile myvars.yml
-       ./run_audit.ps1 -outfile path\to\audit\output.json
-       ./run_audit.ps1 -group webserver
+```
+.\run_audit.ps1 -group webserver
+```
+
+Script Functionality
+--------------------
+
+1. **Define Default Values**
+   The script sets default values for:
+   - The benchmark type (`CIS or STIG`).
+   - The Windows version (`Windows 20XX`).
+   - The default content directory, audit binary path, and variable file.
+
+2. **Validate File Paths**
+   The script verifies the existence of essential files, such as the audit binary and content files. If any file is missing, it displays a warning and exits.
+
+3. **Identify Server Type**
+   Using `wmic.exe`, the script determines the server role, which could be:
+   - Standalone Server
+   - Member Server
+   - Primary Domain Controller (PDC)
+   - Backup Domain Controller (BDC)
+   - Workstation
+
+4. **Collect System Metadata**
+   The script gathers system information such as:
+   - Machine UUID
+   - OS Version & Locale
+   - Hostname
+   - Epoch time for timestamping output files
+
+5. **Run System Audit Commands**
+   Depending on the server type, the script executes:
+   - `auditpol.exe` to capture audit policies.
+   - `secedit.exe` for security configuration exports (on standalone servers).
+   - `gpresult.exe` for Group Policy results (on domain-connected machines).
+
+6. **Generate JSON Metadata**
+   The script constructs a JSON object containing system metadata for the audit.
+
+7. **Execute the Audit**
+   The script runs the `goss` audit using the collected metadata, storing the results in the specified output file.
+
+8. **Output Summary**
+   The script summarizes the audit results:
+   - If successful, it displays the last few lines of the audit report.
+   - If failed, it prompts the user to investigate.
