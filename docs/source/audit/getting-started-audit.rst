@@ -101,7 +101,7 @@ Extra variables also enable the ability to copy back the audit output to the con
 Defining the audit
 ------------------
 
-Each script runs against a configures variables file found in the content location in
+Each script runs against a configured variables file found in the content location in
 
 .. code-block:: shell
 
@@ -147,7 +147,7 @@ This is useful for **tracking updates, fixes, and enhancements**.
 
 Understanding variables:
 
-- Uppercase variable are the only ones that should need changing
+- Uppercase variables are the only ones that should require changes.
 - lowercase variables are the ones that are discovered or built from existing.
 
 .. code-block:: bash
@@ -306,15 +306,15 @@ Formats and extracts audit results based on the selected output format.
 
 Checks if the audit ran successfully and notifies the user.
 
-.. csv-table:: *Summary*
+.. csv-table:: **Bash Script Summary**
    :header: "Feature", "Description"
-   :widths: 15, 25
+   :widths: 10, 25
 
-   "Purpose", "Runs a Goss-based security audit"
+   "Purpose", "Runs a Goss-based OS security audit"
    "Supported OS", "Linux (RHEL, Oracle, etc.)"
-   "Customizable", "Output format, grouping, audit file location"
-   "Pre-checks", "Ensures script runs as **root**, checks Goss"
-   "Error Handling", "Alerts for missing files, outdated versions"
+   "Customizable", "Output format, grouping and audit file location"
+   "Pre-checks", "Ensures script runs as **root** and checks Goss"
+   "Error Handling", "Alerts for missing files and outdated versions"
 
 **Running goss without script**
 
@@ -322,7 +322,7 @@ This assumes you have goss and access to super user privileges.
 
 It is possible to run goss in its raw form, while this is not recommended, for consistency it is added here.
 
-The script discovers and adds extra inline variablesto the goss output in the form of the metadata fields as found in the goss.yml
+The script discovers and adds extra inline variables to the goss output in the form of the metadata fields as found in the goss.yml
 This needs to be amended before being able to run in raw form.
 
 - Edit goss.yml remove the lines starting at #metadata and the command tests Vars below
