@@ -429,10 +429,10 @@ content, binary, and output files.
 The script supports the following parameters:
 
 - **auditdir** (default: `$DEFAULT_CONTENT_DIR`):
-  Specifies the location where the audit content is stored (e.g., `C:\windows_audit`).
+  Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
 
 - **binpath** (default: `$DEFAULT_AUDIT_BIN`):
-  Defines the path to the audit binary (e.g., `C:\$DEFAULT_CONTENT_DIR\goss.exe`).
+  Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\goss.exe`).
 
 - **varsfile** (default: `$DEFAULT_VARS_FILE`):
   Allows specifying a variable file containing settings for the audit.
@@ -440,46 +440,43 @@ The script supports the following parameters:
 - **group** (default: `none`):
   Used to categorize the system into a specific group for comparison.
 
-- **outfile** (default: `$AUDIT_CONTENT_DIR\audit_$host_os_hostname_$host_epoch.json`):
+- **outfile** (default: `$AUDIT_CONTENT_DIR\\audit_$host_os_hostname_$host_epoch.json`):
   Defines the output file path for storing the full audit results.
 
 **Usage Examples**
 
 Run the script with default settings:
 
-``
+.. code-block:: shell
 .\run_audit.ps1
-``
+
 
 Specify a custom path for the audit binary:
 
-``
+.. code-block:: shell
 .\run_audit.ps1 -auditbin C:\path_to\binary.exe
-``
+
 
 Define a custom audit directory:
 
-``
+.. code-block:: shell
 .\run_audit.ps1 -auditdir C:\somepath_for_audit_content
-``
+
 
 Use a specific variables file:
 
-``
+.. code-block:: shell
 .\run_audit.ps1 -varsfile myvars.yml
-``
 
 Set a custom output file path:
 
-``
+.. code-block:: shell
 .\run_audit.ps1 -outfile C:\audit\output.json
-``
 
 Assign the system to a group:
 
-``
+.. code-block:: shell
 .\run_audit.ps1 -group webserver
-``
 
 **Script Functionality**
 
