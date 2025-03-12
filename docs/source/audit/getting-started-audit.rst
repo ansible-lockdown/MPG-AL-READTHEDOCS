@@ -454,29 +454,29 @@ Run the script with default settings:
 Specify a custom path for the audit binary:
 
 .. code-block:: powershell
-.\run_audit.ps1 -auditbin C:\path_to\binary.exe
+    .\run_audit.ps1 -auditbin C:\path_to\binary.exe
 
 
 Define a custom audit directory:
 
 .. code-block:: powershell
-.\run_audit.ps1 -auditdir C:\somepath_for_audit_content
+    .\run_audit.ps1 -auditdir C:\somepath_for_audit_content
 
 
 Use a specific variables file:
 
 .. code-block:: powershell
-.\run_audit.ps1 -varsfile myvars.yml
+    .\run_audit.ps1 -varsfile myvars.yml
 
 Set a custom output file path:
 
 .. code-block:: powershell
-.\run_audit.ps1 -outfile C:\audit\output.json
+    .\run_audit.ps1 -outfile C:\audit\output.json
 
 Assign the system to a group:
 
 .. code-block:: powershell
-.\run_audit.ps1 -group webserver
+    .\run_audit.ps1 -group webserver
 
 **Script Functionality**
 
