@@ -419,21 +419,22 @@ content, binary, and output files.
 The script supports the following parameters:
 
 - **auditdir** (default: `$DEFAULT_CONTENT_DIR`):
-  - Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
+    - Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
 
 - **binpath** (default: `$DEFAULT_AUDIT_BIN`):
-  - Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\goss.exe`).
+    - Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\goss.exe`).
 
 - **varsfile** (default: `$DEFAULT_VARS_FILE`):
-  - Allows specifying a variable file containing settings for the audit.
+    - Allows specifying a variable file containing settings for the audit.
 
 - **group** (default: `none`):
-  - Used to categorize the system into a specific group for comparison.
+    - Used to categorize the system into a specific group for comparison.
 
 - **outfile** (default: `$AUDIT_CONTENT_DIR\\audit_$host_os_hostname_$host_epoch.json`):
-  - Defines the output file path for storing the full audit results.
+    - Defines the output file path for storing the full audit results.
 
 **Usage Examples**
+
 .. code-block:: console
 
     # Run the script with default settings
