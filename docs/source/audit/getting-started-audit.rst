@@ -328,19 +328,22 @@ Checks if the audit ran successfully and notifies the user.
 Summary
 -------------------------------
 
-+----------------------+-------------------------------------------------+
-| Feature              | Description                                     |
-+======================+=================================================+
-| **Purpose**         | Runs a **Goss-based security audit**            |
-+----------------------+-------------------------------------------------+
-| **Supported OS**    | Linux (RHEL, Oracle, etc.)                      |
-+----------------------+-------------------------------------------------+
-| **Customizable**    | Output format, grouping, audit file location    |
-+----------------------+-------------------------------------------------+
-| **Pre-checks**      | Ensures script runs as **root**, checks Goss    |
-+----------------------+-------------------------------------------------+
-| **Error Handling**  | Alerts for missing files, outdated versions     |
-+----------------------+-------------------------------------------------+
+.. list-table:: Summary
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Feature
+     - Description
+   * - Purpose
+     - Supported OS
+     - Customizable
+     - Pre-checks
+     - Error Handling
+   * - Runs a Goss-based security audit
+     - Linux (RHEL, Oracle, etc.)
+     - Output format, grouping, audit file location
+     - Ensures script runs as **root**, checks Goss
+     - Alerts for missing files, outdated versions
 
 **Running goss without script**
 
