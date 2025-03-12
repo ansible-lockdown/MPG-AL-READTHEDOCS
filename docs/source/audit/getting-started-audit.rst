@@ -137,15 +137,13 @@ This Bash script runs a **security audit** using **Goss**, a YAML-based testing 
 It is designed to be **Linux OS-agnostic**, configurable, and ensures compliance with
 **CIS or STIG** benchmarks.
 
--------------------------------
-1. Script Metadata and Change Log
--------------------------------
+
+**1. Script Metadata and Change Log**
+
 At the top, the script includes comments detailing changes made over time.
 This is useful for **tracking updates, fixes, and enhancements**.
 
--------------------------------
-2. Benchmark and Audit Variables
--------------------------------
+**2. Benchmark and Audit Variables**
 
 Understanding variables:
 
@@ -171,9 +169,7 @@ Defines **benchmark name**, **version**, and **target OS**.
 
 Defines **Goss binary location** and **audit file paths**.
 
--------------------------------
-3. Help Function
--------------------------------
+**3. Help Function**
 
 .. code-block:: bash
 
@@ -192,9 +188,7 @@ Defines **Goss binary location** and **audit file paths**.
 
 Displays **usage instructions** when `-h` is provided.
 
--------------------------------
-4. Command-Line Arguments Handling
--------------------------------
+**4. Command-Line Arguments Handling**
 
 .. code-block:: bash
 
@@ -212,9 +206,7 @@ Displays **usage instructions** when `-h` is provided.
 
 Uses `getopts` to process **command-line arguments**.
 
--------------------------------
-5. Pre-Checks
--------------------------------
+**5. Pre-Checks**
 
 .. code-block:: bash
 
@@ -235,9 +227,7 @@ Ensures the script runs with **root privileges**.
 
 Detects the **OS vendor**.
 
--------------------------------
-6. Audit Variables and File Paths
--------------------------------
+**6. Audit Variables and File Paths**
 
 .. code-block:: bash
 
@@ -247,9 +237,7 @@ Detects the **OS vendor**.
 
 Defines paths for **storing audit results**.
 
--------------------------------
-7. Output File Handling
--------------------------------
+**7. Output File Handling**
 
 .. code-block:: bash
 
@@ -261,9 +249,7 @@ Defines paths for **storing audit results**.
 
 Dynamically sets the output filename based on system details.
 
--------------------------------
-8. Pre-Check for Goss Availability
--------------------------------
+**8. Pre-Check for Goss Availability**
 
 .. code-block:: bash
 
@@ -283,9 +269,7 @@ Dynamically sets the output filename based on system details.
 
 Checks if **Goss is installed** and meets the minimum version requirement.
 
--------------------------------
-9. Running the Audit
--------------------------------
+**9. Running the Audit**
 
 .. code-block:: bash
 
@@ -294,9 +278,7 @@ Checks if **Goss is installed** and meets the minimum version requirement.
 
 Executes the **Goss audit** with the specified **configuration file**.
 
--------------------------------
-10. Displaying the Audit Results
--------------------------------
+**10. Displaying the Audit Results**
 
 .. code-block:: bash
 
@@ -442,8 +424,7 @@ This PowerShell script serves as a wrapper to run an audit on a system using `go
 It allows users to set custom variables for the audit, including paths for the audit
 content, binary, and output files.
 
-Parameters
-----------
+**Parameters**
 
 The script supports the following parameters:
 
@@ -462,8 +443,7 @@ The script supports the following parameters:
 - **outfile** (default: `$AUDIT_CONTENT_DIR\audit_$host_os_hostname_$host_epoch.json`):
   Defines the output file path for storing the full audit results.
 
-Usage Examples
---------------
+**Usage Examples**
 
 Run the script with default settings:
 
@@ -501,19 +481,18 @@ Assign the system to a group:
 .\run_audit.ps1 -group webserver
 ```
 
-Script Functionality
---------------------
+**Script Functionality**
 
-1. **Define Default Values**
+**1. Define Default Values**
    The script sets default values for:
    - The benchmark type (`CIS or STIG`).
    - The Windows version (`Windows 20XX`).
    - The default content directory, audit binary path, and variable file.
 
-2. **Validate File Paths**
+**2. Validate File Paths**
    The script verifies the existence of essential files, such as the audit binary and content files. If any file is missing, it displays a warning and exits.
 
-3. **Identify Server Type**
+**3. Identify Server Type**
    Using `wmic.exe`, the script determines the server role, which could be:
    - Standalone Server
    - Member Server
@@ -521,26 +500,26 @@ Script Functionality
    - Backup Domain Controller (BDC)
    - Workstation
 
-4. **Collect System Metadata**
+**4. Collect System Metadata**
    The script gathers system information such as:
    - Machine UUID
    - OS Version & Locale
    - Hostname
    - Epoch time for timestamping output files
 
-5. **Run System Audit Commands**
+**5. Run System Audit Commands**
    Depending on the server type, the script executes:
    - `auditpol.exe` to capture audit policies.
    - `secedit.exe` for security configuration exports (on standalone servers).
    - `gpresult.exe` for Group Policy results (on domain-connected machines).
 
-6. **Generate JSON Metadata**
+**6. Generate JSON Metadata**
    The script constructs a JSON object containing system metadata for the audit.
 
-7. **Execute the Audit**
+**7. Execute the Audit**
    The script runs the `goss` audit using the collected metadata, storing the results in the specified output file.
 
-8. **Output Summary**
+**8. Output Summary**
    The script summarizes the audit results:
    - If successful, it displays the last few lines of the audit report.
    - If failed, it prompts the user to investigate.
