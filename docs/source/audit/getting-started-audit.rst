@@ -448,7 +448,7 @@ The script supports the following parameters:
 Run the script with default settings:
 
 .. code-block:: powershell
-.\run_audit.ps1
+  .\run_audit.ps1
 
 
 Specify a custom path for the audit binary:
