@@ -168,6 +168,7 @@ Defines **benchmark name**, **version**, and **target OS**.
 Defines **Goss binary location** and **audit file paths**.
 
 **3. Help Function**
+
 .. code-block:: bash
 
     Help()
@@ -186,6 +187,7 @@ Defines **Goss binary location** and **audit file paths**.
 Displays **usage instructions** when `-h` is provided.
 
 **4. Command-Line Arguments Handling**
+
 .. code-block:: bash
 
     while getopts f:g:o:v::wh option; do
@@ -203,6 +205,7 @@ Displays **usage instructions** when `-h` is provided.
 Uses `getopts` to process **command-line arguments**.
 
 **5. Pre-Checks**
+
 .. code-block:: bash
 
     if [ "$(/usr/bin/id -u)" -ne 0 ]; then
@@ -223,6 +226,7 @@ Ensures the script runs with **root privileges**.
 Detects the **OS vendor**.
 
 **6. Audit Variables and File Paths**
+
 .. code-block:: bash
 
     audit_content_version=$os_vendor$os_maj_ver-$BENCHMARK-Audit
@@ -232,6 +236,7 @@ Detects the **OS vendor**.
 Defines paths for **storing audit results**.
 
 **7. Output File Handling**
+
 .. code-block:: bash
 
     if [ -z "$OUTFILE" ]; then
@@ -243,6 +248,7 @@ Defines paths for **storing audit results**.
 Dynamically sets the output filename based on system details.
 
 **8. Pre-Check for Goss Availability**
+
 .. code-block:: bash
 
     if [ -s "${AUDIT_BIN}" ]; then
@@ -262,6 +268,7 @@ Dynamically sets the output filename based on system details.
 Checks if **Goss is installed** and meets the minimum version requirement.
 
 **9. Running the Audit**
+
 .. code-block:: bash
 
     echo "Audit Started"
@@ -270,6 +277,7 @@ Checks if **Goss is installed** and meets the minimum version requirement.
 Executes the **Goss audit** with the specified **configuration file**.
 
 **10. Displaying the Audit Results**
+
 .. code-block:: bash
 
     output_summary="tail -2 $audit_out"
