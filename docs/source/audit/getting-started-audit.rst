@@ -324,13 +324,9 @@ Formats and extracts audit results based on the selected output format.
 
 Checks if the audit ran successfully and notifies the user.
 
--------------------------------
-Summary
--------------------------------
-
-.. csv-table:: Summary
+.. csv-table:: *Summary*
    :header: "Feature", "Description"
-   :widths: 25, 25
+   :widths: 15, 25
 
    "Purpose", "Runs a Goss-based security audit"
    "Supported OS", "Linux (RHEL, Oracle, etc.)"
