@@ -448,22 +448,22 @@ The script supports the following parameters:
 .. code-block:: shell
 
     # Run the script with default settings
-    .\\run_audit.ps1
+    .\run_audit.ps1
 
     # Specify a custom path for the audit binary
-    .\\run_audit.ps1 -auditbin C:\\path_to\\binary.exe
+    .\run_audit.ps1 -auditbin C:\\path_to\\binary.exe
 
     # Define a custom audit directory
-    .\\run_audit.ps1 -auditdir C:\\somepath_for_audit_content
+    .\run_audit.ps1 -auditdir C:\\somepath_for_audit_content
 
     # Use a specific variables file
-    .\\run_audit.ps1 -varsfile myvars.yml
+    .\run_audit.ps1 -varsfile myvars.yml
 
     # Set a custom output file path
-    .\\run_audit.ps1 -outfile C:\audit\output.json
+    .\run_audit.ps1 -outfile C:\audit\output.json
 
     # Assign the system to a group
-    .\\run_audit.ps1 -group webserver
+    .\run_audit.ps1 -group webserver
 
 **Script Functionality**
 
