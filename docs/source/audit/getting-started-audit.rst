@@ -447,35 +447,35 @@ The script supports the following parameters:
 
 Run the script with default settings:
 
-.. code-block:: shell
+.. code-block:: powershell
 .\run_audit.ps1
 
 
 Specify a custom path for the audit binary:
 
-.. code-block:: shell
+.. code-block:: powershell
 .\run_audit.ps1 -auditbin C:\path_to\binary.exe
 
 
 Define a custom audit directory:
 
-.. code-block:: shell
+.. code-block:: powershell
 .\run_audit.ps1 -auditdir C:\somepath_for_audit_content
 
 
 Use a specific variables file:
 
-.. code-block:: shell
+.. code-block:: powershell
 .\run_audit.ps1 -varsfile myvars.yml
 
 Set a custom output file path:
 
-.. code-block:: shell
+.. code-block:: powershell
 .\run_audit.ps1 -outfile C:\audit\output.json
 
 Assign the system to a group:
 
-.. code-block:: shell
+.. code-block:: powershell
 .\run_audit.ps1 -group webserver
 
 **Script Functionality**
