@@ -445,37 +445,40 @@ The script supports the following parameters:
 
 **Usage Examples**
 
-Run the script with default settings:
-
 .. code-block:: powershell
+   :caption: Run the script with default settings
+   :linenos:
+   :emphasize-lines: 1
   .\run_audit.ps1
 
-
-Specify a custom path for the audit binary:
-
 .. code-block:: powershell
+   :caption: Specify a custom path for the audit binary
+   :linenos:
+   :emphasize-lines: 1
     .\run_audit.ps1 -auditbin C:\path_to\binary.exe
 
-
-Define a custom audit directory:
-
 .. code-block:: powershell
+   :caption: Define a custom audit directory
+   :linenos:
+   :emphasize-lines: 1
     .\run_audit.ps1 -auditdir C:\somepath_for_audit_content
 
-
-Use a specific variables file:
-
 .. code-block:: powershell
+   :caption: Use a specific variables file
+   :linenos:
+   :emphasize-lines: 1
     .\run_audit.ps1 -varsfile myvars.yml
 
-Set a custom output file path:
-
 .. code-block:: powershell
+   :caption: Set a custom output file path
+   :linenos:
+   :emphasize-lines: 1
     .\run_audit.ps1 -outfile C:\audit\output.json
 
-Assign the system to a group:
-
 .. code-block:: powershell
+   :caption: Assign the system to a group
+   :linenos:
+   :emphasize-lines: 1
     .\run_audit.ps1 -group webserver
 
 **Script Functionality**
