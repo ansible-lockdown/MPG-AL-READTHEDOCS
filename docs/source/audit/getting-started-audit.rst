@@ -101,7 +101,7 @@ Extra variables also enable the ability to copy back the audit output to the con
 Defining the audit
 ------------------
 
-Each script runs against a configures variables file found in the content location in
+Each script runs against a configured variables file found in the content location in
 
 .. code-block:: shell
 
@@ -125,41 +125,194 @@ If more than one server group is analyzed, groups can be separated with commas.
 Running on Linux
 ----------------
 
+===============================
+Bash Script Explanation: Goss Security Audit
+===============================
+
 - Script
 
   - run_audit.sh (found in content directory)
 
+This Bash script runs a **security audit** using **Goss**, a YAML-based testing framework.
+It is designed to be **Linux OS-agnostic**, configurable, and ensures compliance with
+**CIS or STIG** benchmarks.
+
+
+**1. Script Metadata and Change Log**
+At the top, the script includes comments detailing changes made over time.
+This is useful for **tracking updates, fixes, and enhancements**.
+
+**2. Benchmark and Audit Variables**
 Understanding variables:
 
-- Uppercase variable are the only ones that should need changing
+- Uppercase variables are the only ones that should require changes.
 - lowercase variables are the ones that are discovered or built from existing.
 
-script variables
-example:
+.. code-block:: bash
 
-.. code-block:: shell
+    # Goss benchmark variables (these should not need changing unless new release)
+    BENCHMARK=CIS  # Benchmark Name aligns to the audit
+    BENCHMARK_VER=1.0.0
+    BENCHMARK_OS=RHEL9
 
-   AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
-   AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # the default goss file used by the audit provided by the audit configuration
-   AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/var/tmp}"  # Location of the audit configuration file as available to the OS
+Defines **benchmark name**, **version**, and **target OS**.
 
+.. code-block:: bash
 
-script help
+    # Goss host Variables
+    AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
+    AUDIT_BIN_MIN_VER="0.4.4"
+    AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # default Goss configuration file
+    AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location for audit files
 
-.. code-block:: shell
+Defines **Goss binary location** and **audit file paths**.
 
-   Script to run the goss audit
+**3. Help Function**
 
-   Syntax: ./run_audit.sh [-f|-g|-o|-v|-w|-h]
-   options:
-   -f     optional - change the format output (default value = json)
-   -g     optional - Add a group that the server should be grouped with (default value = ungrouped)
-   -o     optional - file to output audit data
-   -v     optional - relative path to the vars file to load (default e.g. /var/tmp/RHEL7-CIS/vars/CIS.yml)
-   -w     optional - Sets the system_type to workstation (Default - Server)
-   -h     Print this Help.
+.. code-block:: bash
 
-   Other options can be assigned in the script itself
+    Help()
+    {
+      echo "Script to run the goss audit"
+      echo "Syntax: $0 [-f|-g|-o|-v|-w|-h]"
+      echo "options:"
+      echo "-f     optional - change the format output (default value = json)"
+      echo "-g     optional - Add a group that the server should be grouped with"
+      echo "-o     optional - file to output audit data"
+      echo "-v     optional - relative path to the vars file"
+      echo "-w     optional - Sets the system_type to workstation"
+      echo "-h     Print this Help."
+    }
+
+Displays **usage instructions** when `-h` is provided.
+
+**4. Command-Line Arguments Handling**
+
+.. code-block:: bash
+
+    while getopts f:g:o:v::wh option; do
+      case "${option}" in
+        f ) FORMAT=${OPTARG} ;;  # Output format (json, rspecish, etc.)
+        g ) GROUP=${OPTARG} ;;   # Defines server group
+        o ) OUTFILE=${OPTARG} ;; # Specifies output file
+        v ) VARS_PATH=${OPTARG} ;; # Variables file path
+        w ) host_system_type=Workstation ;; # Change system type to Workstation
+        h ) Help; exit;; # Show help and exit
+        ? ) echo "Invalid option: -${OPTARG}."; Help; exit;; # Invalid option handler
+      esac
+    done
+
+Uses `getopts` to process **command-line arguments**.
+
+**5. Pre-Checks**
+
+.. code-block:: bash
+
+    if [ "$(/usr/bin/id -u)" -ne 0 ]; then
+      echo "Script needs to run with root privileges"
+      exit 1
+    fi
+
+Ensures the script runs with **root privileges**.
+
+.. code-block:: bash
+
+    if [ "$(grep -Ec "rhel|oracle" /etc/os-release)" != 0 ]; then
+      os_vendor="RHEL"
+    else
+      os_vendor="$(hostnamectl | grep Oper | cut -d : -f2 | awk '{print $1}' | tr '[:lower:]')"
+    fi
+
+Detects the **OS vendor**.
+
+**6. Audit Variables and File Paths**
+
+.. code-block:: bash
+
+    audit_content_version=$os_vendor$os_maj_ver-$BENCHMARK-Audit
+    audit_content_dir=$AUDIT_CONTENT_LOCATION/$audit_content_version
+    audit_vars=vars/${BENCHMARK}.yml
+
+Defines paths for **storing audit results**.
+
+**7. Output File Handling**
+
+.. code-block:: bash
+
+    if [ -z "$OUTFILE" ]; then
+      export audit_out=${AUDIT_CONTENT_LOCATION}/audit_${host_os_hostname}-${BENCHMARK}-${BENCHMARK_OS}_${host_epoch}.$format
+    else
+      export audit_out=${OUTFILE}
+    fi
+
+Dynamically sets the output filename based on system details.
+
+**8. Pre-Check for Goss Availability**
+
+.. code-block:: bash
+
+    if [ -s "${AUDIT_BIN}" ]; then
+      goss_installed_version="$($AUDIT_BIN -v | awk '{print $NF}' | cut -dv -f2)"
+      newer_version=$(echo -e "$goss_installed_version\n$AUDIT_BIN_MIN_VER" | sort -V | tail -n 1)
+      if [ "$goss_installed_version" = "$newer_version" ] || [ "$goss_installed_version" = "$AUDIT_BIN_MIN_VER" ]; then
+        echo "OK - Goss is installed and version is ok ($goss_installed_version >= $AUDIT_BIN_MIN_VER)"
+      else
+        echo "WARNING - Goss installed = ${goss_installed_version}, does not meet minimum of ${AUDIT_BIN_MIN_VER}"
+        export FAILURE=2
+      fi
+    else
+      echo "WARNING - The audit binary is not available at $AUDIT_BIN"
+      export FAILURE=1
+    fi
+
+Checks if **Goss is installed** and meets the minimum version requirement.
+
+**9. Running the Audit**
+
+.. code-block:: bash
+
+    echo "Audit Started"
+    $AUDIT_BIN -g "$audit_content_dir/$AUDIT_FILE" --vars "$varfile_path" --vars-inline "$audit_json_vars" v $format_output > "$audit_out"
+
+Executes the **Goss audit** with the specified **configuration file**.
+
+**10. Displaying the Audit Results**
+
+.. code-block:: bash
+
+    output_summary="tail -2 $audit_out"
+    format_output="-f $format"
+
+    if [ "$format" = json ]; then
+       format_output="-f json -o pretty"
+       output_summary='grep -A 4 \"summary\": $audit_out'
+    elif [ "$format" = junit ] || [ "$format" = tap ]; then
+       output_summary=""
+    fi
+
+Formats and extracts audit results based on the selected output format.
+
+.. code-block:: bash
+
+    if [ "$(grep -c $BENCHMARK "$audit_out")" != 0 ] || [ "$format" = junit ] || [ "$format" = tap ]; then
+      eval $output_summary
+      echo "Completed file can be found at $audit_out"
+      echo "Audit Completed"
+    else
+      echo -e "Fail: There were issues when running the audit, please investigate $audit_out"
+    fi
+
+Checks if the audit ran successfully and notifies the user.
+
+.. csv-table:: **Bash Script Summary**
+   :header: "Feature", "Description"
+   :widths: 10, 25
+
+   "Purpose", "Runs a Goss-based OS security audit"
+   "Supported OS", "Linux (RHEL, Oracle, etc.)"
+   "Customizable", "Output format, grouping and audit file location"
+   "Pre-checks", "Ensures script runs as **root** and checks Goss"
+   "Error Handling", "Alerts for missing files and outdated versions"
 
 **Running goss without script**
 
@@ -167,7 +320,7 @@ This assumes you have goss and access to super user privileges.
 
 It is possible to run goss in its raw form, while this is not recommended, for consistency it is added here.
 
-The script discovers and adds extra inline variablesto the goss output in the form of the metadata fields as found in the goss.yml
+The script discovers and adds extra inline variables to the goss output in the form of the metadata fields as found in the goss.yml
 This needs to be amended before being able to run in raw form.
 
 - Edit goss.yml remove the lines starting at #metadata and the command tests Vars below
@@ -252,10 +405,12 @@ example:
     Total Duration: 0.022s
     Count: 12, Failed: 0, Skipped: 0
 
-
-
 Running on Windows
 ------------------
+
+===============================
+PowerShell Script Explanation: Goss Security Audit
+===============================
 
 - Script
 
@@ -263,70 +418,100 @@ Running on Windows
 
 Variables can be set within the script
 
-**Variables for Audit**
+This PowerShell script serves as a wrapper to run an audit on a system using `goss`.
+It allows users to set custom variables for the audit, including paths for the audit
+content, binary, and output files.
 
-.. code-block:: shell
+**Parameters**
 
-    $DEFAULT_CONTENT_DIR = "C:\remediation_audit_logs"  # This can be changed using cli
-    $DEFAULT_AUDIT_BIN = "$DEFAULT_CONTENT_DIR\goss.exe"  # This can be changed using cli option
+The script supports the following parameters:
 
-**script help**
+- **auditdir** (default: `$DEFAULT_CONTENT_DIR`):
+    - Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
 
-.. code-block:: shell
+- **binpath** (default: `$DEFAULT_AUDIT_BIN`):
+    - Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\\goss.exe`).
 
-   NAME
-       C:\remediation_audit_logs\Windows-2019-CIS-Audit\run_audit.ps1
+- **varsfile** (default: `$DEFAULT_VARS_FILE`):
+    - Allows specifying a variable file containing settings for the audit.
 
-   SYNOPSIS
-       Wrapper script to run an audit
+- **group** (default: `none`):
+    - Used to categorize the system into a specific group for comparison.
 
+- **outfile** (default: `$AUDIT_CONTENT_DIR\\audit_$host_os_hostname_$host_epoch.json`):
+    - Defines the output file path for storing the full audit results.
 
-   SYNTAX
-       C:\remediation_audit_logs\Windows-2016-CIS-Audit\run_audit.ps1 [[-auditbin] <String>] [[-auditdir] <String>]
-       [[-varsfile] <String>] [[-group] <String>] [[-outfile] <String>] [<CommonParameters>]
+**Usage Examples**
 
+.. code-block:: console
 
-   DESCRIPTION
-       Wrapper script to run an audit on the system using goss.
-       This allows for bespoke variables to be set
+    # Run the script with default settings
+    .\run_audit.ps1
 
+    # Specify a custom path for the audit binary
+    .\run_audit.ps1 -auditbin C:\path_to\binary.exe
 
-   PARAMETERS
-       -auditbin <String>
+    # Define a custom audit directory
+    .\run_audit.ps1 -auditdir C:\somepath_for_audit_content
 
-       -auditdir <String>
-           default: $DEFAULT_CONTENT_DIR
-           Ability to change the location of where the content can be found
-           This is where the audit content is stored
-           e.g. c:/windows_audit
+    # Use a specific variables file
+    .\run_audit.ps1 -varsfile myvars.yml
 
-       -varsfile <String>
-           default: $DEFAULT_VARS_FILE
-           Ability to set a variable file defined with the settings to match your requirements
+    # Set a custom output file path
+    .\run_audit.ps1 -outfile C:\audit\output.json
 
-       -group <String>
-           default: none
-           Ability to set a group that the system belongs to
-           Can be used when matching similar system in that same group
+    # Assign the system to a group
+    .\run_audit.ps1 -group webserver
 
-       -outfile <String>
-           default: $AUDIT_CONTENT_DIR\audit_$host_os_hostname_$host_epoch.json
-           Ability to set an outfile to send the full audit output to
-           Requires path to be set.
-           e.g. c:/windows_audit_reports
+**Script Functionality**
 
-       <CommonParameters>
-           This cmdlet supports the common parameters: Verbose, Debug,
-           ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-           OutBuffer, PipelineVariable, and OutVariable. For more information, see
-           about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+**1. Define Default Values**
+  The script sets default values for:
+    - The benchmark type (`CIS or STIG`).
+    - The Windows version (`Windows 20XX`).
+    - The default content directory, audit binary path, and variable file.
 
-       -------------------------- EXAMPLE 1 --------------------------
+**2. Validate File Paths**
+  The script verifies the existence of essential files, such as the audit binary and content files. If any file is missing, it displays a warning and exits.
 
-       PS C:\>./run_audit.ps1
+**3. Identify Server Type**
+  Using `wmic.exe`, the script determines the server role, which could be:
+    - Standalone Server
+    - Member Server
+    - Primary Domain Controller (PDC)
+    - Backup Domain Controller (BDC)
+    - Workstation
 
-       ./run_audit.ps1 -auditbin c:\path_to\binary.name
-       ./run_audit.ps1 -auditdir c:\somepath_for_audit_content
-       ./run_audit.ps1 -varsfile myvars.yml
-       ./run_audit.ps1 -outfile path\to\audit\output.json
-       ./run_audit.ps1 -group webserver
+**4. Collect System Metadata**
+  The script gathers system information such as:
+    - Machine UUID
+    - OS Version & Locale
+    - Hostname
+    - Epoch time for timestamping output files
+
+**5. Run System Audit Commands**
+  Depending on the server type, the script executes:
+    - `auditpol.exe` to capture audit policies.
+    - `secedit.exe` for security configuration exports (on standalone servers).
+    - `gpresult.exe` for Group Policy results (on domain-connected machines).
+
+**6. Generate JSON Metadata**
+  The script constructs a JSON object containing system metadata for the audit.
+
+**7. Execute the Audit**
+  The script runs the `goss` audit using the collected metadata, storing the results in the specified output file.
+
+**8. Output Summary**
+  The script summarizes the audit results:
+    - If successful, it displays the last few lines of the audit report.
+    - If failed, it prompts the user to investigate.
+
+.. csv-table:: **PowerShell Script Summary**
+   :header: "Feature", "Description"
+   :widths: 15, 30
+
+   "Purpose", "Runs a Goss-based OS security audit per parameters"
+   "Supported Windows Versions", "Standalone Server, Member Server, Primary Domain Controller"
+   "Collect System Metadata", "OS Version, Hostname, Epoch time"
+   "Pre-checks", "Verifies the existence of essential audit binary and content files"
+   "Error Handling", "Alerts for missing files and vars"
