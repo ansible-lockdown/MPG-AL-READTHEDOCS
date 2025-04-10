@@ -411,7 +411,7 @@ Fetch or Copy Audit Files
 This section manages how audit output files are collected from managed nodes—
 either by fetching them to the controller or copying them to a centralized/shared location.
 
-Fetch to Controller
+**1. Fetch to Controller**
 
 .. code-block:: yaml
 
@@ -441,7 +441,7 @@ Fetch to Controller
 - **loop_control.label:** Improves log output for readability.
 - **become:** ``false`` indicates no privilege escalation is used.
 
-Copy on Managed Node
+**2. Copy on Managed Node**
 
 .. code-block:: yaml
 
@@ -467,7 +467,7 @@ Copy on Managed Node
 - **flat:** Ensures output structure is flat.
 - **register:** Stores result in ``discovered_audit_fetch_copy_state``.
 
-Show Warning if Fetch/Copy Fails
+**3. Show Warning if Fetch/Copy Fails**
 
 .. code-block:: yaml
 
@@ -486,7 +486,7 @@ Show Warning if Fetch/Copy Fails
 
 .. csv-table:: **Audit Fetch vs Copy Summary Table**
    :header: "Feature", "Description", "Condition"
-   :widths: 15, 20,20
+   :widths: 10, 15, 20
 
    "Fetch files to controller", "Copies files to control node using `fetch`", audit_output_collection_method == `fetch`"
    "Copy files on managed node", "Copies files locally using `copy`", "audit_output_collection_method == `copy`"
