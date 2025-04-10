@@ -496,15 +496,14 @@ Task 3: Show Warning if Fetch/Copy Fails
 - **Condition:** Based on whether the file transfer actually changed any state.
 - **Message:** Informs the user that the output destination on localhost couldn't be written to.
 
-===========================
-Fetch vs Copy Summary Table
-===========================
 
-Task                       | Action                                    | Condition
----------------------------|-------------------------------------------|-------------------------------------------
-Fetch files to controller  | Copies files to control node using `fetch`| audit_output_collection_method == "fetch"
-Copy files on managed node | Copies files locally using `copy`         | audit_output_collection_method == "copy"
-Warn on failure            | Displays a warning if file transfer fails | Based on fetch/copy result `changed` status
+.. csv-table:: **Audit Fetch vs Copy Summary Table**
+   :header: "Feature", "Description", "Condition"
+   :widths: 15, 20,20
+
+   "Fetch files to controller", "Copies files to control node using `fetch`", audit_output_collection_method == `fetch`"
+   "Copy files on managed node", "Copies files locally using `copy`", "audit_output_collection_method == `copy`"
+   "Error Handling", "Displays a warning if file transfer fails", "Based on fetch/copy result `changed` status"
 
 Running on Windows
 ------------------
