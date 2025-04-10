@@ -408,10 +408,12 @@ example:
 Fetch or Copy Audit Files
 -------------------------
 
+=========================
 This section manages how audit output files are collected from managed nodes—
 either by fetching them to the controller or copying them to a centralized/shared location.
+=========================
 
-- Fetch to Controller
+Fetch to Controller
 
 .. code-block:: yaml
 
@@ -430,8 +432,6 @@ either by fetching them to the controller or copying them to a centralized/share
       label: "{{ item }}"
     become: false
 
-**Explanation:**
-
 - **Condition:** Runs only if ``audit_output_collection_method == "fetch"``.
 - **Module:** ``fetch`` copies files **from the managed node to the Ansible controller**.
 - **src:** Points to the audit output file on the managed node.
@@ -443,7 +443,7 @@ either by fetching them to the controller or copying them to a centralized/share
 - **loop_control.label:** Improves log output for readability.
 - **become:** ``false`` indicates no privilege escalation is used.
 
-- Copy on Managed Node
+Copy on Managed Node
 
 .. code-block:: yaml
 
@@ -462,8 +462,6 @@ either by fetching them to the controller or copying them to a centralized/share
     loop_control:
       label: "{{ item }}"
 
-**Explanation:**
-
 - **Condition:** Runs if ``audit_output_collection_method == "copy"``.
 - **Module:** ``copy`` transfers files **within the managed node**, to a shared or central path.
 - **src/dest:** Source and destination paths on the node.
@@ -471,7 +469,7 @@ either by fetching them to the controller or copying them to a centralized/share
 - **flat:** Ensures output structure is flat.
 - **register:** Stores result in ``discovered_audit_fetch_copy_state``.
 
-- Show Warning if Fetch/Copy Fails
+Show Warning if Fetch/Copy Fails
 
 .. code-block:: yaml
 
@@ -483,8 +481,6 @@ either by fetching them to the controller or copying them to a centralized/share
       - name: "FETCH_AUDIT_FILES | Warning if issues with fetch_audit_files"
         ansible.builtin.debug:
           msg: "Warning!! Unable to write to localhost {{ audit_output_destination }} for audit file copy"
-
-**Explanation:**
 
 - **Purpose:** Emits a warning if no files were transferred via ``fetch`` or ``copy``.
 - **Condition:** Based on whether the file transfer actually changed any state.
