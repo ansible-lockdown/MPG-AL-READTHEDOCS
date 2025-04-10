@@ -408,7 +408,7 @@ example:
 Fetch or Copy Audit Files
 -------------------------
 
-- This section manages how audit output files are collected from managed nodes—
+This section manages how audit output files are collected from managed nodes—
 either by fetching them to the controller or copying them to a centralized/shared location.
 
 Fetch to Controller
