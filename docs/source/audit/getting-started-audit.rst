@@ -500,15 +500,11 @@ Task 3: Show Warning if Fetch/Copy Fails
 Fetch vs Copy Summary Table
 ===========================
 
-+-------------------------------+-----------------------------------------------+--------------------------------------------+
-| Task                          | Action                                        | Condition                                  |
-+===============================+===============================================+============================================+
-| Fetch files to controller     | Copies files to control node using `fetch`   | ``audit_output_collection_method == fetch`` |
-+-------------------------------+-----------------------------------------------+--------------------------------------------+
-| Copy files to shared location | Copies files on node using `copy`            | ``audit_output_collection_method == copy``  |
-+-------------------------------+-----------------------------------------------+--------------------------------------------+
-| Warn on failure               | Logs warning if files weren't transferred     | Based on `changed` status in result vars   |
-+-------------------------------+-----------------------------------------------+--------------------------------------------+
+Task                       | Action                                    | Condition
+---------------------------|-------------------------------------------|-------------------------------------------
+Fetch files to controller  | Copies files to control node using `fetch`| audit_output_collection_method == "fetch"
+Copy files on managed node | Copies files locally using `copy`         | audit_output_collection_method == "copy"
+Warn on failure            | Displays a warning if file transfer fails | Based on fetch/copy result `changed` status
 
 Running on Windows
 ------------------
