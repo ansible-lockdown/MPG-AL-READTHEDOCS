@@ -411,9 +411,7 @@ Fetch or Copy Audit Files
 This section manages how audit output files are collected from managed nodes—
 either by fetching them to the controller or copying them to a centralized/shared location.
 
-===========================
-Task 1: Fetch to Controller
-===========================
+- Fetch to Controller
 
 .. code-block:: yaml
 
@@ -445,9 +443,7 @@ Task 1: Fetch to Controller
 - **loop_control.label:** Improves log output for readability.
 - **become:** ``false`` indicates no privilege escalation is used.
 
-============================
-Task 2: Copy on Managed Node
-============================
+- Copy on Managed Node
 
 .. code-block:: yaml
 
@@ -475,9 +471,7 @@ Task 2: Copy on Managed Node
 - **flat:** Ensures output structure is flat.
 - **register:** Stores result in ``discovered_audit_fetch_copy_state``.
 
-========================================
-Task 3: Show Warning if Fetch/Copy Fails
-========================================
+- Show Warning if Fetch/Copy Fails
 
 .. code-block:: yaml
 
@@ -496,7 +490,6 @@ Task 3: Show Warning if Fetch/Copy Fails
 - **Condition:** Based on whether the file transfer actually changed any state.
 - **Message:** Informs the user that the output destination on localhost couldn't be written to.
 
-
 .. csv-table:: **Audit Fetch vs Copy Summary Table**
    :header: "Feature", "Description", "Condition"
    :widths: 15, 20,20
@@ -504,6 +497,7 @@ Task 3: Show Warning if Fetch/Copy Fails
    "Fetch files to controller", "Copies files to control node using `fetch`", audit_output_collection_method == `fetch`"
    "Copy files on managed node", "Copies files locally using `copy`", "audit_output_collection_method == `copy`"
    "Error Handling", "Displays a warning if file transfer fails", "Based on fetch/copy result `changed` status"
+
 
 Running on Windows
 ------------------
