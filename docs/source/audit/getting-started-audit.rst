@@ -453,7 +453,7 @@ either by fetching them to the controller or copying them to a centralized/share
       mode: 'u-x,go-wx'
       flat: true
     failed_when: false
-    register: discovered_audit_fetch_copy_state
+    register: discovered_audit_copy_state
     loop:
       - "{{ pre_audit_outfile }}"
       - "{{ post_audit_outfile }}"
@@ -465,7 +465,7 @@ either by fetching them to the controller or copying them to a centralized/share
 - **src/dest:** Source and destination paths on the node.
 - **mode:** Sets secure file permissions (`rw-------`).
 - **flat:** Ensures output structure is flat.
-- **register:** Stores result in ``discovered_audit_fetch_copy_state``.
+- **register:** Stores result in ``discovered_audit_copy_state``.
 
 **3. Show Warning if Fetch/Copy Fails**
 
@@ -474,7 +474,7 @@ either by fetching them to the controller or copying them to a centralized/share
   - name: "FETCH_AUDIT_FILES | Warning if issues with fetch or copy"
     when:
       - (audit_output_collection_method == "fetch" and discovered_audit_fetch_state is defined and not discovered_audit_fetch_state.changed) or
-        (audit_output_collection_method == "copy" and discovered_audit_fetch_copy_state is defined and not discovered_audit_fetch_copy_state.changed)
+        (audit_output_collection_method == "copy" and discovered_audit_copy_state is defined and not discovered_audit_copy_state.changed)
     block:
       - name: "FETCH_AUDIT_FILES | Warning if issues with fetch_audit_files"
         ansible.builtin.debug:
