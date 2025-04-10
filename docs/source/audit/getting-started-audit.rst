@@ -405,6 +405,111 @@ example:
     Total Duration: 0.022s
     Count: 12, Failed: 0, Skipped: 0
 
+Fetch or Copy Audit Files
+-------------------------
+
+This section manages how audit output files are collected from managed nodes—
+either by fetching them to the controller or copying them to a centralized/shared location.
+
+===========================
+Task 1: Fetch to Controller
+===========================
+
+.. code-block:: yaml
+
+  - name: "FETCH_AUDIT_FILES | Fetch files and copy to controller"
+    when: audit_output_collection_method == "fetch"
+    ansible.builtin.fetch:
+      src: "{{ item }}"
+      dest: "{{ audit_output_destination }}"
+      flat: true
+    failed_when: false
+    register: discovered_audit_fetch_state
+    loop:
+      - "{{ pre_audit_outfile }}"
+      - "{{ post_audit_outfile }}"
+    loop_control:
+      label: "{{ item }}"
+    become: false
+
+**Explanation:**
+
+- **Condition:** Runs only if ``audit_output_collection_method == "fetch"``.
+- **Module:** ``fetch`` copies files **from the managed node to the Ansible controller**.
+- **src:** Points to the audit output file on the managed node.
+- **dest:** Directory on the controller where files are saved.
+- **flat:** Prevents creating full directory paths under ``dest``.
+- **failed_when:** Prevents task failure if the file doesn't exist.
+- **register:** Stores the result in ``discovered_audit_fetch_state``.
+- **loop:** Iterates over both ``pre_audit_outfile`` and ``post_audit_outfile``.
+- **loop_control.label:** Improves log output for readability.
+- **become:** ``false`` indicates no privilege escalation is used.
+
+============================
+Task 2: Copy on Managed Node
+============================
+
+.. code-block:: yaml
+
+  - name: "FETCH_AUDIT_FILES | Copy files to location available to managed node"
+    when: audit_output_collection_method == "copy"
+    ansible.builtin.copy:
+      src: "{{ item }}"
+      dest: "{{ audit_output_destination }}"
+      mode: 'u-x,go-wx'
+      flat: true
+    failed_when: false
+    register: discovered_audit_fetch_copy_state
+    loop:
+      - "{{ pre_audit_outfile }}"
+      - "{{ post_audit_outfile }}"
+    loop_control:
+      label: "{{ item }}"
+
+**Explanation:**
+
+- **Condition:** Runs if ``audit_output_collection_method == "copy"``.
+- **Module:** ``copy`` transfers files **within the managed node**, to a shared or central path.
+- **src/dest:** Source and destination paths on the node.
+- **mode:** Sets secure file permissions (`rw-------`).
+- **flat:** Ensures output structure is flat.
+- **register:** Stores result in ``discovered_audit_fetch_copy_state``.
+
+========================================
+Task 3: Show Warning if Fetch/Copy Fails
+========================================
+
+.. code-block:: yaml
+
+  - name: "FETCH_AUDIT_FILES | Warning if issues with fetch or copy"
+    when:
+      - (audit_output_collection_method == "fetch" and discovered_audit_fetch_state is defined and not discovered_audit_fetch_state.changed) or
+        (audit_output_collection_method == "copy" and discovered_audit_fetch_copy_state is defined and not discovered_audit_fetch_copy_state.changed)
+    block:
+      - name: "FETCH_AUDIT_FILES | Warning if issues with fetch_audit_files"
+        ansible.builtin.debug:
+          msg: "Warning!! Unable to write to localhost {{ audit_output_destination }} for audit file copy"
+
+**Explanation:**
+
+- **Purpose:** Emits a warning if no files were transferred via ``fetch`` or ``copy``.
+- **Condition:** Based on whether the file transfer actually changed any state.
+- **Message:** Informs the user that the output destination on localhost couldn't be written to.
+
+===========================
+Fetch vs Copy Summary Table
+===========================
+
++-------------------------------+-----------------------------------------------+--------------------------------------------+
+| Task                          | Action                                        | Condition                                  |
++===============================+===============================================+============================================+
+| Fetch files to controller     | Copies files to control node using `fetch`   | ``audit_output_collection_method == fetch`` |
++-------------------------------+-----------------------------------------------+--------------------------------------------+
+| Copy files to shared location | Copies files on node using `copy`            | ``audit_output_collection_method == copy``  |
++-------------------------------+-----------------------------------------------+--------------------------------------------+
+| Warn on failure               | Logs warning if files weren't transferred     | Based on `changed` status in result vars   |
++-------------------------------+-----------------------------------------------+--------------------------------------------+
+
 Running on Windows
 ------------------
 
