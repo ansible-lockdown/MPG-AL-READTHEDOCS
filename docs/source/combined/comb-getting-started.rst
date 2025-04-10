@@ -81,9 +81,9 @@ Variables Used
 - ``fetch_audit_output``: Boolean flag to indicate whether audit logs were centralized.
 - ``audit_output_destination``: Destination directory for centralized audit files.
 
-Output Example:
+Lockdown ansible_facts Output Example:
 
-.. code-block:: yaml
+.. code-block:: ini
 
       ansible hosts -i ../inv -m setup -a "filter=ansible_local"
       hosts | SUCCESS => {
