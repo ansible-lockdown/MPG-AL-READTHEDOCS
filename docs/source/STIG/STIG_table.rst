@@ -12,7 +12,7 @@ Operating Systems
    "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
    "UBUNTU18-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
    "UBUNTU20-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-STIG?style=plastic"
-   "UBUNTU22-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-STIG?style=plastic"
+   "UBUNTU22-STIG_", "True", "True", "WIP", "N/A"
 
 .. csv-table:: STIG Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
