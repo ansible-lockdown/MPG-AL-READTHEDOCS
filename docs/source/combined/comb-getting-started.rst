@@ -21,7 +21,7 @@ Lockdown Facts Example:
 -----------------------
 
 CIS
-+++
+---
 
 Variables Used
 ++++++++++++++
@@ -83,7 +83,7 @@ Variables Used
     {% endif %}
 
 Output:
--------
+++++++
 
 .. code-block:: ini
 
