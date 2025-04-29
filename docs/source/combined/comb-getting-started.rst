@@ -17,8 +17,8 @@ Post Hardening Lockdown Reporting via Ansible_Facts
 
 The `etc/ansible/compliance_facts.j2` template metadata and conditions related to hardening performed by the **Ansible Lockdown** role.
 
-Lockdown Facts Example:
-----------------------
+Lockdown Facts - CIS Example:
+----------------------------
 
 1. **[lockdown_details]**
    - Contains metadata about the CIS benchmark used, run date, and the hardening levels enabled.
