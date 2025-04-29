@@ -144,9 +144,10 @@ STIG
   {% endif %}
 
 2. **[lockdown_audit_details]**
-   - Captures audit-specific information if auditing is enabled.
+  - Captures audit-specific information if auditing is enabled.
 
 .. code-block:: ini
+
   [lockdown_audit_details]
 
   {% if run_audit %}
@@ -162,7 +163,7 @@ STIG
   {% endif %}
   {% endif %}
 
-1. **Output**
+3. **Output**
    - Contains
 
 .. code-block:: ini
