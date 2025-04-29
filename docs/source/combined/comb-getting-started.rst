@@ -18,9 +18,9 @@ Post Hardening Lockdown Reporting via Ansible_Facts
 The `etc/ansible/compliance_facts.j2` template metadata and conditions related to hardening performed by the **Ansible Lockdown** role.
 
 Lockdown Ansible_Facts: Creating Custom Compliance Facts
---------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-The playbook block conditionally creates a custom facts file on managed hosts to document the applied security benchmark and hardening levels.
+The playbook conditionally creates a custom facts file on managed hosts to document the applied security benchmark and hardening levels.
 
 `lockdown_role/tasks/main.yml`
 
