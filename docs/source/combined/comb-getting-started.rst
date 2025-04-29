@@ -6,7 +6,7 @@ Using both Audit and Remediate in a workflow
 This is missing the copy remediate settings step
 
 .. image:: ../_static/rem_initiated_audit.png
-   :height: 1800px
+   :height: 1500px
    :width: 1200px
    :align: center
    :alt: Process Workflow Audit and Remediate
