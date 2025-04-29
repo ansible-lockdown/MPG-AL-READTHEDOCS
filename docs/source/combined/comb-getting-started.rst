@@ -17,6 +17,64 @@ Post Hardening Lockdown Reporting via Ansible_Facts
 
 The `etc/ansible/compliance_facts.j2` template metadata and conditions related to hardening performed by the **Ansible Lockdown** role.
 
+Lockdown Ansible_Facts: Creating Custom Compliance Facts
+--------------------------------------------------------
+
+The playbook block conditionally creates a custom facts file on managed hosts to document the applied security benchmark and hardening levels.
+
+`lockdown_role/tasks/main.yml`
+
+.. code-block:: yaml
+
+    - name: Add ansible file showing Benchmark and levels applied
+      when: create_benchmark_facts
+      tags:
+        - always
+        - benchmark
+      block:
+        - name: Create ansible facts directory
+          ansible.builtin.file:
+            path: "{{ ansible_facts_path }}"
+            state: directory
+            owner: root
+            group: root
+            mode: 'u=rwx,go=rx'
+
+        - name: Create ansible facts file
+          ansible.builtin.template:
+            src: etc/ansible/compliance_facts.j2
+            dest: "{{ ansible_facts_path }}/compliance_facts.fact"
+            owner: root
+            group: root
+            mode: "u-x,go-wx"
+
+Key Components
+++++++++++++++
+
+- **Conditional Execution**: The entire block executes only if the variable ``create_benchmark_facts`` is set to ``true``.
+
+- **Tagging**: The tasks are tagged with ``always`` and ``benchmark``, allowing for selective execution during playbook runs.
+
+- **Directory Creation**: Ensures the existence of the directory specified by ``ansible_facts_path`` (typically ``/etc/ansible/facts.d``), setting appropriate permissions.
+
+- **Facts File Creation**: Uses a Jinja2 template to generate the ``compliance_facts.fact`` file in the specified directory.
+
+Custom Facts in Role
+++++++++++++++++++++
+
+Ansible allows the use of custom facts to store host-specific information. These facts are typically stored in files within the ``/etc/ansible/facts.d``
+directory on the managed hosts. The facts files can be in JSON or INI format and are loaded automatically during the fact-gathering phase.
+
+Accessing Custom Facts
+++++++++++++++++++++++
+
+Once the custom facts are in place and facts have been gathered, they can be accessed in playbooks using the ``ansible_local`` variable.
+
+.. code-block:: jinja
+
+    {{ ansible_local.compliance.benchmark_version }}
+
+
 Lockdown Facts Example:
 -----------------------
 
