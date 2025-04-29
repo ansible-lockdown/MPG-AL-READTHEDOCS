@@ -64,26 +64,26 @@ CIS
    Level_2_workstation_tag_run = true
    {% endif %}
 
-1. **[lockdown_audit_details]**
+2. **[lockdown_audit_details]**
    - Captures audit-specific information if auditing is enabled.
 
 .. code-block:: ini
 
 [lockdown_audit_details]
 
-{% if run_audit %}
-# Audit run
-audit_run_date = {{ '%Y-%m-%d - %H:%M:%S' | ansible.builtin.strftime }}
-audit_file_local_location = {{ audit_log_dir }}
+   {% if run_audit %}
+   # Audit run
+   audit_run_date = {{ '%Y-%m-%d - %H:%M:%S' | ansible.builtin.strftime }}
+   audit_file_local_location = {{ audit_log_dir }}
 
-{% if not audit_only %}
-audit_summary = {{ post_audit_results }}
-{% endif %}
+   {% if not audit_only %}
+   audit_summary = {{ post_audit_results }}
+   {% endif %}
 
-{% if fetch_audit_output %}
-audit_files_centralized_location = {{ audit_output_destination }}
-{% endif %}
-{% endif %}
+   {% if fetch_audit_output %}
+   audit_files_centralized_location = {{ audit_output_destination }}
+   {% endif %}
+   {% endif %}
 
 Output:
 ++++++
@@ -144,7 +144,7 @@ STIG
    {% endif %}
    {% endif %}
 
-1. **[lockdown_audit_details]**
+2. **[lockdown_audit_details]**
    - Captures audit-specific information if auditing is enabled.
 
 .. code-block:: ini
