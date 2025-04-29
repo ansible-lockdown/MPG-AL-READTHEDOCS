@@ -7,7 +7,7 @@ This is missing the copy remediate settings step
 
 .. image:: ../_static/rem_initiated_audit.png
    :height: 1500px
-   :width: 1200px
+   :width: 1500px
    :align: center
    :alt: Process Workflow Audit and Remediate
 
@@ -18,7 +18,6 @@ Post Hardening Lockdown Reporting via Ansible_Facts
 The `etc/ansible/compliance_facts.j2` template metadata and conditions related to hardening performed by the **Ansible Lockdown** role.
 
 Lockdown Ansible_Facts: Creating Custom Compliance Facts
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The playbook conditionally creates a custom facts file on managed hosts to document the applied security benchmark and hardening levels.
 
@@ -49,7 +48,6 @@ The playbook conditionally creates a custom facts file on managed hosts to docum
             mode: "u-x,go-wx"
 
 Key Components
-++++++++++++++
 
 - **Conditional Execution**: The entire block executes only if the variable ``create_benchmark_facts`` is set to ``true``.
 
@@ -60,13 +58,11 @@ Key Components
 - **Facts File Creation**: Uses a Jinja2 template to generate the ``compliance_facts.fact`` file in the specified directory.
 
 Custom Facts in Role
-++++++++++++++++++++
 
 Ansible allows the use of custom facts to store host-specific information. These facts are typically stored in files within the ``/etc/ansible/facts.d``
 directory on the managed hosts. The facts files can be in JSON or INI format and are loaded automatically during the fact-gathering phase.
 
 Accessing Custom Facts
-++++++++++++++++++++++
 
 Once the custom facts are in place and facts have been gathered, they can be accessed in playbooks using the ``ansible_local`` variable.
 
@@ -79,7 +75,6 @@ Lockdown Facts Example:
 -----------------------
 
 Variables Used
---------------
 
 - ``benchmark_version``: The version of the CIS/STIG benchmark being applied.
 - **CIS** ``cis_level_1 | cis_level_2``: Booleans that indicate if level 1 or 2 hardening is enabled.
