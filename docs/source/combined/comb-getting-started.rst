@@ -17,8 +17,11 @@ Post Hardening Lockdown Reporting via Ansible_Facts
 
 The `etc/ansible/compliance_facts.j2` template metadata and conditions related to hardening performed by the **Ansible Lockdown** role.
 
-Lockdown Facts - CIS Example:
-----------------------------
+Lockdown Facts Example:
+-----------------------
+
+CIS
++++
 
 1. **[lockdown_details]**
    - Contains metadata about the CIS benchmark used, run date, and the hardening levels enabled.
@@ -68,7 +71,7 @@ Lockdown Facts - CIS Example:
     {% endif %}
 
 Variables Used
---------------
+++++++++++++++
 
 - ``benchmark_version``: The version of the CIS benchmark being applied.
 - ``rhel9cis_level_1 / level_2``: Booleans that indicate if level 1 or 2 hardening is enabled.
@@ -79,7 +82,8 @@ Variables Used
 - ``fetch_audit_output``: Boolean flag to indicate whether audit logs were centralized.
 - ``audit_output_destination``: Destination directory for centralized audit files.
 
-Lockdown ansible_facts Output Example:
+Lockdown Output:
+---------------
 
 .. code-block:: ini
 
