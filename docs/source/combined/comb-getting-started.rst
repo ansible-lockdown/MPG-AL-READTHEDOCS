@@ -85,8 +85,7 @@ CIS
    {% endif %}
    {% endif %}
 
-Output:
-++++++
+3. **Output**
 
 .. code-block:: ini
 
@@ -163,7 +162,30 @@ STIG
    {% endif %}
    {% endif %}
 
-Output:
-++++++
+3. **Output**
+   - Contains
 
 .. code-block:: ini
+
+      ansible hosts -i ../inv -m setup -a "filter=ansible_local"
+      hosts | SUCCESS => {
+         "ansible_facts": {
+            "ansible_local": {
+                  "lockdown_facts": {
+                     "Benchmark_Audit_Details": {
+                        "audit_file_location_local": "/opt",
+                        "audit_summary": "Count: 798, Failed: 24, Skipped: 6, Duration: 38.824s"
+                     },
+                     "Benchmark_Details": {
+                        "benchmark_release": "benchmark_v2r3",
+                        "benchmark_run_date": "2025-03-31 - 14:59:43",
+                        "cat_1_hardening_enabled": "True",
+                        "cat_2_hardening_enabled": "True",
+                        "cat_3_hardening_enabled": "True",
+                     }
+                  }
+            },
+            "discovered_interpreter_python": "/usr/bin/python3"
+         },
+         "changed": false
+      }
