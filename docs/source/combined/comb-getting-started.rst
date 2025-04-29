@@ -119,7 +119,6 @@ STIG
    - Contains metadata about the STIG benchmark used, run date, and the hardening levels enabled.
 
 .. code-block:: ini
-
      [lockdown_details]
      # Benchmark release
      Benchmark_release = STIG-{{ benchmark_version }}
@@ -148,7 +147,6 @@ STIG
    - Captures audit-specific information if auditing is enabled.
 
 .. code-block:: ini
-
      [lockdown_audit_details]
 
      {% if run_audit %}
@@ -163,7 +161,6 @@ STIG
      audit_files_centralized_location = {{ audit_output_destination }}
      {% endif %}
      {% endif %}
-
 
 Output:
 ++++++
