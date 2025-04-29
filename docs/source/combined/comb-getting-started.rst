@@ -23,6 +23,18 @@ Lockdown Facts Example:
 CIS
 +++
 
+Variables Used
+++++++++++++++
+
+- ``benchmark_version``: The version of the CIS benchmark being applied.
+- ``rhel9cis_level_1 / level_2``: Booleans that indicate if level 1 or 2 hardening is enabled.
+- ``ansible_run_tags``: List of tags used during the playbook run to identify scope (e.g., server/workstation level 1/2).
+- ``run_audit``: Boolean to indicate if an audit was performed.
+- ``audit_log_dir``: Path to local audit log directory on the node.
+- ``post_audit_results``: Captured summary results from post-audit steps.
+- ``fetch_audit_output``: Boolean flag to indicate whether audit logs were centralized.
+- ``audit_output_destination``: Destination directory for centralized audit files.
+
 1. **[lockdown_details]**
    - Contains metadata about the CIS benchmark used, run date, and the hardening levels enabled.
 
@@ -70,20 +82,8 @@ CIS
     {% endif %}
     {% endif %}
 
-Variables Used
-++++++++++++++
-
-- ``benchmark_version``: The version of the CIS benchmark being applied.
-- ``rhel9cis_level_1 / level_2``: Booleans that indicate if level 1 or 2 hardening is enabled.
-- ``ansible_run_tags``: List of tags used during the playbook run to identify scope (e.g., server/workstation level 1/2).
-- ``run_audit``: Boolean to indicate if an audit was performed.
-- ``audit_log_dir``: Path to local audit log directory on the node.
-- ``post_audit_results``: Captured summary results from post-audit steps.
-- ``fetch_audit_output``: Boolean flag to indicate whether audit logs were centralized.
-- ``audit_output_destination``: Destination directory for centralized audit files.
-
-Lockdown Output:
----------------
+Output:
+-------
 
 .. code-block:: ini
 
