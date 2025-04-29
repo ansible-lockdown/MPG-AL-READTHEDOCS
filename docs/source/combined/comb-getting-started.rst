@@ -69,7 +69,7 @@ CIS
 
 .. code-block:: ini
 
-[lockdown_audit_details]
+   [lockdown_audit_details]
 
    {% if run_audit %}
    # Audit run
