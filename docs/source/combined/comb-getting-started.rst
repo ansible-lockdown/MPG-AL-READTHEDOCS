@@ -6,7 +6,7 @@ Using both Audit and Remediate in a workflow
 This is missing the copy remediate settings step
 
 .. image:: ../_static/rem_initiated_audit.png
-   :height: 400px
+   :height: 4000px
    :width: 1000px
    :align: center
    :alt: Process Workflow Audit and Remediate
@@ -170,7 +170,7 @@ CIS
       }
 
 STIG
-----
+++++
 
 1. **[lockdown_details]**
   - Contains metadata about the STIG benchmark used, run date, and the hardening levels enabled.
@@ -222,7 +222,6 @@ STIG
   {% endif %}
 
 3. **Output**
-   - Contains
 
 .. code-block:: ini
 
@@ -233,10 +232,10 @@ STIG
                   "lockdown_facts": {
                      "Benchmark_Audit_Details": {
                         "audit_file_location_local": "/opt",
-                        "audit_summary": "Count: 798, Failed: 24, Skipped: 6, Duration: 38.824s"
+                        "audit_summary = Count: 979, Failed: 73, Skipped: 22, Duration: 18.411s"
                      },
                      "Benchmark_Details": {
-                        "benchmark_release": "benchmark_v2r3",
+                        "benchmark_release": "STIG-v2r2",
                         "benchmark_run_date": "2025-03-31 - 14:59:43",
                         "cat_1_hardening_enabled": "True",
                         "cat_2_hardening_enabled": "True",
