@@ -140,7 +140,7 @@ CIS
 
 3. **Output**
 
-.. code-block:: jinja
+.. code-block:: bash
 
       ansible hosts -i ../inv -m setup -a "filter=ansible_local"
       hosts | SUCCESS => {
@@ -218,7 +218,7 @@ STIG
 
 3. **Output**
 
-.. code-block:: jinja
+.. code-block:: bash
 
       ansible hosts -i ../inv -m setup -a "filter=ansible_local"
       hosts | SUCCESS => {
