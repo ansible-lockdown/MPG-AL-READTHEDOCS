@@ -8,20 +8,22 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "RHEL7-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
    "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
    "UBUNTU18-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
    "UBUNTU20-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-STIG?style=plastic"
+   "UBUNTU22-STIG_", "True", "True", "WIP", "N/A"
 
 .. csv-table:: STIG Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
    "Windows-10-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-STIG?style=plastic"
+   "Windows-11-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-STIG?style=plastic"
    "Windows-2016-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-STIG?style=plastic"
    "Windows-2019-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-STIG?style=plastic"
    "Windows-2022-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-STIG?style=plastic"
+   "Windows-2025-STIG_", "True", "WIP", "WIP", "N/A"
 
 Networking
 ^^^^^^^^^^
@@ -53,6 +55,7 @@ Archived Roles
 
    "RHEL5-STIG_", "False", "False", "False", "N/A"
    "RHEL6-STIG_", "False", "False", "False", "N/A"
+   "RHEL7-STIG_", "False", "False", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
    "Windows-2008R2-Member-Server-STIG_", "False", "False", "False", "N/A"
    "Windows-2012-Member-Server-STIG_", "False", "False", "False", "N/A"
    "Windows-2012-Domain-Controller-STIG_", "False", "False", "False", "N/A"
@@ -63,12 +66,14 @@ Archived Roles
 .. _RHEL9-STIG: https://github.com/ansible-lockdown/RHEL9-STIG
 .. _UBUNTU18-STIG: https://github.com/ansible-lockdown/UBUNTU18-STIG
 .. _UBUNTU20-STIG: https://github.com/ansible-lockdown/UBUNTU20-STIG
-
+.. _UBUNTU22-STIG: https://github.com/ansible-lockdown/UBUNTU22-STIG
 
 .. _Windows-10-STIG: https://github.com/ansible-lockdown/Windows-10-STIG
+.. _Windows-11-STIG: https://github.com/ansible-lockdown/Windows-11-STIG
 .. _Windows-2016-STIG: https://github.com/ansible-lockdown/Windows-2016-STIG
 .. _Windows-2019-STIG: https://github.com/ansible-lockdown/Windows-2019-STIG
 .. _Windows-2022-STIG: https://github.com/ansible-lockdown/Windows-2022-STIG
+.. _Windows-2025-STIG: https://github.com/ansible-lockdown/Windows-2025-STIG
 
 .. _Cisco-IOS-L2S: https://github.com/ansible-lockdown/CISCO-IOS-L2S-STIG
 
