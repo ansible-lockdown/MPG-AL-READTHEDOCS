@@ -12,7 +12,7 @@ This can occur during a playbook run on certain operating systems when patching 
 
 * `You Need to install jmespath <https://serverfault.com/questions/1114638/ansible-you-need-to-install-jmespath-prior-to-running-json-query-filter-bu>`_ : A great article and explanation written by Discord community member baassssiiee
 
-- NOTE This Should no longer be an issue with new releases as dependancy has been removed
+- NOTE This Should no longer be an issue with new releases as dependency has been removed
 
 Missing Sudo Password (Linux OS Based)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

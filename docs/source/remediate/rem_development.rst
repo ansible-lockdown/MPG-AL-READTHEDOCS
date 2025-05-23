@@ -64,7 +64,7 @@ General Layout
 
 - **Mode**
 
-  - To try and ensure idempotency and the changes to permssions should be X of more restrictive - we use symbolic logic e.g. ``mode: 'u-x,go-wx'``
+  - To try and ensure idempotency and the changes to permissions should be X of more restrictive - we use symbolic logic e.g. ``mode: 'u-x,go-wx'``
 
 Variables
 ^^^^^^^^^
@@ -84,7 +84,7 @@ Variables
 
   - These are labelled from where/how they are set, This will assist with:
 
-    - reuseablity across repositories
+    - reusability across repositories
     - assist in debugging knowing where the value is set
 
 **Naming of variables**

@@ -393,11 +393,11 @@ example:
 .. code-block:: shell
 
     # /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
-    Title: 1.1.20 Check for removeable media nodev
+    Title: 1.1.20 Check for removable media nodev
     Command: floppy_nodev: exit-status: matches expectation: [0]
     Command: floppy_nodev: stdout: matches expectation: [OK]
     < -------cut ------- >
-    Title: 1.1.20 Check for removeable media noexec
+    Title: 1.1.20 Check for removable media noexec
     Command: floppy_noexec: exit-status: matches expectation: [0]
     Command: floppy_noexec: stdout: matches expectation: [OK]
 
