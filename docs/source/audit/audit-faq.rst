@@ -10,7 +10,7 @@ example.
 
    goss -g goss.yml -v
 
-Goss is designed to run from the scripts passing discovered variables into Goss for metadata. Without these values being set, Goss will fail. These metadata variables can bee seen towards the end of the goss.yml file. Futhermore, the run_audit script shows how these variables are created and passed to Goss.
+Goss is designed to run from the scripts passing discovered variables into Goss for metadata. Without these values being set, Goss will fail. These metadata variables can bee seen towards the end of the goss.yml file. Furthermore, the run_audit script shows how these variables are created and passed to Goss.
 
 
 Why do I have different results between x86_64 and AMD64/aarch64 audits?
