@@ -24,7 +24,7 @@ My System is impacted when running the audit how can i restrict its affect?
 
 On both windows and linux you have the ability to limit the number of processes that run at the same time.
 
-This is set using the following as part of the playbook run
+This is set the variable as art of the playbook
 
 .. code-block:: bash
 
