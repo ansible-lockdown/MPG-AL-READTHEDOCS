@@ -174,14 +174,17 @@ Defines **Goss binary location** and **audit file paths**.
     Help()
     {
       echo "Script to run the goss audit"
-      echo "Syntax: $0 [-f|-g|-o|-v|-w|-h]"
+      echo
+      echo "Syntax: $0 [-f|-g|-m|-o|-v|-w|-h]"
       echo "options:"
-      echo "-f     optional - change the format output (default value = json)"
-      echo "-g     optional - Add a group that the server should be grouped with"
+      echo "-f     optional - change the format output (options json(default), documentation, rspecish)"
+      echo "-g     optional - Add a group that the server should be grouped with (default value = ungrouped)"
+      echo "-m     optional - maximum concurrent processes (number, default 50)"
       echo "-o     optional - file to output audit data"
-      echo "-v     optional - relative path to the vars file"
-      echo "-w     optional - Sets the system_type to workstation"
+      echo "-v     optional - relative path to the vars file to load (default e.g. $AUDIT_CONTENT_LOCATION/{OS}-$BENCHMARK/vars/$BENCHMARK.yml)"
+      echo "-w     optional - Sets the system_type to workstation (Default - Server)"
       echo "-h     Print this Help."
+      echo
     }
 
 Displays **usage instructions** when `-h` is provided.
@@ -190,10 +193,11 @@ Displays **usage instructions** when `-h` is provided.
 
 .. code-block:: bash
 
-    while getopts f:g:o:v::wh option; do
+    while getopts f:g:m:o:v::wh option; do
       case "${option}" in
         f ) FORMAT=${OPTARG} ;;  # Output format (json, rspecish, etc.)
         g ) GROUP=${OPTARG} ;;   # Defines server group
+        m ) MAX=${OPTARG} ;;
         o ) OUTFILE=${OPTARG} ;; # Specifies output file
         v ) VARS_PATH=${OPTARG} ;; # Variables file path
         w ) host_system_type=Workstation ;; # Change system type to Workstation
