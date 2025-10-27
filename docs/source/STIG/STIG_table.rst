@@ -11,8 +11,9 @@ Operating Systems
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
    "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
    "UBUNTU18-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
-   "UBUNTU20-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-STIG?style=plastic"
-   "UBUNTU22-STIG_", "True", "True", "WIP", "N/A"
+   "UBUNTU20-STIG_", "True", "True", "N/A", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-STIG?style=plastic"
+   "UBUNTU22-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-STIG?style=plastic"
+   "UBUNTU24-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU24-STIG?style=plastic"
 
 .. csv-table:: STIG Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
@@ -67,6 +68,7 @@ Archived Roles
 .. _UBUNTU18-STIG: https://github.com/ansible-lockdown/UBUNTU18-STIG
 .. _UBUNTU20-STIG: https://github.com/ansible-lockdown/UBUNTU20-STIG
 .. _UBUNTU22-STIG: https://github.com/ansible-lockdown/UBUNTU22-STIG
+.. _UBUNTU24-STIG: https://github.com/ansible-lockdown/UBUNTU22-STIG
 
 .. _Windows-10-STIG: https://github.com/ansible-lockdown/Windows-10-STIG
 .. _Windows-11-STIG: https://github.com/ansible-lockdown/Windows-11-STIG
