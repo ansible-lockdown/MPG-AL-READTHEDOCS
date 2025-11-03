@@ -68,7 +68,7 @@ Archived Roles
 .. _UBUNTU18-STIG: https://github.com/ansible-lockdown/UBUNTU18-STIG
 .. _UBUNTU20-STIG: https://github.com/ansible-lockdown/UBUNTU20-STIG
 .. _UBUNTU22-STIG: https://github.com/ansible-lockdown/UBUNTU22-STIG
-.. _UBUNTU24-STIG: https://github.com/ansible-lockdown/UBUNTU22-STIG
+.. _UBUNTU24-STIG: https://github.com/ansible-lockdown/UBUNTU24-STIG
 
 .. _Windows-10-STIG: https://github.com/ansible-lockdown/Windows-10-STIG
 .. _Windows-11-STIG: https://github.com/ansible-lockdown/Windows-11-STIG
