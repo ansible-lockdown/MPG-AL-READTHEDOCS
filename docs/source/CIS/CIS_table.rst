@@ -12,7 +12,7 @@ Operating Systems
    "AMAZON2023-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
    "DEBIAN11-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN11-CIS?style=plastic"
    "DEBIAN12-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN12-CIS?style=plastic"
-   "DEBIAN13-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN13-CIS?style=plastic"
+   "DEBIAN13-CIS_", "True", "True", "True", "N/A"
    "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
    "RHEL9-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
    "RHEL10-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL10-CIS?style=plastic", *UNOFFICIAL*
