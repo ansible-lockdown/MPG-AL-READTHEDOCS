@@ -60,9 +60,9 @@ Archived Roles
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "RHEL7-CIS_", "False", "False", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
-   "UBUNTU18-CIS_", "False", "False", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
-   "UBUNTU20-CIS_", "False", "False", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
+   "RHEL7-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
+   "UBUNTU18-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
+   "UBUNTU20-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
 
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
 .. _AMAZON2023-CIS: https://github.com/ansible-lockdown/AMAZON2023-CIS
