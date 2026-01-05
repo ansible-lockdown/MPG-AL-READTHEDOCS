@@ -54,13 +54,13 @@ Archived Roles
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "RHEL5-STIG_", "False", "False", "False", "N/A"
-   "RHEL6-STIG_", "False", "False", "False", "N/A"
-   "RHEL7-STIG_", "False", "False", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
-   "Windows-2008R2-Member-Server-STIG_", "False", "False", "False", "N/A"
-   "Windows-2012-Member-Server-STIG_", "False", "False", "False", "N/A"
-   "Windows-2012-Domain-Controller-STIG_", "False", "False", "False", "N/A"
-   "Postgres-9-STIG_", "True", "True", "False", "N/A"
+   "RHEL5-STIG_", "False", "True", "False", "N/A"
+   "RHEL6-STIG_", "False", "True", "False", "N/A"
+   "RHEL7-STIG_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
+   "Windows-2008R2-Member-Server-STIG_", "False", "True", "False", "N/A"
+   "Windows-2012-Member-Server-STIG_", "False", "True", "False", "N/A"
+   "Windows-2012-Domain-Controller-STIG_", "False", "True", "False", "N/A"
+   "Postgres-9-STIG_", "False", "True", "False", "N/A"
 
 .. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG
