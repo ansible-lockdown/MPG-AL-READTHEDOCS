@@ -136,9 +136,12 @@ customization of the applied value.
 It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific
 environments are responsible for meeting in order to effectively implement the controls in the relevant benchmark.
 
-Baselines are typically designed for the x86_64 architecture. But, with the growing popularity of ARM64/aarch64 systems for running environments,
-we have begun to extend our support for hardening on ARM as well. This rollout brings certain challenges, particularly regarding the audit component,
+Baselines are typically designed for the x86_64 architecture. But, with the growing popularity of ARM64/aarch64 systems
+(AWS Graviton, Azure Ampere, Google Tau T2A), we have extended our support for hardening on ARM as well.
+This rollout brings certain challenges, particularly regarding the audit component and auditd syscall differences,
 and it is not officially covered by the baseline provider. However, we strive to provide support for ARM as part of our pipelines.
+
+For detailed ARM64 guidance, see :doc:`ARM64/aarch64 Architecture Guide <arm64-guide>`.
 
 Development Process
 -------------------

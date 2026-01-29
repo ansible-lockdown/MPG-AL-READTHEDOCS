@@ -73,8 +73,16 @@ The following requirements are needed (OS dependant)
 
 .. note::
     The binary only needs to be accessible to the host with ability to use.
-    The relevant script needs to be adjust to point to the path of the binary.
-    Ensure you have the correct binary for your architecture examples above are AMD64, but also works on ARM64 (may have bad results with auditd settings)
+    The relevant script needs to be adjusted to point to the path of the binary.
+    Ensure you have the correct binary for your architecture (examples above are AMD64).
+
+    **ARM64/aarch64 Users:** Download the ARM64 binary from:
+
+    - `Goss ARM64 Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64>`_
+    - `Goss ARM64 Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64.sha256>`_
+
+    ARM64 audits may show different results for auditd-related controls due to syscall differences.
+    See :doc:`ARM64/aarch64 Architecture Guide </arm64-guide>` for details.
 
 Running the Audit Only as part of remediate playbook
 ----------------------------------------------------

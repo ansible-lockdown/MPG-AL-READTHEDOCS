@@ -74,7 +74,7 @@ Variables
     - Any value that can deviate from the example used in the fix text. For example tasks that ask to set permissions X or more restrictive that the permissions value should be a variable
     - Any value that has multiple value options should be a variable
     - These variables should be defined in the ``defaults/main.yml`` file
-    - These variables should be formatted as role name followed by the descriptor, rhel8stig_disruption_high for example
+    - These variables should be formatted as role name followed by the descriptor, RHEL9stig_disruption_high for example
 
   - ``vars/main.yml``
 
@@ -142,7 +142,7 @@ STIG Control Task Layout
     - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel."
       when:
         - rhel_08_010382
-        - rhel8stig_disruption_high
+        - RHEL9stig_disruption_high
       tags:
         - RHEL-08-010382
         - CAT2
@@ -194,7 +194,7 @@ CIS Control Task Layout
 .. code-block:: yaml
 
   - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled"
-    when: rhel8cis_rule_4_1_1_3
+    when: RHEL9cis_rule_4_1_1_3
     tags:
       - level2-server
       - level2-workstation

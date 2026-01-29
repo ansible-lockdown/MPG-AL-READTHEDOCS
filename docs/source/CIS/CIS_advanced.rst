@@ -28,7 +28,7 @@ e.g.
 
 .. code-block:: console
 
-   rhel8cis_auditd_uid_exclude:
+   RHEL9cis_auditd_uid_exclude:
    - ansible
    - vagrant
 

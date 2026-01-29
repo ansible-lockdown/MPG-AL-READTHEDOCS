@@ -257,11 +257,11 @@ The following requirements are needed OS independent
 
 - goss binary appropriate for the OS
   - Linux
-    - [64bit_v0.3.16_binary](https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64)
-    - [64bit_v0.3.16_sha256](https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-linux-amd64.sha256)
+    - [64bit_v0.4.9_binary](https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64)
+    - [64bit_v0.4.9_sha256](https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64.sha256)
   - Windows
-    - [64bit_v0.3.16_exe](https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe)
-    - [64bit_v0.3.16_sha256](https://github.com/aelsabbahy/goss/releases/download/v0.3.16/goss-alpha-windows-amd64.exe.sha256)
+    - [64bit_v0.4.9_exe](https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe)
+    - [64bit_v0.4.9_sha256](https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe.sha256)
 
 ## Defining the audit
 

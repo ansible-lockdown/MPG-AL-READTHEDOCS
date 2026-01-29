@@ -46,11 +46,11 @@ The easiest installation method is to use the ``ansible-galaxy`` command that
 is provided with your Ansible installation:
 
 The general format is ansible-galaxy install git+|url to repo|, below is an example with
-RHEL8-CIS
+RHEL9-CIS
 
 .. code-block:: console
 
-   ansible-galaxy install git+https://github.com/ansible-lockdown/RHEL8-CIS.git
+   ansible-galaxy install git+https://github.com/ansible-lockdown/RHEL9-CIS.git
 
 The ``ansible-galaxy`` command will install the role into
 ``/etc/ansible/roles/`` and this makes it easy to use with
@@ -67,7 +67,7 @@ To clone and create a folder with the same name as the repo:
 .. code-block:: console
 
    cd ~/CIS_Roles
-   git clone https://github.com/ansible-lockdown/RHEL8-CIS.git
+   git clone https://github.com/ansible-lockdown/RHEL9-CIS.git
 
 
 To clone and put the files from the repo into a specific folder, folder does need to be empty:
@@ -75,7 +75,7 @@ To clone and put the files from the repo into a specific folder, folder does nee
 .. code-block:: console
 
     mkdir ~/CIS_Roles
-    git clone https://github.com/ansible-lockdown/RHEL8-CIS.git ~/CIS_Roles
+    git clone https://github.com/ansible-lockdown/RHEL9-CIS.git ~/CIS_Roles
 
 Ansible looks for roles in ``~/.ansible/roles`` by default.
 
@@ -105,11 +105,7 @@ CLI - Notice the reference to site.yml
 .. code-block:: console
 
   cd roles
-  ansible-playbook -i hosts -e '{ "rhel8stig_cat2_patch":false,"rhel8stig_cat3_patch":false }' ./RHEL8-STIG/site.yml
-
-Tower Steps
-
-
+  ansible-playbook -i hosts -e '{ "rhel9stig_cat2_patch":false,"rhel9stig_cat3_patch":false }' ./RHEL9-STIG/site.yml
 
 With Existing Playbooks
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,7 +120,7 @@ example of a basic playbook that uses this role:
     - hosts: servers
       become: yes
       roles:
-        - role: RHEL8-CIS
+        - role: RHEL9-CIS
           when:
             - ansible_os_family == 'RedHat'
             - ansible_distribution_major_version | version_compare('8', '=')
@@ -158,7 +154,7 @@ CLI In-Line setting (Set to only run STIG CAT1)
 
 .. code-block:: console
 
-  ansible-playbook -i host_file -e '{ "rhel8stig_cat2_patch":false,"rhel8stig_cat3_patch":false }' ./RHEL8-STIG/site.yml
+  ansible-playbook -i host_file -e '{ "rhel9stig_cat2_patch":false,"rhel9stig_cat3_patch":false }' ./RHEL9-STIG/site.yml
 
 Using Tags
 ~~~~~~~~~~
