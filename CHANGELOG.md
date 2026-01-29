@@ -10,6 +10,7 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
 - Updated CIS table with DEBIAN13-CIS benchmark
 - Moved UBUNTU18-CIS and UBUNTU20-CIS to Archived Roles section
 - Updated Archive tables statuses
+- Updated STIG and CIS table statuses to Subscribers Only for DEB13CIS & AMZ23STIG
 
 ### Fixed
 - Fixed typo "Priority big fixes" to "Priority bug fixes" in links.rst
