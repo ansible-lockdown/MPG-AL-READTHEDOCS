@@ -32,7 +32,7 @@ Controls are divided into groups based on the following properties:
 
 - **Level 1**
   The majority of control are based at this level.
-  These controls have are considered to have a low impact to a system.
+  These controls are considered to have a low impact to a system.
   By implementing these controls is considered low to medium risk of disruption.
 
 - **Level 2**

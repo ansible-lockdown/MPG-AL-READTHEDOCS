@@ -22,7 +22,7 @@ Affects
 
 Affects
     - Version-Release number of selected component (if applicable):
-    - REHL8.6
+    - RHEL8.6
     - Ansible 5.4
     - Python 3.8
 

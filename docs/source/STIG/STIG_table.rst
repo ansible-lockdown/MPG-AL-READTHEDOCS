@@ -8,6 +8,7 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
+   "AMAZON2023-STIG_", "True", "True", "True", "Subscribers only: .. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-STIG?style=plastic"
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
    "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
    "UBUNTU18-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
@@ -62,7 +63,7 @@ Archived Roles
    "Windows-2012-Domain-Controller-STIG_", "False", "True", "False", "N/A"
    "Postgres-9-STIG_", "False", "True", "False", "N/A"
 
-.. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
+.. _AMAZON2023-STIG: https://github.com/ansible-lockdown/AMAZON2023-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG
 .. _RHEL9-STIG: https://github.com/ansible-lockdown/RHEL9-STIG
 .. _UBUNTU18-STIG: https://github.com/ansible-lockdown/UBUNTU18-STIG
@@ -85,9 +86,9 @@ Archived Roles
 .. _Windows_Advance_Firewall-STIG: https://github.com/ansible-lockdown/WinFWADV-STIG
 .. _KUBERNETES-STIG: https://github.com/ansible-lockdown/KUBERNETES-STIG
 
-
 .. _RHEL5-STIG: https://github.com/ansible-lockdown/RHEL5-STIG
 .. _RHEL6-STIG: https://github.com/ansible-lockdown/RHEL6-STIG
+.. _RHEL7-STIG: https://github.com/ansible-lockdown/RHEL7-STIG
 .. _Windows-2008R2-Member-Server-STIG: https://github.com/ansible-lockdown/Windows-2008R2-Member-Server-STIG
 .. _Windows-2012-Member-Server-STIG: https://github.com/ansible-lockdown/Windows-2012-Member-Server-STIG
 .. _Windows-2012-Domain-Controller-STIG: https://github.com/ansible-lockdown/Windows-2012-Domain-Controller-STIG

@@ -10,7 +10,7 @@ Support
   Providing:
 
     - Early Releases
-    - Priority big fixes
+    - Priority bug fixes
     - Ticketed support
 
   - `Lockdown Enterprise <https://lockdownenterprise.com>`_

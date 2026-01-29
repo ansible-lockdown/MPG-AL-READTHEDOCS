@@ -265,7 +265,7 @@ The following requirements are needed OS independent
 
 ## Defining the audit
 
-Each script runs against a configures variables file found in the content location in
+Each script runs against a configured variables file found in the content location in
 
 > {downloaded content}/vars/{benchmark}.yml
 
