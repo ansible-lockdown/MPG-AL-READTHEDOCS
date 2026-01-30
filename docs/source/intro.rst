@@ -209,4 +209,4 @@ Demos
 .. _ansible-galaxy: https://galaxy.ansible.com/MindPointGroup
 .. _DISA: https://disa.mil/
 .. _GitHub: https://github.com/ansible-lockdown
-.. _MPG: https://www.mindpointgroup.com/cybersecurity-products/ansible-counselor
+.. _TYTO: https://gotyto.com/services/cyber/risk-based-compliance/
