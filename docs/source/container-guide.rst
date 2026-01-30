@@ -64,39 +64,6 @@ When running in container mode, certain controls are automatically skipped becau
 Running Audit in Containers
 ---------------------------
 
-Standalone Container Audit
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To run an audit inside a container:
-
-1. **Build an audit container image:**
-
-.. code-block:: dockerfile
-
-   FROM your-base-image:tag
-
-   # Install goss binary
-   RUN curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64 \
-       -o /usr/local/bin/goss && \
-       chmod +x /usr/local/bin/goss
-
-   # Copy audit content
-   COPY audit-content/ /opt/audit/
-
-   # Set working directory
-   WORKDIR /opt/audit
-
-2. **Run the audit:**
-
-.. code-block:: console
-
-   docker run --rm your-audit-image /opt/audit/run_audit.sh
-
-.. note::
-
-   Container audits will show many "skipped" results for controls that don't apply
-   to containerized environments. This is expected behavior.
-
 Audit from Host Against Container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -128,35 +95,8 @@ The recommended approach is to build hardened base images rather than remediatin
      vars:
        is_container: true
      roles:
-       - role: RHEL9-CIS
+       - role: RHEL10-CIS
          when: ansible_os_family == 'RedHat'
-
-**Multi-stage Dockerfile Example:**
-
-.. code-block:: dockerfile
-
-   # Stage 1: Apply hardening
-   FROM rhel9:latest AS hardening
-
-   # Install Ansible
-   RUN dnf install -y ansible-core python3-pip && \
-       pip3 install ansible
-
-   # Copy and run hardening playbook
-   COPY hardening-playbook.yml /tmp/
-   COPY RHEL9-CIS/ /tmp/RHEL9-CIS/
-   RUN ansible-playbook -c local -i localhost, /tmp/hardening-playbook.yml
-
-   # Stage 2: Clean image
-   FROM hardening AS final
-
-   # Remove Ansible and build dependencies
-   RUN dnf remove -y ansible-core python3-pip && \
-       dnf clean all && \
-       rm -rf /tmp/*
-
-   # Your application setup
-   COPY app/ /app/
 
 Remediating Running Containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -170,58 +110,9 @@ While not recommended for production, you can remediate running containers for t
      vars:
        is_container: true
        # Disable controls that require reboot
-       rhel9cis_rule_1_4_1: false  # Example: skip bootloader password
+       rhel10cis_rule_1_4_1: false  # Example: skip bootloader password
      roles:
-       - RHEL9-CIS
-
-Kubernetes and OpenShift
-------------------------
-
-For Kubernetes environments, consider these approaches:
-
-**Pod Security Standards**
-
-Instead of applying CIS/STIG controls directly, use Kubernetes-native security:
-
-- Pod Security Admission (PSA)
-- Network Policies
-- Security Contexts
-- OPA/Gatekeeper policies
-
-**DaemonSet for Auditing**
-
-Deploy audit as a DaemonSet to scan nodes:
-
-.. code-block:: yaml
-
-   apiVersion: apps/v1
-   kind: DaemonSet
-   metadata:
-     name: security-audit
-   spec:
-     selector:
-       matchLabels:
-         app: security-audit
-     template:
-       metadata:
-         labels:
-           app: security-audit
-       spec:
-         hostPID: true
-         hostNetwork: true
-         containers:
-         - name: audit
-           image: your-audit-image:tag
-           securityContext:
-             privileged: true
-           volumeMounts:
-           - name: host-root
-             mountPath: /host
-             readOnly: true
-         volumes:
-         - name: host-root
-           hostPath:
-             path: /
+       - RHEL10-CIS
 
 .. warning::
 
@@ -251,7 +142,6 @@ The auditd subsystem requires kernel-level access. For container environments:
 
 - Configure auditd on the container host
 - Use container runtime audit logging (Docker audit, containerd events)
-- Consider Falco for container-native runtime security
 
 Best Practices
 --------------
@@ -267,17 +157,6 @@ Best Practices
 
 4. **Scan Images in CI/CD**
    Integrate audit into your image build pipeline to catch issues before deployment.
-
-5. **Layer Security Controls**
-   Combine benchmark hardening with:
-
-   - Image vulnerability scanning
-   - Runtime security monitoring
-   - Network policies
-   - Secrets management
-
-6. **Document Exceptions**
-   Track which controls are skipped in containers and ensure compensating controls exist.
 
 Troubleshooting
 ---------------

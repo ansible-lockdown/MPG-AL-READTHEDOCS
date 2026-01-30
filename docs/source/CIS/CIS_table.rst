@@ -14,7 +14,7 @@ Operating Systems
    "DEBIAN12-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN12-CIS?style=plastic"
    "DEBIAN13-CIS_", "True", "True", "True", "Subscribers Only"
    "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
-   "RHEL9-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
+   "RHEL10-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL10-CIS?style=plastic"
    "RHEL10-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL10-CIS?style=plastic", *UNOFFICIAL*
    "SUSE15-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/SUSE15-CIS?style=plastic"
    "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
@@ -71,7 +71,7 @@ Archived Roles
 .. _DEBIAN13-CIS: https://github.com/ansible-lockdown/DEBIAN13-CIS
 .. _RHEL7-CIS: https://github.com/ansible-lockdown/RHEL7-CIS
 .. _RHEL8-CIS: https://github.com/ansible-lockdown/RHEL8-CIS
-.. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
+.. _RHEL10-CIS: https://github.com/ansible-lockdown/RHEL10-CIS
 .. _RHEL10-CIS: https://github.com/ansible-lockdown/RHEL10-CIS
 .. _SUSE15-CIS: https://github.com/ansible-lockdown/SUSE15-CIS
 .. _UBUNTU18-CIS: https://github.com/ansible-lockdown/UBUNTU18-CIS

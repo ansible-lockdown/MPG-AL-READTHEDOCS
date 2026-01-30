@@ -190,7 +190,7 @@ Task Fails with "Permission Denied"
    - hosts: all
      become: yes
      roles:
-       - RHEL9-CIS
+       - RHEL10-CIS
 
 2. Verify sudo configuration on target:
 
@@ -242,26 +242,26 @@ Set the control variable to ``false`` in your playbook or extra vars:
 .. code-block:: yaml
 
    # Skip specific CIS controls
-   rhel9cis_rule_1_1_1_1: false
-   rhel9cis_rule_5_2_4: false
+   rhel10cis_rule_1_1_1_1: false
+   rhel10cis_rule_5_2_4: false
 
 **STIG Example:**
 
 .. code-block:: yaml
 
    # Skip specific STIG controls
-   rhel_08_010010: false
-   rhel_08_020000: false
+   rhel_10_010010: false
+   rhel_10_020000: false
 
 **Skip entire categories:**
 
 .. code-block:: yaml
 
    # CIS - Skip all Level 2 controls
-   rhel9cis_level_2: false
+   rhel10cis_level_2: false
 
    # STIG - Skip CAT III controls
-   rhel8stig_cat3_patch: false
+   rhel10stig_cat3_patch: false
 
 How Do I Change Default Values?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -274,17 +274,17 @@ Override variables in your playbook or create a vars file:
    - hosts: all
      become: yes
      vars:
-       rhel9cis_time_sync_tool: chrony
-       rhel9cis_sshd_client_alive_interval: 300
-       rhel9cis_password_min_length: 14
+       rhel10cis_time_sync_tool: chrony
+       rhel10cis_sshd_client_alive_interval: 300
+       rhel10cis_password_min_length: 14
      roles:
-       - RHEL9-CIS
+       - RHEL10-CIS
 
 Or use extra vars:
 
 .. code-block:: console
 
-   ansible-playbook site.yml -e '{"rhel9cis_time_sync_tool":"chrony"}'
+   ansible-playbook site.yml -e '{"rhel10cis_time_sync_tool":"chrony"}'
 
 Variable Precedence Issues
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -304,7 +304,7 @@ Use extra vars to guarantee override:
 
 .. code-block:: console
 
-   ansible-playbook site.yml -e 'rhel9cis_rule_1_1_1_1=false'
+   ansible-playbook site.yml -e 'rhel10cis_rule_1_1_1_1=false'
 
 Service and System Issues
 -------------------------

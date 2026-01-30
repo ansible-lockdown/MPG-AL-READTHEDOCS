@@ -159,8 +159,8 @@ Ensure audit variables match your remediation configuration:
 .. code-block:: yaml
 
    # vars/CIS.yml - should match your remediation settings
-   rhel9cis_rule_1_1_1_1: true
-   rhel9cis_rule_1_1_1_2: false  # Disabled in remediation
+   rhel10cis_rule_1_1_1_1: true
+   rhel10cis_rule_1_1_1_2: false  # Disabled in remediation
 
 Why Do I Have Failures After Successful Remediation?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -277,7 +277,7 @@ Variables File Not Found
 
 .. code-block:: bash
 
-   Error: vars file not found at /opt/RHEL9-CIS-Audit/vars/CIS.yml
+   Error: vars file not found at /opt/RHEL10-CIS-Audit/vars/CIS.yml
 
 **Solutions:**
 
@@ -285,7 +285,7 @@ Variables File Not Found
 
    .. code-block:: console
 
-      ls -la /opt/RHEL9-CIS-Audit/vars/
+      ls -la /opt/RHEL10-CIS-Audit/vars/
 
 2. Specify the vars file path explicitly:
 

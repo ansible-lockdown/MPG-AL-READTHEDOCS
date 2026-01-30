@@ -74,7 +74,7 @@ Variables
     - Any value that can deviate from the example used in the fix text. For example tasks that ask to set permissions X or more restrictive that the permissions value should be a variable
     - Any value that has multiple value options should be a variable
     - These variables should be defined in the ``defaults/main.yml`` file
-    - These variables should be formatted as role name followed by the descriptor, RHEL9stig_disruption_high for example
+    - These variables should be formatted as role name followed by the descriptor, rhel10cis_disruption_high for example
 
   - ``vars/main.yml``
 
@@ -139,12 +139,12 @@ STIG Control Task Layout
 
 .. code-block:: yaml
 
-    - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel."
+    - name: "MEDIUM | RHEL-10-010382 | PATCH | RHEL 10 must restrict privilege elevation to authorized personnel."
       when:
-        - rhel_08_010382
-        - RHEL9stig_disruption_high
+        - rhel_10_010382
+        - rhel10stig_disruption_high
       tags:
-        - RHEL-08-010382
+        - RHEL-10-010382
         - CAT2
         - CCI-000366
         - SRG-OS-000480-GPOS-00227
@@ -153,13 +153,13 @@ STIG Control Task Layout
         - NIST800-53R5_CM-7
         - sudo
       block:
-        - name: "MEDIUM | RHEL-08-010382 | AUDIT | RHEL 8 must restrict privilege elevation to authorized personnel. | Get ALL settings"
+        - name: "MEDIUM | RHEL-10-010382 | AUDIT | RHEL 10 must restrict privilege elevation to authorized personnel. | Get ALL settings"
           ansible.builtin.shell: grep -iws 'ALL' /etc/sudoers /etc/sudoers.d/* | cut -d":" -f1 | uniq | sort
           changed_when: false
           failed_when: false
           register: discovered_sudoers_all_privilege
 
-        - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel. | Remove format 1"
+        - name: "MEDIUM | RHEL-10-010382 | PATCH | RHEL 10 must restrict privilege elevation to authorized personnel. | Remove format 1"
           when: discovered_sudoers_all_privilege.stdout | length > 0
           ansible.builtin.lineinfile:
             path: "{{ item }}"
@@ -168,7 +168,7 @@ STIG Control Task Layout
             validate: '/usr/sbin/visudo -cf %s'
           loop: "{{ discovered_sudoers_all_privilege.stdout_lines }}"
 
-        - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel. | Remove format 2"
+        - name: "MEDIUM | RHEL-10-010382 | PATCH | RHEL 10 must restrict privilege elevation to authorized personnel. | Remove format 2"
           when: discovered_sudoers_all_privilege.stdout | length > 0
           ansible.builtin.lineinfile:
             path: "{{ item }}"
@@ -194,7 +194,7 @@ CIS Control Task Layout
 .. code-block:: yaml
 
   - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled"
-    when: RHEL9cis_rule_4_1_1_3
+    when: rhel10cis_rule_4_1_1_3
     tags:
       - level2-server
       - level2-workstation

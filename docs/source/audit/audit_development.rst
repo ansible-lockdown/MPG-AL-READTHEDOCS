@@ -61,7 +61,7 @@ For a full list of goss and how to use the goss_modules (tests).
 
 ..  code-block:: yaml
 
-    {{ if .Vars.rhel9cis_level_1 }}
+    {{ if .Vars.rhel10cis_level_1 }}
       {{ if .Vars.rhelcis9_1_1_10 }}
     command:
       usb-storage:
@@ -87,7 +87,7 @@ For a full list of goss and how to use the goss_modules (tests).
 
 ..  code-block:: raw
 
-    {{ if .Vars.rhel9cis_level_1 }}                                                     ## if rhel9cis_level_1 is true
+    {{ if .Vars.rhel10cis_level_1 }}                                                     ## if rhel10cis_level_1 is true
       {{ if .Vars.rhelcis9_1_1_10 }}                                                    ## if rhelcis9_1_1_10 is true
     command:                                                                            ## goss_module
       usb-storage:                                                                      ## unique name associated with the command

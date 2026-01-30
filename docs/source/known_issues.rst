@@ -153,8 +153,8 @@ Grub Password Lockout
 .. code-block:: yaml
 
    # Document your GRUB password before enabling
-   rhel9cis_grub_user: root
-   rhel9cis_grub_password_hash: "grub.pbkdf2.sha512.10000.YOUR_HASH"
+   rhel10cis_grub_user: root
+   rhel10cis_grub_password_hash: "grub.pbkdf2.sha512.10000.YOUR_HASH"
 
 **Recovery:** Boot from rescue media and edit GRUB configuration.
 
@@ -176,8 +176,8 @@ SSH Lockout After Hardening
 .. code-block:: yaml
 
    # Ensure your users are allowed
-   rhel9cis_sshd_allow_users: "admin ansible"
-   rhel9cis_sshd_allow_groups: "wheel ssh-users"
+   rhel10cis_sshd_allow_users: "admin ansible"
+   rhel10cis_sshd_allow_groups: "wheel ssh-users"
 
 PAM Lockout Issues
 ^^^^^^^^^^^^^^^^^^
