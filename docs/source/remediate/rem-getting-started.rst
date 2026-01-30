@@ -123,7 +123,7 @@ example of a basic playbook that uses this role:
         - role: RHEL10-CIS
           when:
             - ansible_os_family == 'RedHat'
-            - ansible_distribution_major_version | version_compare('8', '=')
+            - ansible_distribution_major_version | version_compare('10', '=')
 
 
 

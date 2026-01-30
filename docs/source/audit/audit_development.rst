@@ -62,7 +62,7 @@ For a full list of goss and how to use the goss_modules (tests).
 ..  code-block:: yaml
 
     {{ if .Vars.rhel10cis_level_1 }}
-      {{ if .Vars.rhelcis9_1_1_10 }}
+      {{ if .Vars.rhelcis10_1_1_10 }}
     command:
       usb-storage:
         title: 1.1.10 | Disable USB Storage
@@ -88,7 +88,7 @@ For a full list of goss and how to use the goss_modules (tests).
 ..  code-block:: raw
 
     {{ if .Vars.rhel10cis_level_1 }}                                                     ## if rhel10cis_level_1 is true
-      {{ if .Vars.rhelcis9_1_1_10 }}                                                    ## if rhelcis9_1_1_10 is true
+      {{ if .Vars.rhelcis10_1_1_10 }}                                                    ## if rhelcis10_1_1_10 is true
     command:                                                                            ## goss_module
       usb-storage:                                                                      ## unique name associated with the command
         title: 1.1.10 | Disable USB Storage                                             ## title  {{ control id }}| {{ control title }}
@@ -116,7 +116,7 @@ Variables should be added higher in the test based on the level of impact.
 ..  code-block:: raw
 
     {{ .Vars.section_1 }}
-      {{ .Vars.rhelcis8_1_1_1_1 }}
+      {{ .Vars.rhelcis10_1_1_1_1 }}
 
 
 Metadata
