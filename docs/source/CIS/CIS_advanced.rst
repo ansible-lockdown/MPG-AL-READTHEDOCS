@@ -8,7 +8,7 @@ Advanced Options
 .. note::
    These are advanced options and require a greater understanding of all aspects of implementation.
 
-- auditd_exclusion:
+   - rhel10cis_allow_auditd_uid_user_exclusions
 
 auditd logs can fill up very quickly with the default CIS options to log every privileged command.
 Whether scanners/automation or any job that needs to run against a system with privilege access. e.g.sudo
