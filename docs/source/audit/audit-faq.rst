@@ -347,64 +347,6 @@ Output File Not Created
 
       ./run_audit.sh 2>&1 | tee audit_debug.log
 
-Windows-Specific Issues
------------------------
-
-PowerShell Execution Policy Error
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Symptom:**
-
-.. code-block:: powershell
-
-   File cannot be loaded because running scripts is disabled on this system.
-
-**Solution:**
-
-.. code-block:: powershell
-
-   # Temporarily allow script execution
-   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-
-   # Then run the audit
-   .\run_audit.ps1
-
-WMI Query Failures
-^^^^^^^^^^^^^^^^^^
-
-**Symptom:** Audit fails with WMI-related errors.
-
-**Solutions:**
-
-1. Run PowerShell as Administrator
-2. Verify WMI service is running:
-
-   .. code-block:: powershell
-
-      Get-Service winmgmt
-
-3. Repair WMI if necessary:
-
-   .. code-block:: powershell
-
-      winmgmt /salvagerepository
-
-Group Policy Results Not Available
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Symptom:** Controls related to Group Policy show as failed or skipped.
-
-**Cause:** gpresult requires domain connectivity or appropriate permissions.
-
-**Solutions:**
-
-1. For domain-joined machines, ensure connectivity to domain controller
-2. For standalone machines, use local policy exports:
-
-   .. code-block:: powershell
-
-      secedit /export /cfg C:\secpol.cfg
-
 Container and Special Environments
 ----------------------------------
 
@@ -428,25 +370,3 @@ Set container mode:
 
 See :doc:`Container and Docker Guide </container-guide>` for details.
 
-Audit Fails in Minimal/Cloud Images
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Minimal images may lack required tools.
-
-**Common missing packages:**
-
-.. code-block:: console
-
-   # RHEL/CentOS
-   dnf install -y procps-ng iproute
-
-   # Ubuntu/Debian
-   apt-get install -y procps iproute2
-
-Where Can I Get More Help?
---------------------------
-
-- `Discord Community <https://www.lockdownenterprise.com/discord>`_ - Community support
-- `GitHub Issues <https://github.com/ansible-lockdown>`_ - Report bugs or request features
-- `Goss Documentation <https://goss.rocks>`_ - Goss-specific questions
-- `Lockdown Enterprise <https://lockdownenterprise.com>`_ - Commercial support options
