@@ -8,7 +8,7 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "AMAZON2023-STIG_", "True", "True", "True", "Subscribers Only"
+   "AMAZON2023-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
    "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
    "UBUNTU18-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
