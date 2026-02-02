@@ -6,7 +6,7 @@ Contact Us
 
 * `Discord Community Discussions <https://www.lockdownenterprise.com/discord>`_ : Our Discord channels are direct community communications for all aspects of the Ansible-Lockdown repositories.
 
-* `Tyto Athene Official Subscription <https://www.lockdownenterprise.com/>`_ : If your organization requires you to have early release access, support, signed releases, or validated testing, those options are available.
+* `Official Subscription <https://www.lockdownenterprise.com/>`_ : If your organization requires you to have early release access, support, signed releases, or validated testing, those options are available.
 
 * `G2 <https://www.g2.com/products/ansible-lockdown/reviews>`_ : Read and Write our reviews at G2
 
@@ -17,14 +17,8 @@ Contact Us
 Tyto Athene Official Site and Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* `Tyto Athene Official Website <https://gotyto.com/who-we-are/contact-us/>`_ : If your organization has general questions regarding Cybersecurity or our Organization.
+* `Official Website <https://gotyto.com/who-we-are/contact-us/>`_ : If your organization has general questions regarding Cybersecurity or our Organization.
 
 *  `LinkedIn <https://linkedin.com/company/gotyto/>`_ : Our official LinkedIn Business Page
 
-.. toctree::
-   :maxdepth: 3
-
-   known_issues.rst
-   audit/audit-faq.rst
-   remediate/rem-faq.rst
-
+*  `Facebook <https://www.facebook.com/tytoathene/>`_ : Our official Facebook Business Page

@@ -79,24 +79,6 @@ WinRM Connection Failed (Windows)
    ansible_winrm_server_cert_validation=ignore
    ansible_winrm_transport=ntlm
 
-Python and Dependency Issues
-----------------------------
-
-Missing "jmespath" Fatal Error
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: bash
-
-   fatal: [ansible]: FAILED! => {"msg": "You need to install \"jmespath\" prior to running json_query filter"}
-
-This can occur during a playbook run on certain operating systems when patching takes place as part of the playbook due to the way python is implemented.
-
-* `You Need to install jmespath <https://serverfault.com/questions/1114638/ansible-you-need-to-install-jmespath-prior-to-running-json-query-filter-bu>`_ : A great article and explanation written by Discord community member baassssiiee
-
-.. note::
-
-   This should no longer be an issue with new releases as the dependency has been removed.
-
 Python Interpreter Not Found
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -141,36 +123,6 @@ Install required collections:
 
 Playbook Execution Issues
 -------------------------
-
-Playbook Hangs or Runs Forever
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Common Causes:**
-
-- Control waiting for user input (interactive prompts)
-- Package manager waiting for confirmation
-- Service restart hanging
-
-**Solutions:**
-
-1. Use non-interactive package installations:
-
-.. code-block:: yaml
-
-   # Already handled in roles, but verify environment
-   DEBIAN_FRONTEND: noninteractive
-
-2. Add timeouts to long-running tasks:
-
-.. code-block:: console
-
-   ansible-playbook site.yml -e 'ansible_timeout=300'
-
-3. Run with verbose output to identify stuck task:
-
-.. code-block:: console
-
-   ansible-playbook site.yml -vvv
 
 Task Fails with "Permission Denied"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -309,64 +261,6 @@ Use extra vars to guarantee override:
 Service and System Issues
 -------------------------
 
-Services Fail to Start After Hardening
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Symptom:** Application services won't start after running hardening playbook.
-
-**Common Causes:**
-
-- SELinux policy changes
-- Firewall rules blocking ports
-- File permission changes
-- PAM configuration changes
-
-**Troubleshooting Steps:**
-
-1. Check service status and logs:
-
-.. code-block:: console
-
-   systemctl status <service_name>
-   journalctl -xeu <service_name>
-
-2. Check SELinux denials:
-
-.. code-block:: console
-
-   ausearch -m avc -ts recent
-   sealert -a /var/log/audit/audit.log
-
-3. Verify firewall rules:
-
-.. code-block:: console
-
-   firewall-cmd --list-all
-
-4. Review the specific control that may have affected your service and disable if needed.
-
-System Won't Boot After Hardening
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Prevention:**
-
-.. warning::
-
-   Always test hardening in non-production environments first!
-
-**Common Causes:**
-
-- GRUB password configured but not documented
-- Filesystem mount options preventing boot
-- Kernel parameter changes
-
-**Recovery Steps:**
-
-1. Boot into rescue mode
-2. Review ``/etc/default/grub`` for kernel parameters
-3. Check ``/etc/fstab`` for mount option issues
-4. Review ``/etc/security/limits.conf`` for restrictive limits
-
 Users Locked Out After Hardening
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -397,80 +291,6 @@ Users Locked Out After Hardening
 
    visudo -c
    cat /etc/sudoers.d/*
-
-Performance Issues
-------------------
-
-Playbook Takes Too Long
-^^^^^^^^^^^^^^^^^^^^^^^
-
-**Solutions:**
-
-1. Use strategy plugins for parallelism:
-
-.. code-block:: yaml
-
-   # ansible.cfg
-   [defaults]
-   strategy = free
-   forks = 20
-
-2. Limit to specific tags:
-
-.. code-block:: console
-
-   # Run only SSH-related controls
-   ansible-playbook site.yml --tags ssh
-
-3. Skip fact gathering if not needed:
-
-.. code-block:: yaml
-
-   - hosts: all
-     gather_facts: no
-
-High CPU/Memory During Execution
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The hardening playbooks can be resource-intensive. Solutions:
-
-1. Limit parallel execution:
-
-.. code-block:: console
-
-   ansible-playbook site.yml --forks 5
-
-2. Run during maintenance windows
-
-3. Consider running in batches using ``serial``:
-
-.. code-block:: yaml
-
-   - hosts: all
-     serial: 10
-
-Rollback and Recovery
----------------------
-
-How Do I Undo Hardening Changes?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The roles do not include automatic rollback functionality. Options:
-
-1. **Restore from backup/snapshot** (recommended)
-   - Take VM snapshots before hardening
-   - Use configuration management baseline
-
-2. **Selectively reverse changes**
-   - Identify specific controls causing issues
-   - Manually reverse those configurations
-
-3. **Re-image the system**
-   - For immutable infrastructure, redeploy from base image
-
-.. tip::
-
-   Always maintain system backups or snapshots before applying hardening roles.
 
 Where Can I Get More Help?
 --------------------------
