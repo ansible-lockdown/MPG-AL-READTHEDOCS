@@ -207,7 +207,7 @@ All can be found in the details of the control itself
       - CCI-002235
       Group_Title: SRG-OS-000257-GPOS-00098
       Rule_ID: SV-204392r646841_rule
-      STIG_ID: RHEL-07-010010
+      STIG_ID: RHEL-10-010010
       Vul_ID: V-204392
 
 Gotchas
