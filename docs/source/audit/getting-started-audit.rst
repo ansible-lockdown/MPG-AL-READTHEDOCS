@@ -349,7 +349,7 @@ example:
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh8_cis_goss/goss.yml validate
+    # /usr/local/bin/goss --vars ../vars/cis.yml -g ./goss.yml validate
     ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
 
     Failures/Skipped:
@@ -392,7 +392,7 @@ example:
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate
+    # /usr/local/bin/goss -g ./section_1/cis_1.1/cis_1.1.22.yml  validate
     ............
 
     Total Duration: 0.033s
@@ -403,7 +403,7 @@ example:
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
+    # /usr/local/bin/goss -g ./section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
     Title: 1.1.20 Check for removable media nodev
     Command: floppy_nodev: exit-status: matches expectation: [0]
     Command: floppy_nodev: stdout: matches expectation: [OK]
