@@ -19,7 +19,7 @@ This can be enabled with the following (this needs to be set in an alternate var
 
 .. code-block:: console
 
-   allow_auditd_uid_user_exclusions: true
+   rhel10cis_allow_auditd_uid_user_exclusions: true
 
 
 Then a list of applicable users can be added to the exclusions.
