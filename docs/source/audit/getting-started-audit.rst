@@ -48,7 +48,7 @@ Setup auditing as standalone
 It is presumed that you have the script downloaded and the audit content ready from
 source control or your own configured location.
 
-The following requirements are needed (OS dependant)
+The following requirements are needed (OS dependent)
 
 - Super user or permissions to run privilege commands
 
@@ -69,7 +69,7 @@ The following requirements are needed (OS dependant)
   - Windows
 
     - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe>`_
-    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe.sha265>`_
+    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe.sha256>`_
 
 .. note::
     The binary only needs to be accessible to the host with ability to use.
@@ -133,9 +133,8 @@ If more than one server group is analyzed, groups can be separated with commas.
 Running on Linux
 ----------------
 
-===============================
 Bash Script Explanation: Goss Security Audit
-===============================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Script
 
@@ -500,7 +499,7 @@ either by fetching them to the controller or copying them to a centralized/share
    :header: "Feature", "Description", "Condition"
    :widths: 10, 15, 20
 
-   "Fetch files to controller", "Copies files to control node using `fetch`", audit_output_collection_method == `fetch`"
+   "Fetch files to controller", "Copies files to control node using `fetch`", "audit_output_collection_method == 'fetch'"
    "Copy files on managed node", "Copies files locally using `copy`", "audit_output_collection_method == `copy`"
    "Error Handling", "Displays a warning if file transfer fails", "Based on fetch/copy result `changed` status"
 
@@ -508,9 +507,8 @@ either by fetching them to the controller or copying them to a centralized/share
 Running on Windows
 ------------------
 
-===============================
 PowerShell Script Explanation: Goss Security Audit
-===============================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Script
 

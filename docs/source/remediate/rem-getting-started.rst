@@ -94,10 +94,10 @@ With this configuration, Ansible looks for roles in ``/etc/ansible/roles`` and
 How to Use
 ----------
 
-On It's Own
-~~~~~~~~~~~
+On Its Own
+~~~~~~~~~~
 
-This role can be used on it's own as a role. The file ``site.yml`` is the included file to point to. This role does not include an inventory file for hosts
+This role can be used on its own as a role. The file ``site.yml`` is the included file to point to. This role does not include an inventory file for hosts
 since that is too site specific, that will need to be managed locally. Below are examples of how to run in various scenarios
 
 CLI - Notice the reference to site.yml
@@ -132,7 +132,7 @@ Variables and the Role
 
 The role is fully customizable by setting the variables provided in the ``defaults/main.yml`` file. These variables range in usage from toggling entire sections (CIS), categories (STIG), general groups (GUI related), individual controls, localized settings, etc.
 There are comments around these variables that have a description of what the variable does, what the value options are, and what controls are associated with the variable.
-Variables are also listed in order of appearance in the execution of the role, variables used early in the are listed earlier in the file. Variables in this location are also very low in precedence,
+Variables are also listed in order of appearance in the execution of the role, variables used early in the role are listed earlier in the file. Variables in this location are also very low in precedence,
 `here is the official list of variable precedence. <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence>`_
 This means they are over-written very easily via extra vars
 

@@ -184,7 +184,7 @@ Audit
 - **benchmark_version**
 
 As these are very bespoke for each release the branches are named after the version of the benchmark it is to test.
-Allowing the playbook to test for he correct settings for that version
+Allowing the playbook to test for the correct settings for that version
 
 - RHEL9-CIS e.g. benchmark_v2.0.0
 

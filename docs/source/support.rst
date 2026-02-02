@@ -19,7 +19,7 @@ Tyto Athene Official Site and Services
 
 * `Tyto Athene Official Website <https://gotyto.com/who-we-are/contact-us/>`_ : If your organization has general questions regarding Cybersecurity or our Organization.
 
-*  `LinkedIn <linkedin.com/company/gotyto/>`_ : Our official LinkedIn Business Page
+*  `LinkedIn <https://linkedin.com/company/gotyto/>`_ : Our official LinkedIn Business Page
 
 .. toctree::
    :maxdepth: 3

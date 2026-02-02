@@ -6,12 +6,12 @@ Advanced Options
 ~~~~~~~~~~~~~~~~
 
 .. note::
-   These are advanced options and required a greater understanding of all aspects of implementation.
+   These are advanced options and require a greater understanding of all aspects of implementation.
 
 - auditd_exclusion:
 
-auditd logs can fill up very quickly with the default CIS options to log every privileged commands.
-Whether scanners/automation or and job that needs to run against a system with privilege access. e.g.sudo
+auditd logs can fill up very quickly with the default CIS options to log every privileged command.
+Whether scanners/automation or any job that needs to run against a system with privilege access. e.g.sudo
 
 There is the ability to change this for specific users to exclude anything in user space.
 This will still capture login/logout and sshd process but anything else will be excluded for that user.

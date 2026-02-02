@@ -6,7 +6,7 @@ Operating Systems
 
 .. csv-table:: CIS Linux Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
-   :widths: 25, 15, 15, 15, 25, 10
+   :widths: 25, 15, 15, 15, 30
 
    "AMAZON2-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
    "AMAZON2023-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
@@ -71,7 +71,7 @@ Archived Roles
 .. _DEBIAN13-CIS: https://github.com/ansible-lockdown/DEBIAN13-CIS
 .. _RHEL7-CIS: https://github.com/ansible-lockdown/RHEL7-CIS
 .. _RHEL8-CIS: https://github.com/ansible-lockdown/RHEL8-CIS
-.. _RHEL10-CIS: https://github.com/ansible-lockdown/RHEL10-CIS
+.. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
 .. _RHEL10-CIS: https://github.com/ansible-lockdown/RHEL10-CIS
 .. _SUSE15-CIS: https://github.com/ansible-lockdown/SUSE15-CIS
 .. _UBUNTU18-CIS: https://github.com/ansible-lockdown/UBUNTU18-CIS
