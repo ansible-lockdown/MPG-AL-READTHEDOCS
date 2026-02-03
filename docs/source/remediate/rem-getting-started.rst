@@ -105,7 +105,7 @@ CLI - Notice the reference to site.yml
 .. code-block:: console
 
   cd roles
-  ansible-playbook -i hosts -e '{ "rhel10stig_cat2_patch":false,"rhel10stig_cat3_patch":false }' ./RHEL10-STIG/site.yml
+  ansible-playbook -i hosts -e '{ "rhel10cis_section1":false,"rhel10cis_section2":false }' ./RHEL10-CIS/site.yml
 
 With Existing Playbooks
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,8 +124,6 @@ example of a basic playbook that uses this role:
           when:
             - ansible_os_family == 'RedHat'
             - ansible_distribution_major_version | version_compare('10', '=')
-
-
 
 Variables and the Role
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
