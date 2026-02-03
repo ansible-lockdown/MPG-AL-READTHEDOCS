@@ -11,17 +11,17 @@ Automated Security Benchmark - Auditing and Remediation
   :target: https://www.lockdownenterprise.com/discord
 
 
-MindPoint Group's (MPG_) Ansible-Lockdown Overview
+MindPoint Group - A Tyto Athene Company's (TYTO_) Ansible-Lockdown Overview
 --------------------------------------------------
 Our ReadtheDocs elaborates the resources, significance and objective of using our Automated Security
-Benchmark for auditing and remediation of system security. Our MPG_ Ansible_ roles can be applied
+Benchmark for auditing and remediation of system security. Our TYTO_ Ansible_ roles can be applied
 to systems to improve security posture, meet compliance requirements, and deploy without disruption
 after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
 CIS_ and DISA_ STIG_, which provide open-source licensed configurations to bring systems
 into security compliance. The content delivered consists of an audit component based on GOSS_
 that scans a host for compliance and a remediate component that can be run centrally using an
 **Ansible Deployment Server** to bring host(s) into compliance. Our open-source development/release process
-composes of MPG_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
+composes of TYTO_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
 with new benchmark versions.
 
 Why should this role be applied to a system?
@@ -136,9 +136,12 @@ customization of the applied value.
 It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific
 environments are responsible for meeting in order to effectively implement the controls in the relevant benchmark.
 
-Baselines are typically designed for the x86_64 architecture. But, with the growing popularity of ARM64/aarch64 systems for running environments,
-we have begun to extend our support for hardening on ARM as well. This rollout brings certain challenges, particularly regarding the audit component,
+Baselines are typically designed for the x86_64 architecture. But, with the growing popularity of ARM64/aarch64 systems
+(AWS Graviton, Azure Ampere, Google Tau T2A), we have extended our support for hardening on ARM as well.
+This rollout brings certain challenges, particularly regarding the audit component and auditd syscall differences,
 and it is not officially covered by the baseline provider. However, we strive to provide support for ARM as part of our pipelines.
+
+For detailed ARM64 guidance, see :doc:`ARM64/aarch64 Architecture Guide <arm64-guide>`.
 
 Development Process
 -------------------
@@ -181,7 +184,7 @@ Audit
 - **benchmark_version**
 
 As these are very bespoke for each release the branches are named after the version of the benchmark it is to test.
-Allowing the playbook to test for he correct settings for that version
+Allowing the playbook to test for the correct settings for that version
 
 - RHEL9-CIS e.g. benchmark_v2.0.0
 
@@ -206,4 +209,4 @@ Demos
 .. _ansible-galaxy: https://galaxy.ansible.com/MindPointGroup
 .. _DISA: https://disa.mil/
 .. _GitHub: https://github.com/ansible-lockdown
-.. _MPG: https://www.mindpointgroup.com/cybersecurity-products/ansible-counselor
+.. _TYTO: https://gotyto.com/services/cyber/risk-based-compliance/

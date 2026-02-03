@@ -20,13 +20,6 @@ Playbook Releases
 We aim to release remediate benchmarks within 30 days of vendor release to subscribers, this is subject to the number of changes, with new benchmarks often taking significantly longer.
 Public releases will be approximately three months after subscriber release.
 
-Branches
---------
-
-Refer to:
-
-- :doc:`Branches <../intro:Branches>`
-
 Example
 ^^^^^^^
 
@@ -34,6 +27,6 @@ Example
    :header: "Benchmark", "Vendor Release", "Subscriber release", "Public Release"
    :widths: 25, 25, 25, 25
 
-   "RHEL8-STIG", "27th January", "27th February", "27th May"
+   "RHEL10-STIG", "27th January", "27th February", "27th May"
 
 Becoming a subscriber is simple, visit https://lockdownenterprise.com for more information.

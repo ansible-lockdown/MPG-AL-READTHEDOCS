@@ -14,6 +14,8 @@ Documentation
    audit/getting-started-audit.rst
    remediate/rem-getting-started.rst
    combined/comb-getting-started.rst
+   container-guide.rst
+   arm64-guide.rst
 
 .. toctree::
    :maxdepth: 2
