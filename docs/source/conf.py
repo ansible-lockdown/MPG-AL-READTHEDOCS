@@ -102,9 +102,11 @@ rst_prolog ="\n.. include:: .variables.rst\n"
 # built documents.
 #
 # The short X.Y version.
-version = BENCHMARK_VERSION
+# version_info = pbr.version.VersionInfo(target_name)
 # The full version, including alpha/beta/rc tags.
-release = BENCHMARK_VERSION
+# release = version_info.version_string_with_vcs()
+# The short X.Y version.
+# version = version_info.canonical_version_string()
 
 # openstackdocstheme options
 # repository_name = 'mindpointgroup/' + target_name
