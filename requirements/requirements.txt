@@ -1,10 +1,21 @@
-# The order of packages is significant, because pip processes them in the order
-# of appearance. Changing the order has an impact on the overall integration
-# process, which may cause wedges in the gate later.
+# Documentation build dependencies
+# Pin versions for reproducible builds
+# Update with: pip-compile or manually review dependabot PRs
 
-# this is required for the docs build jobs
-sphinx>2.25.0
-sphinx_rtd_theme
-Jinja2
-PyYAML
-urllib3>1.26.17
+# Core Sphinx
+sphinx==7.4.7
+sphinx-rtd-theme==3.1.0
+
+# Sphinx extensions
+myst-parser==4.0.1
+sphinx-copybutton==0.5.2
+sphinx-design==0.7.0
+sphinxcontrib-mermaid==2.0.0
+
+# Development server
+sphinx-autobuild==2025.8.25
+
+# Required libraries
+Jinja2>=3.1.2
+PyYAML>=6.0
+urllib3>=2.0.0

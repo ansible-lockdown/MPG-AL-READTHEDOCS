@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit - FAQ &mdash; Ansible Lockdown</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible-lockdown 
+              <img src="../_static/LockdownEnterprise-MPG-White_V1.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Automated Security Benchmark - Auditing and Remediation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#mindpoint-group-a-tyto-athene-company-s-tyto-ansible-lockdown-overview">MindPoint Group - A Tyto Athene Company’s (TYTO) Ansible-Lockdown Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#why-should-this-role-be-applied-to-a-system">Why should this role be applied to a system?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-is-security-hardening">What is security hardening?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CIS/cis_overview.html">CIS Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../CIS/cis_overview.html#what-is-cis">What is CIS?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CIS/cis_overview.html#what-do-the-cis-roles-do">What do the CIS roles do?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CIS/cis_overview.html#control-severities">Control Severities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../STIG/stig_overview.html">STIG Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../STIG/stig_overview.html#what-is-stig">What is STIG?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../STIG/stig_overview.html#what-do-the-stig-roles-do">What do the STIG roles do?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../STIG/stig_overview.html#control-severities">Control Severities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-is-provided">What is provided?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#how-is-this-written">How is this written?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#development-process">Development Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#lifecycle-of-releases-and-branches">Lifecycle of releases and branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#branches">Branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#remediate">Remediate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#audit">Audit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#demos">Demos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started-audit.html">Audit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#considerations">Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#currently-enabled-playbooks">Currently Enabled Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#setup-auditing-as-standalone">Setup auditing as standalone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#running-the-audit-only-as-part-of-remediate-playbook">Running the Audit Only as part of remediate playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#defining-the-audit">Defining the audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#running-on-linux">Running on Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting-started-audit.html#bash-script-explanation-goss-security-audit">Bash Script Explanation: Goss Security Audit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#fetch-or-copy-audit-files">Fetch or Copy Audit Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-audit.html#running-on-windows">Running on Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting-started-audit.html#powershell-script-explanation-goss-security-audit">PowerShell Script Explanation: Goss Security Audit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../remediate/rem-getting-started.html">Remediate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../remediate/rem-getting-started.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../remediate/rem-getting-started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#using-ansible-galaxy">Using <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#using-git">Using <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../remediate/rem-getting-started.html#how-to-use">How to Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#on-its-own">On Its Own</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#with-existing-playbooks">With Existing Playbooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#variables-and-the-role">Variables and the Role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#using-and-modifying-variables-directly-defaults-main-yml">Using and Modifying Variables Directly (<code class="docutils literal notranslate"><span class="pre">defaults/main.yml</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#modifying-variables-with-extra-vars">Modifying Variables with Extra-Vars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem-getting-started.html#using-tags">Using Tags</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../combined/comb-getting-started.html">Using Audit and Remediate together</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../combined/comb-getting-started.html#post-hardening-lockdown-reporting-via-ansible-facts">Post Hardening Lockdown Reporting via Ansible_Facts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../combined/comb-getting-started.html#lockdown-facts-example">Lockdown Facts Example:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../combined/comb-getting-started.html#cis">CIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../combined/comb-getting-started.html#stig">STIG</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../container-guide.html">Container and Docker Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#container-detection">Container Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#controls-skipped-in-containers">Controls Skipped in Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#running-audit-in-containers">Running Audit in Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../container-guide.html#audit-from-host-against-container">Audit from Host Against Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#running-remediation-in-containers">Running Remediation in Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../container-guide.html#building-hardened-container-images">Building Hardened Container Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../container-guide.html#remediating-running-containers">Remediating Running Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#known-limitations">Known Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arm64-guide.html">ARM64/aarch64 Architecture Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#support-status">Support Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#getting-started-on-arm64">Getting Started on ARM64</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#running-remediation">Running Remediation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#running-audit">Running Audit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#known-limitations">Known Limitations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#auditd-system-call-differences">auditd System Call Differences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#kernel-module-differences">Kernel Module Differences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#validation-steps">Validation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#audit-binary-issues">Audit Binary Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#auditd-rule-failures">auditd Rule Failures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#reporting-arm64-issues">Reporting ARM64 Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Available Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../combined/release_sched.html">Release Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../combined/release_sched.html#cis">CIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../combined/release_sched.html#stig">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../combined/release_sched.html#playbook-releases">Playbook Releases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../combined/release_sched.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CIS/CIS_table.html">CIS Benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#operating-systems">Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#cloud-platforms">Cloud Platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#applications">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#archived-roles">Archived Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CIS/CIS_advanced.html">CIS Specific Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_advanced.html#advanced-options">Advanced Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../STIG/STIG_table.html">STIG Benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#operating-systems">Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#networking">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#applications">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#archived-roles">Archived Roles</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="audit_development.html">How to contribute to audit development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="audit_development.html#adding-code">Adding code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="audit_development.html#considerations">Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="audit_development.html#layout">Layout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="audit_development.html#content">Content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="audit_development.html#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="audit_development.html#gotchas">Gotchas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../remediate/rem_development.html">How to Contribute to Remediate Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem_development.html#remediate-code-summary">Remediate Code Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../remediate/rem_development.html#remediate-code-considerations">Remediate Code Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../remediate/rem_development.html#general-layout">General Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remediate/rem_development.html#variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remediate/rem_development.html#stig-control-task-layout">STIG Control Task Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remediate/rem_development.html#cis-control-task-layout">CIS Control Task Layout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Getting Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../support.html#contact-us">Contact Us</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../support.html#tyto-athene-official-site-and-services">Tyto Athene Official Site and Services</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../links.html">Useful links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#main-content-site">Main Content site</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#audit">Audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#remediate">Remediate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../links.html#linting">Linting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible-lockdown </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Audit - FAQ</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audit-faq">
+<h1>Audit - FAQ<a class="headerlink" href="#audit-faq" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#goss-binary-issues" id="id1">Goss Binary Issues</a></p>
+<ul>
+<li><p><a class="reference internal" href="#why-does-goss-run-manually-fail" id="id2">Why does goss run manually fail?</a></p></li>
+<li><p><a class="reference internal" href="#goss-binary-not-found" id="id3">Goss Binary Not Found</a></p></li>
+<li><p><a class="reference internal" href="#exec-format-error" id="id4">Exec Format Error</a></p></li>
+<li><p><a class="reference internal" href="#goss-version-too-old" id="id5">Goss Version Too Old</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#architecture-specific-issues" id="id6">Architecture-Specific Issues</a></p>
+<ul>
+<li><p><a class="reference internal" href="#why-do-i-have-different-results-between-x86-64-and-arm64-aarch64-audits" id="id7">Why do I have different results between x86_64 and ARM64/aarch64 audits?</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#audit-results-and-interpretation" id="id8">Audit Results and Interpretation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#how-do-i-read-the-audit-output" id="id9">How Do I Read the Audit Output?</a></p></li>
+<li><p><a class="reference internal" href="#why-are-so-many-controls-failing" id="id10">Why Are So Many Controls Failing?</a></p></li>
+<li><p><a class="reference internal" href="#why-do-i-have-failures-after-successful-remediation" id="id11">Why Do I Have Failures After Successful Remediation?</a></p></li>
+<li><p><a class="reference internal" href="#how-do-i-filter-audit-results" id="id12">How Do I Filter Audit Results?</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#performance-and-resource-issues" id="id13">Performance and Resource Issues</a></p>
+<ul>
+<li><p><a class="reference internal" href="#my-system-is-impacted-when-running-the-audit-how-can-i-restrict-its-effect" id="id14">My system is impacted when running the audit. How can I restrict its effect?</a></p></li>
+<li><p><a class="reference internal" href="#audit-takes-too-long" id="id15">Audit Takes Too Long</a></p></li>
+<li><p><a class="reference internal" href="#audit-causes-high-disk-i-o" id="id16">Audit Causes High Disk I/O</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#script-and-configuration-issues" id="id17">Script and Configuration Issues</a></p>
+<ul>
+<li><p><a class="reference internal" href="#variables-file-not-found" id="id18">Variables File Not Found</a></p></li>
+<li><p><a class="reference internal" href="#permission-denied-running-script" id="id19">Permission Denied Running Script</a></p></li>
+<li><p><a class="reference internal" href="#output-file-not-created" id="id20">Output File Not Created</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#container-and-special-environments" id="id21">Container and Special Environments</a></p>
+<ul>
+<li><p><a class="reference internal" href="#why-do-many-controls-fail-in-containers" id="id22">Why Do Many Controls Fail in Containers?</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="goss-binary-issues">
+<h2>Goss Binary Issues<a class="headerlink" href="#goss-binary-issues" title="Link to this heading"></a></h2>
+<section id="why-does-goss-run-manually-fail">
+<h3>Why does goss run manually fail?<a class="headerlink" href="#why-does-goss-run-manually-fail" title="Link to this heading"></a></h3>
+<p>Example error when running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>goss<span class="w"> </span>-g<span class="w"> </span>goss.yml<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>Goss is designed to run from the scripts passing discovered variables into Goss for metadata. Without these values being set, Goss will fail. These metadata variables can be seen towards the end of the goss.yml file. Furthermore, the run_audit script shows how these variables are created and passed to Goss.</p>
+<p><strong>Solution:</strong> Always use the provided <code class="docutils literal notranslate"><span class="pre">run_audit.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">run_audit.ps1</span></code> scripts.</p>
+</section>
+<section id="goss-binary-not-found">
+<h3>Goss Binary Not Found<a class="headerlink" href="#goss-binary-not-found" title="Link to this heading"></a></h3>
+<p><strong>Symptom:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./run_audit.sh:<span class="w"> </span>line<span class="w"> </span>XX:<span class="w"> </span>/usr/local/bin/goss:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+</pre></div>
+</div>
+<p><strong>Solution:</strong></p>
+<ol class="arabic">
+<li><p>Download the correct binary for your architecture:</p>
+<p><strong>AMD64/x86_64:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64 \</span>
+<span class="go">    -o /usr/local/bin/goss</span>
+<span class="go">chmod +x /usr/local/bin/goss</span>
+</pre></div>
+</div>
+<p><strong>ARM64/aarch64:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64 \</span>
+<span class="go">    -o /usr/local/bin/goss</span>
+<span class="go">chmod +x /usr/local/bin/goss</span>
+</pre></div>
+</div>
+</li>
+<li><p>Or update <code class="docutils literal notranslate"><span class="pre">AUDIT_BIN</span></code> in the script to point to the correct location.</p></li>
+</ol>
+</section>
+<section id="exec-format-error">
+<h3>Exec Format Error<a class="headerlink" href="#exec-format-error" title="Link to this heading"></a></h3>
+<p><strong>Symptom:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>goss:<span class="w"> </span>cannot<span class="w"> </span>execute<span class="w"> </span>binary<span class="w"> </span>file:<span class="w"> </span>Exec<span class="w"> </span>format<span class="w"> </span>error
+</pre></div>
+</div>
+<p><strong>Cause:</strong> Wrong architecture binary (e.g., x86_64 binary on ARM64 system).</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Check<span class="w"> </span>your<span class="w"> </span>architecture
+<span class="go">uname -m</span>
+
+<span class="gp"># </span>Download<span class="w"> </span>the<span class="w"> </span>matching<span class="w"> </span>binary<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>above<span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="goss-version-too-old">
+<h3>Goss Version Too Old<a class="headerlink" href="#goss-version-too-old" title="Link to this heading"></a></h3>
+<p><strong>Symptom:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>WARNING<span class="w"> </span>-<span class="w"> </span>Goss<span class="w"> </span><span class="nv">installed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.3.16,<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>meet<span class="w"> </span>minimum<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.4.4
+</pre></div>
+</div>
+<p><strong>Solution:</strong></p>
+<p>Download and install the latest version:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64 \</span>
+<span class="go">    -o /usr/local/bin/goss</span>
+<span class="go">chmod +x /usr/local/bin/goss</span>
+<span class="go">goss --version</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="architecture-specific-issues">
+<h2>Architecture-Specific Issues<a class="headerlink" href="#architecture-specific-issues" title="Link to this heading"></a></h2>
+<section id="why-do-i-have-different-results-between-x86-64-and-arm64-aarch64-audits">
+<h3>Why do I have different results between x86_64 and ARM64/aarch64 audits?<a class="headerlink" href="#why-do-i-have-different-results-between-x86-64-and-arm64-aarch64-audits" title="Link to this heading"></a></h3>
+<p>ARM64 (aarch64) and x86_64 architectures use different system call numbers and implementations.
+This primarily affects auditd-related controls, as ARM64 uses different syscalls for many
+file operations (e.g., <code class="docutils literal notranslate"><span class="pre">unlinkat</span></code> instead of <code class="docutils literal notranslate"><span class="pre">unlink</span></code>, <code class="docutils literal notranslate"><span class="pre">openat</span></code> instead of <code class="docutils literal notranslate"><span class="pre">open</span></code>).</p>
+<p><strong>Common causes of ARM64 audit differences:</strong></p>
+<ul class="simple">
+<li><p>auditd syscall rules reference x86_64-specific syscalls</p></li>
+<li><p>Some syscalls don’t exist on ARM64</p></li>
+<li><p>Kernel module names may differ</p></li>
+</ul>
+<p><strong>What to expect:</strong></p>
+<ul class="simple">
+<li><p>Remediation generally works identically on both architectures</p></li>
+<li><p>Audit results will show more failures/skips for auditd-related controls on ARM64</p></li>
+<li><p>This is expected behavior, not a bug</p></li>
+</ul>
+<p>For detailed information on ARM64 support, workarounds, and best practices, see the
+<a class="reference internal" href="../arm64-guide.html"><span class="doc">ARM64/aarch64 Architecture Guide</span></a>.</p>
+</section>
+</section>
+<section id="audit-results-and-interpretation">
+<h2>Audit Results and Interpretation<a class="headerlink" href="#audit-results-and-interpretation" title="Link to this heading"></a></h2>
+<section id="how-do-i-read-the-audit-output">
+<h3>How Do I Read the Audit Output?<a class="headerlink" href="#how-do-i-read-the-audit-output" title="Link to this heading"></a></h3>
+<p>The audit produces JSON output with the following structure:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;failed-count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;test-count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;total-duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.2</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Key metrics:</strong></p>
+<ul class="simple">
+<li><p><strong>test-count</strong>: Total controls evaluated</p></li>
+<li><p><strong>failed-count</strong>: Controls that failed compliance check</p></li>
+<li><p><strong>skipped-count</strong>: Controls skipped (disabled or not applicable)</p></li>
+</ul>
+</section>
+<section id="why-are-so-many-controls-failing">
+<h3>Why Are So Many Controls Failing?<a class="headerlink" href="#why-are-so-many-controls-failing" title="Link to this heading"></a></h3>
+<p><strong>Common Causes:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>System not yet remediated</strong> - Run audit after applying hardening</p></li>
+<li><p><strong>Controls disabled in remediation</strong> - Audit checks all controls by default</p></li>
+<li><p><strong>Architecture differences</strong> - ARM64 systems have expected auditd failures</p></li>
+<li><p><strong>Container environment</strong> - Many controls don’t apply to containers</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p>Ensure audit variables match your remediation configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># vars/CIS.yml - should match your remediation settings</span>
+<span class="nt">rhel10cis_rule_1_1_1_1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">rhel10cis_rule_1_1_1_2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Disabled in remediation</span>
+</pre></div>
+</div>
+</section>
+<section id="why-do-i-have-failures-after-successful-remediation">
+<h3>Why Do I Have Failures After Successful Remediation?<a class="headerlink" href="#why-do-i-have-failures-after-successful-remediation" title="Link to this heading"></a></h3>
+<p><strong>Common Causes:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Reboot required</strong> - Some changes only take effect after reboot</p></li>
+<li><p><strong>Service restart needed</strong> - Configuration changes may need service restart</p></li>
+<li><p><strong>Time-based controls</strong> - Password aging, log rotation need time to apply</p></li>
+<li><p><strong>Manual controls</strong> - Some controls require manual intervention</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ol class="arabic simple">
+<li><p>Reboot the system after remediation</p></li>
+<li><p>Wait for time-based controls to take effect</p></li>
+<li><p>Review manual control requirements in the benchmark documentation</p></li>
+</ol>
+</section>
+<section id="how-do-i-filter-audit-results">
+<h3>How Do I Filter Audit Results?<a class="headerlink" href="#how-do-i-filter-audit-results" title="Link to this heading"></a></h3>
+<p><strong>Filter by status:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Show<span class="w"> </span>only<span class="w"> </span>failures
+<span class="go">cat audit_output.json | jq &#39;.results[] | select(.successful == false)&#39;</span>
+
+<span class="gp"># </span>Show<span class="w"> </span>only<span class="w"> </span>skipped
+<span class="go">cat audit_output.json | jq &#39;.results[] | select(.skipped == true)&#39;</span>
+</pre></div>
+</div>
+<p><strong>Filter by control ID:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Find<span class="w"> </span>specific<span class="w"> </span>control
+<span class="go">cat audit_output.json | jq &#39;.results[] | select(.title | contains(&quot;1.1.1&quot;))&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance-and-resource-issues">
+<h2>Performance and Resource Issues<a class="headerlink" href="#performance-and-resource-issues" title="Link to this heading"></a></h2>
+<section id="my-system-is-impacted-when-running-the-audit-how-can-i-restrict-its-effect">
+<h3>My system is impacted when running the audit. How can I restrict its effect?<a class="headerlink" href="#my-system-is-impacted-when-running-the-audit-how-can-i-restrict-its-effect" title="Link to this heading"></a></h3>
+<p>On both Windows and Linux, you have the ability to limit the number of processes that run at the same time.</p>
+<p>This is set using a variable as part of the playbook:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">audit_max_concurrent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">  </span><span class="c1"># Default is 50</span>
+</pre></div>
+</div>
+<p>Or if running manually using the run_audit script:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./run_audit.sh -m 20</span>
+</pre></div>
+</div>
+</section>
+<section id="audit-takes-too-long">
+<h3>Audit Takes Too Long<a class="headerlink" href="#audit-takes-too-long" title="Link to this heading"></a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p><strong>Reduce concurrent processes:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./run_audit.sh -m 10</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Skip heavy tests</strong> (filesystem scans):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">audit_run_heavy_tests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Increase command timeout</strong> for slow systems:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">audit_cmd_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120000</span><span class="w">  </span><span class="c1"># milliseconds</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="audit-causes-high-disk-i-o">
+<h3>Audit Causes High Disk I/O<a class="headerlink" href="#audit-causes-high-disk-i-o" title="Link to this heading"></a></h3>
+<p>Some controls scan the entire filesystem. To reduce impact:</p>
+<ol class="arabic">
+<li><p>Run during off-peak hours</p></li>
+<li><p>Disable heavy tests if not required:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">audit_run_heavy_tests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</li>
+<li><p>Consider using ionice on Linux:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ionice -c 3 ./run_audit.sh</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="script-and-configuration-issues">
+<h2>Script and Configuration Issues<a class="headerlink" href="#script-and-configuration-issues" title="Link to this heading"></a></h2>
+<section id="variables-file-not-found">
+<h3>Variables File Not Found<a class="headerlink" href="#variables-file-not-found" title="Link to this heading"></a></h3>
+<p><strong>Symptom:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Error:<span class="w"> </span>vars<span class="w"> </span>file<span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span>at<span class="w"> </span>/opt/RHEL10-CIS-Audit/vars/CIS.yml
+</pre></div>
+</div>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Verify the audit content is properly extracted:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls -la /opt/RHEL10-CIS-Audit/vars/</span>
+</pre></div>
+</div>
+</li>
+<li><p>Specify the vars file path explicitly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./run_audit.sh -v /path/to/your/vars/CIS.yml</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="permission-denied-running-script">
+<h3>Permission Denied Running Script<a class="headerlink" href="#permission-denied-running-script" title="Link to this heading"></a></h3>
+<p><strong>Symptom:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./run_audit.sh:<span class="w"> </span>Permission<span class="w"> </span>denied
+</pre></div>
+</div>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Make script executable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod +x run_audit.sh</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run with bash explicitly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">bash run_audit.sh</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run with sudo if required:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo ./run_audit.sh</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="output-file-not-created">
+<h3>Output File Not Created<a class="headerlink" href="#output-file-not-created" title="Link to this heading"></a></h3>
+<p><strong>Symptom:</strong> Audit runs but no output file is created.</p>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Check output directory permissions:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls -la /opt/  # or your configured output directory</span>
+</pre></div>
+</div>
+</li>
+<li><p>Specify output file explicitly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./run_audit.sh -o /tmp/audit_output.json</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check for errors in script execution:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./run_audit.sh 2&gt;&amp;1 | tee audit_debug.log</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="container-and-special-environments">
+<h2>Container and Special Environments<a class="headerlink" href="#container-and-special-environments" title="Link to this heading"></a></h2>
+<section id="why-do-many-controls-fail-in-containers">
+<h3>Why Do Many Controls Fail in Containers?<a class="headerlink" href="#why-do-many-controls-fail-in-containers" title="Link to this heading"></a></h3>
+<p>Containers lack many components that benchmarks assume exist:</p>
+<ul class="simple">
+<li><p>No systemd (typically)</p></li>
+<li><p>No bootloader</p></li>
+<li><p>No kernel access</p></li>
+<li><p>Limited audit capabilities</p></li>
+</ul>
+<p><strong>Solution:</strong></p>
+<p>Set container mode:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">is_container</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../container-guide.html"><span class="doc">Container and Docker Guide</span></a> for details.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MindPoint Group - A Tyto Athene Company.
+      <span class="lastupdated">Last updated on 2026-02-03 14:37.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

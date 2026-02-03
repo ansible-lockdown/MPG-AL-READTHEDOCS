@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remediate &mdash; Ansible Lockdown</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using Audit and Remediate together" href="../combined/comb-getting-started.html" />
+    <link rel="prev" title="Audit" href="../audit/getting-started-audit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ansible-lockdown 
+              <img src="../_static/LockdownEnterprise-MPG-White_V1.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Automated Security Benchmark - Auditing and Remediation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#mindpoint-group-a-tyto-athene-company-s-tyto-ansible-lockdown-overview">MindPoint Group - A Tyto Athene Company’s (TYTO) Ansible-Lockdown Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#why-should-this-role-be-applied-to-a-system">Why should this role be applied to a system?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-is-security-hardening">What is security hardening?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CIS/cis_overview.html">CIS Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../CIS/cis_overview.html#what-is-cis">What is CIS?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CIS/cis_overview.html#what-do-the-cis-roles-do">What do the CIS roles do?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CIS/cis_overview.html#control-severities">Control Severities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../STIG/stig_overview.html">STIG Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../STIG/stig_overview.html#what-is-stig">What is STIG?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../STIG/stig_overview.html#what-do-the-stig-roles-do">What do the STIG roles do?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../STIG/stig_overview.html#control-severities">Control Severities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-is-provided">What is provided?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#how-is-this-written">How is this written?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#development-process">Development Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#lifecycle-of-releases-and-branches">Lifecycle of releases and branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#branches">Branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#remediate">Remediate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#audit">Audit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#demos">Demos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../audit/getting-started-audit.html">Audit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#considerations">Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#currently-enabled-playbooks">Currently Enabled Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#setup-auditing-as-standalone">Setup auditing as standalone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#running-the-audit-only-as-part-of-remediate-playbook">Running the Audit Only as part of remediate playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#defining-the-audit">Defining the audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#running-on-linux">Running on Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../audit/getting-started-audit.html#bash-script-explanation-goss-security-audit">Bash Script Explanation: Goss Security Audit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#fetch-or-copy-audit-files">Fetch or Copy Audit Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audit/getting-started-audit.html#running-on-windows">Running on Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../audit/getting-started-audit.html#powershell-script-explanation-goss-security-audit">PowerShell Script Explanation: Goss Security Audit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Remediate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-ansible-galaxy">Using <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-git">Using <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#on-its-own">On Its Own</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-existing-playbooks">With Existing Playbooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables-and-the-role">Variables and the Role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-and-modifying-variables-directly-defaults-main-yml">Using and Modifying Variables Directly (<code class="docutils literal notranslate"><span class="pre">defaults/main.yml</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-variables-with-extra-vars">Modifying Variables with Extra-Vars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-tags">Using Tags</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../combined/comb-getting-started.html">Using Audit and Remediate together</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../combined/comb-getting-started.html#post-hardening-lockdown-reporting-via-ansible-facts">Post Hardening Lockdown Reporting via Ansible_Facts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../combined/comb-getting-started.html#lockdown-facts-example">Lockdown Facts Example:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../combined/comb-getting-started.html#cis">CIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../combined/comb-getting-started.html#stig">STIG</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../container-guide.html">Container and Docker Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#container-detection">Container Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#controls-skipped-in-containers">Controls Skipped in Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#running-audit-in-containers">Running Audit in Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../container-guide.html#audit-from-host-against-container">Audit from Host Against Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#running-remediation-in-containers">Running Remediation in Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../container-guide.html#building-hardened-container-images">Building Hardened Container Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../container-guide.html#remediating-running-containers">Remediating Running Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#known-limitations">Known Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container-guide.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arm64-guide.html">ARM64/aarch64 Architecture Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#support-status">Support Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#getting-started-on-arm64">Getting Started on ARM64</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#running-remediation">Running Remediation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#running-audit">Running Audit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#known-limitations">Known Limitations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#auditd-system-call-differences">auditd System Call Differences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#kernel-module-differences">Kernel Module Differences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#validation-steps">Validation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#audit-binary-issues">Audit Binary Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../arm64-guide.html#auditd-rule-failures">auditd Rule Failures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#reporting-arm64-issues">Reporting ARM64 Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arm64-guide.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Available Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../combined/release_sched.html">Release Schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../combined/release_sched.html#cis">CIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../combined/release_sched.html#stig">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../combined/release_sched.html#playbook-releases">Playbook Releases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../combined/release_sched.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CIS/CIS_table.html">CIS Benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#operating-systems">Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#cloud-platforms">Cloud Platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#applications">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_table.html#archived-roles">Archived Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CIS/CIS_advanced.html">CIS Specific Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CIS/CIS_advanced.html#advanced-options">Advanced Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../STIG/STIG_table.html">STIG Benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#operating-systems">Operating Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#networking">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#applications">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../STIG/STIG_table.html#archived-roles">Archived Roles</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../audit/audit_development.html">How to contribute to audit development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../audit/audit_development.html#adding-code">Adding code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audit/audit_development.html#considerations">Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audit/audit_development.html#layout">Layout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../audit/audit_development.html#content">Content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../audit/audit_development.html#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../audit/audit_development.html#gotchas">Gotchas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rem_development.html">How to Contribute to Remediate Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rem_development.html#remediate-code-summary">Remediate Code Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rem_development.html#remediate-code-considerations">Remediate Code Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rem_development.html#general-layout">General Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rem_development.html#variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rem_development.html#stig-control-task-layout">STIG Control Task Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rem_development.html#cis-control-task-layout">CIS Control Task Layout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Getting Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../support.html#contact-us">Contact Us</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../support.html#tyto-athene-official-site-and-services">Tyto Athene Official Site and Services</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../links.html">Useful links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#main-content-site">Main Content site</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#audit">Audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../links.html#remediate">Remediate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../links.html#linting">Linting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ansible-lockdown </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Remediate</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="remediate">
+<h1>Remediate<a class="headerlink" href="#remediate" title="Link to this heading"></a></h1>
+<p>This role is part of the <a class="reference external" href="https://github.com/ansible-lockdown">Ansible Lockdown</a> project and can be used as a
+standalone role or it can be used along with other Ansible roles, playbooks, or collections.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#requirements" id="id1">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id2">Installation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-ansible-galaxy" id="id3">Using <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code></a></p></li>
+<li><p><a class="reference internal" href="#using-git" id="id4">Using <code class="docutils literal notranslate"><span class="pre">git</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#how-to-use" id="id5">How to Use</a></p>
+<ul>
+<li><p><a class="reference internal" href="#on-its-own" id="id6">On Its Own</a></p></li>
+<li><p><a class="reference internal" href="#with-existing-playbooks" id="id7">With Existing Playbooks</a></p></li>
+<li><p><a class="reference internal" href="#variables-and-the-role" id="id8">Variables and the Role</a></p></li>
+<li><p><a class="reference internal" href="#using-and-modifying-variables-directly-defaults-main-yml" id="id9">Using and Modifying Variables Directly (<code class="docutils literal notranslate"><span class="pre">defaults/main.yml</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#modifying-variables-with-extra-vars" id="id10">Modifying Variables with Extra-Vars</a></p></li>
+<li><p><a class="reference internal" href="#using-tags" id="id11">Using Tags</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is strongly recommended to run the role in a test environment first. There are controls that could introduce
+breaking changes. Check mode might not always catch these changes. The best way to confirm how the role will change
+your system is to fully test.</p>
+</div>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>This documentation assumes that the reader has completed the steps within the</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.ansible.com/ansible/latest/installation_guide/index.html">Ansible installation guide</a>.</p></li>
+</ul>
+<p>and has a good understanding of using ansible</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.ansible.com/ansible/latest/user_guide/index.html">Ansible User Guide</a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The role requires elevated privileges and must be run as a user with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>
+access. The example above uses the <code class="docutils literal notranslate"><span class="pre">become</span></code> option, which causes Ansible to use
+sudo before running tasks.</p>
+</div>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>The recommended installation methods for this role are
+<code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> (recommended) or <code class="docutils literal notranslate"><span class="pre">git</span></code>.</p>
+<section id="using-ansible-galaxy">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code><a class="headerlink" href="#using-ansible-galaxy" title="Link to this heading"></a></h3>
+<p>The easiest installation method is to use the <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> command that
+is provided with your Ansible installation:</p>
+<p>The general format is ansible-galaxy install git+|url to repo|, below is an example with
+RHEL10-CIS</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ansible-galaxy install git+https://github.com/ansible-lockdown/RHEL10-CIS.git</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ansible-galaxy</span></code> command will install the role into
+<code class="docutils literal notranslate"><span class="pre">/etc/ansible/roles/</span></code> and this makes it easy to use with
+Ansible playbooks.</p>
+</section>
+<section id="using-git">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">git</span></code><a class="headerlink" href="#using-git" title="Link to this heading"></a></h3>
+<p>Start by cloning the role into a directory of your choice, this example uses ~/.ansible/roles which can be changed out for any folder.
+That folder needs to be empty:</p>
+<p>To clone and create a folder with the same name as the repo:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/CIS_Roles</span>
+<span class="go">git clone https://github.com/ansible-lockdown/RHEL10-CIS.git</span>
+</pre></div>
+</div>
+<p>To clone and put the files from the repo into a specific folder, folder does need to be empty:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir ~/CIS_Roles</span>
+<span class="go">git clone https://github.com/ansible-lockdown/RHEL10-CIS.git ~/CIS_Roles</span>
+</pre></div>
+</div>
+<p>Ansible looks for roles in <code class="docutils literal notranslate"><span class="pre">~/.ansible/roles</span></code> by default.</p>
+<p>If the role is cloned into a different directory, that directory must be
+provided with the <code class="docutils literal notranslate"><span class="pre">roles_path</span></code> option in <code class="docutils literal notranslate"><span class="pre">ansible.cfg</span></code>. The following is
+an example of a <code class="docutils literal notranslate"><span class="pre">ansible.cfg</span></code> file that uses a custom path for roles:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DEFAULTS]</span>
+<span class="na">roles_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/etc/ansible/roles:/home/myuser/custom/roles</span>
+</pre></div>
+</div>
+<p>With this configuration, Ansible looks for roles in <code class="docutils literal notranslate"><span class="pre">/etc/ansible/roles</span></code> and
+<code class="docutils literal notranslate"><span class="pre">~/custom/roles</span></code>.</p>
+</section>
+</section>
+<section id="how-to-use">
+<h2>How to Use<a class="headerlink" href="#how-to-use" title="Link to this heading"></a></h2>
+<section id="on-its-own">
+<h3>On Its Own<a class="headerlink" href="#on-its-own" title="Link to this heading"></a></h3>
+<p>This role can be used on its own as a role. The file <code class="docutils literal notranslate"><span class="pre">site.yml</span></code> is the included file to point to. This role does not include an inventory file for hosts
+since that is too site specific, that will need to be managed locally. Below are examples of how to run in various scenarios</p>
+<p>CLI - Notice the reference to site.yml</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd roles</span>
+<span class="go">ansible-playbook -i hosts -e &#39;{ &quot;rhel10cis_section1&quot;:false,&quot;rhel10cis_section2&quot;:false }&#39; ./RHEL10-CIS/site.yml</span>
+</pre></div>
+</div>
+</section>
+<section id="with-existing-playbooks">
+<h3>With Existing Playbooks<a class="headerlink" href="#with-existing-playbooks" title="Link to this heading"></a></h3>
+<p>This role works well with existing playbooks. The following is an
+example of a basic playbook that uses this role:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servers</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RHEL10-CIS</span>
+<span class="w">      </span><span class="nt">when</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible_os_family == &#39;RedHat&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible_distribution_major_version | version_compare(&#39;10&#39;, &#39;=&#39;)</span>
+</pre></div>
+</div>
+</section>
+<section id="variables-and-the-role">
+<h3>Variables and the Role<a class="headerlink" href="#variables-and-the-role" title="Link to this heading"></a></h3>
+<p>The role is fully customizable by setting the variables provided in the <code class="docutils literal notranslate"><span class="pre">defaults/main.yml</span></code> file. These variables range in usage from toggling entire sections (CIS), categories (STIG), general groups (GUI related), individual controls, localized settings, etc.
+There are comments around these variables that have a description of what the variable does, what the value options are, and what controls are associated with the variable.
+Variables are also listed in order of appearance in the execution of the role, variables used early in the role are listed earlier in the file. Variables in this location are also very low in precedence,
+<a class="reference external" href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence">here is the official list of variable precedence.</a>
+This means they are over-written very easily via extra vars</p>
+<p>This role has been written with ease of use in mind, which means it’s written in a way that requires as little user interaction as possible. No need to modify any tasks at all!</p>
+</section>
+<section id="using-and-modifying-variables-directly-defaults-main-yml">
+<h3>Using and Modifying Variables Directly (<code class="docutils literal notranslate"><span class="pre">defaults/main.yml</span></code>)<a class="headerlink" href="#using-and-modifying-variables-directly-defaults-main-yml" title="Link to this heading"></a></h3>
+<p>This is the most basic way to make the change. The file has all of the available variables along with comments on what task the variable is for, a description on what the variable is, and
+the formatting for the value in the variable. Just update the values as needed</p>
+</section>
+<section id="modifying-variables-with-extra-vars">
+<h3>Modifying Variables with Extra-Vars<a class="headerlink" href="#modifying-variables-with-extra-vars" title="Link to this heading"></a></h3>
+<p>This is where the power of using variables via <code class="docutils literal notranslate"><span class="pre">defaults/main.yml</span></code> come into play. Anywhere you can use or set an extra var is place you can set these variables.</p>
+<p>CLI In-Line setting (Set to only run STIG CAT1)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ansible-playbook -i host_file -e &#39;{ &quot;rhel10stig_cat2_patch&quot;:false,&quot;rhel10stig_cat3_patch&quot;:false }&#39; ./RHEL10-STIG/site.yml</span>
+</pre></div>
+</div>
+</section>
+<section id="using-tags">
+<h3>Using Tags<a class="headerlink" href="#using-tags" title="Link to this heading"></a></h3>
+<p>Each  control is tagged with various pieces of information about the control to allow for more refined use with skipping or running controls.
+For STIG this includes all of the ID’s, CIS has the level2 data, and both have info related to what the control relates to. For example all controls related to SSH will have the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> tag.</p>
+<p>STIG Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RHEL-10-040137</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CAT2</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CCI-001764</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SRG-OS-000368-GPOS-00154</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SV-244546r809339_rule</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V-244546</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fapolicy</span>
+</pre></div>
+</div>
+<p>CIS Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">level1-server</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">level1-workstation</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">automated</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dhcp</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rule_2.2.5</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../audit/getting-started-audit.html" class="btn btn-neutral float-left" title="Audit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../combined/comb-getting-started.html" class="btn btn-neutral float-right" title="Using Audit and Remediate together" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, MindPoint Group - A Tyto Athene Company.
+      <span class="lastupdated">Last updated on 2026-02-03 14:28.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

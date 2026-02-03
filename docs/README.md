@@ -1,48 +1,128 @@
-# Documentation for Ansible-Lockdown documentation
+# Ansible Lockdown Documentation
 
-This is presented by readthedocs.io
+[![Documentation Status](https://readthedocs.org/projects/ansible-lockdown/badge/?version=latest)](https://ansible-lockdown.readthedocs.io/en/latest/?badge=latest)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
-This is split across multiple folders and structures
+Documentation for Ansible Lockdown security benchmark roles, hosted on [Read the Docs](https://ansible-lockdown.readthedocs.io).
 
-- .readthedocs.yaml - doc for configuration used by read the docs
-- requirements.txt - pip requirements file to stipulate the versions on the runner this is built with
-- Makefile  - Future use (potential use to assist to build own docs)
+## Project Structure
 
-- source/
-  - index.rst - main landing page on readthedocs.io
-  - benchmarks.rst - maintained file of whats live/archived and whats covered under ansible-lockdown
-  - conf.py - this is the build file how things are put together
-  - audit.rst - table of contents for the audit section
-  - remediate.rst - TOC for the remediate section
+```
+├── .github/
+│   ├── workflows/main.yml    # CI/CD pipeline
+│   └── dependabot.yml        # Automated dependency updates
+├── docs/
+│   ├── source/
+│   │   ├── conf.py           # Sphinx configuration
+│   │   ├── index.rst         # Main landing page
+│   │   ├── audit/            # Audit documentation
+│   │   ├── remediate/        # Remediate documentation
+│   │   ├── combined/         # Combined workflow docs
+│   │   ├── CIS/              # CIS benchmark tables
+│   │   ├── STIG/             # STIG benchmark tables
+│   │   └── _static/          # Images and assets
+│   └── Makefile
+├── requirements/
+│   ├── requirements.txt      # Build dependencies
+│   └── requirements-dev.txt  # Development dependencies
+├── .pre-commit-config.yaml   # Pre-commit hooks
+├── .readthedocs.yaml         # RTD build configuration
+└── pyproject.toml            # Python project config
+```
 
-- source/audit/      # dir for audit content
-- source/remediate/  # dir for the remediate content
-- source/_static/MPG-logo-mono-blue.svg
+## Local Development
 
-To generate the documentation on a RHEL/CentOS 7 system, take the following steps:
+### Prerequisites
 
-1 Install required packages:
+- Python 3.10+
+- pip
+
+### Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ansible-lockdown/MPG-AL-READTHEDOCS.git
+   cd MPG-AL-READTHEDOCS
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pip install -r requirements/requirements-dev.txt
+   ```
+
+3. Install pre-commit hooks:
+
+   ```bash
+   pre-commit install
+   ```
+
+### Building Documentation
+
+Build HTML documentation:
 
 ```bash
- yum install python3-pip python-sphinx
+sphinx-build -b html docs/source docs/build/html
 ```
 
-2 Install the requirements:
-
-``` bash
-sudo pip3 install -r requirements.txt
-```
-
-3 Generate the documentation:
+Build with live reload (auto-refreshes on changes):
 
 ```bash
-make singlehtml
+sphinx-autobuild docs/source docs/build/html
 ```
 
-## Adding a new benchmark
+View the built documentation by opening `docs/build/html/index.html` in a browser.
 
-The file(s) that need to be adjusted are
+### Running Quality Checks
 
-- source/benchmarks_STIG.rst
+Run all pre-commit hooks:
 
-This auto populates into the index and anywhere else it is required
+```bash
+pre-commit run --all-files
+```
+
+Run specific checks:
+
+```bash
+# RST linting
+doc8 docs/source
+
+# RST syntax checking
+rstcheck --recursive docs/source
+
+# Link checking
+sphinx-build -b linkcheck docs/source docs/build/linkcheck
+```
+
+## CI/CD Pipeline
+
+The GitHub Actions workflow (`.github/workflows/main.yml`) runs on push/PR to `main` and `devel` branches:
+
+| Job | Description |
+|-----|-------------|
+| **build** | Builds Sphinx HTML documentation |
+| **linkcheck** | Validates external links |
+| **lint** | Runs doc8 and rstcheck |
+
+## Adding Content
+
+### New Benchmark
+
+1. Add entry to the appropriate table in `docs/source/CIS/CIS_table.rst` or `docs/source/STIG/STIG_table.rst`
+2. Update `docs/source/intro.rst` if needed
+3. Run `pre-commit run --all-files` to validate changes
+
+### New Documentation Page
+
+1. Create `.rst` file in the appropriate directory
+2. Add to relevant `toctree` directive in parent document
+3. Follow existing formatting conventions
+
+## Dependencies
+
+Dependencies are managed in `requirements/requirements.txt` with pinned versions for reproducible builds. Dependabot automatically creates PRs for updates weekly.
+
+## License
+
+MIT License - see [LICENSE](../LICENSE) for details.

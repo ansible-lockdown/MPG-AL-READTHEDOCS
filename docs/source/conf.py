@@ -46,7 +46,9 @@ from collections import OrderedDict
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.join(os.path.abspath('.'), '_exts'))
+_conf_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _conf_dir)
+sys.path.insert(0, os.path.join(_conf_dir, '_exts'))
 
 # NOTE(mhayden): Since the security role docs are fairly lengthy and deeply
 # nested in places, sphinx occasionally throws a pickling error as shown in
