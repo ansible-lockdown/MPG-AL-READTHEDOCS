@@ -218,14 +218,6 @@ Or if running manually using the run_audit script:
 
    ./run_audit.sh -m 20
 
-It is also possible on Linux to change the priority of a process by using nice:
-
-.. code-block:: console
-
-   nice -n 19 ./run_audit.sh
-
-See `set process priorities <https://www.howtogeek.com/411979/how-to-set-process-priorities-with-the-nice-and-renice-commands-in-linux/>`_
-
 Audit Takes Too Long
 ^^^^^^^^^^^^^^^^^^^^
 
