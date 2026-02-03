@@ -3,7 +3,7 @@
 # Update with: pip-compile or manually review dependabot PRs
 
 # Core Sphinx
-sphinx==7.4.7
+sphinx==6.2.1
 sphinx-rtd-theme==3.1.0
 
 # Sphinx extensions
