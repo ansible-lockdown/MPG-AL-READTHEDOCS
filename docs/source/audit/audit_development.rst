@@ -87,16 +87,16 @@ For a full list of goss and how to use the goss_modules (tests).
 
 ..  code-block:: raw
 
-    {{ if .Vars.rhel10cis_level_1 }}                                                     ## if rhel10cis_level_1 is true
-      {{ if .Vars.rhelcis10_1_1_10 }}                                                    ## if rhelcis10_1_1_10 is true
-    command:                                                                            ## goss_module
-      usb-storage:                                                                      ## unique name associated with the command
-        title: 1.1.10 | Disable USB Storage                                             ## title  {{ control id }}| {{ control title }}
-        exit-status: 0                                                                  ## Options for goss_module
-        exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"            ## Options for goss_module
-        stdout:                                                                         ## Options for goss_module
-        - install /bin/true                                                             ## Options for goss_module
-        meta:                                                                           ## Meta data used for reporting (see metadata)
+    {{ if .Vars.rhel10cis_level_1 }}                                              ## if rhel10cis_level_1 is true
+      {{ if .Vars.rhelcis10_1_1_10 }}                                             ## if rhelcis10_1_1_10 is true
+    command:                                                                      ## goss_module
+      usb-storage:                                                                ## unique name associated with the command
+        title: 1.1.10 | Disable USB Storage                                       ## title  {{ control id }}| {{ control title }}
+        exit-status: 0                                                            ## Options for goss_module
+        exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"      ## Options for goss_module
+        stdout:                                                                   ## Options for goss_module
+        - install /bin/true                                                       ## Options for goss_module
+        meta:                                                                     ## Meta data used for reporting (see metadata)
           server: 1
           workstation: 2
           CIS_ID: 1.1.10
@@ -105,8 +105,8 @@ For a full list of goss and how to use the goss_modules (tests).
           CISv8_IG1: true
           CISv8_IG2: true
           CISv8_IG3: true
-      {{ end }}                                                                         ## Close if statement
-    {{ end }}                                                                           ## Close if statement
+      {{ end }}                                                                   ## Close if statement
+    {{ end }}                                                                     ## Close if statement
 
 **Variable precedence**
 
