@@ -269,13 +269,20 @@ html_copy_source = False
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
-    # 'papersize': 'letterpaper',
+    'papersize': 'letterpaper',
 
     # The font size ('10pt', '11pt' or '12pt').
-    # 'pointsize': '10pt',
+    'pointsize': '11pt',
 
     # Additional stuff for the LaTeX preamble.
-    # 'preamble': '',
+    'preamble': r'''
+\usepackage{enumitem}
+\setlistdepth{99}
+''',
+
+    # Disable makeindex to avoid index errors
+    'makeindex': '',
+    'printindex': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
