@@ -1,6 +1,7 @@
 # Ansible Lockdown Documentation
 
 [![Documentation Status](https://readthedocs.org/projects/ansible-lockdown/badge/?version=latest)](https://ansible-lockdown.readthedocs.io/en/latest/?badge=latest)
+
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
 Documentation for Ansible Lockdown security benchmark roles, hosted on [Read the Docs](https://ansible-lockdown.readthedocs.io).
@@ -9,8 +10,7 @@ Documentation for Ansible Lockdown security benchmark roles, hosted on [Read the
 
 ```
 ├── .github/
-│   ├── workflows/main.yml    # CI/CD pipeline
-│   └── dependabot.yml        # Automated dependency updates
+│   └── workflows/main.yml    # CI/CD pipeline
 ├── docs/
 │   ├── source/
 │   │   ├── conf.py           # Sphinx configuration
