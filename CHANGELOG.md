@@ -21,7 +21,6 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
 - Pinned dependency versions in requirements.txt for reproducible builds
 - Updated GitHub Actions to latest versions (checkout@v4, setup-python@v5, upload-artifact@v4)
 - Improved conf.py sys.path configuration to properly load custom extensions
-- Improved LaTeX configuration in conf.py for better PDF generation
 - Modernized docs/README.md with updated project structure, development setup, and CI/CD documentation
 - Expanded Remediate FAQ with comprehensive troubleshooting scenarios
 - Expanded Audit FAQ with detailed troubleshooting (Goss binary issues, result interpretation, performance, script configuration, Windows-specific, container environments)
