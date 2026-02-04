@@ -203,10 +203,10 @@ Demos
 
 
 .. _Ansible: https://www.ansible.com/
-.. _GOSS: https://goss.rocks
-.. _STIG: https://public.cyber.mil/stigs/downloads/
+.. _GOSS: https://github.com/goss-org/goss
+.. _STIG: https://www.cyber.mil/stigs/downloads/
 .. _CIS: https://www.cisecurity.org/cis-benchmarks/
-.. _ansible-galaxy: https://galaxy.ansible.com/MindPointGroup
+.. _ansible-galaxy: https://galaxy.ansible.com/ui/standalone/namespaces/4668/
 .. _DISA: https://disa.mil/
 .. _GitHub: https://github.com/ansible-lockdown
 .. _TYTO: https://gotyto.com/services/cyber/risk-based-compliance/
