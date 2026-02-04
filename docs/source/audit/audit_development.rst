@@ -53,7 +53,7 @@ Content
     - There are circumstances when command allows discovery/filters results
 
 For a full list of goss and how to use the goss_modules (tests).
-`Goss Docs <https://github.com/aelsabbahy/goss/blob/master/docs/manual.md>`_
+`Goss Docs <https://goss.readthedocs.io/en/stable/gossfile/#available-tests>`_
 
 **Example**
 
