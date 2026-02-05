@@ -5,7 +5,6 @@
 # Run manually: pre-commit run --all-files
 ci:
     autofix_prs: false
-    skip: [detect-aws-credentials]
 repos:
   # General file hygiene
   - repo: https://github.com/pre-commit/pre-commit-hooks
