@@ -108,7 +108,7 @@ Module Not Found Errors
 
 **Symptom:**
 
-.. code-block:: bash
+.. code-block:: text
 
    ERROR! couldn't resolve module/action 'community.general.xxx'
 

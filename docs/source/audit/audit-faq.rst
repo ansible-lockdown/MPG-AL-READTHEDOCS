@@ -128,7 +128,7 @@ The audit produces JSON output with the following structure:
 .. code-block:: json
 
    {
-     "results": [...],
+     "results": [],
      "summary": {
        "failed-count": 10,
        "test-count": 200,
@@ -361,4 +361,3 @@ Set container mode:
    is_container: true
 
 See :doc:`Container and Docker Guide </container-guide>` for details.
-

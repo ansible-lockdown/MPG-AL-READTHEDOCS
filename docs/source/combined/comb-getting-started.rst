@@ -87,7 +87,8 @@ CIS
 +++
 
 1. **[lockdown_details]**
-  - Contains metadata about the CIS benchmark used, run date, and the hardening levels enabled.
+
+   Contains metadata about the CIS benchmark used, run date, and the hardening levels enabled.
 
 .. code-block:: jinja
 
@@ -115,7 +116,8 @@ CIS
   {% endif %}
 
 2. **[lockdown_audit_details]**
-  - Captures audit-specific information if auditing is enabled.
+
+   Captures audit-specific information if auditing is enabled.
 
 .. code-block:: jinja
 
@@ -137,7 +139,7 @@ CIS
 
 3. **Output**
 
-.. code-block:: bash
+.. code-block:: console
 
       ansible hosts -i ../inv -m setup -a "filter=ansible_local"
       hosts | SUCCESS => {
@@ -165,7 +167,8 @@ STIG
 ++++
 
 1. **[lockdown_details]**
-  - Contains metadata about the STIG benchmark used, run date, and the hardening levels enabled.
+
+   Contains metadata about the STIG benchmark used, run date, and the hardening levels enabled.
 
 .. code-block:: jinja
 
@@ -194,7 +197,8 @@ STIG
   {% endif %}
 
 2. **[lockdown_audit_details]**
-  - Captures audit-specific information if auditing is enabled.
+
+   Captures audit-specific information if auditing is enabled.
 
 .. code-block:: jinja
 
@@ -215,7 +219,7 @@ STIG
 
 3. **Output**
 
-.. code-block:: bash
+.. code-block:: console
 
       ansible hosts -i ../inv -m setup -a "filter=ansible_local"
       hosts | SUCCESS => {

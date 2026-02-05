@@ -12,7 +12,7 @@ Automated Security Benchmark - Auditing and Remediation
 
 
 MindPoint Group - A Tyto Athene Company's (TYTO_) Ansible-Lockdown Overview
---------------------------------------------------
+---------------------------------------------------------------------------
 Our ReadtheDocs elaborates the resources, significance and objective of using our Automated Security
 Benchmark for auditing and remediation of system security. Our TYTO_ Ansible_ roles can be applied
 to systems to improve security posture, meet compliance requirements, and deploy without disruption
@@ -203,10 +203,10 @@ Demos
 
 
 .. _Ansible: https://www.ansible.com/
-.. _GOSS: https://goss.rocks
-.. _STIG: https://public.cyber.mil/stigs/downloads/
+.. _GOSS: https://github.com/goss-org/goss
+.. _STIG: https://www.cyber.mil/stigs/downloads/
 .. _CIS: https://www.cisecurity.org/cis-benchmarks/
-.. _ansible-galaxy: https://galaxy.ansible.com/MindPointGroup
+.. _ansible-galaxy: https://galaxy.ansible.com/ui/standalone/namespaces/4668/
 .. _DISA: https://disa.mil/
 .. _GitHub: https://github.com/ansible-lockdown
 .. _TYTO: https://gotyto.com/services/cyber/risk-based-compliance/

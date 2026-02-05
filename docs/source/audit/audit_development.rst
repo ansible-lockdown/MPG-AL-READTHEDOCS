@@ -24,7 +24,7 @@ Layout
 
 - Structure should be where appropriate
 
-..  code-block:: raw
+..  code-block:: text
 
    |- control group e.g. section_1
    |-- grouped controls
@@ -32,7 +32,7 @@ Layout
 
 **e.g.**
 
-..  code-block:: raw
+..  code-block:: text
 
     |- section_1
     |-- cis_1.1
@@ -53,7 +53,7 @@ Content
     - There are circumstances when command allows discovery/filters results
 
 For a full list of goss and how to use the goss_modules (tests).
-`Goss Docs <https://github.com/aelsabbahy/goss/blob/master/docs/manual.md>`_
+`Goss Docs <https://goss.readthedocs.io/en/stable/gossfile/#available-tests>`_
 
 **Example**
 
@@ -85,7 +85,7 @@ For a full list of goss and how to use the goss_modules (tests).
 
 **Breakdown**
 
-..  code-block:: raw
+..  code-block:: text
 
     {{ if .Vars.rhel10cis_level_1 }}                                              ## if rhel10cis_level_1 is true
       {{ if .Vars.rhelcis10_1_1_10 }}                                             ## if rhelcis10_1_1_10 is true
@@ -113,7 +113,7 @@ For a full list of goss and how to use the goss_modules (tests).
 Variables should be added higher in the test based on the level of impact.
 
 
-..  code-block:: raw
+..  code-block:: text
 
     {{ .Vars.section_1 }}
       {{ .Vars.rhelcis10_1_1_1_1 }}
@@ -262,4 +262,3 @@ and
       CISv8_IG3: true
 
 **Only one will give you results**
-

@@ -31,4 +31,3 @@ e.g.
    rhel10cis_auditd_uid_exclude:
    - ansible
    - vagrant
-
