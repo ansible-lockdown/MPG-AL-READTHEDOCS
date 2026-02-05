@@ -146,4 +146,3 @@ def get_deployer_notes(path, stig_id):
         rst_file = f.read()
 
     return rst_file
-

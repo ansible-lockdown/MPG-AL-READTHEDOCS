@@ -218,4 +218,3 @@ Best Practices
 
 5. **Stay Updated**
    ARM64 support improves with each release; keep roles updated.
-

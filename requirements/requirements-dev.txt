@@ -1,0 +1,12 @@
+# Development dependencies
+# Install with: pip install -r requirements/requirements-dev.txt
+
+-r requirements.txt
+
+# Pre-commit and linting
+pre-commit>=3.5.0
+doc8>=1.1.0
+rstcheck[sphinx]>=6.2.0
+
+# Testing
+pytest>=8.0.0
