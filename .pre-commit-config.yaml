@@ -8,7 +8,7 @@ ci:
 repos:
   # General file hygiene
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
@@ -22,7 +22,7 @@ repos:
 
   # RST documentation linting
   - repo: https://github.com/PyCQA/doc8
-    rev: v1.1.2
+    rev: v2.0.0
     hooks:
       - id: doc8
         args:
@@ -31,7 +31,7 @@ repos:
 
   # RST syntax checking
   - repo: https://github.com/rstcheck/rstcheck
-    rev: v6.2.4
+    rev: v6.2.5
     hooks:
       - id: rstcheck
         additional_dependencies:
@@ -43,7 +43,7 @@ repos:
 
   # YAML linting
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.35.1
+    rev: v1.38.0
     hooks:
       - id: yamllint
         args:
