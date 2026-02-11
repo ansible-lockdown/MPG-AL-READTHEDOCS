@@ -24,7 +24,7 @@ Layout
 
 - Structure should be where appropriate
 
-..  code-block:: raw
+..  code-block:: text
 
    |- control group e.g. section_1
    |-- grouped controls
@@ -32,7 +32,7 @@ Layout
 
 **e.g.**
 
-..  code-block:: raw
+..  code-block:: text
 
     |- section_1
     |-- cis_1.1
@@ -53,7 +53,7 @@ Content
     - There are circumstances when command allows discovery/filters results
 
 For a full list of goss and how to use the goss_modules (tests).
-`Goss Docs <https://github.com/aelsabbahy/goss/blob/master/docs/manual.md>`_
+`Goss Docs <https://goss.readthedocs.io/en/stable/gossfile/#available-tests>`_
 
 **Example**
 
@@ -61,8 +61,8 @@ For a full list of goss and how to use the goss_modules (tests).
 
 ..  code-block:: yaml
 
-    {{ if .Vars.rhel9cis_level_1 }}
-      {{ if .Vars.rhelcis9_1_1_10 }}
+    {{ if .Vars.rhel10cis_level_1 }}
+      {{ if .Vars.rhelcis10_1_1_10 }}
     command:
       usb-storage:
         title: 1.1.10 | Disable USB Storage
@@ -85,18 +85,18 @@ For a full list of goss and how to use the goss_modules (tests).
 
 **Breakdown**
 
-..  code-block:: raw
+..  code-block:: text
 
-    {{ if .Vars.rhel9cis_level_1 }}                                                     ## if rhel9cis_level_1 is true
-      {{ if .Vars.rhelcis9_1_1_10 }}                                                    ## if rhelcis9_1_1_10 is true
-    command:                                                                            ## goss_module
-      usb-storage:                                                                      ## unique name associated with the command
-        title: 1.1.10 | Disable USB Storage                                             ## title  {{ control id }}| {{ control title }}
-        exit-status: 0                                                                  ## Options for goss_module
-        exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"            ## Options for goss_module
-        stdout:                                                                         ## Options for goss_module
-        - install /bin/true                                                             ## Options for goss_module
-        meta:                                                                           ## Meta data used for reporting (see metadata)
+    {{ if .Vars.rhel10cis_level_1 }}                                              ## if rhel10cis_level_1 is true
+      {{ if .Vars.rhelcis10_1_1_10 }}                                             ## if rhelcis10_1_1_10 is true
+    command:                                                                      ## goss_module
+      usb-storage:                                                                ## unique name associated with the command
+        title: 1.1.10 | Disable USB Storage                                       ## title  {{ control id }}| {{ control title }}
+        exit-status: 0                                                            ## Options for goss_module
+        exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"      ## Options for goss_module
+        stdout:                                                                   ## Options for goss_module
+        - install /bin/true                                                       ## Options for goss_module
+        meta:                                                                     ## Meta data used for reporting (see metadata)
           server: 1
           workstation: 2
           CIS_ID: 1.1.10
@@ -105,18 +105,18 @@ For a full list of goss and how to use the goss_modules (tests).
           CISv8_IG1: true
           CISv8_IG2: true
           CISv8_IG3: true
-      {{ end }}                                                                         ## Close if statement
-    {{ end }}                                                                           ## Close if statement
+      {{ end }}                                                                   ## Close if statement
+    {{ end }}                                                                     ## Close if statement
 
 **Variable precedence**
 
 Variables should be added higher in the test based on the level of impact.
 
 
-..  code-block:: raw
+..  code-block:: text
 
     {{ .Vars.section_1 }}
-      {{ .Vars.rhelcis8_1_1_1_1 }}
+      {{ .Vars.rhelcis10_1_1_1_1 }}
 
 
 Metadata
@@ -207,7 +207,7 @@ All can be found in the details of the control itself
       - CCI-002235
       Group_Title: SRG-OS-000257-GPOS-00098
       Rule_ID: SV-204392r646841_rule
-      STIG_ID: RHEL-07-010010
+      STIG_ID: RHEL-10-010010
       Vul_ID: V-204392
 
 Gotchas
@@ -262,4 +262,3 @@ and
       CISv8_IG3: true
 
 **Only one will give you results**
-

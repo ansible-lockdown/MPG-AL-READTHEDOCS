@@ -48,7 +48,7 @@ Setup auditing as standalone
 It is presumed that you have the script downloaded and the audit content ready from
 source control or your own configured location.
 
-The following requirements are needed (OS dependant)
+The following requirements are needed (OS dependent)
 
 - Super user or permissions to run privilege commands
 
@@ -63,18 +63,26 @@ The following requirements are needed (OS dependant)
 
   - Linux
 
-    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64>`_
-    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64.sha256>`_
+    - `Linux Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64>`_
+    - `Linux Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64.sha256>`_
 
   - Windows
 
-    - `Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe>`_
-    - `Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe.sha265>`_
+    - `Windows Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe>`_
+    - `Windows Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe.sha256>`_
 
 .. note::
     The binary only needs to be accessible to the host with ability to use.
-    The relevant script needs to be adjust to point to the path of the binary.
-    Ensure you have the correct binary for your architecture examples above are AMD64, but also works on ARM64 (may have bad results with auditd settings)
+    The relevant script needs to be adjusted to point to the path of the binary.
+    Ensure you have the correct binary for your architecture (examples above are AMD64).
+
+    **ARM64/aarch64 Users:** Download the ARM64 binary from:
+
+    - `Goss ARM64 Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64>`_
+    - `Goss ARM64 Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64.sha256>`_
+
+    ARM64 audits may show different results for auditd-related controls due to syscall differences.
+    See :doc:`ARM64/aarch64 Architecture Guide </arm64-guide>` for details.
 
 Running the Audit Only as part of remediate playbook
 ----------------------------------------------------
@@ -125,9 +133,8 @@ If more than one server group is analyzed, groups can be separated with commas.
 Running on Linux
 ----------------
 
-===============================
 Bash Script Explanation: Goss Security Audit
-===============================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Script
 
@@ -153,7 +160,7 @@ Understanding variables:
     # Goss benchmark variables (these should not need changing unless new release)
     BENCHMARK=CIS  # Benchmark Name aligns to the audit
     BENCHMARK_VER=1.0.0
-    BENCHMARK_OS=RHEL9
+    BENCHMARK_OS=RHEL10
 
 Defines **benchmark name**, **version**, and **target OS**.
 
@@ -342,7 +349,7 @@ example:
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss --vars ../vars/cis.yml -g /home/bolly/rh8_cis_goss/goss.yml validate
+    # /usr/local/bin/goss --vars ../vars/cis.yml -g ./goss.yml validate
     ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
 
     Failures/Skipped:
@@ -385,7 +392,7 @@ example:
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate
+    # /usr/local/bin/goss -g ./section_1/cis_1.1/cis_1.1.22.yml  validate
     ............
 
     Total Duration: 0.033s
@@ -396,7 +403,7 @@ example:
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss -g /home/bolly/rh8_cis_goss/section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
+    # /usr/local/bin/goss -g ./section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
     Title: 1.1.20 Check for removable media nodev
     Command: floppy_nodev: exit-status: matches expectation: [0]
     Command: floppy_nodev: stdout: matches expectation: [OK]
@@ -492,7 +499,7 @@ either by fetching them to the controller or copying them to a centralized/share
    :header: "Feature", "Description", "Condition"
    :widths: 10, 15, 20
 
-   "Fetch files to controller", "Copies files to control node using `fetch`", audit_output_collection_method == `fetch`"
+   "Fetch files to controller", "Copies files to control node using `fetch`", "audit_output_collection_method == 'fetch'"
    "Copy files on managed node", "Copies files locally using `copy`", "audit_output_collection_method == `copy`"
    "Error Handling", "Displays a warning if file transfer fails", "Based on fetch/copy result `changed` status"
 
@@ -500,9 +507,8 @@ either by fetching them to the controller or copying them to a centralized/share
 Running on Windows
 ------------------
 
-===============================
 PowerShell Script Explanation: Goss Security Audit
-===============================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Script
 

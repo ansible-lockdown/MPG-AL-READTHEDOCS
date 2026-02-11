@@ -46,11 +46,11 @@ The easiest installation method is to use the ``ansible-galaxy`` command that
 is provided with your Ansible installation:
 
 The general format is ansible-galaxy install git+|url to repo|, below is an example with
-RHEL8-CIS
+RHEL10-CIS
 
 .. code-block:: console
 
-   ansible-galaxy install git+https://github.com/ansible-lockdown/RHEL8-CIS.git
+   ansible-galaxy install git+https://github.com/ansible-lockdown/RHEL10-CIS.git
 
 The ``ansible-galaxy`` command will install the role into
 ``/etc/ansible/roles/`` and this makes it easy to use with
@@ -67,7 +67,7 @@ To clone and create a folder with the same name as the repo:
 .. code-block:: console
 
    cd ~/CIS_Roles
-   git clone https://github.com/ansible-lockdown/RHEL8-CIS.git
+   git clone https://github.com/ansible-lockdown/RHEL10-CIS.git
 
 
 To clone and put the files from the repo into a specific folder, folder does need to be empty:
@@ -75,7 +75,7 @@ To clone and put the files from the repo into a specific folder, folder does nee
 .. code-block:: console
 
     mkdir ~/CIS_Roles
-    git clone https://github.com/ansible-lockdown/RHEL8-CIS.git ~/CIS_Roles
+    git clone https://github.com/ansible-lockdown/RHEL10-CIS.git ~/CIS_Roles
 
 Ansible looks for roles in ``~/.ansible/roles`` by default.
 
@@ -94,10 +94,10 @@ With this configuration, Ansible looks for roles in ``/etc/ansible/roles`` and
 How to Use
 ----------
 
-On It's Own
-~~~~~~~~~~~
+On Its Own
+~~~~~~~~~~
 
-This role can be used on it's own as a role. The file ``site.yml`` is the included file to point to. This role does not include an inventory file for hosts
+This role can be used on its own as a role. The file ``site.yml`` is the included file to point to. This role does not include an inventory file for hosts
 since that is too site specific, that will need to be managed locally. Below are examples of how to run in various scenarios
 
 CLI - Notice the reference to site.yml
@@ -105,11 +105,7 @@ CLI - Notice the reference to site.yml
 .. code-block:: console
 
   cd roles
-  ansible-playbook -i hosts -e '{ "rhel8stig_cat2_patch":false,"rhel8stig_cat3_patch":false }' ./RHEL8-STIG/site.yml
-
-Tower Steps
-
-
+  ansible-playbook -i hosts -e '{ "rhel10cis_section1":false,"rhel10cis_section2":false }' ./RHEL10-CIS/site.yml
 
 With Existing Playbooks
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,19 +120,17 @@ example of a basic playbook that uses this role:
     - hosts: servers
       become: yes
       roles:
-        - role: RHEL8-CIS
+        - role: RHEL10-CIS
           when:
             - ansible_os_family == 'RedHat'
-            - ansible_distribution_major_version | version_compare('8', '=')
-
-
+            - ansible_distribution_major_version | version_compare('10', '=')
 
 Variables and the Role
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The role is fully customizable by setting the variables provided in the ``defaults/main.yml`` file. These variables range in usage from toggling entire sections (CIS), categories (STIG), general groups (GUI related), individual controls, localized settings, etc.
 There are comments around these variables that have a description of what the variable does, what the value options are, and what controls are associated with the variable.
-Variables are also listed in order of appearance in the execution of the role, variables used early in the are listed earlier in the file. Variables in this location are also very low in precedence,
+Variables are also listed in order of appearance in the execution of the role, variables used early in the role are listed earlier in the file. Variables in this location are also very low in precedence,
 `here is the official list of variable precedence. <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence>`_
 This means they are over-written very easily via extra vars
 
@@ -158,7 +152,7 @@ CLI In-Line setting (Set to only run STIG CAT1)
 
 .. code-block:: console
 
-  ansible-playbook -i host_file -e '{ "rhel8stig_cat2_patch":false,"rhel8stig_cat3_patch":false }' ./RHEL8-STIG/site.yml
+  ansible-playbook -i host_file -e '{ "rhel10stig_cat2_patch":false,"rhel10stig_cat3_patch":false }' ./RHEL10-STIG/site.yml
 
 Using Tags
 ~~~~~~~~~~
@@ -170,7 +164,7 @@ STIG Example:
 .. code-block:: yaml
 
     tags:
-      - RHEL-08-040137
+      - RHEL-10-040137
       - CAT2
       - CCI-001764
       - SRG-OS-000368-GPOS-00154

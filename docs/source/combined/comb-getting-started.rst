@@ -3,14 +3,11 @@ Using Audit and Remediate together
 
 Using both Audit and Remediate in a workflow
 
-This is missing the copy remediate settings step
-
 .. image:: ../_static/rem_initiated_audit.png
    :height: 1300px
    :width: 2000px
    :align: center
    :alt: Process Workflow Audit and Remediate
-
 
 Post Hardening Lockdown Reporting via Ansible_Facts
 ===================================================
@@ -90,7 +87,8 @@ CIS
 +++
 
 1. **[lockdown_details]**
-  - Contains metadata about the CIS benchmark used, run date, and the hardening levels enabled.
+
+   Contains metadata about the CIS benchmark used, run date, and the hardening levels enabled.
 
 .. code-block:: jinja
 
@@ -100,8 +98,8 @@ CIS
   Benchmark_run_date = {{ '%Y-%m-%d - %H:%M:%S' | ansible.builtin.strftime }}
 
   # Hardening levels enabled via variables
-  level_1_hardening_enabled = {{ rhel9cis_level_1 }}
-  level_2_hardening_enabled = {{ rhel9cis_level_2 }}
+  level_1_hardening_enabled = {{ rhel10cis_level_1 }}
+  level_2_hardening_enabled = {{ rhel10cis_level_2 }}
 
   # Tag-based hardening run types (conditional)
   {% if 'level1-server' in ansible_run_tags %}
@@ -118,7 +116,8 @@ CIS
   {% endif %}
 
 2. **[lockdown_audit_details]**
-  - Captures audit-specific information if auditing is enabled.
+
+   Captures audit-specific information if auditing is enabled.
 
 .. code-block:: jinja
 
@@ -140,7 +139,7 @@ CIS
 
 3. **Output**
 
-.. code-block:: bash
+.. code-block:: console
 
       ansible hosts -i ../inv -m setup -a "filter=ansible_local"
       hosts | SUCCESS => {
@@ -168,7 +167,8 @@ STIG
 ++++
 
 1. **[lockdown_details]**
-  - Contains metadata about the STIG benchmark used, run date, and the hardening levels enabled.
+
+   Contains metadata about the STIG benchmark used, run date, and the hardening levels enabled.
 
 .. code-block:: jinja
 
@@ -178,26 +178,27 @@ STIG
   Benchmark_run_date = {{ '%Y-%m-%d - %H:%M:%S' | ansible.builtin.strftime }}
 
   # If options set (doesn't mean it ran all controls)
-  cat_1_hardening_enabled = {{ rhel9stig_cat1 }}
-  cat_2_hardening_enabled = {{ rhel9stig_cat2 }}
-  cat_3_hardening_enabled = {{ rhel9stig_cat3 }}
+  cat_1_hardening_enabled = {{ rhel10stig_cat1 }}
+  cat_2_hardening_enabled = {{ rhel10stig_cat2 }}
+  cat_3_hardening_enabled = {{ rhel10stig_cat3 }}
 
   # Tag-based hardening run types (conditional)
   {% if ansible_run_tags | length > 0 %}
   # If tags used to stipulate run level
-  {% if 'rhel9stig_cat1' in ansible_run_tags %}
+  {% if 'rhel10stig_cat1' in ansible_run_tags %}
   Cat_1_Server_tag_run = true
   {% endif %}
-  {% if 'rhel9stig_cat2' in ansible_run_tags %}
+  {% if 'rhel10stig_cat2' in ansible_run_tags %}
   Cat_2_Server_tag_run = true
   {% endif %}
-  {% if 'rhel9stig_cat3' in ansible_run_tags %}
+  {% if 'rhel10stig_cat3' in ansible_run_tags %}
   Cat_3_Server_tag_run = true
   {% endif %}
   {% endif %}
 
 2. **[lockdown_audit_details]**
-  - Captures audit-specific information if auditing is enabled.
+
+   Captures audit-specific information if auditing is enabled.
 
 .. code-block:: jinja
 
@@ -218,7 +219,7 @@ STIG
 
 3. **Output**
 
-.. code-block:: bash
+.. code-block:: console
 
       ansible hosts -i ../inv -m setup -a "filter=ansible_local"
       hosts | SUCCESS => {

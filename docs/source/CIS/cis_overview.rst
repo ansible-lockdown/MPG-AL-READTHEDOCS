@@ -32,7 +32,7 @@ Controls are divided into groups based on the following properties:
 
 - **Level 1**
   The majority of control are based at this level.
-  These controls have are considered to have a low impact to a system.
+  These controls are considered to have a low impact to a system.
   By implementing these controls is considered low to medium risk of disruption.
 
 - **Level 2**
@@ -44,10 +44,13 @@ Controls are divided into groups based on the following properties:
 
 .. note::
 
-   All of the default configurations are found within is_container.yml and this is where they should be adjusted. Do not adjust within the tasks themselves
+   All of the default configurations should be adjusted via variable files, not within the tasks themselves.
 
    - remediation - ``defaults/main.yml``
    - audit
 
      - standalone ``vars/CIS.yml``
      - combined ``vars/[system_hostname].yml``
+
+   For container environments, set ``is_container: true`` to skip controls incompatible with containers.
+   See :doc:`Container Guide </container-guide>` for details.
