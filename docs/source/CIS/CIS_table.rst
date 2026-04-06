@@ -6,7 +6,7 @@ Operating Systems
 
 .. csv-table:: CIS Linux Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
-   :widths: 25, 15, 15, 15, 25, 10
+   :widths: 25, 15, 15, 15, 25
 
    "AMAZON2-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2-CIS?style=plastic"
    "AMAZON2023-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
