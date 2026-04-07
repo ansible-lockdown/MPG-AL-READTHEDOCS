@@ -19,6 +19,8 @@ Operating Systems
    "SUSE15-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/SUSE15-CIS?style=plastic"
    "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
    "UBUNTU24-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU24-CIS?style=plastic"
+   "UBUNTU26-CIS_", "True", "True", "True", "WIP"
+
 
 .. csv-table:: CIS Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
@@ -78,6 +80,7 @@ Archived Roles
 .. _UBUNTU20-CIS: https://github.com/ansible-lockdown/UBUNTU20-CIS
 .. _UBUNTU22-CIS: https://github.com/ansible-lockdown/UBUNTU22-CIS
 .. _UBUNTU24-CIS: https://github.com/ansible-lockdown/UBUNTU24-CIS
+.. _UBUNTU26-CIS: https://github.com/ansible-lockdown/UBUNTU26-CIS
 
 .. _Windows-2016-CIS: https://github.com/ansible-lockdown/Windows-2016-CIS
 .. _Windows-2019-CIS: https://github.com/ansible-lockdown/Windows-2019-CIS
