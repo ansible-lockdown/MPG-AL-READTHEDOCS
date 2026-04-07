@@ -2,6 +2,10 @@
 
 All notable changes to the Ansible Lockdown ReadTheDocs documentation will be documented in this file.
 
+## 2026_APRIL_UPDATE
+### Changed
+- Updated CIS_Table for RHEL10CIS via removing "Unofficial"
+
 ## 2026-Q1
 
 ### Added
