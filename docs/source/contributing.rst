@@ -18,3 +18,4 @@ We do ask the following:
 
    audit/audit_development.rst
    remediate/rem_development.rst
+   combined/molecule-testing.rst

@@ -12,13 +12,15 @@ Operating Systems
    "AMAZON2023-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-CIS?style=plastic"
    "DEBIAN11-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN11-CIS?style=plastic"
    "DEBIAN12-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN12-CIS?style=plastic"
-   "DEBIAN13-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
+   "DEBIAN13-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/DEBIAN13-CIS?style=plastic"
    "RHEL8-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-CIS?style=plastic"
    "RHEL9-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-CIS?style=plastic"
    "RHEL10-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/RHEL10-CIS?style=plastic"
    "SUSE15-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/github/v/release/ansible-lockdown/SUSE15-CIS?style=plastic"
+   "SUSE16-CIS_", "True", "True", "True", ".. image::  https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
    "UBUNTU22-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-CIS?style=plastic"
    "UBUNTU24-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU24-CIS?style=plastic"
+   "UBUNTU26-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/badge/Coming%20Soon-0000FF?logo=ansible&labelColor=0000FF"
 
 .. csv-table:: CIS Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
@@ -29,7 +31,7 @@ Operating Systems
    "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
    "Windows-2022-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
-   "Windows-2025-CIS_", "True", "True", "WIP", "N/A"
+   "Windows-2025-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-CIS?style=plastic"
 
 Cloud Platforms
 ^^^^^^^^^^^^^^^^^
@@ -74,10 +76,12 @@ Archived Roles
 .. _RHEL9-CIS: https://github.com/ansible-lockdown/RHEL9-CIS
 .. _RHEL10-CIS: https://github.com/ansible-lockdown/RHEL10-CIS
 .. _SUSE15-CIS: https://github.com/ansible-lockdown/SUSE15-CIS
+.. _SUSE16-CIS: https://github.com/ansible-lockdown/SUSE16-CIS
 .. _UBUNTU18-CIS: https://github.com/ansible-lockdown/UBUNTU18-CIS
 .. _UBUNTU20-CIS: https://github.com/ansible-lockdown/UBUNTU20-CIS
 .. _UBUNTU22-CIS: https://github.com/ansible-lockdown/UBUNTU22-CIS
 .. _UBUNTU24-CIS: https://github.com/ansible-lockdown/UBUNTU24-CIS
+.. _UBUNTU26-CIS: https://github.com/ansible-lockdown/UBUNTU26-CIS
 
 .. _Windows-2016-CIS: https://github.com/ansible-lockdown/Windows-2016-CIS
 .. _Windows-2019-CIS: https://github.com/ansible-lockdown/Windows-2019-CIS
