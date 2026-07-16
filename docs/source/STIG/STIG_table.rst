@@ -14,7 +14,7 @@ Operating Systems
    "RHEL10-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
    "UBUNTU22-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-STIG?style=plastic"
    "UBUNTU24-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU24-STIG?style=plastic"
-   "UBUNTU26-STIG", "True", "WIP", "WIP", ".. image:: https://img.shields.io/badge/Coming%20Soon-0000FF?logo=ansible&labelColor=0000FF"
+   "UBUNTU26-STIG_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/badge/Coming%20Soon-0000FF?logo=ansible&labelColor=0000FF"
 
 .. csv-table:: STIG Windows Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
@@ -75,6 +75,7 @@ Archived Roles
 .. _UBUNTU20-STIG: https://github.com/ansible-lockdown/UBUNTU20-STIG
 .. _UBUNTU22-STIG: https://github.com/ansible-lockdown/UBUNTU22-STIG
 .. _UBUNTU24-STIG: https://github.com/ansible-lockdown/UBUNTU24-STIG
+.. _UBUNTU26-STIG: https://github.com/ansible-lockdown/UBUNTU26-STIG
 
 .. _Windows-10-STIG: https://github.com/ansible-lockdown/Windows-10-STIG
 .. _Windows-11-STIG: https://github.com/ansible-lockdown/Windows-11-STIG
