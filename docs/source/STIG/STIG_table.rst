@@ -8,10 +8,10 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "AMAZON2023-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
+   "AMAZON2023-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-STIG?style=plastic"
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
    "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
-   "RHEL10-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL10-STIG?style=plastic"
+   "RHEL10-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
    "UBUNTU22-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-STIG?style=plastic"
    "UBUNTU24-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU24-STIG?style=plastic"
    "UBUNTU26-STIG", "True", "WIP", "WIP", ".. image:: https://img.shields.io/badge/Coming%20Soon-0000FF?logo=ansible&labelColor=0000FF"
@@ -35,7 +35,7 @@ Networking
    :widths: 25, 15, 15, 15, 20
 
    "Cisco-IOS-L2S_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/CISCO-IOS-L2S-STIG?style=plastic"
-   "Cisco-IOS-RTR_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/CISCO-IOS-RTR-STIG?style=plastic"
+   "Cisco-IOS-RTR_", "True", "True", "False", "N/A"
 
 Applications
 ^^^^^^^^^^^^
