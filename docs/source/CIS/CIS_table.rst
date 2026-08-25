@@ -26,9 +26,7 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 25
 
-   "Windows-10-CIS_", "True", "True", "NA", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-CIS?style=plastic"
    "Windows-11-CIS_", "True", "True", "NA", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-CIS?style=plastic"
-   "Windows-2016-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
    "Windows-2022-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
    "Windows-2025-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-CIS?style=plastic"
@@ -65,6 +63,8 @@ Archived Roles
    "RHEL7-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-CIS?style=plastic"
    "UBUNTU18-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
    "UBUNTU20-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
+   "Windows-2016-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
+   "Windows-10-CIS_", "False", "True", "NA", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-CIS?style=plastic"
 
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
 .. _AMAZON2023-CIS: https://github.com/ansible-lockdown/AMAZON2023-CIS

@@ -20,9 +20,7 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "Windows-10-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-STIG?style=plastic"
    "Windows-11-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-STIG?style=plastic"
-   "Windows-2016-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-STIG?style=plastic"
    "Windows-2019-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-STIG?style=plastic"
    "Windows-2022-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-STIG?style=plastic"
    "Windows-2025-STIG_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/badge/In%20Development-0000FF?logo=ansible&labelColor=0000FF"
@@ -65,6 +63,8 @@ Archived Roles
    "Windows-2008R2-Member-Server-STIG_", "False", "True", "False", "N/A"
    "Windows-2012-Member-Server-STIG_", "False", "True", "False", "N/A"
    "Windows-2012-Domain-Controller-STIG_", "False", "True", "False", "N/A"
+   "Windows-2016-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-STIG?style=plastic"
+   "Windows-10-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-STIG?style=plastic"
    "Postgres-9-STIG_", "False", "True", "False", "N/A"
 
 .. _AMAZON2023-STIG: https://github.com/ansible-lockdown/AMAZON2023-STIG
