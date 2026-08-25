@@ -12,7 +12,7 @@ Contact Us
 
 * `AnsibleLockdown@X <https://x.com/AnsibleLockdown>`_ : Get the latest news from our X feed on everything Ansible Lockdown.
 
-Tyto Athene Official Site and Services
+Quantum Sky Official Site and Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * `Official Website <https://gotyto.com/who-we-are/contact-us/>`_ : If your organization has general questions regarding Cybersecurity or our Organization.

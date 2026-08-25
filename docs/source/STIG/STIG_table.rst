@@ -11,7 +11,7 @@ Operating Systems
    "AMAZON2023-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AMAZON2023-STIG?style=plastic"
    "RHEL8-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL8-STIG?style=plastic"
    "RHEL9-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL9-STIG?style=plastic"
-   "RHEL10-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
+   "RHEL10-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL10-STIG?style=plastic"
    "UBUNTU22-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU22-STIG?style=plastic"
    "UBUNTU24-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU24-STIG?style=plastic"
    "UBUNTU26-STIG_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/badge/Coming%20Soon-0000FF?logo=ansible&labelColor=0000FF"
@@ -20,12 +20,10 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "Windows-10-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-STIG?style=plastic"
    "Windows-11-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-STIG?style=plastic"
-   "Windows-2016-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-STIG?style=plastic"
    "Windows-2019-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-STIG?style=plastic"
    "Windows-2022-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-STIG?style=plastic"
-   "Windows-2025-STIG_", "True", "WIP", "WIP", ".. image:: https://img.shields.io/badge/Coming%20Soon-0000FF?logo=ansible&labelColor=0000FF"
+   "Windows-2025-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
 
 Networking
 ^^^^^^^^^^
@@ -44,7 +42,7 @@ Applications
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "AAP2-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
+   "AAP2-STIG", "True", "True", "False", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
    "Apache-2.4-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/APACHE-2.4-STIG?style=plastic"
    "TOMCAT-9-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/TOMCAT-9-STIG?style=plastic"
    "Windows_Advance_Firewall-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/WinFWADV-STIG?style=plastic"
@@ -65,6 +63,8 @@ Archived Roles
    "Windows-2008R2-Member-Server-STIG_", "False", "True", "False", "N/A"
    "Windows-2012-Member-Server-STIG_", "False", "True", "False", "N/A"
    "Windows-2012-Domain-Controller-STIG_", "False", "True", "False", "N/A"
+   "Windows-2016-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-STIG?style=plastic"
+   "Windows-10-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-STIG?style=plastic"
    "Postgres-9-STIG_", "False", "True", "False", "N/A"
 
 .. _AMAZON2023-STIG: https://github.com/ansible-lockdown/AMAZON2023-STIG
@@ -87,7 +87,6 @@ Archived Roles
 .. _Cisco-IOS-L2S: https://github.com/ansible-lockdown/CISCO-IOS-L2S-STIG
 .. _Cisco-IOS-RTR: https://github.com/ansible-lockdown/CISCO-IOS-RTR-STIG
 
-.. _AAP2-STIG: https://github.com/ansible-lockdown/AAP2-STIG
 .. _Apache-2.4-STIG: https://github.com/ansible-lockdown/APACHE-2.4-STIG
 .. _Postgres-9-STIG: https://github.com/ansible-lockdown/POSTGRES-9-STIG
 .. _TOMCAT-9-STIG: https://github.com/ansible-lockdown/TOMCAT-9-STIG

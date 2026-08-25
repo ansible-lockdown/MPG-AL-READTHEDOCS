@@ -2,6 +2,21 @@
 
 All notable changes to the Ansible Lockdown ReadTheDocs documentation will be documented in this file.
 
+## 2026_AUGUST_UPDATES
+
+### Changed
+- Corrected the CIS and STIG benchmark tables against the live organisation: RHEL10-STIG now
+  carries a live release badge instead of Subscribers Only, and SUSE16-CIS and Windows-2025-STIG
+  link to their now-public repositories with an In Development badge until their first release.
+- Moved Windows-10 and Windows-2016 from the active CIS and STIG availability tables into the
+  retired tables, keeping their release badges and setting Maintained to False.
+- UBUNTU26 CIS and STIG remain Coming Soon: the Ubuntu 26.04 benchmarks are not published yet,
+  so their rows no longer link to placeholder repositories.
+- Removed hyperlinks to AAP2-STIG and NGINX-CIS, which are private and returned 404 for public
+  readers. Their Subscribers Only and WIP status cells are unchanged.
+- Renamed Tyto Athene to Quantum Sky in documentation prose (conf.py copyright, intro and
+  support pages). URLs, domains and asset file names are unchanged.
+
 ## 2026_APRIL_UPDATE
 ### Changed
 - Updated CIS_Table for RHEL10CIS via removing "Unofficial"
