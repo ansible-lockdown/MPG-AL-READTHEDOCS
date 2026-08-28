@@ -11,17 +11,17 @@ Automated Security Benchmark - Auditing and Remediation
   :target: https://www.lockdownenterprise.com/discord
 
 
-MindPoint Group - A Tyto Athene Company's (TYTO_) Ansible-Lockdown Overview
----------------------------------------------------------------------------
+MindPoint Group - A Quantum Sky Company's (QuantumSky_) Ansible-Lockdown Overview
+---------------------------------------------------------------------------------
 Our ReadtheDocs elaborates the resources, significance and objective of using our Automated Security
-Benchmark for auditing and remediation of system security. Our TYTO_ Ansible_ roles can be applied
+Benchmark for auditing and remediation of system security. Our QuantumSky_ Ansible_ roles can be applied
 to systems to improve security posture, meet compliance requirements, and deploy without disruption
 after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
 CIS_ and DISA_ STIG_, which provide open-source licensed configurations to bring systems
 into security compliance. The content delivered consists of an audit component based on GOSS_
 that scans a host for compliance and a remediate component that can be run centrally using an
 **Ansible Deployment Server** to bring host(s) into compliance. Our open-source development/release process
-composes of TYTO_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
+composes of QuantumSky_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
 with new benchmark versions.
 
 Why should this role be applied to a system?
@@ -209,4 +209,4 @@ Demos
 .. _ansible-galaxy: https://galaxy.ansible.com/ui/standalone/namespaces/4668/
 .. _DISA: https://disa.mil/
 .. _GitHub: https://github.com/ansible-lockdown
-.. _TYTO: https://gotyto.com/services/cyber/risk-based-compliance/
+.. _QuantumSky: https://gotyto.com/services/cyber/risk-based-compliance/
