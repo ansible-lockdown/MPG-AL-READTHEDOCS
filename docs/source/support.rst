@@ -15,7 +15,7 @@ Contact Us
 Quantum Sky Official Site and Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* `Official Website <https://gotyto.com/who-we-are/contact-us/>`_ : If your organization has general questions regarding Cybersecurity or our Organization.
+* `Official Website <https://www.quantumsky.com/contact>`_ : If your organization has general questions regarding Cybersecurity or our Organization.
 
 *  `LinkedIn <https://linkedin.com/company/gotyto/>`_ : Our official LinkedIn Business Page
 
