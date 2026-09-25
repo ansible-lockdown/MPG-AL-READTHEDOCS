@@ -7,9 +7,19 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
 ### Changed
 - Corrected the CIS and STIG benchmark tables against the live organisation: RHEL10-STIG now
   carries a live release badge instead of Subscribers Only, and SUSE16-CIS and Windows-2025-STIG
-  link to their now-public repositories with an In Development badge until their first release.
+  link to their now-public repositories. Both briefly carried an In Development badge and ended the
+  cycle marked Subscribers Only.
 - Moved Windows-10 and Windows-2016 from the active CIS and STIG availability tables into the
   retired tables, keeping their release badges and setting Maintained to False.
+- Brought the Archived Benchmarks list in known_issues into line with those retired tables. It was
+  six entries behind: UBUNTU18-STIG, UBUNTU20-STIG, Windows-2016-STIG and Windows-10-STIG were
+  missing from the STIG list, and Windows-2016-CIS and Windows-10-CIS from the CIS list. Both lists
+  now match their tables exactly, in the same order.
+- SUSE16-CIS now carries a live release badge. It published CIS v1.0.0 on 23 September 2026, so the
+  Subscribers Only placeholder no longer described it.
+- Corrected the Audit column for Windows-11-CIS from NA to WIP. Windows-11-CIS-Audit is public and
+  carries a full goss suite, so NA wrongly claimed no audit exists. It has no release, so WIP
+  matches how Windows-2022-CIS and Windows-2025-CIS are already described.
 - UBUNTU26 CIS and STIG remain Coming Soon: the Ubuntu 26.04 benchmarks are not published yet,
   so their rows no longer link to placeholder repositories.
 - Removed hyperlinks to AAP2-STIG and NGINX-CIS, which are private and returned 404 for public
