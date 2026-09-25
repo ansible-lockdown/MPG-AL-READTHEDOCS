@@ -16,6 +16,11 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   readers. Their Subscribers Only and WIP status cells are unchanged.
 - Renamed Tyto Athene to Quantum Sky in documentation prose (conf.py copyright, intro and
   support pages). URLs, domains and asset file names are unchanged.
+- `LICENSE`: completed the rename the entry above scoped to documentation prose only. The copyright
+  line still read `Mindpoint Group - A Tyto Athene Company`, which left it as the last live
+  reference to the retired parent company on this repository. It also carried a lowercase `p` in
+  `Mindpoint`. Now reads `MindPoint Group - A Quantum Sky Company / Ansible Lockdown`, byte-identical
+  to the string carried by the role repositories.
 
 ## 2026_APRIL_UPDATE
 ### Changed
