@@ -209,4 +209,4 @@ Demos
 .. _ansible-galaxy: https://galaxy.ansible.com/ui/standalone/namespaces/4668/
 .. _DISA: https://disa.mil/
 .. _GitHub: https://github.com/ansible-lockdown
-.. _QuantumSky: https://gotyto.com/services/cyber/risk-based-compliance/
+.. _QuantumSky: https://www.quantumsky.com
