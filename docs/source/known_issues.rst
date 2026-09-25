@@ -244,15 +244,21 @@ The following benchmarks are archived and no longer actively maintained:
 - RHEL7-CIS
 - UBUNTU18-CIS
 - UBUNTU20-CIS
+- Windows-2016-CIS
+- Windows-10-CIS
 
 **STIG:**
 
 - RHEL5-STIG
 - RHEL6-STIG
 - RHEL7-STIG
+- UBUNTU18-STIG
+- UBUNTU20-STIG
 - Windows-2008R2-Member-Server-STIG
 - Windows-2012-Member-Server-STIG
 - Windows-2012-Domain-Controller-STIG
+- Windows-2016-STIG
+- Windows-10-STIG
 - Postgres-9-STIG
 
 These remain available but will not receive updates for new benchmark versions or bug fixes.
