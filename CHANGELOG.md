@@ -21,6 +21,11 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   reference to the retired parent company on this repository. It also carried a lowercase `p` in
   `Mindpoint`. Now reads `MindPoint Group - A Quantum Sky Company / Ansible Lockdown`, byte-identical
   to the string carried by the role repositories.
+- Pointed the company website links at quantumsky.com, following the prose rename above. The old
+  deep paths do not exist on the new site, so the `QuantumSky` link target in intro now goes to the
+  site root and the Official Website link in support goes to `/contact`. The LinkedIn and Facebook
+  links are unchanged: no Quantum Sky equivalent could be confirmed, and the existing accounts are
+  still live.
 
 ## 2026_APRIL_UPDATE
 ### Changed
