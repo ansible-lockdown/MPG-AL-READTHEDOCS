@@ -28,8 +28,8 @@ Main Content site
 Audit
 ~~~~~
 
-- `Syver <https://github.com/krameff/syver>`_ and `Syver Docs <https://syver.readthedocs.io/en/latest/>`_
-- `krameff/goss (signed Goss build) <https://github.com/krameff/goss>`_
+- `Syver <https://github.com/krameff/syver>`_ (a fork of Goss) and `Syver Docs <https://syver.readthedocs.io/en/latest/>`_
+- `krameff/goss <https://github.com/krameff/goss>`_ (Syver's earlier name, archived)
 - `Goss (upstream) <https://github.com/goss-org/goss>`_ and `Goss Docs <https://goss.readthedocs.io/en/stable/>`_
 
 Remediate

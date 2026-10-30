@@ -8,11 +8,10 @@ Audit
 Overview
 --------
 
-Ansible Lockdown audits the system with goss, a YAML-based server testing tool written in Go.
-The roles use a signed build of Goss: either `krameff/goss <https://github.com/krameff/goss/releases>`_
-or its continuation `Syver <https://github.com/krameff/syver/releases>`_.
-The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which one and which release it pins, with checksums.
-Both binaries read the same ``goss.yml`` audit content.
+Ansible Lockdown audits the system with `Syver <https://github.com/krameff/syver/releases>`_, a fork of Goss (``goss-org/goss``), the YAML-based server
+testing tool written in Go. Syver was first released as `krameff/goss <https://github.com/krameff/goss/releases>`_, which is now archived, and some roles
+still pin a krameff/goss release. The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which
+binary and which release it pins, with checksums. Both read the same ``goss.yml`` audit content.
 
 The audit uses the same variables and enabled controls as the remediation, so the checks match what was remediated.
 

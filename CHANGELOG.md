@@ -40,8 +40,9 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   `.variables.rst`. The build now passes `sphinx-build -W` with no warnings.
 - **Navigation:** the Audit FAQ, Remediate FAQ and Known Issues pages are linked under Support. They
   were built but reachable from no menu.
-- **Audit binaries:** the audit pages, ARM64 guide, intro and links describe the signed Goss build or
-  Syver each role pins through `audit_bin_url` and `audit_bin_version`. The upstream v0.4.9 download
+- **Audit binaries:** the audit pages, ARM64 guide, intro and links describe Syver, a fork of Goss,
+  and krameff/goss, its earlier name that some roles still pin, through `audit_bin_url` and
+  `audit_bin_version`. The upstream v0.4.9 download
   links, two of which returned 404, are removed, and the script excerpts and Windows parameters match
   the current `run_audit.sh` and `run_audit.ps1`.
 - **Variable names:** examples across the remediate, audit, container and known issues pages use

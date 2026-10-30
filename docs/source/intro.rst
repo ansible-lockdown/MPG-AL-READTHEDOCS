@@ -18,7 +18,7 @@ to use them to audit and remediate system security. The Ansible_ roles can be ap
 improve security posture, meet compliance requirements, and deploy without disruption after due diligence.
 Security hardening is based on the industry-recognized CIS_ benchmarks and DISA_ STIG_ guides, implemented
 as open-source licensed configurations that bring systems into security compliance. The content consists of
-an audit component that scans a host for compliance with a signed build of GOSS_ (the Windows STIG roles use
+an audit component that scans a host for compliance with Syver_, a fork of GOSS_ (the Windows STIG roles use
 DISA's SCAP Compliance Checker instead), and a remediate component that can be run centrally from an
 **Ansible control node** to bring hosts into compliance. Development and releases run through the
 Ansible Lockdown GitHub_ devel and main branches, with ansible-galaxy_ updates aligned to new benchmark
@@ -65,7 +65,7 @@ to bring your systems/platforms into security compliance.
 - Configuration-as-code
 
   - Assist in bringing your systems/platform into compliance through the use of Ansible_
-  - Audit your current system/platform using GOSS_ (SCAP Compliance Checker on the Windows STIG roles)
+  - Audit your current system/platform using Syver_, a fork of GOSS_ (SCAP Compliance Checker on the Windows STIG roles)
 
 - Highly configurable to work with your systems
 
@@ -103,7 +103,8 @@ This consists of two components:
 
 - **Audit**
 
-  - Runs a small single Go binary on the system: a signed build of GOSS_ or its continuation, Syver.
+  - Runs a small single Go binary on the system: Syver_, a fork of GOSS_ (some roles still pin its earlier
+    release, krameff/goss).
   - The Windows STIG roles scan with DISA's SCAP Compliance Checker (SCC) instead.
   - Enables you to very quickly scan your host and output the status of compliance for your host.
 
@@ -201,6 +202,7 @@ Demos
 
 .. _Ansible: https://www.redhat.com/en/ansible-collaborative
 .. _GOSS: https://github.com/goss-org/goss
+.. _Syver: https://github.com/krameff/syver
 .. _STIG: https://www.cyber.mil/stigs/downloads/
 .. _CIS: https://www.cisecurity.org/cis-benchmarks/
 .. _ansible-galaxy: https://galaxy.ansible.com/ui/standalone/namespaces/4668/

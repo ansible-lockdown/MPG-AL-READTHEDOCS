@@ -49,9 +49,8 @@ When the audit is run by the remediation role (``setup_audit`` / ``run_audit``),
 ``aarch64`` and downloads and checksum-verifies the ARM64 binary automatically. A manual download is only
 needed for a standalone audit.
 
-The roles use a signed build of Goss: either `krameff/goss <https://github.com/krameff/goss/releases>`_
-(asset ``goss-linux-arm64``) or its continuation `Syver <https://github.com/krameff/syver/releases>`_
-(asset ``syver-linux-arm64``). The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which
+The roles use `Syver <https://github.com/krameff/syver/releases>`_ (asset ``syver-linux-arm64``), a fork of Goss, or on some roles its earlier release
+under the name `krameff/goss <https://github.com/krameff/goss/releases>`_ (asset ``goss-linux-arm64``). The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which
 one and which release it pins, with the ARM64 checksum.
 
 .. code-block:: console

@@ -33,8 +33,7 @@ Goss Binary Not Found
 
 **Solution:**
 
-The roles use a signed build of Goss: either `krameff/goss <https://github.com/krameff/goss/releases>`_
-or its continuation `Syver <https://github.com/krameff/syver/releases>`_.
+The roles use `Syver <https://github.com/krameff/syver/releases>`_, a fork of Goss, or on some roles its earlier release under the name `krameff/goss <https://github.com/krameff/goss/releases>`_.
 The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which one and which release it pins, with checksums.
 Replace ``<release>`` below with that value, and check the download against the release's ``SHA256SUMS`` file.
 
