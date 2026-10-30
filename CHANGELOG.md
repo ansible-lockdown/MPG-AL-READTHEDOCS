@@ -28,7 +28,7 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   now reads True. Each role runs its public audit repository with Syver on its released branch, and
   the Linux audit repositories marked True publish no releases either, so a release was never the
   test. The
-  Audit column for Windows-11-STIG, Windows-2022-STIG and Windows-2025-STIG now reads SCC, with a note
+  Audit column for Windows-11-STIG, Windows-2022-STIG and Windows-2025-STIG now reads DISA SCC, with a note
   under the table: those roles scan the host with DISA's SCAP Compliance Checker before and after
   remediation. Getting Started with Audit gains a section on each flow, and the Windows audit known
   issue is scoped to the CIS audit script.
