@@ -661,8 +661,8 @@ Windows STIG Roles: SCAP Compliance Checker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Windows-11-STIG, Windows-2022-STIG and Windows-2025-STIG have no goss audit content. The role scans the host with
-SCAP Compliance Checker (SCC), the scanner DISA validates its SCAP content
-against. The audit is part of the role and uses the same switches as the other roles, all off by default:
+SCAP Compliance Checker (SCC), built by the Naval Information Warfare Center (NIWC) Atlantic and distributed by
+DISA with its STIG SCAP content. The audit is part of the role and uses the same switches as the other roles, all off by default:
 
 .. code-block:: console
 

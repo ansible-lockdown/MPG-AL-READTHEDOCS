@@ -19,7 +19,7 @@ improve security posture, meet compliance requirements, and deploy without disru
 Security hardening is based on the industry-recognized CIS_ benchmarks and DISA_ STIG_ guides, implemented
 as open-source licensed configurations that bring systems into security compliance. The content consists of
 an audit component that scans a host for compliance with Syver_, a fork of GOSS_ (the Windows STIG roles use
-DISA's SCAP Compliance Checker instead), and a remediate component that can be run centrally from an
+the SCAP Compliance Checker instead), and a remediate component that can be run centrally from an
 **Ansible control node** to bring hosts into compliance. Development and releases run through the
 Ansible Lockdown GitHub_ devel and main branches, with ansible-galaxy_ updates aligned to new benchmark
 versions.
@@ -105,7 +105,8 @@ This consists of two components:
 
   - Runs a small single Go binary on the system: Syver_, a fork of GOSS_ (some roles still pin its earlier
     release, krameff/goss).
-  - The Windows STIG roles scan with DISA's SCAP Compliance Checker (SCC) instead.
+  - The Windows STIG roles scan with the SCAP Compliance Checker (SCC) instead, NIWC Atlantic's scanner for
+    DISA's STIG content.
   - Enables you to very quickly scan your host and output the status of compliance for your host.
 
 - **Remediate**

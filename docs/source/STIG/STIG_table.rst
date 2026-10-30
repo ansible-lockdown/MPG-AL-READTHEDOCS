@@ -20,14 +20,14 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 20
 
-   "Windows-11-STIG_", "True", "True", "DISA SCC", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-STIG?style=plastic"
+   "Windows-11-STIG_", "True", "True", "SCC", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-STIG?style=plastic"
    "Windows-2019-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-STIG?style=plastic"
-   "Windows-2022-STIG_", "True", "True", "DISA SCC", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-STIG?style=plastic"
-   "Windows-2025-STIG_", "True", "True", "DISA SCC", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-STIG?style=plastic"
+   "Windows-2022-STIG_", "True", "True", "SCC", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-STIG?style=plastic"
+   "Windows-2025-STIG_", "True", "True", "SCC", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-STIG?style=plastic"
 
 .. note::
-   The Windows STIG roles have no Lockdown audit repository. **DISA SCC** means the role scans the host itself
-   with DISA's SCAP Compliance Checker before and after remediation. See
+   The Windows STIG roles have no Lockdown audit repository. **SCC** means the role scans the host itself
+   with the SCAP Compliance Checker (built by NIWC Atlantic, distributed by DISA) before and after remediation. See
    :ref:`audit/getting-started-audit:Windows STIG Roles: SCAP Compliance Checker`.
 
 Networking
