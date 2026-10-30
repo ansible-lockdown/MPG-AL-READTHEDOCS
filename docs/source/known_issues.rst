@@ -61,7 +61,7 @@ Container Environment Audit Limitations
 Windows Audit Requires Administrator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Affected:** All Windows benchmarks
+**Affected:** Windows CIS audits (``run_audit.ps1``)
 
 **Issue:** Windows audit scripts require Administrator privileges to query security policies,
 registry settings, and group policies.

@@ -16,6 +16,9 @@ Both binaries read the same ``goss.yml`` audit content.
 
 The audit uses the same variables and enabled controls as the remediation, so the checks match what was remediated.
 
+The Windows STIG roles are the exception. They have no goss audit content and scan instead with DISA's
+SCAP Compliance Checker (SCC). See `Windows STIG Roles: SCAP Compliance Checker`_.
+
 
 Considerations
 --------------
@@ -499,6 +502,43 @@ The excerpts below are from ``tasks/fetch_audit_output.yml`` in RHEL10-CIS.
 Running on Windows
 ------------------
 
+Windows CIS Roles: Audit from the Playbook
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Windows-11-CIS, Windows-2022-CIS and Windows-2025-CIS run their audit repository from the role, the same
+way the Linux roles do. Everything is off by default:
+
+.. code-block:: console
+
+    # Audit before and after remediation, and fetch the results to the control node
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e run_audit=true -e fetch_audit_output=true
+
+    # Audit only, nothing applied
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e audit_only=true
+
+With ``setup_audit`` the role:
+
+- Downloads Syver from ``audit_bin_url`` at the release in ``audit_bin_version.release`` to
+  ``C:\Program Files\syver\syver.exe`` and checks it against the pinned checksum.
+  Set ``get_audit_binary_method: copy`` to supply the binary from the controller instead (``audit_bin_copy_location``).
+- Fetches the ``{{ benchmark }}-Audit`` content from the branch ``benchmark_{{ benchmark_version }}`` to
+  ``C:\ProgramData\{{ benchmark }}-Audit``. ``audit_content`` selects ``get_url`` (default, a .zip download),
+  ``git`` (requires Git for Windows on the node), ``copy`` or ``archive``.
+
+The role then writes its own variables to ``vars\<host>.yml`` in the content directory, so the audit checks the
+same controls the remediation enabled, and runs ``run_audit.ps1`` before and after remediation.
+Results are written to ``audit_log_dir`` (default ``C:\ProgramData\audit_logs``), and with ``fetch_audit_output``
+they are collected to ``audit_output_destination`` (default ``/opt/audit_summaries/`` on the controller).
+
+Other settings in ``defaults/main/audit.yml``:
+
+- ``audit_system_type``: ``Workstation`` on Windows-11-CIS, ``Server`` on the server roles.
+- ``audit_run_heavy_tests``: enables the checks that can have more impact on the host (default ``false``).
+- ``audit_max_concurrent``: concurrency passed to ``run_audit.ps1 -MaxConcurrent`` (default ``50``).
+
+Windows-2019-CIS does not drive its audit from the role. Run ``run_audit.ps1`` from Windows-2019-CIS-Audit as a
+standalone audit.
+
 PowerShell Script Explanation: Goss Security Audit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -617,3 +657,51 @@ The binary and content locations are set with environment variables:
    "Collect System Metadata", "OS Version, Hostname, Epoch time"
    "Pre-checks", "Verifies Administrator rights, the audit binary and version, and the content and vars files"
    "Error Handling", "Alerts for missing files and vars"
+
+Windows STIG Roles: SCAP Compliance Checker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Windows-11-STIG, Windows-2022-STIG and Windows-2025-STIG have no goss audit content. The role scans the host with
+SCAP Compliance Checker (SCC), the scanner DISA validates its SCAP content
+against. The audit is part of the role and uses the same switches as the other roles, all off by default:
+
+.. code-block:: console
+
+    # Scan before and after remediation, and fetch the result sets to the control node
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e run_audit=true -e fetch_audit_output=true
+
+    # Scan only, nothing applied
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e audit_only=true
+
+Run both scans in a hardening pass: the difference between them shows what the role changed. A post-remediation
+score on its own cannot separate a role that fixed findings from a host that was already compliant.
+
+**How it works**
+
+- ``setup_audit`` downloads the SCC Windows bundle (``scc_version``, currently ``5.15``) from ``scc_bundle_url``
+  and checks it against ``scc_bundle_sha256``, pinned to the digest DISA publishes for that release. Point
+  ``scc_bundle_url`` at an internal mirror if the node cannot reach ``dl.dod.cyber.mil``.
+- Each scan enables only the role's benchmark (``scc_benchmark``) with the profile in ``scc_profile``
+  (default ``MAC-2_Sensitive``), then removes its working directory, even when the scan fails.
+- Each scan writes a markdown summary and a zip of SCC's output, including the XCCDF results XML and the CKL and
+  CKLB checklists, to ``audit_log_dir`` (default ``C:\ProgramData\audit_logs``). Only SYSTEM and Administrators
+  can read that directory.
+- With ``fetch_audit_output``, the result sets are collected to ``audit_output_destination``
+  (default ``./results/`` on the controller).
+
+**Things to know**
+
+- Open findings are keyed by STIG control ID (for example ``WN22-CC-000080``), the same ID the role uses for its
+  task names and tags, so a finding maps straight to the task that addresses it.
+- The result sets are not cleaned up. They name local and domain accounts with their SIDs, so prune
+  ``audit_log_dir`` to your retention policy, and decide what may leave your network before publishing them.
+- Do not use the ``CAT_I_Only`` profile as a quick CAT I check. It selects no rules and returns an empty, clean
+  result.
+- Rules with no automated check are reported as ``Not Reviewed``.
+- Change individual SCC report settings with ``scc_report_options_override``, not by redefining
+  ``scc_report_options``. Keep ``saveDISACKLB`` on: the role's summary reads the CKLB.
+- Pass Windows paths in JSON or a vars file, not ``-e key=value``, which corrupts backslashes
+  (for example ``-e '{"audit_output_destination":"C:\\ProgramData\\audit_summaries"}'``).
+
+Each role's ``docs/README_SCC_QuickStart.md`` has the full detail, including domain controller and member server
+scoring. Windows-2019-STIG has no audit integration.

@@ -26,10 +26,10 @@ Operating Systems
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
    :widths: 25, 15, 15, 15, 25
 
-   "Windows-11-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-CIS?style=plastic"
+   "Windows-11-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-CIS?style=plastic"
    "Windows-2019-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-CIS?style=plastic"
-   "Windows-2022-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
-   "Windows-2025-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-CIS?style=plastic"
+   "Windows-2022-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-CIS?style=plastic"
+   "Windows-2025-CIS_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-CIS?style=plastic"
 
 Cloud Platforms
 ^^^^^^^^^^^^^^^

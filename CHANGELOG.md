@@ -21,11 +21,12 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   on 30 October 2026, so the Subscribers Only placeholder no longer described it.
 - Reworded the Windows Server 2025 status in known_issues. It still read Under development, but
   Windows-2025-CIS and Windows-2025-STIG are both publicly released.
-- Corrected the Audit column for Windows-2025-STIG from WIP to False. No Windows-2025-STIG-Audit
-  repository exists, so False matches the other Windows STIG rows.
-- Corrected the Audit column for Windows-11-CIS from NA to WIP. Windows-11-CIS-Audit is public and
-  carries a full goss suite, so NA wrongly claimed no audit exists. It has no release, so WIP
-  matches how Windows-2022-CIS and Windows-2025-CIS are already described.
+- **Windows auditing:** the Audit column for Windows-11-CIS, Windows-2022-CIS and Windows-2025-CIS
+  now reads True. Each role runs its public audit repository with Syver on its released branch. The
+  Audit column for Windows-11-STIG, Windows-2022-STIG and Windows-2025-STIG now reads SCC, with a note
+  under the table: those roles scan the host with DISA's SCAP Compliance Checker before and after
+  remediation. Getting Started with Audit gains a section on each flow, and the Windows audit known
+  issue is scoped to the CIS audit script.
 - UBUNTU26 CIS and STIG remain Coming Soon: the Ubuntu 26.04 benchmarks are not published yet.
   Their rows link to the public UBUNTU26-CIS and UBUNTU26-STIG repositories, which hold no role
   content yet.
