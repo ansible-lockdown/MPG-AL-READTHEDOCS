@@ -21,12 +21,44 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   on 30 October 2026, so the Subscribers Only placeholder no longer described it.
 - Reworded the Windows Server 2025 status in known_issues. It still read Under development, but
   Windows-2025-CIS and Windows-2025-STIG are both publicly released.
+- Corrected the Audit column for Windows-11-CIS from NA to WIP. Windows-11-CIS-Audit is public and
+  carries a full goss suite, so NA wrongly claimed no audit exists. It has no release, so WIP
+  matches how Windows-2022-CIS and Windows-2025-CIS are already described.
 - **Windows auditing:** the Audit column for Windows-11-CIS, Windows-2022-CIS and Windows-2025-CIS
-  now reads True. Each role runs its public audit repository with Syver on its released branch. The
+  now reads True. Each role runs its public audit repository with Syver on its released branch, and
+  the Linux audit repositories marked True publish no releases either, so a release was never the
+  test. The
   Audit column for Windows-11-STIG, Windows-2022-STIG and Windows-2025-STIG now reads SCC, with a note
   under the table: those roles scan the host with DISA's SCAP Compliance Checker before and after
   remediation. Getting Started with Audit gains a section on each flow, and the Windows audit known
   issue is scoped to the CIS audit script.
+- **Audit column normalized:** UBUNTU18-STIG, UBUNTU20-STIG and Windows-10-CIS now read False, as no
+  audit repository exists for them. RHEL6-STIG and Postgres-9-STIG show their release badges, and the
+  Windows firewall row is labeled WinFWADV-STIG to match its repository.
+- **Site configuration:** `conf.py` is rebuilt for this site. The copied role template titled the
+  epub and htmlzip downloads RHEL9-CIS and loaded a leftover extension; both are gone, with
+  `.variables.rst`. The build now passes `sphinx-build -W` with no warnings.
+- **Navigation:** the Audit FAQ, Remediate FAQ and Known Issues pages are linked under Support. They
+  were built but reachable from no menu.
+- **Audit binaries:** the audit pages, ARM64 guide, intro and links describe the signed Goss build or
+  Syver each role pins through `audit_bin_url` and `audit_bin_version`. The upstream v0.4.9 download
+  links, two of which returned 404, are removed, and the script excerpts and Windows parameters match
+  the current `run_audit.sh` and `run_audit.ps1`.
+- **Variable names:** examples across the remediate, audit, container and known issues pages use
+  names the roles define (for example `system_is_container`), and the container guide describes the
+  detection rule the roles use.
+- **Compliance facts, Molecule and release schedule:** the compliance facts section is rewritten from
+  the current role templates with valid JSON samples, the Molecule guide is corrected on scenarios,
+  drivers, prerequisites and destroy guidance, and the release schedule example is marked
+  illustrative.
+- **WinRM:** the Remediate FAQ no longer advises enabling Basic authentication or unencrypted
+  traffic, which the Windows roles disable; it recommends HTTPS or NTLM/Kerberos.
+- **Known issues:** RHEL 10 (Unofficial) is removed, the RHEL8 cloud-init workaround uses the current
+  control, and the Windows Server 2025, Amazon Linux 2023 and Ubuntu 24.04 statuses are updated.
+- **Contributing and repository docs:** the contributing page describes the approved contributor
+  process, signed and signed-off commits, and the devel target. `docs/README.md` and the Makefile
+  describe the repository as it is, four unused images are removed, and redirected links point to
+  their current addresses.
 - UBUNTU26 CIS and STIG remain Coming Soon: the Ubuntu 26.04 benchmarks are not published yet.
   Their rows link to the public UBUNTU26-CIS and UBUNTU26-STIG repositories, which hold no role
   content yet.

@@ -57,7 +57,7 @@ Content
 
 For a full list of goss and how to use the goss_modules (tests).
 `Goss Docs <https://goss.readthedocs.io/en/stable/gossfile/#available-tests>`_
-(for roles that use Syver, see also `Syver Docs <https://syver.readthedocs.io/>`_)
+(for roles that use Syver, see also `Syver Docs <https://syver.readthedocs.io/en/latest/>`_)
 
 **Example**
 

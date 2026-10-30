@@ -311,4 +311,4 @@ Where Can I Get More Help?
 
 - `Discord Community <https://www.lockdownenterprise.com/discord>`_ - Community support
 - `GitHub Issues <https://github.com/ansible-lockdown>`_ - Report bugs or request features
-- `Lockdown Enterprise <https://lockdownenterprise.com>`_ - Commercial support options
+- `Lockdown Enterprise <https://www.lockdownenterprise.com>`_ - Commercial support options

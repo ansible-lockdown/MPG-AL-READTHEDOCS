@@ -219,7 +219,8 @@ Performance and Resource Issues
 My system is impacted when running the audit. How can I restrict its effect?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On both Windows and Linux, you have the ability to limit the number of processes that run at the same time.
+For the goss and Syver audits on Linux and Windows, you can limit the number of processes that run at the same time.
+The SCC scan in the Windows STIG roles has no equivalent setting.
 
 This is set using a variable as part of the playbook:
 

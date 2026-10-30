@@ -282,4 +282,4 @@ To report a new issue:
 
 3. Submit at: `Ansible Lockdown GitHub <https://github.com/ansible-lockdown>`_
 
-For commercial support: `Lockdown Enterprise <https://lockdownenterprise.com>`_
+For commercial support: `Lockdown Enterprise <https://www.lockdownenterprise.com>`_

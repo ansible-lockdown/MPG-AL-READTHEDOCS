@@ -18,10 +18,11 @@ to use them to audit and remediate system security. The Ansible_ roles can be ap
 improve security posture, meet compliance requirements, and deploy without disruption after due diligence.
 Security hardening is based on the industry-recognized CIS_ benchmarks and DISA_ STIG_ guides, implemented
 as open-source licensed configurations that bring systems into security compliance. The content consists of
-an audit component based on GOSS_ that scans a host for compliance, and a remediate component that can be
-run centrally from an **Ansible control node** to bring hosts into compliance. Development and releases
-run through the Ansible Lockdown GitHub_ devel and main branches, with ansible-galaxy_ updates aligned to
-new benchmark versions.
+an audit component that scans a host for compliance with a signed build of GOSS_ (the Windows STIG roles use
+DISA's SCAP Compliance Checker instead), and a remediate component that can be run centrally from an
+**Ansible control node** to bring hosts into compliance. Development and releases run through the
+Ansible Lockdown GitHub_ devel and main branches, with ansible-galaxy_ updates aligned to new benchmark
+versions.
 
 Why should this role be applied to a system?
 --------------------------------------------
@@ -64,7 +65,7 @@ to bring your systems/platforms into security compliance.
 - Configuration-as-code
 
   - Assist in bringing your systems/platform into compliance through the use of Ansible_
-  - Audit your current system/platform using GOSS_
+  - Audit your current system/platform using GOSS_ (SCAP Compliance Checker on the Windows STIG roles)
 
 - Highly configurable to work with your systems
 
@@ -102,7 +103,8 @@ This consists of two components:
 
 - **Audit**
 
-  - Runs a small single binary on the system written in GO called GOSS_.
+  - Runs a small single Go binary on the system: a signed build of GOSS_ or its continuation, Syver.
+  - The Windows STIG roles scan with DISA's SCAP Compliance Checker (SCC) instead.
   - Enables you to very quickly scan your host and output the status of compliance for your host.
 
 - **Remediate**
@@ -197,7 +199,7 @@ Demos
     :alt: Ansible Lockdown - M. Bolwell Audit and Compliance Benchmarks Demo/Q and A
     :target: https://www.youtube.com/watch?v=5OdT3k2IDVo
 
-.. _Ansible: https://www.ansible.com/
+.. _Ansible: https://www.redhat.com/en/ansible-collaborative
 .. _GOSS: https://github.com/goss-org/goss
 .. _STIG: https://www.cyber.mil/stigs/downloads/
 .. _CIS: https://www.cisecurity.org/cis-benchmarks/

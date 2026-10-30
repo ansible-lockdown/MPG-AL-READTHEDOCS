@@ -28,8 +28,9 @@ Main Content site
 Audit
 ~~~~~
 
-- `Goss Main Site <https://goss.rocks>`_
-- `Goss Docs <https://goss.readthedocs.io/en/stable/>`_
+- `Syver <https://github.com/krameff/syver>`_ and `Syver Docs <https://syver.readthedocs.io/en/latest/>`_
+- `krameff/goss (signed Goss build) <https://github.com/krameff/goss>`_
+- `Goss (upstream) <https://github.com/goss-org/goss>`_ and `Goss Docs <https://goss.readthedocs.io/en/stable/>`_
 
 Remediate
 ~~~~~~~~~
