@@ -29,7 +29,7 @@ Remediate Code Considerations
 
   - Linting
 
-We utilise both:
+We use both:
 
   - ansible-lint
   - yamllint
@@ -49,7 +49,7 @@ General Layout
 
 - **Name** ``- name:``
 
-  - Each control gets it's own task and that task needs a name. The name format is category | STIG/CIS ID | PATCH or AUDIT | title of control copied from STIG/CIS.
+  - Each control gets its own task and that task needs a name. The STIG name format is severity | STIG ID | PATCH or AUDIT | title of control copied from the STIG. The CIS name format is CIS ID | PATCH or AUDIT | title of control copied from CIS.
   - PATCH or AUDIT - This is in reference to the task making a change (PATCH) or not making a change (AUDIT). Tasks that don't make changes are one that
     generally gather information to be used later
 
@@ -64,7 +64,7 @@ General Layout
 
 - **Mode**
 
-  - To try and ensure idempotency and the changes to permissions should be X of more restrictive - we use symbolic logic e.g. ``mode: 'u-x,go-wx'``
+  - To try and ensure idempotency and the changes to permissions should be X or more restrictive - we use symbolic logic e.g. ``mode: 'u-x,go-wx'``
 
 Variables
 ^^^^^^^^^
@@ -82,7 +82,7 @@ Variables
 
 - Dynamic Variables (register or set_facts)
 
-  - These are labelled from where/how they are set, This will assist with:
+  - These are labeled from where/how they are set. This will assist with:
 
     - reusability across repositories
     - assist in debugging knowing where the value is set
@@ -101,23 +101,23 @@ Variables
 
 - **Parameters**
 
-  - When using the ``command`` module to gather information please set ``changed_when`` and ``failed_when`` accordingly. This will cause the task to always run and register which always creates the variable registering. The action parts of the task that use that var should handle the var if a fail occurred during the ``command`` or ``shell`` function
+  - When using the ``command`` module to gather information please set ``changed_when``, ``failed_when`` and ``check_mode: false`` accordingly. ``check_mode: false`` causes the task to always run and register, which always creates the registered variable. The action parts of the task that use that var should handle the var if a fail occurred during the ``command`` or ``shell`` function
   - Please always use ``command`` over ``shell``, except when using ( | ) in the command as this will cause issues.
-  - When using modules that have alias's, please do not use the alias since those are often not part of the module documentation
+  - When using modules that have aliases, please do not use the alias since those are often not part of the module documentation
   - When using modules that require a path type of parameter please use that first
   - When using modules that regex, please use that second after path where applies
 
-- **With_items**
+- **Loops**
 
-  - When using loops please use with_items for consistency. We know ``loop`` has much of the same functionality as ``with_items`` but for consistency we would like ``with_items`` since it covers all uses
+  - When using loops please use ``loop`` for consistency with the current roles
   - Please use ``loop_control`` on wordy loops
-  - Please put the loop list below the ``with_items`` like in the example
+  - Please put the loop list below the ``loop`` like in the example
 
 - **When** - *(Please use when statements on all controls)*
 
-  - The control should have the when set to run when the var for the individual task toggle set to true. That toggle is the STIG ID, all lower case with underscores instead of dashes
+  - The control should have the when set to run when the var for the individual task toggle set to true. Use the toggle named in the role's ``defaults/main/main.yml`` for that control (for example ``rhel8stig_010382`` in RHEL8-STIG, ``rhel_09_171011`` in RHEL9-STIG, ``rhel10cis_rule_6_3_1_2`` in RHEL10-CIS)
   - When you are outside of the block please stack the ``when`` values under the ``when`` call, see example below for clarification.
-  - When you are inside of the block you can use use single line for ``when`` and value in a single ``when`` instance. If there are and/or whens please stack those under the when
+  - When you are inside of the block you can use a single line for ``when`` and value in a single ``when`` instance. If there are and/or whens please stack those under the when
   - Please do not use empty compares, if you are basing your task run off an empty var please use | length > 0 or | length == 0.
 
 STIG Control Task Layout
@@ -126,103 +126,111 @@ STIG Control Task Layout
 - **Tags**
 
   - All controls must have tags, but the individual tasks in the block do not get tags. See the example below for clarification
-  - The tags are in this specific order:
+  - The tags are in this order:
 
     - STIG ID copied from the STIG
     - Category
     - CCI value (NIST group ID)
+    - NIST values
     - Security Group ID
     - Rule ID
     - Vulnerability ID
     - Descriptor of what the task is involved with. For example ssh, selinux, pamd, gui, etc. This tag is always lowercase
-    - Nist values
+
+  - The position of the NIST values differs between roles (RHEL9-STIG and RHEL10-STIG place them after the Vulnerability ID). Follow the role you are working in.
+
+Example from RHEL8-STIG (RHEL-08-010382):
 
 .. code-block:: yaml
 
-    - name: "MEDIUM | RHEL-10-010382 | PATCH | RHEL 10 must restrict privilege elevation to authorized personnel."
+    - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel."
       when:
-        - rhel_10_010382
-        - rhel10stig_disruption_high
+        - rhel8stig_010382
+        - rhel8stig_disruption_high
       tags:
-        - RHEL-10-010382
+        - RHEL-08-010382
         - CAT2
         - CCI-000366
+        - NIST800-53R4_CM-6
         - SRG-OS-000480-GPOS-00227
-        - SV-237641r646893_rule
+        - SV-237641r1101904_rule
         - V-237641
-        - NIST800-53R5_CM-7
         - sudo
       block:
-        - name: "MEDIUM | RHEL-10-010382 | AUDIT | RHEL 10 must restrict privilege elevation to authorized personnel. | Get ALL settings"
-          ansible.builtin.shell: grep -iws 'ALL' /etc/sudoers /etc/sudoers.d/* | cut -d":" -f1 | uniq | sort
+        - name: "MEDIUM | RHEL-08-010382 | AUDIT | RHEL 8 must restrict privilege elevation to authorized personnel. | Get ALL settings"
+          ansible.builtin.shell: |
+            set -o pipefail
+            grep -iws 'ALL' /etc/sudoers /etc/sudoers.d/* | cut -d":" -f1 | uniq | sort
+          args:
+            executable: "{{ rhel8stig_shell_executable }}"
           changed_when: false
+          check_mode: false
           failed_when: false
-          register: discovered_sudoers_all_privilege
+          register: discovered_sudoers_all
 
-        - name: "MEDIUM | RHEL-10-010382 | PATCH | RHEL 10 must restrict privilege elevation to authorized personnel. | Remove format 1"
-          when: discovered_sudoers_all_privilege.stdout | length > 0
+        - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel. | Remove format 1"
+          when: discovered_sudoers_all.stdout | length > 0
           ansible.builtin.lineinfile:
             path: "{{ item }}"
-            regexp: 'ALL ALL=(ALL) ALL'
+            regexp: '^\s*ALL\s+ALL\s*=\s*\(ALL\)\s+ALL\s*$'
             state: absent
             validate: '/usr/sbin/visudo -cf %s'
-          loop: "{{ discovered_sudoers_all_privilege.stdout_lines }}"
+          loop: "{{ discovered_sudoers_all.stdout_lines }}"
 
-        - name: "MEDIUM | RHEL-10-010382 | PATCH | RHEL 10 must restrict privilege elevation to authorized personnel. | Remove format 2"
-          when: discovered_sudoers_all_privilege.stdout | length > 0
+        - name: "MEDIUM | RHEL-08-010382 | PATCH | RHEL 8 must restrict privilege elevation to authorized personnel. | Remove format 2"
+          when: discovered_sudoers_all.stdout | length > 0
           ansible.builtin.lineinfile:
             path: "{{ item }}"
-            regexp: 'ALL ALL=(ALL:ALL) ALL'
+            regexp: '^\s*ALL\s+ALL\s*=\s*\(ALL:ALL\)\s+ALL\s*$'
             state: absent
             validate: '/usr/sbin/visudo -cf %s'
-          loop: "{{ discovered_sudoers_all_privilege.stdout_lines }}"
+          loop: "{{ discovered_sudoers_all.stdout_lines }}"
 
 CIS Control Task Layout
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Tags**
+
   - All controls must have tags, but the individual tasks in the block do not get tags. See the example below for clarification
-  - The tags are in this specific order:
+  - The tags are in this order:
 
     - Server Level
     - Workstation Level
-    - Automated or Manual. This is from the CIS control in the benchmark documentation and is their assessment of the control being able to be automated or a manual control. If we automate or don't automate the control itself we use the value from the benchmark itself here
+    - Automated or Manual, where present. This is from the CIS control in the benchmark documentation and is their assessment of the control being able to be automated or a manual control. If we automate or don't automate the control itself we use the value from the benchmark itself here. Many current tasks no longer carry this tag
     - Patch or Audit. Does the overall task make any changes or just audit/message out
     - Descriptor of what the task is involved with. For example ssh, selinux, pamd, gui, etc. This tag is always lowercase
-    - Number of the control. The format is rule_< the number>, rule_4.1.1.3 for example
+    - Number of the control. The format is rule_< the number>, rule_6.3.1.2 for example
+    - NIST values
+
+  - The relative position of the rule number and NIST values differs between tasks. Follow the role you are working in.
+
+Example from RHEL10-CIS (6.3.1.2):
 
 .. code-block:: yaml
 
-  - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled"
-    when: rhel10cis_rule_4_1_1_3
+  - name: "6.3.1.2 | PATCH | Ensure auditing for processes that start prior to auditd is enabled"
+    when: rhel10cis_rule_6_3_1_2
     tags:
       - level2-server
       - level2-workstation
-      - automated
       - patch
       - auditd
       - grub
-      - rule_4.1.1.3
+      - rule_6.3.1.2
+      - NIST800-53R5_AU-12
     block:
-      - name: "4.1.1.3 | AUDIT | Ensure auditing for processes that start prior to auditd is enabled | Get GRUB_CMDLINE_LINUX"
-        ansible.builtin.shell: grep 'GRUB_CMDLINE_LINUX=' /etc/default/grub | sed 's/.$//'
+      - name: "6.3.1.2 | PATCH | Ensure auditing for processes that start prior to auditd is enabled | Grubby existence of current value"
+        ansible.builtin.shell: |
+          set -o pipefail
+          grubby --info=ALL | grep args | sed -n 's/.*audit=\([[:alnum:]]\+\).*/\1/p'
+        args:
+          executable: "{{ rhel10cis_shell_executable }}"
         changed_when: false
         failed_when: false
-        check_mode: no
-        register: discovered_default_grub_cmdline_linux
+        check_mode: false
+        register: discovered_grubby_curr_value_audit_linux
 
-      - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled | Replace existing setting"
-        when: "'audit=' in discovered_default_grub_cmdline_linux.stdout"
-        ansible.builtin.replace:
-          path: /etc/default/grub
-          regexp: 'audit=.'
-          replace: 'audit=1'
-        notify: grub2cfg
-
-      - name: "4.1.1.3 | PATCH | Ensure auditing for processes that start prior to auditd is enabled | Add audit setting if missing"
-        when: "'audit=' not in discovered_default_grub_cmdline_linux.stdout"
-        ansible.builtin.lineinfile:
-          path: /etc/default/grub
-          regexp: '^GRUB_CMDLINE_LINUX='
-          line: '{{ discovered_default_grub_cmdline_linux.stdout }} audit=1"'
-        notify: grub2cfg
+      - name: "6.3.1.2 | PATCH | Ensure auditing for processes that start prior to auditd is enabled | Grubby update, if needed"
+        when: discovered_grubby_curr_value_audit_linux.stdout == '' or '0' in discovered_grubby_curr_value_audit_linux.stdout or 'off' in discovered_grubby_curr_value_audit_linux.stdout|lower
+        ansible.builtin.command: grubby --update-kernel=ALL --args="audit=1"
+        changed_when: true

@@ -8,11 +8,15 @@ Audit
 Overview
 --------
 
-Ansible remediation for security benchmarks now utilizes an open-source go binary called `goss <https://goss.rocks>`_ to audit the system.
+Ansible Lockdown audits the system with `Syver <https://github.com/krameff/syver/releases>`_, a fork of Goss (``goss-org/goss``), the YAML-based server
+testing tool written in Go. Syver was first released as `krameff/goss <https://github.com/krameff/goss/releases>`_, which is now archived, and some roles
+still pin a krameff/goss release. The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which
+binary and which release it pins, with checksums. Both read the same ``goss.yml`` audit content.
 
-Ensuring consistency in checks by using the same settings and controls
-that have been enabled in the remediation steps, are the same ones
-checked by the audit.
+The audit uses the same variables and enabled controls as the remediation, so the checks match what was remediated.
+
+The Windows STIG roles are the exception. They have no goss audit content and scan instead with DISA's
+SCAP Compliance Checker (SCC). See `Windows STIG Roles: SCAP Compliance Checker`_.
 
 
 Considerations
@@ -25,21 +29,21 @@ Considerations
 
 It can be run in two ways:
 
-- Enabled to run as part of the ansible playbook and is setup to capture pre remediation and post remediation states.
-  Using the same configured variables as used in remediation See `Using Audit and Remediate at the same time <../combined/comb-getting-started.html>`_
+- Enabled to run as part of the Ansible playbook, set up to capture pre remediation and post remediation states
+  using the same variables as the remediation. See :doc:`Using Audit and Remediate at the same time </combined/comb-getting-started>`.
 
 - Standalone script
 
   - run_audit.sh (Linux (shell))
-  - run_audit.ps1 (Windows(powershell))
+  - run_audit.ps1 (Windows (PowerShell))
 
 
 Currently Enabled Playbooks
 ---------------------------
 
-- `CIS Benchmarks <../CIS/CIS_table.html>`_
+- :doc:`CIS Benchmarks </CIS/CIS_table>`
 
-- `STIG Benchmarks <../STIG/STIG_table.html>`_
+- :doc:`STIG Benchmarks </STIG/STIG_table>`
 
 
 Setup auditing as standalone
@@ -55,31 +59,33 @@ The following requirements are needed (OS dependent)
   - Linux sudo can work
   - Windows ability to run security audits and query group or local policy.
 
-- goss binary appropriate for the OS
+- goss or syver binary appropriate for the OS
 
   - The binary must be accessible by the OS so the scripts can run smoothly with appropriate rights.
 
     - The expected path for the binary is found inside the relevant OS script and can be adjusted as required.
 
+  - Use the binary and release your role pins in ``audit_bin_url`` and ``audit_bin_version.release``
+    (``defaults/main/audit.yml``). Replace ``<release>`` below with that value.
+
   - Linux
 
-    - `Linux Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64>`_
-    - `Linux Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64.sha256>`_
+    - Syver: ``https://github.com/krameff/syver/releases/download/<release>/syver-linux-amd64``
+    - krameff/goss: ``https://github.com/krameff/goss/releases/download/<release>/goss-linux-amd64``
+    - Checksums: the ``syver_<version>_SHA256SUMS`` or ``goss_<version>_SHA256SUMS`` file on the same release page
 
   - Windows
 
-    - `Windows Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe>`_
-    - `Windows Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-alpha-windows-amd64.exe.sha256>`_
+    - Syver: ``https://github.com/krameff/syver/releases/download/<release>/syver-windows-amd64.exe``
+    - Checksums: the ``syver_<version>_SHA256SUMS`` file on the same release page
 
 .. note::
     The binary only needs to be accessible to the host with ability to use.
     The relevant script needs to be adjusted to point to the path of the binary.
     Ensure you have the correct binary for your architecture (examples above are AMD64).
 
-    **ARM64/aarch64 Users:** Download the ARM64 binary from:
-
-    - `Goss ARM64 Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64>`_
-    - `Goss ARM64 Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64.sha256>`_
+    **ARM64/aarch64 Users:** Download the ARM64 binary (``syver-linux-arm64`` or ``goss-linux-arm64``)
+    from the same release page.
 
     ARM64 audits may show different results for auditd-related controls due to syscall differences.
     See :doc:`ARM64/aarch64 Architecture Guide </arm64-guide>` for details.
@@ -87,7 +93,7 @@ The following requirements are needed (OS dependent)
 Running the Audit Only as part of remediate playbook
 ----------------------------------------------------
 
-It is possible to just run the audit on some playbooks (being rolled out across them all). This is a variable set
+Most current roles can run the audit alone, without remediating. Set:
 
 .. code-block:: yaml
 
@@ -95,15 +101,16 @@ It is possible to just run the audit on some playbooks (being rolled out across 
 
 
 This will run the audit based on the same release as the playbook and will then stop.
-Extra variables also enable the ability to copy back the audit output to the control node and create a directory structure.
+Extra variables enable copying the audit output back to the control node, or to a location available to the managed node.
 
 .. code-block:: yaml
 
-  # As part of audit_only
-  # This will enable files to be copied back to control node
-  fetch_audit_files: false
-  # Path to copy the files to will create dir structure
-  audit_capture_files_dir: /some/location to copy to on control node
+  # Copy audit output back (fetch) or to another path (copy)
+  fetch_audit_output: true
+  # fetch or copy
+  audit_output_collection_method: fetch
+  # Destination for the audit output files
+  audit_output_destination: /some/location/on/control/node/
 
 
 Defining the audit
@@ -140,10 +147,12 @@ Bash Script Explanation: Goss Security Audit
 
   - run_audit.sh (found in content directory)
 
-This Bash script runs a **security audit** using **Goss**, a YAML-based testing framework.
+This Bash script runs a **security audit** using **goss or syver**.
 It is designed to be **Linux OS-agnostic**, configurable, and ensures compliance with
 **CIS or STIG** benchmarks.
 
+The excerpts below are from ``run_audit.sh`` in RHEL10-CIS-Audit. Other audit repos follow the same
+structure; older goss-based repos default ``AUDIT_BIN`` to ``/usr/local/bin/goss`` with a lower ``AUDIT_BIN_MIN_VER``.
 
 **1. Script Metadata and Change Log**
 At the top, the script includes comments detailing changes made over time.
@@ -158,8 +167,8 @@ Understanding variables:
 .. code-block:: bash
 
     # Goss benchmark variables (these should not need changing unless new release)
-    BENCHMARK=CIS  # Benchmark Name aligns to the audit
-    BENCHMARK_VER=1.0.0
+    BENCHMARK=CIS # Benchmark Name aligns to the audit
+    BENCHMARK_VER=1.0.1
     BENCHMARK_OS=RHEL10
 
 Defines **benchmark name**, **version**, and **target OS**.
@@ -167,12 +176,13 @@ Defines **benchmark name**, **version**, and **target OS**.
 .. code-block:: bash
 
     # Goss host Variables
-    AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
-    AUDIT_BIN_MIN_VER="0.4.4"
-    AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # default Goss configuration file
-    AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location for audit files
+    AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/syver}"  # location of the syver (or goss) executable
+    AUDIT_BIN_MIN_VER="0.13.0"
+    AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # the default goss file used by the audit provided by the audit configuration
+    AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location of the audit configuration file as available to the OS
 
-Defines **Goss binary location** and **audit file paths**.
+Defines **audit binary location** and **audit file paths**. ``AUDIT_BIN``, ``AUDIT_FILE`` and
+``AUDIT_CONTENT_LOCATION`` can also be set as environment variables.
 
 **3. Help Function**
 
@@ -180,7 +190,8 @@ Defines **Goss binary location** and **audit file paths**.
 
     Help()
     {
-      echo "Script to run the goss audit"
+      # Display Help
+      echo "Script to run the syver audit"
       echo
       echo "Syntax: $0 [-f|-g|-m|-o|-v|-w|-h]"
       echo "options:"
@@ -194,7 +205,7 @@ Defines **Goss binary location** and **audit file paths**.
       echo
     }
 
-Displays **usage instructions** when `-h` is provided.
+Displays **usage instructions** when ``-h`` is provided.
 
 **4. Command-Line Arguments Handling**
 
@@ -202,18 +213,23 @@ Displays **usage instructions** when `-h` is provided.
 
     while getopts f:g:m:o:v::wh option; do
       case "${option}" in
-        f ) FORMAT=${OPTARG} ;;  # Output format (json, rspecish, etc.)
-        g ) GROUP=${OPTARG} ;;   # Defines server group
+        f ) FORMAT=${OPTARG} ;;
+        g ) GROUP=${OPTARG} ;;
         m ) MAX=${OPTARG} ;;
-        o ) OUTFILE=${OPTARG} ;; # Specifies output file
-        v ) VARS_PATH=${OPTARG} ;; # Variables file path
-        w ) host_system_type=Workstation ;; # Change system type to Workstation
-        h ) Help; exit;; # Show help and exit
-        ? ) echo "Invalid option: -${OPTARG}."; Help; exit;; # Invalid option handler
+        o ) OUTFILE=${OPTARG} ;;
+        v ) VARS_PATH=${OPTARG} ;;
+        w ) host_system_type=Workstation ;;
+        h ) # display Help
+          Help
+          exit;;
+        ? ) # Invalid option
+          echo "Invalid option: -${OPTARG}."
+          Help
+          exit;;
       esac
     done
 
-Uses `getopts` to process **command-line arguments**.
+Uses ``getopts`` to process **command-line arguments**.
 
 **5. Pre-Checks**
 
@@ -226,25 +242,15 @@ Uses `getopts` to process **command-line arguments**.
 
 Ensures the script runs with **root privileges**.
 
-.. code-block:: bash
-
-    if [ "$(grep -Ec "rhel|oracle" /etc/os-release)" != 0 ]; then
-      os_vendor="RHEL"
-    else
-      os_vendor="$(hostnamectl | grep Oper | cut -d : -f2 | awk '{print $1}' | tr '[:lower:]')"
-    fi
-
-Detects the **OS vendor**.
-
 **6. Audit Variables and File Paths**
 
 .. code-block:: bash
 
-    audit_content_version=$os_vendor$os_maj_ver-$BENCHMARK-Audit
+    audit_content_version=$BENCHMARK_OS-$BENCHMARK-Audit
     audit_content_dir=$AUDIT_CONTENT_LOCATION/$audit_content_version
     audit_vars=vars/${BENCHMARK}.yml
 
-Defines paths for **storing audit results**.
+Defines where the audit content and default vars file are expected.
 
 **7. Output File Handling**
 
@@ -258,39 +264,34 @@ Defines paths for **storing audit results**.
 
 Dynamically sets the output filename based on system details.
 
-**8. Pre-Check for Goss Availability**
+**8. Pre-Check for Audit Binary Availability**
 
 .. code-block:: bash
 
+    export FAILURE=0
     if [ -s "${AUDIT_BIN}" ]; then
-      goss_installed_version="$($AUDIT_BIN -v | awk '{print $NF}' | cut -dv -f2)"
+      echo "OK - Audit binary $AUDIT_BIN is available"
+      goss_installed_version="$($AUDIT_BIN -v | awk 'NR==1{print $NF}' | cut -dv -f2)"
       newer_version=$(echo -e "$goss_installed_version\n$AUDIT_BIN_MIN_VER" | sort -V | tail -n 1)
       if [ "$goss_installed_version" = "$newer_version" ] || [ "$goss_installed_version" = "$AUDIT_BIN_MIN_VER" ]; then
-        echo "OK - Goss is installed and version is ok ($goss_installed_version >= $AUDIT_BIN_MIN_VER)"
+        echo "OK - Audit binary is installed and version is ok ($goss_installed_version >= $AUDIT_BIN_MIN_VER)"
       else
-        echo "WARNING - Goss installed = ${goss_installed_version}, does not meet minimum of ${AUDIT_BIN_MIN_VER}"
+        echo "WARNING - Audit binary installed = ${goss_installed_version}, does not meet minimum of ${AUDIT_BIN_MIN_VER}"
         export FAILURE=2
       fi
     else
-      echo "WARNING - The audit binary is not available at $AUDIT_BIN"
+      echo "WARNING - The audit binary is not available at $AUDIT_BIN "
       export FAILURE=1
     fi
 
-Checks if **Goss is installed** and meets the minimum version requirement.
+Checks that the **audit binary is installed** and meets the minimum version requirement.
+The script also checks that ``goss.yml`` exists in the content directory and stops if any pre-check fails.
 
-**9. Running the Audit**
-
-.. code-block:: bash
-
-    echo "Audit Started"
-    $AUDIT_BIN -g "$audit_content_dir/$AUDIT_FILE" --vars "$varfile_path" --vars-inline "$audit_json_vars" v $format_output > "$audit_out"
-
-Executes the **Goss audit** with the specified **configuration file**.
-
-**10. Displaying the Audit Results**
+**9. Output Format Selection**
 
 .. code-block:: bash
 
+    # defaults
     output_summary="tail -2 $audit_out"
     format_output="-f $format"
 
@@ -301,16 +302,29 @@ Executes the **Goss audit** with the specified **configuration file**.
        output_summary=""
     fi
 
-Formats and extracts audit results based on the selected output format.
+Sets the output format and how the summary is extracted.
+
+**10. Running the Audit**
 
 .. code-block:: bash
 
-    if [ "$(grep -c $BENCHMARK "$audit_out")" != 0 ] || [ "$format" = junit ] || [ "$format" = tap ]; then
+    $AUDIT_BIN -g "$audit_content_dir/$AUDIT_FILE" --vars "$varfile_path"  --vars-inline "$audit_json_vars" v --max-concurrent "$max" $format_output > "$audit_out"
+
+Executes the audit with the specified **configuration file**, vars file and discovered metadata.
+
+**11. Displaying the Audit Results**
+
+.. code-block:: bash
+
+    if [ "$(grep -c Count: "$audit_out")" -ge 1 ]  || [ "$format" = junit ] || [ "$format" = tap ]; then
       eval $output_summary
       echo "Completed file can be found at $audit_out"
+      echo "###############"
       echo "Audit Completed"
+      echo "###############"
     else
-      echo -e "Fail: There were issues when running the audit, please investigate $audit_out"
+      echo -e "Fail: There were issues when running the audit please investigate $audit_out";
+      exit 1
     fi
 
 Checks if the audit ran successfully and notifies the user.
@@ -319,126 +333,103 @@ Checks if the audit ran successfully and notifies the user.
    :header: "Feature", "Description"
    :widths: 10, 25
 
-   "Purpose", "Runs a Goss-based OS security audit"
+   "Purpose", "Runs a goss-based OS security audit"
    "Supported OS", "Linux (RHEL, Oracle, etc.)"
    "Customizable", "Output format, grouping and audit file location"
-   "Pre-checks", "Ensures script runs as **root** and checks Goss"
+   "Pre-checks", "Ensures script runs as **root** and checks the audit binary"
    "Error Handling", "Alerts for missing files and outdated versions"
 
 **Running goss without script**
 
-This assumes you have goss and access to super user privileges.
+This assumes you have goss or syver and access to super user privileges.
 
-It is possible to run goss in its raw form, while this is not recommended, for consistency it is added here.
+It is possible to run the binary in its raw form. While this is not recommended, it is added here for consistency.
 
-The script discovers and adds extra inline variables to the goss output in the form of the metadata fields as found in the goss.yml
+The script discovers and adds extra inline variables to the output in the form of the metadata fields as found in the goss.yml.
 This needs to be amended before being able to run in raw form.
 
-- Edit goss.yml remove the lines starting at #metadata and the command tests Vars below
+- Edit goss.yml and remove the ``command: benchmark_meta:`` test at the end of the file (it reads the script-supplied ``.Vars.machine_uuid``, ``.Vars.epoch`` and similar values).
 
-Goss can then be run manually
+The binary can then be run manually
 
 - full check
 
 .. code-block:: shell
 
-    # {{path to your goss binary}} --vars {{ path to the vars file }} -g {{path to your clone of this repo }}/goss.yml --validate
+    # {{ path to binary }} -g {{ path to audit content }}/goss.yml --vars {{ path to the vars file }} validate
 
 
-example:
+example (illustrative output):
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss --vars ../vars/cis.yml -g ./goss.yml validate
+    # /usr/local/bin/syver -g ./goss.yml --vars ./vars/CIS.yml validate
     ......FF....FF................FF...F..FF.............F........................FSSSS.............FS.F.F.F.F.........FFFFF....
 
     Failures/Skipped:
 
-    Title: 1.6.1 Ensure core dumps are restricted (Automated)_sysctl
-    Command: suid_dumpable_2: exit-status:
+    Title: 1.1.1.10 | Ensure usb-storage kernel module is not available
+    Command: usb-storage: exit-status:
     Expected
         <int>: 1
     to equal
         <int>: 0
-    Command: suid_dumpable_2: stdout: patterns not found: [fs.suid_dumpable = 0]
-
-
-    Title: 1.4.2 Ensure filesystem integrity is regularly checked (Automated)
-    Service: aidecheck: enabled:
-    Expected
-        <bool>: false
-    to equal
-        <bool>: true
-    Service: aidecheck: running:
-    Expected
-        <bool>: false
-    to equal
-        <bool>: true
 
     < ---------cut ------- >
-
-    Title: 1.1.22 Ensure sticky bit is set on all world-writable directories
-    Command: version: exit-status:
-    Expected
-        <int>: 0
-    to equal
-        <int>: 123
 
     Total Duration: 5.102s
     Count: 124, Failed: 21, Skipped: 5
 
 
-- running a particular section of tests
+- running a particular section of tests (illustrative output)
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss -g ./section_1/cis_1.1/cis_1.1.22.yml  validate
-    ............
+    # /usr/local/bin/syver -g ./section_1/cis_1.1.1.x/cis_1.1.1.10.yml --vars ./vars/CIS.yml validate
+    ....
 
     Total Duration: 0.033s
-    Count: 12, Failed: 0, Skipped: 0
+    Count: 4, Failed: 0, Skipped: 0
 
 
-- changing the output
+- changing the output (illustrative output)
 
 .. code-block:: shell
 
-    # /usr/local/bin/goss -g ./section_1/cis_1.1/cis_1.1.22.yml  validate -f documentation
-    Title: 1.1.20 Check for removable media nodev
-    Command: floppy_nodev: exit-status: matches expectation: [0]
-    Command: floppy_nodev: stdout: matches expectation: [OK]
+    # /usr/local/bin/syver -g ./section_1/cis_1.1.1.x/cis_1.1.1.10.yml --vars ./vars/CIS.yml validate -f documentation
+    Title: 1.1.1.10 | Ensure usb-storage kernel module is not available
+    Command: usb-storage: exit-status: matches expectation: 0
+    Command: usb-storage: stdout: matches expectation: ["install /bin/true"]
     < -------cut ------- >
-    Title: 1.1.20 Check for removable media noexec
-    Command: floppy_noexec: exit-status: matches expectation: [0]
-    Command: floppy_noexec: stdout: matches expectation: [OK]
-
 
     Total Duration: 0.022s
-    Count: 12, Failed: 0, Skipped: 0
+    Count: 4, Failed: 0, Skipped: 0
 
 Fetch or Copy Audit Files
 -------------------------
 
-This section manages how audit output files are collected from managed nodes—
-either by fetching them to the controller or copying them to a centralized/shared location.
+When ``fetch_audit_output: true``, the role collects the pre and post audit output files after the audit.
+``audit_output_collection_method`` selects ``fetch`` (default) or ``copy``, and ``audit_output_destination``
+sets where the files go (default ``{{ audit_log_dir }}/audit_summaries/``).
+
+The excerpts below are from ``tasks/fetch_audit_output.yml`` in RHEL10-CIS.
 
 **1. Fetch to Controller**
 
 .. code-block:: yaml
 
-  - name: "FETCH_AUDIT_FILES | Fetch files and copy to controller"
+  - name: "POST | FETCH | Fetch files and copy to controller"
     when: audit_output_collection_method == "fetch"
     ansible.builtin.fetch:
       src: "{{ item }}"
       dest: "{{ audit_output_destination }}"
       flat: true
+    changed_when: true
     failed_when: false
     register: discovered_audit_fetch_state
     loop:
       - "{{ pre_audit_outfile }}"
       - "{{ post_audit_outfile }}"
-    loop_control:
-      label: "{{ item }}"
     become: false
 
 - **Condition:** Runs only if ``audit_output_collection_method == "fetch"``.
@@ -446,17 +437,17 @@ either by fetching them to the controller or copying them to a centralized/share
 - **src:** Points to the audit output file on the managed node.
 - **dest:** Directory on the controller where files are saved.
 - **flat:** Prevents creating full directory paths under ``dest``.
+- **changed_when:** Always reports changed.
 - **failed_when:** Prevents task failure if the file doesn't exist.
 - **register:** Stores the result in ``discovered_audit_fetch_state``.
 - **loop:** Iterates over both ``pre_audit_outfile`` and ``post_audit_outfile``.
-- **loop_control.label:** Improves log output for readability.
 - **become:** ``false`` indicates no privilege escalation is used.
 
-**2. Copy on Managed Node**
+**2. Copy Method**
 
 .. code-block:: yaml
 
-  - name: "FETCH_AUDIT_FILES | Copy files to location available to managed node"
+  - name: "POST | FETCH | Copy files to location available to managed node"
     when: audit_output_collection_method == "copy"
     ansible.builtin.copy:
       src: "{{ item }}"
@@ -468,44 +459,84 @@ either by fetching them to the controller or copying them to a centralized/share
     loop:
       - "{{ pre_audit_outfile }}"
       - "{{ post_audit_outfile }}"
-    loop_control:
-      label: "{{ item }}"
 
 - **Condition:** Runs if ``audit_output_collection_method == "copy"``.
-- **Module:** ``copy`` transfers files **within the managed node**, to a shared or central path.
-- **src/dest:** Source and destination paths on the node.
-- **mode:** Sets secure file permissions (`rw-------`).
-- **flat:** Ensures output structure is flat.
+- **Module:** ``copy`` without ``remote_src``, so in the current task ``src`` is read from the controller, not the managed node.
+- **mode:** Removes execute for everyone and write for group and other (for example ``rw-r--r--``).
+- **failed_when:** Prevents task failure if the copy does not succeed.
 - **register:** Stores result in ``discovered_audit_copy_state``.
 
 **3. Show Warning if Fetch/Copy Fails**
 
 .. code-block:: yaml
 
-  - name: "FETCH_AUDIT_FILES | Warning if issues with fetch or copy"
+  - name: "POST | FETCH | Fetch files and copy to controller | Warning if issues with fetch_audit_files"
     when:
-      - (audit_output_collection_method == "fetch" and discovered_audit_fetch_state is defined and not discovered_audit_fetch_state.changed) or
-        (audit_output_collection_method == "copy" and discovered_audit_copy_state is defined and not discovered_audit_copy_state.changed)
+      - (audit_output_collection_method == "fetch" and not discovered_audit_fetch_state.changed) or
+        (audit_output_collection_method == "copy" and not discovered_audit_copy_state.changed)
     block:
-      - name: "FETCH_AUDIT_FILES | Warning if issues with fetch_audit_files"
+      - name: "POST | FETCH | Fetch files and copy to controller | Warning if issues with fetch_audit_files"
         ansible.builtin.debug:
           msg: "Warning!! Unable to write to localhost {{ audit_output_destination }} for audit file copy"
 
-- **Purpose:** Emits a warning if no files were transferred via ``fetch`` or ``copy``.
-- **Condition:** Based on whether the file transfer actually changed any state.
-- **Message:** Informs the user that the output destination on localhost couldn't be written to.
+      - name: "POST | FETCH | Fetch files and copy to controller | Warning if issues with fetch_audit_files"
+        ansible.builtin.import_tasks:
+          file: warning_facts.yml
+        vars:
+          warn_control_id: "FETCH_AUDIT_FILES"
+
+- **Purpose:** Emits a warning and records it in the role's warning count if no files were transferred.
+- **Condition:** Based on whether the transfer task reported a change. Because the fetch task always reports changed, this warning fires only for the ``copy`` method.
+- **Message:** Informs the user that the output destination couldn't be written to.
 
 .. csv-table:: **Audit Fetch vs Copy Summary Table**
    :header: "Feature", "Description", "Condition"
    :widths: 10, 15, 20
 
-   "Fetch files to controller", "Copies files to control node using `fetch`", "audit_output_collection_method == 'fetch'"
-   "Copy files on managed node", "Copies files locally using `copy`", "audit_output_collection_method == `copy`"
-   "Error Handling", "Displays a warning if file transfer fails", "Based on fetch/copy result `changed` status"
+   "Fetch files to controller", "Copies files to control node using ``fetch``", "audit_output_collection_method == 'fetch'"
+   "Copy files", "Uses ``copy``; ``src`` is read from the controller in the current task", "audit_output_collection_method == 'copy'"
+   "Error Handling", "Displays a warning if the copy reports no change", "Based on fetch/copy result ``changed`` status"
 
 
 Running on Windows
 ------------------
+
+Windows CIS Roles: Audit from the Playbook
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Windows-11-CIS, Windows-2022-CIS and Windows-2025-CIS run their audit repository from the role, the same
+way the Linux roles do. Everything is off by default:
+
+.. code-block:: console
+
+    # Audit before and after remediation, and fetch the results to the control node
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e run_audit=true -e fetch_audit_output=true
+
+    # Audit only, nothing applied
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e audit_only=true
+
+With ``setup_audit`` the role:
+
+- Downloads Syver from ``audit_bin_url`` at the release in ``audit_bin_version.release`` to
+  ``C:\Program Files\syver\syver.exe`` and checks it against the pinned checksum.
+  Set ``get_audit_binary_method: copy`` to supply the binary from the controller instead (``audit_bin_copy_location``).
+- Fetches the ``{{ benchmark }}-Audit`` content from the branch ``benchmark_{{ benchmark_version }}`` to
+  ``C:\ProgramData\{{ benchmark }}-Audit``. ``audit_content`` selects ``get_url`` (default, a .zip download),
+  ``git`` (requires Git for Windows on the node), ``copy`` or ``archive``.
+
+The role then writes its own variables to ``vars\<host>.yml`` in the content directory, so the audit checks the
+same controls the remediation enabled, and runs ``run_audit.ps1`` before and after remediation.
+Results are written to ``audit_log_dir`` (default ``C:\ProgramData\audit_logs``), and with ``fetch_audit_output``
+they are collected to ``audit_output_destination`` (default ``/opt/audit_summaries/`` on the controller).
+
+Other settings in ``defaults/main/audit.yml``:
+
+- ``audit_system_type``: ``Workstation`` on Windows-11-CIS, ``Server`` on the server roles.
+- ``audit_run_heavy_tests``: enables the checks that can have more impact on the host (default ``false``).
+- ``audit_max_concurrent``: concurrency passed to ``run_audit.ps1 -MaxConcurrent`` (default ``50``).
+
+Windows-2019-CIS does not drive its audit from the role. Run ``run_audit.ps1`` from Windows-2019-CIS-Audit as a
+standalone audit.
 
 PowerShell Script Explanation: Goss Security Audit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -514,30 +545,45 @@ PowerShell Script Explanation: Goss Security Audit
 
   - run_audit.ps1 (found in content directory)
 
-Variables can be set within the script
-
-This PowerShell script serves as a wrapper to run an audit on a system using `goss`.
-It allows users to set custom variables for the audit, including paths for the audit
-content, binary, and output files.
+This PowerShell script serves as a wrapper to run an audit on a system using syver.
+The description below is from ``run_audit.ps1`` in Windows-2022-CIS-Audit; Windows-2025-CIS-Audit and
+Windows-11-CIS-Audit use the same parameters.
+The legacy Windows-2016-CIS-Audit and Windows-2019-CIS-Audit scripts differ: they use goss and the parameters
+``-auditbin``, ``-auditdir``, ``-varsfile``, ``-group`` and ``-outfile``.
 
 **Parameters**
 
 The script supports the following parameters:
 
-- **auditdir** (default: `$DEFAULT_CONTENT_DIR`):
-    - Specifies the location where the audit content is stored (e.g., `C:\\windows_audit`).
+- **Format** (default: ``json``):
+    - Output format: ``json``, ``documentation``, ``rspecish``, ``junit``, ``tap``, ``nagios`` or ``silent``.
 
-- **binpath** (default: `$DEFAULT_AUDIT_BIN`):
-    - Defines the path to the audit binary (e.g., `C:\\$DEFAULT_CONTENT_DIR\\goss.exe`).
-
-- **varsfile** (default: `$DEFAULT_VARS_FILE`):
-    - Allows specifying a variable file containing settings for the audit.
-
-- **group** (default: `none`):
+- **Group** (default: ``ungrouped``):
     - Used to categorize the system into a specific group for comparison.
 
-- **outfile** (default: `$AUDIT_CONTENT_DIR\\audit_$host_os_hostname_$host_epoch.json`):
+- **MaxConcurrent** (default: ``50``):
+    - Maximum number of tests run at the same time.
+
+- **OutFile** (default: ``<AUDIT_CONTENT_LOCATION>\audit_<hostname>-<benchmark>-<benchmark OS>_<epoch>.<format>``):
     - Defines the output file path for storing the full audit results.
+
+- **VarsPath** (default: ``<audit content dir>\vars\CIS.yml``):
+    - Allows specifying a variables file containing settings for the audit.
+
+- **SystemType** (default: ``Server``):
+    - ``Server`` or ``Workstation``.
+
+- **CollectOnly** (switch):
+    - Collects the policy snapshot and stops.
+
+- **SkipCollect** (switch):
+    - Reuses an existing policy snapshot instead of collecting a new one.
+
+The binary and content locations are set with environment variables:
+
+- ``AUDIT_BIN`` (default ``C:\Program Files\syver\syver.exe``)
+- ``AUDIT_FILE`` (default ``goss.yml``)
+- ``AUDIT_CONTENT_LOCATION`` (default ``%ProgramData%``); the content is expected in ``<AUDIT_CONTENT_LOCATION>\<benchmark OS>-<benchmark>-Audit``
 
 **Usage Examples**
 
@@ -547,69 +593,114 @@ The script supports the following parameters:
     .\run_audit.ps1
 
     # Specify a custom path for the audit binary
-    .\run_audit.ps1 -auditbin C:\path_to\binary.exe
+    $env:AUDIT_BIN = 'C:\path_to\syver.exe'; .\run_audit.ps1
 
-    # Define a custom audit directory
-    .\run_audit.ps1 -auditdir C:\somepath_for_audit_content
+    # Define a custom audit content location
+    $env:AUDIT_CONTENT_LOCATION = 'C:\somepath_for_audit_content'; .\run_audit.ps1
 
     # Use a specific variables file
-    .\run_audit.ps1 -varsfile myvars.yml
+    .\run_audit.ps1 -VarsPath C:\path\myvars.yml
 
     # Set a custom output file path
-    .\run_audit.ps1 -outfile C:\audit\output.json
+    .\run_audit.ps1 -OutFile C:\audit\output.json
 
-    # Assign the system to a group
-    .\run_audit.ps1 -group webserver
+    # Assign the system to a group and limit concurrency
+    .\run_audit.ps1 -Group webserver -MaxConcurrent 20
 
 **Script Functionality**
 
 **1. Define Default Values**
   The script sets default values for:
-    - The benchmark type (`CIS or STIG`).
-    - The Windows version (`Windows 20XX`).
-    - The default content directory, audit binary path, and variable file.
+    - The benchmark type, version and OS (for example ``CIS``, ``4.0.0``, ``Windows-2022``).
+    - The audit binary, audit file and content location.
 
-**2. Validate File Paths**
-  The script verifies the existence of essential files, such as the audit binary and content files. If any file is missing, it displays a warning and exits.
-
-**3. Identify Server Type**
-  Using `wmic.exe`, the script determines the server role, which could be:
-    - Standalone Server
+**2. Identify Server Role**
+  Using ``Get-CimInstance Win32_ComputerSystem`` (DomainRole), the script classifies the host as:
+    - Domain Controller
     - Member Server
-    - Primary Domain Controller (PDC)
-    - Backup Domain Controller (BDC)
-    - Workstation
+    - Standalone
 
-**4. Collect System Metadata**
+  CIS treats any server that is not a domain controller as a Member Server.
+
+**3. Validate Prerequisites**
+  The script checks that it runs with Administrator privileges, that the audit binary is present and meets the
+  minimum version, and that ``goss.yml`` and the vars file exist. If any check fails, it reports a warning and exits.
+
+**4. Collect Policy Snapshot**
+  The script runs ``secedit`` (account policy and user rights) and ``auditpol`` once each and writes a policy
+  snapshot under ``%SystemRoot%\Temp``. What to collect comes from ``collector_targets.json``.
+  The audit checks against this snapshot.
+
+**5. Collect System Metadata**
   The script gathers system information such as:
     - Machine UUID
-    - OS Version & Locale
+    - OS Version and Build
+    - Time zone
     - Hostname
     - Epoch time for timestamping output files
 
-**5. Run System Audit Commands**
-  Depending on the server type, the script executes:
-    - `auditpol.exe` to capture audit policies.
-    - `secedit.exe` for security configuration exports (on standalone servers).
-    - `gpresult.exe` for Group Policy results (on domain-connected machines).
+**6. Execute the Audit**
+  The script runs syver with ``--use-alpha=1`` (required on Windows), passing the metadata as a second ``--vars``
+  file, and stores the results in the specified output file.
 
-**6. Generate JSON Metadata**
-  The script constructs a JSON object containing system metadata for the audit.
-
-**7. Execute the Audit**
-  The script runs the `goss` audit using the collected metadata, storing the results in the specified output file.
-
-**8. Output Summary**
-  The script summarizes the audit results:
-    - If successful, it displays the last few lines of the audit report.
-    - If failed, it prompts the user to investigate.
+**7. Output Summary**
+  The script prints the summary for ``json`` and ``rspecish`` output, or the last two lines for ``documentation``,
+  followed by the output file location.
 
 .. csv-table:: **PowerShell Script Summary**
    :header: "Feature", "Description"
    :widths: 15, 30
 
-   "Purpose", "Runs a Goss-based OS security audit per parameters"
-   "Supported Windows Versions", "Standalone Server, Member Server, Primary Domain Controller"
+   "Purpose", "Runs a goss-based OS security audit per parameters"
+   "Host roles detected", "Domain Controller, Member Server, Standalone"
    "Collect System Metadata", "OS Version, Hostname, Epoch time"
-   "Pre-checks", "Verifies the existence of essential audit binary and content files"
+   "Pre-checks", "Verifies Administrator rights, the audit binary and version, and the content and vars files"
    "Error Handling", "Alerts for missing files and vars"
+
+Windows STIG Roles: SCAP Compliance Checker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Windows-11-STIG, Windows-2022-STIG and Windows-2025-STIG have no goss audit content. The role scans the host with
+SCAP Compliance Checker (SCC), built by the Naval Information Warfare Center (NIWC) Atlantic and distributed by
+DISA with its STIG SCAP content. The audit is part of the role and uses the same switches as the other roles, all off by default:
+
+.. code-block:: console
+
+    # Scan before and after remediation, and fetch the result sets to the control node
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e run_audit=true -e fetch_audit_output=true
+
+    # Scan only, nothing applied
+    ansible-playbook -i inventory site.yml -e setup_audit=true -e audit_only=true
+
+Run both scans in a hardening pass: the difference between them shows what the role changed. A post-remediation
+score on its own cannot separate a role that fixed findings from a host that was already compliant.
+
+**How it works**
+
+- ``setup_audit`` downloads the SCC Windows bundle (``scc_version``, currently ``5.15``) from ``scc_bundle_url``
+  and checks it against ``scc_bundle_sha256``, pinned to the digest DISA publishes for that release. Point
+  ``scc_bundle_url`` at an internal mirror if the node cannot reach ``dl.dod.cyber.mil``.
+- Each scan enables only the role's benchmark (``scc_benchmark``) with the profile in ``scc_profile``
+  (default ``MAC-2_Sensitive``), then removes its working directory, even when the scan fails.
+- Each scan writes a markdown summary and a zip of SCC's output, including the XCCDF results XML and the CKL and
+  CKLB checklists, to ``audit_log_dir`` (default ``C:\ProgramData\audit_logs``). Only SYSTEM and Administrators
+  can read that directory.
+- With ``fetch_audit_output``, the result sets are collected to ``audit_output_destination``
+  (default ``./results/`` on the controller).
+
+**Things to know**
+
+- Open findings are keyed by STIG control ID (for example ``WN22-CC-000080``), the same ID the role uses for its
+  task names and tags, so a finding maps straight to the task that addresses it.
+- The result sets are not cleaned up. They name local and domain accounts with their SIDs, so prune
+  ``audit_log_dir`` to your retention policy, and decide what may leave your network before publishing them.
+- Do not use the ``CAT_I_Only`` profile as a quick CAT I check. It selects no rules and returns an empty, clean
+  result.
+- Rules with no automated check are reported as ``Not Reviewed``.
+- Change individual SCC report settings with ``scc_report_options_override``, not by redefining
+  ``scc_report_options``. Keep ``saveDISACKLB`` on: the role's summary reads the CKLB.
+- Pass Windows paths in JSON or a vars file, not ``-e key=value``, which corrupts backslashes
+  (for example ``-e '{"audit_output_destination":"C:\\ProgramData\\audit_summaries"}'``).
+
+Each role's ``docs/README_SCC_QuickStart.md`` has the full detail, including domain controller and member server
+scoring. Windows-2019-STIG has no audit integration.

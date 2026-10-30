@@ -1,15 +1,14 @@
 Molecule - Linux-Based Container Testing
 ========================================
 
-`Molecule <https://ansible.readthedocs.io/projects/molecule/>`_ is the framework used to
+`Molecule <https://docs.ansible.com/projects/molecule/>`_ is the framework used to
 develop and test the Ansible Lockdown roles. It provisions a disposable target, applies the
 role against it, and asserts the resulting system state. For the Lockdown roles the target is
-a **Linux-based container** (Docker is the default driver; Podman also works), which makes the
-scenarios fast to spin up and tear down and lets the same tests run locally and in CI.
+usually a **Linux-based container** run with the Docker driver, which makes the scenarios fast to
+spin up and tear down and lets the same tests run locally and in CI.
 
-Every remediation and audit role in the project ships a ``molecule/`` directory so
-contributors can validate changes locally before opening a pull request, and so the same
-scenarios can be exercised in the pipelines.
+Most Linux remediation roles ship a ``molecule/`` directory so contributors can validate changes
+locally before opening a pull request. Audit repositories and Windows roles do not.
 
 Two stages do most of the work:
 
@@ -26,12 +25,15 @@ Prerequisites
 -------------
 
 Molecule runs from a workstation with Python, Ansible, and a container runtime available.
-Docker is the default driver used across the roles; Podman also works.
+The container scenarios use the Docker driver.
 
 .. code-block:: console
 
    # Python tooling (a virtualenv is recommended)
-   pip install molecule molecule-plugins[docker] ansible-core
+   pip install 'ansible-core>=2.19' 'molecule>=25' 'molecule-plugins[docker]' docker passlib
+
+   # Collections the scenarios use
+   ansible-galaxy collection install community.docker ansible.posix
 
    # A container runtime must be installed and running
    docker info
@@ -49,7 +51,7 @@ Repository layout
 -----------------
 
 A role's Molecule configuration lives under ``molecule/`` with one directory per scenario.
-Each scenario directory holds four files:
+A container scenario typically holds these four files:
 
 .. code-block:: text
 
@@ -67,17 +69,20 @@ Each scenario directory holds four files:
   role's tasks meaningful.
 - **converge.yml** applies the role and sets the variables a container run needs -
   ``setup_audit: true`` and ``run_audit: true`` so the paired audit runs, plus container
-  affordances such as ``system_is_container: true`` and ``skip_reboot: true``. It typically
+  affordances such as ``skip_reboot: true``. It typically
   sets a root password in ``pre_tasks`` so PAM hardening does not lock the session out.
 - **verify.yml** asserts the resulting state when the scenario's verifier is ``ansible``.
 
 Scenarios let a single role be tested in more than one way. Coverage differs between the
 CIS and STIG roles:
 
-- **CIS operating-system roles** are the most consistent, typically shipping ``default``,
-  ``localhost``, and ``wsl`` scenarios. ``RHEL9-CIS`` additionally provides a ``ubi`` scenario.
-- **STIG operating-system roles** are generally thinner, shipping a ``default`` scenario;
-  ``RHEL9-STIG`` also provides a ``ubi`` scenario.
+- **CIS operating-system roles** typically ship ``default``, ``localhost``, and ``wsl`` scenarios.
+  ``RHEL9-CIS`` additionally provides a ``ubi`` scenario. ``RHEL10-CIS`` has no scenarios yet.
+- **STIG operating-system roles** ship a ``default`` scenario; ``RHEL9-STIG`` and ``RHEL10-STIG``
+  also provide a ``ubi`` scenario.
+
+The ``localhost`` and ``wsl`` scenarios use the delegated driver and run against the local machine,
+not a container.
 
 Scenario configuration
 ----------------------
@@ -88,11 +93,16 @@ make this work:
 
 .. code-block:: yaml
 
+   dependency:
+     name: galaxy
+     options:
+       requirements-file: collections/requirements.yml
    driver:
      name: docker
    platforms:
      - name: rhel9-cis-qa
        image: rockylinux/rockylinux:9-ubi-init   # an "-init" image that ships systemd
+       platform: linux/arm64                     # see the note on platforms below
        command: /usr/sbin/init                   # PID 1 is systemd, not a shell
        pre_build_image: true
        privileged: true
@@ -125,11 +135,20 @@ make this work:
 
 .. note::
 
-   Not every role uses ``verify.yml`` for assertions. The verifier is set by the scenario's
-   ``molecule.yml`` ``verifier:`` key - ``RHEL9-CIS`` uses ``ansible`` with a ``verify.yml``,
-   while some roles rely on the paired audit (Goss) profile as the verification step instead.
-   Check the ``verifier`` setting and whether ``verify.yml`` is present before assuming a
-   scenario asserts state on its own. Use an existing role such as ``RHEL9-CIS`` as a working
+   Several scenarios default to ``linux/arm64``. The STIG roles read the platform from
+   ``MOLECULE_DOCKER_PLATFORM``, so on an x86_64 host set ``MOLECULE_DOCKER_PLATFORM=linux/amd64``.
+   ``RHEL9-CIS`` pins ``linux/arm64`` in ``molecule.yml``; edit it or use emulation on x86_64.
+
+   The ``system_is_container: true`` host var is informational: each role sets
+   ``system_is_container`` in ``vars/main.yml``, which outranks inventory variables. Container mode
+   comes from the role's automatic detection; see the :doc:`container guide </container-guide>`.
+
+.. note::
+
+   All scenarios use the ``ansible`` verifier, but not every scenario ships a ``verify.yml``.
+   Some (for example ``RHEL9-CIS`` ``ubi``) rely on the paired audit run during converge as the
+   verification step. Check whether ``verify.yml`` is present before assuming a scenario asserts
+   state on its own. Use an existing role such as ``RHEL9-CIS`` as a working
    reference when adding a new scenario.
 
 Running tests
@@ -140,7 +159,7 @@ Run Molecule from the root of the role. A scenario other than ``default`` is sel
 
 .. code-block:: console
 
-   # Full lifecycle: create -> converge -> idempotence -> verify -> destroy
+   # Full lifecycle: create -> prepare -> converge -> idempotence -> verify -> destroy
    molecule test
 
    # Iterating during development (leave the instance running):
@@ -157,8 +176,9 @@ Run Molecule from the root of the role. A scenario other than ``default`` is sel
 
 .. important::
 
-   Always ``molecule destroy`` before re-running ``molecule converge`` to guarantee a clean
-   target. Stale containers are a common cause of "instance is not running" style errors.
+   Run ``molecule destroy`` before starting a fresh test cycle. Re-running ``converge`` on a
+   live instance is normal while iterating. Stale containers are a common cause of
+   "instance is not running" style errors.
 
 Idempotency
 -----------
@@ -209,8 +229,9 @@ machines in ways that affect testing:
 CI/CD pipelines
 ---------------
 
-The same scenarios run in the project's GitHub Actions pipelines on pull requests, so a change
-that passes locally with ``molecule test`` should also pass in CI. When CI fails but a local
+Roles that ship a ``.github/workflows/molecule.yml`` (currently the Linux STIG roles) run the container
+scenarios in GitHub Actions on pull requests, so a change that passes locally with ``molecule test``
+should also pass in CI. When CI fails but a local
 Molecule run passes, suspect a difference in the test substrate (for example a missing package
 or an unresolvable hostname on the CI image) rather than the role logic.
 
@@ -235,7 +256,7 @@ it as a role defect.
 Best Practices
 --------------
 
-1. **Start clean** - ``molecule destroy`` before each fresh ``converge``.
+1. **Start clean** - ``molecule destroy`` before each fresh test cycle.
 2. **Test idempotency** - a second converge must report zero changes.
 3. **Match the image to the benchmark** - use an image for the OS/version the role targets.
 4. **Do not rely on containers alone** - container-gated tasks are skipped; also test on a VM

@@ -13,16 +13,16 @@ Automated Security Benchmark - Auditing and Remediation
 
 MindPoint Group - A Quantum Sky Company's (QuantumSky_) Ansible-Lockdown Overview
 ---------------------------------------------------------------------------------
-Our ReadtheDocs elaborates the resources, significance and objective of using our Automated Security
-Benchmark for auditing and remediation of system security. Our QuantumSky_ Ansible_ roles can be applied
-to systems to improve security posture, meet compliance requirements, and deploy without disruption
-after due diligence. Security hardening is achieved through the use of industry-recognized benchmarks
-CIS_ and DISA_ STIG_, which provide open-source licensed configurations to bring systems
-into security compliance. The content delivered consists of an audit component based on GOSS_
-that scans a host for compliance and a remediate component that can be run centrally using an
-**Ansible Deployment Server** to bring host(s) into compliance. Our open-source development/release process
-composes of QuantumSky_'s Ansible-Lockdown GitHub_ main/devel branches and ansible-galaxy_ updates that aligned
-with new benchmark versions.
+This documentation explains the purpose of the Ansible Lockdown automated security benchmarks and how
+to use them to audit and remediate system security. The Ansible_ roles can be applied to systems to
+improve security posture, meet compliance requirements, and deploy without disruption after due diligence.
+Security hardening is based on the industry-recognized CIS_ benchmarks and DISA_ STIG_ guides, implemented
+as open-source licensed configurations that bring systems into security compliance. The content consists of
+an audit component that scans a host for compliance with Syver_, a fork of GOSS_ (the Windows STIG roles use
+the SCAP Compliance Checker instead), and a remediate component that can be run centrally from an
+**Ansible control node** to bring hosts into compliance. Development and releases run through the
+Ansible Lockdown GitHub_ devel and main branches, with ansible-galaxy_ updates aligned to new benchmark
+versions.
 
 Why should this role be applied to a system?
 --------------------------------------------
@@ -65,7 +65,7 @@ to bring your systems/platforms into security compliance.
 - Configuration-as-code
 
   - Assist in bringing your systems/platform into compliance through the use of Ansible_
-  - Audit your current system/platform using GOSS_
+  - Audit your current system/platform using Syver_, a fork of GOSS_ (SCAP Compliance Checker on the Windows STIG roles)
 
 - Highly configurable to work with your systems
 
@@ -103,7 +103,10 @@ This consists of two components:
 
 - **Audit**
 
-  - Runs a small single binary on the system written in GO called GOSS_.
+  - Runs a small single Go binary on the system: Syver_, a fork of GOSS_ (some roles still pin its earlier
+    release, krameff/goss).
+  - The Windows STIG roles scan with the SCAP Compliance Checker (SCC) instead, NIWC Atlantic's scanner for
+    DISA's STIG content.
   - Enables you to very quickly scan your host and output the status of compliance for your host.
 
 - **Remediate**
@@ -128,10 +131,10 @@ best implement a way to audit the current configuration and how to achieve those
 Tasks are added to the role that configure a host to meet the configuration requirements. Each task is documented to explain what was changed,
 why it was changed, and what deployers need to understand about the change.
 
-Deployers have the option to enable/disable every control that does not suit their environments needs.
+Deployers have the option to enable or disable every control that does not suit their environment's needs.
 Every control item has an associated variable that can be used to switch it on or off.
 
-Additionally, the items that have configurable values, i.e. number of password attempts, will generally have a corresponding variable that allows for
+Additionally, the items that have configurable values, e.g. number of password attempts, will generally have a corresponding variable that allows for
 customization of the applied value.
 It is imperative for each deployer to understand the regulations and compliance requirements that their organization and specific
 environments are responsible for meeting in order to effectively implement the controls in the relevant benchmark.
@@ -149,44 +152,43 @@ Development Process
 Lifecycle of releases and branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-While Remediate and Audit are individually managed processes, nevertheless, some of the content is linked.
-There are occasions where both need updating or just one of them.
+Remediate and Audit are managed separately, but some of their content is linked.
+Sometimes both need updating, and sometimes only one of them does.
 
-As a rule, our goal is to abide to the following lifecycle process for branches and releases that include ansible-galaxy_ sync updates.
-Being community, we have direct customer requests and requirements that take priority in releases.
-For a more in depth Overview
-
-- :doc:`combined/release_sched`
+As a rule, our goal is to follow the lifecycle process below for branches and releases, including ansible-galaxy_ sync updates.
+Direct customer requests and requirements can take priority in releases.
+For more detail, see :doc:`combined/release_sched`.
 
 Branches
 ^^^^^^^^
 
 Remediate
-^^^^^^^^^
+~~~~~~~~~
+
 - **devel branch**
 
    - Staging area for bug fixes, PRs and new benchmarks.
    - Default and working development branch.
-   - We aim to get majority of PRs merged to devel between 2-4 weeks.
+   - We aim to merge the majority of PRs to devel within 2-4 weeks.
    - Community Collaboration PR (Pull Request) Branch.
 
 - **main branch** *(The release branch)*
 
    - We merge from devel to main branch.
-   - main branch is dependent on the severity and impact of issues closed.
+   - The timing of a merge to main depends on the severity and impact of the issues closed.
    - Routinely, a release alignment is every 8-12 weeks (sometimes much quicker).
    - Once a new CIS_/STIG_ benchmark gets released, we aim to merge the new tagged release (2-4 weeks).
    - The major releases are sourced and linked to ansible-galaxy_ Roles.
 
 Audit
-^^^^^
+~~~~~
 
 - **benchmark_version**
 
-As these are very bespoke for each release the branches are named after the version of the benchmark it is to test.
-Allowing the playbook to test for the correct settings for that version
+Audit content is specific to each benchmark release, so audit branches are named after the benchmark version they test.
+This allows the playbook to test for the correct settings for that version.
 
-- RHEL9-CIS e.g. benchmark_v2.0.0
+- For example, RHEL9-CIS-Audit has the branches benchmark_v1.0.0, benchmark_v2.0.0 and benchmark_v3.0.0.
 
 Demos
 ^^^^^
@@ -199,14 +201,12 @@ Demos
     :alt: Ansible Lockdown - M. Bolwell Audit and Compliance Benchmarks Demo/Q and A
     :target: https://www.youtube.com/watch?v=5OdT3k2IDVo
 
-
-
-
-.. _Ansible: https://www.ansible.com/
+.. _Ansible: https://www.redhat.com/en/ansible-collaborative
 .. _GOSS: https://github.com/goss-org/goss
+.. _Syver: https://github.com/krameff/syver
 .. _STIG: https://www.cyber.mil/stigs/downloads/
 .. _CIS: https://www.cisecurity.org/cis-benchmarks/
 .. _ansible-galaxy: https://galaxy.ansible.com/ui/standalone/namespaces/4668/
-.. _DISA: https://disa.mil/
+.. _DISA: https://www.disa.mil/
 .. _GitHub: https://github.com/ansible-lockdown
 .. _QuantumSky: https://www.quantumsky.com

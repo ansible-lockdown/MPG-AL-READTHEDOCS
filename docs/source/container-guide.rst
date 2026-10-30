@@ -21,26 +21,32 @@ affect security benchmarking and remediation.
 Container Detection
 -------------------
 
-The Ansible Lockdown roles include automatic container detection to skip controls that are
-incompatible with containerized environments. This is controlled through the ``is_container``
+The Linux remediation roles include automatic container detection to skip controls that are
+incompatible with containerized environments. This is controlled through the ``system_is_container``
 variable.
 
 **Automatic Detection**
 
-The roles attempt to detect if they are running inside a container by checking for:
+The roles treat the target as a container when either of these is true:
 
-- Presence of ``/.dockerenv`` file
-- Container-related entries in ``/proc/1/cgroup``
-- Systemd not running as PID 1
+- The Ansible connection is ``docker`` (some roles also accept ``community.docker.docker``)
+- The ``virtualization_type`` fact is ``docker``, ``lxc``, ``openvz``, ``podman`` or ``container``
+
+When detection fires, the role sets ``system_is_container: true`` and loads the container rule set
+from ``vars/is_container.yml`` (the file name is set by ``container_vars_file``).
 
 **Manual Override**
 
-You can manually specify container mode by setting the variable:
+``system_is_container`` is defined in each role's ``vars/main.yml``, which outranks playbook and
+inventory variables. To force it, pass it as an extra var:
 
-.. code-block:: yaml
+.. code-block:: console
 
-   # In your playbook or extra vars
-   is_container: true
+   ansible-playbook site.yml -e system_is_container=true
+
+This only gates the tasks that test ``system_is_container``. To apply the container rule set as well,
+also pass the role's file (for example ``-e @vars/is_container.yml``), or connect with the docker
+connection so detection runs.
 
 Controls Skipped in Containers
 ------------------------------
@@ -54,12 +60,15 @@ When running in container mode, certain controls are automatically skipped becau
 
 **Common Skipped Categories:**
 
-- Bootloader configurations (GRUB, kernel parameters)
-- Partition and mount configurations
+The exact set differs per role; see the role's ``vars/is_container.yml``. Typical categories are:
+
+- Bootloader configuration and the kernel command line
+- Separate partitions and mount options
 - Kernel module management
 - auditd configuration (requires host kernel support)
-- Network firewall rules (managed at host level)
-- Time synchronization (handled by host)
+- Firewall rules (managed at host level)
+- SELinux or AppArmor
+- Time synchronization (most roles; handled by the host)
 
 Running Audit in Containers
 ---------------------------
@@ -67,7 +76,8 @@ Running Audit in Containers
 Audit from Host Against Container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also audit a running container from the host using Ansible's ``docker`` connection:
+You can also audit a running container from the host using the ``community.docker.docker_container_exec`` module.
+The audit content sits at ``{audit_conf_dest}/{benchmark}-Audit``, which defaults to ``/opt/RHEL10-CIS-Audit`` for RHEL10-CIS:
 
 .. code-block:: yaml
 
@@ -77,7 +87,7 @@ You can also audit a running container from the host using Ansible's ``docker`` 
        - name: Run audit against container
          community.docker.docker_container_exec:
            container: my_container
-           command: /opt/audit/run_audit.sh
+           command: /opt/RHEL10-CIS-Audit/run_audit.sh
 
 Running Remediation in Containers
 ---------------------------------
@@ -85,18 +95,16 @@ Running Remediation in Containers
 Building Hardened Container Images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The recommended approach is to build hardened base images rather than remediating running containers:
+The recommended approach is to build hardened base images rather than remediating running containers.
+Run the role against a build container through the docker connection, then commit that container as your image:
 
 .. code-block:: yaml
 
    # playbook for building hardened images
-   - hosts: localhost
-     connection: local
-     vars:
-       is_container: true
+   - hosts: image_build_container
+     connection: community.docker.docker
      roles:
        - role: RHEL10-CIS
-         when: ansible_os_family == 'RedHat'
 
 Remediating Running Containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,9 +116,9 @@ While not recommended for production, you can remediate running containers for t
    - hosts: container_hosts
      connection: docker
      vars:
-       is_container: true
-       # Disable controls that require reboot
-       rhel10cis_rule_1_4_1: false  # Example: skip bootloader password
+       # Example: skip an individual control
+       # (the container rule set already disables bootloader controls such as this one)
+       rhel10cis_rule_1_4_1: false
      roles:
        - RHEL10-CIS
 
@@ -129,12 +137,11 @@ Known Limitations
    :widths: 30, 40, 30
 
    "Bootloader (GRUB)", "Containers don't have bootloaders", "Apply to host OS"
-   "Kernel parameters (sysctl)", "Requires host kernel access", "Apply to host OS"
+   "Kernel parameters (sysctl)", "Requires host kernel access (disabled in some roles)", "Apply to host OS"
    "Partition mounts", "Container filesystems are overlays", "Use read-only containers"
    "auditd rules", "Requires host auditd", "Use container runtime logging"
-   "PAM configuration", "Often not applicable", "Use container user namespaces"
    "Firewall (iptables/nftables)", "Managed at host/orchestrator level", "Use network policies"
-   "Time sync (chrony/ntp)", "Containers use host time", "Apply to host OS"
+   "Time sync (chrony/ntp)", "Containers use host time (disabled in most roles)", "Apply to host OS"
 
 **auditd in Containers:**
 
@@ -150,7 +157,8 @@ Best Practices
    Apply full CIS/STIG benchmarks to container hosts before focusing on containers.
 
 2. **Use Minimal Base Images**
-   Start with minimal images (alpine, distroless, UBI-minimal) to reduce attack surface.
+   Start with a minimal image of the distribution the role targets (for example UBI-minimal or Rocky minimal
+   for the RHEL roles) to reduce attack surface.
 
 3. **Build Immutable Images**
    Apply hardening at image build time, not runtime. Treat containers as immutable.
@@ -161,13 +169,14 @@ Best Practices
 Troubleshooting
 ---------------
 
-**Playbook fails with "systemd not detected"**
+**Playbook fails on service tasks in a container**
 
-This is expected in containers without systemd. Set:
+Containers without systemd cannot start or enable services. Check that container detection ran,
+or force container mode as described under Manual Override:
 
-.. code-block:: yaml
+.. code-block:: console
 
-   is_container: true
+   ansible-playbook site.yml -e system_is_container=true
 
 **Audit shows many failures for kernel controls**
 
@@ -175,8 +184,8 @@ Container audits will fail kernel-related checks by design. Filter results:
 
 .. code-block:: console
 
-   # Filter out expected container failures
-   cat audit_output.json | jq '.results[] | select(.skipped != true)'
+   # Show only non-skipped results
+   jq '.results[] | select(.skipped != true)' audit_output.json
 
 **Permission denied errors**
 

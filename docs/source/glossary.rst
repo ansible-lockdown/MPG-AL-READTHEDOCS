@@ -1,10 +1,10 @@
 Glossary
 ========
 
-The following is a list of Glossaries used in the documentation:
+The following glossaries define terms used in this documentation:
 
-- `Ansible RedHat Glossary <https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html>`_
+- `Ansible Glossary <https://docs.ansible.com/projects/ansible/latest/reference_appendices/glossary.html>`_
 
-- `Ansible RedHat ReadTheDocs <https://docs.ansible.com/ansible/latest/>`_
+- `Ansible Documentation <https://docs.ansible.com/projects/ansible/latest/>`_
 
-- `Cyber.Mil Acronyms <https://public.cyber.mil/acronyms/>`_
+- `Cyber.mil Acronyms <https://www.cyber.mil/acronyms/>`_

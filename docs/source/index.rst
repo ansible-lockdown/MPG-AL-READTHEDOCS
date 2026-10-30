@@ -37,6 +37,9 @@ Documentation
    :caption: Support
 
    support.rst
+   audit/audit-faq.rst
+   remediate/rem-faq.rst
+   known_issues.rst
 
 .. toctree::
    :maxdepth: 2

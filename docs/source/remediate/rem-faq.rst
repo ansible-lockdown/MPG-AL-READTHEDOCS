@@ -67,17 +67,23 @@ WinRM Connection Failed (Windows)
 
    # On Windows target
    winrm quickconfig
-   winrm set winrm/config/service '@{AllowUnencrypted="true"}'
-   winrm set winrm/config/service/auth '@{Basic="true"}'
 
-2. Check your inventory variables:
+Use HTTPS (port 5986) or NTLM/Kerberos with message encryption. Do not rely on Basic
+authentication or unencrypted WinRM traffic: the Windows CIS and STIG roles disable both
+(for example Windows-2022-CIS 18.10.89.2.1 and 18.10.89.2.3, Windows-2022-STIG
+WN22-CC-000500 and WN22-CC-000510), so a connection that depends on them breaks during the run.
 
-.. code-block:: yaml
+2. Check your inventory variables (INI inventory):
+
+.. code-block:: ini
 
    [windows:vars]
    ansible_connection=winrm
-   ansible_winrm_server_cert_validation=ignore
+   ansible_port=5986
    ansible_winrm_transport=ntlm
+   ansible_winrm_server_cert_validation=ignore
+
+Windows-2022-CIS also lists ``pypsrp`` on the controller as an alternative to ``pywinrm`` (``ansible_connection=psrp``).
 
 Python Interpreter Not Found
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,22 +92,24 @@ Python Interpreter Not Found
 
 .. code-block:: bash
 
-   fatal: [host]: FAILED! => {"msg": "ansible-core requires a minimum of Python version 3.10"}
+   fatal: [host]: FAILED! => {"msg": "Ansible requires Python 3.9 or newer on the target. Current version: ..."}
+
+The minimum Python version depends on the ansible-core version in use.
 
 **Solution:**
 
-Specify the Python interpreter explicitly:
+Specify a supported Python interpreter explicitly:
 
 .. code-block:: yaml
 
-   # In inventory or host_vars
-   ansible_python_interpreter=/usr/bin/python3
+   # In host_vars or group_vars
+   ansible_python_interpreter: /usr/bin/python3
 
 Or use interpreter discovery:
 
 .. code-block:: yaml
 
-   ansible_python_interpreter=auto_silent
+   ansible_python_interpreter: auto_silent
 
 Module Not Found Errors
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -110,16 +118,15 @@ Module Not Found Errors
 
 .. code-block:: text
 
-   ERROR! couldn't resolve module/action 'community.general.xxx'
+   [ERROR]: couldn't resolve module/action 'community.general.xxx'. This often indicates a misspelling, missing collection, or incorrect module path.
 
 **Solution:**
 
-Install required collections:
+Install the collections listed in the role's ``collections/requirements.yml`` (run from the role directory):
 
 .. code-block:: console
 
-   ansible-galaxy collection install community.general
-   ansible-galaxy collection install ansible.posix
+   ansible-galaxy collection install -r collections/requirements.yml
 
 Playbook Execution Issues
 -------------------------
@@ -140,7 +147,7 @@ Task Fails with "Permission Denied"
 .. code-block:: yaml
 
    - hosts: all
-     become: yes
+     become: true
      roles:
        - RHEL10-CIS
 
@@ -189,7 +196,7 @@ How Do I Skip Specific Controls?
 
 Set the control variable to ``false`` in your playbook or extra vars:
 
-**CIS Example:**
+**CIS Example (RHEL10-CIS):**
 
 .. code-block:: yaml
 
@@ -197,23 +204,29 @@ Set the control variable to ``false`` in your playbook or extra vars:
    rhel10cis_rule_1_1_1_1: false
    rhel10cis_rule_5_2_4: false
 
-**STIG Example:**
+**STIG Example (RHEL10-STIG):**
 
 .. code-block:: yaml
 
    # Skip specific STIG controls
-   rhel_10_010010: false
-   rhel_10_020000: false
+   rhel10stig_000530: false
+   rhel10stig_001020: false
+
+Toggle names differ between roles (for example ``rhel_09_171011`` in RHEL9-STIG and
+``rhel8stig_010382`` in RHEL8-STIG). Use the names in the role's ``defaults/main/main.yml``.
 
 **Skip entire categories:**
 
 .. code-block:: yaml
 
-   # CIS - Skip all Level 2 controls
-   rhel10cis_level_2: false
+   # STIG - Skip CAT III controls (RHEL10-STIG)
+   rhel10stig_cat3: false
 
-   # STIG - Skip CAT III controls
-   rhel10stig_cat3_patch: false
+To skip CIS Level 2 controls, use tags:
+
+.. code-block:: console
+
+   ansible-playbook site.yml --skip-tags level2-server,level2-workstation
 
 How Do I Change Default Values?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -224,11 +237,11 @@ Override variables in your playbook or create a vars file:
 
    # playbook.yml
    - hosts: all
-     become: yes
+     become: true
      vars:
-       rhel10cis_time_sync_tool: chrony
-       rhel10cis_sshd_client_alive_interval: 300
-       rhel10cis_password_min_length: 14
+       rhel10cis_start_chronyd: true
+       rhel10cis_sshd_clientaliveinterval: 300
+       rhel10cis_passwd_minlen_value: 14
      roles:
        - RHEL10-CIS
 
@@ -236,7 +249,7 @@ Or use extra vars:
 
 .. code-block:: console
 
-   ansible-playbook site.yml -e '{"rhel10cis_time_sync_tool":"chrony"}'
+   ansible-playbook site.yml -e '{"rhel10cis_sshd_clientaliveinterval":300}'
 
 Variable Precedence Issues
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -252,11 +265,12 @@ Ansible has a specific variable precedence order. From lowest to highest:
 3. Playbook vars
 4. Extra vars (``-e``) - **highest precedence**
 
-Use extra vars to guarantee override:
+Use extra vars to guarantee override. Pass booleans in JSON form; ``key=value`` passes the
+string ``"false"``, which fails as a conditional:
 
 .. code-block:: console
 
-   ansible-playbook site.yml -e 'rhel10cis_rule_1_1_1_1=false'
+   ansible-playbook site.yml -e '{"rhel10cis_rule_1_1_1_1": false}'
 
 Service and System Issues
 -------------------------
@@ -276,7 +290,7 @@ Users Locked Out After Hardening
 
 .. code-block:: console
 
-   grep -E "AllowUsers|AllowGroups|DenyUsers|DenyGroups" /etc/ssh/sshd_config
+   sudo sshd -T | grep -iE "allowusers|allowgroups|denyusers|denygroups"
 
 2. Check PAM lockout status:
 
@@ -297,4 +311,4 @@ Where Can I Get More Help?
 
 - `Discord Community <https://www.lockdownenterprise.com/discord>`_ - Community support
 - `GitHub Issues <https://github.com/ansible-lockdown>`_ - Report bugs or request features
-- `Lockdown Enterprise <https://lockdownenterprise.com>`_ - Commercial support options
+- `Lockdown Enterprise <https://www.lockdownenterprise.com>`_ - Commercial support options
