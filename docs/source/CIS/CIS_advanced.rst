@@ -11,23 +11,22 @@ Advanced Options
    - {{ CIS_Role_Name }}_allow_auditd_uid_user_exclusions
 
 auditd logs can fill up very quickly with the default CIS options to log every privileged command.
-Whether scanners/automation or any job that needs to run against a system with privilege access. e.g.sudo
+This is common for scanners, automation, or any job that runs against a system with privileged access, for example through sudo.
 
 There is the ability to change this for specific users to exclude anything in user space.
 This will still capture login/logout and sshd process but anything else will be excluded for that user.
 This can be enabled with the following (this needs to be set in an alternate variable location):
 
-.. code-block:: console
+.. code-block:: yaml
 
    rhel10cis_allow_auditd_uid_user_exclusions: true
 
 
-Then a list of applicable users can be added to the exclusions.
-e.g.
+Then add the UIDs of the applicable users to the exclusion list (the role default is ``1999``).
+For example (RHEL10-CIS):
 
-
-.. code-block:: console
+.. code-block:: yaml
 
    rhel10cis_auditd_uid_exclude:
-   - ansible
-   - vagrant
+     - 1001
+     - 1002

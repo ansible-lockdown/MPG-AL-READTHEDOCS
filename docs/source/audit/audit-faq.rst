@@ -15,11 +15,11 @@ Example error when running:
 
 .. code-block:: bash
 
-   goss -g goss.yml -v
+   goss -g goss.yml validate
 
-Goss is designed to run from the scripts passing discovered variables into Goss for metadata. Without these values being set, Goss will fail. These metadata variables can be seen towards the end of the goss.yml file. Furthermore, the run_audit script shows how these variables are created and passed to Goss.
+The audit is designed to run from the scripts, which pass discovered variables into goss or syver for metadata. Without these values being set, the run will fail. These metadata variables can be seen towards the end of the goss.yml file. Furthermore, the run_audit script shows how these variables are created and passed to the binary.
 
-**Solution:** Always use the provided ``run_audit.sh`` or ``run_audit.ps1`` scripts.
+**Solution:** Use the provided ``run_audit.sh`` or ``run_audit.ps1`` scripts. To run the binary directly, see "Running goss without script" in :doc:`Audit </audit/getting-started-audit>`.
 
 Goss Binary Not Found
 ^^^^^^^^^^^^^^^^^^^^^
@@ -28,9 +28,15 @@ Goss Binary Not Found
 
 .. code-block:: bash
 
-   ./run_audit.sh: line XX: /usr/local/bin/goss: No such file or directory
+   WARNING - The audit binary is not available at /usr/local/bin/syver
+   ## Pre-checks failed please see output
 
 **Solution:**
+
+The roles use a signed build of Goss: either `krameff/goss <https://github.com/krameff/goss/releases>`_
+or its continuation `Syver <https://github.com/krameff/syver/releases>`_.
+The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which one and which release it pins, with checksums.
+Replace ``<release>`` below with that value, and check the download against the release's ``SHA256SUMS`` file.
 
 1. Download the correct binary for your architecture:
 
@@ -38,19 +44,22 @@ Goss Binary Not Found
 
    .. code-block:: console
 
-      curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64 \
-          -o /usr/local/bin/goss
-      chmod +x /usr/local/bin/goss
+      curl -L https://github.com/krameff/syver/releases/download/<release>/syver-linux-amd64 \
+          -o /usr/local/bin/syver
+      chmod +x /usr/local/bin/syver
 
    **ARM64/aarch64:**
 
    .. code-block:: console
 
-      curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64 \
-          -o /usr/local/bin/goss
-      chmod +x /usr/local/bin/goss
+      curl -L https://github.com/krameff/syver/releases/download/<release>/syver-linux-arm64 \
+          -o /usr/local/bin/syver
+      chmod +x /usr/local/bin/syver
 
-2. Or update ``AUDIT_BIN`` in the script to point to the correct location.
+   For roles that pin krameff/goss, use ``https://github.com/krameff/goss/releases/download/<release>/goss-linux-amd64``
+   (or ``goss-linux-arm64``) and ``/usr/local/bin/goss``.
+
+2. Or set ``AUDIT_BIN`` (in the script or as an environment variable) to point to the correct location.
 
 Exec Format Error
 ^^^^^^^^^^^^^^^^^
@@ -59,7 +68,7 @@ Exec Format Error
 
 .. code-block:: bash
 
-   goss: cannot execute binary file: Exec format error
+   syver: cannot execute binary file: Exec format error
 
 **Cause:** Wrong architecture binary (e.g., x86_64 binary on ARM64 system).
 
@@ -77,20 +86,22 @@ Goss Version Too Old
 
 **Symptom:**
 
-.. code-block:: bash
+.. code-block:: text
 
-   WARNING - Goss installed = 0.3.16, does not meet minimum of 0.4.4
+   WARNING - Audit binary installed = <installed version>, does not meet minimum of <AUDIT_BIN_MIN_VER>
+
+Older goss-based audit repos word this as ``WARNING - Goss installed = ...``.
 
 **Solution:**
 
-Download and install the latest version:
+Install the release your role pins in ``audit_bin_version.release``:
 
 .. code-block:: console
 
-   curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-amd64 \
-       -o /usr/local/bin/goss
-   chmod +x /usr/local/bin/goss
-   goss --version
+   curl -L https://github.com/krameff/syver/releases/download/<release>/syver-linux-amd64 \
+       -o /usr/local/bin/syver
+   chmod +x /usr/local/bin/syver
+   syver --version
 
 Architecture-Specific Issues
 ----------------------------
@@ -131,16 +142,19 @@ The audit produces JSON output with the following structure:
      "results": [],
      "summary": {
        "failed-count": 10,
+       "skipped-count": 5,
+       "summary-line": "Count: 200, Failed: 10, Skipped: 5, Duration: 45.200s",
        "test-count": 200,
-       "total-duration": 45.2
+       "total-duration": 45200000000
      }
    }
 
 **Key metrics:**
 
-- **test-count**: Total controls evaluated
-- **failed-count**: Controls that failed compliance check
-- **skipped-count**: Controls skipped (disabled or not applicable)
+- **test-count**: Total tests (assertions) run
+- **failed-count**: Tests that failed
+- **skipped-count**: Tests skipped
+- **total-duration**: Run time in nanoseconds
 
 Why Are So Many Controls Failing?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,7 +168,8 @@ Why Are So Many Controls Failing?
 
 **Solution:**
 
-Ensure audit variables match your remediation configuration:
+When running standalone, set the toggles in the audit vars file to match your remediation.
+Playbook runs generate this file from the role's variables automatically.
 
 .. code-block:: yaml
 
@@ -216,7 +231,11 @@ Or if running manually using the run_audit script:
 
 .. code-block:: console
 
+   # Linux
    ./run_audit.sh -m 20
+
+   # Windows (current Windows CIS audit scripts)
+   .\run_audit.ps1 -MaxConcurrent 20
 
 Audit Takes Too Long
 ^^^^^^^^^^^^^^^^^^^^
@@ -233,13 +252,21 @@ Audit Takes Too Long
 
    .. code-block:: yaml
 
+      # Role variable (playbook runs)
       audit_run_heavy_tests: false
+
+      # Standalone: in the audit vars file
+      run_heavy_tests: false
 
 3. **Increase command timeout** for slow systems:
 
    .. code-block:: yaml
 
+      # Role variable (playbook runs)
       audit_cmd_timeout: 120000  # milliseconds
+
+      # Standalone: in the audit vars file
+      timeout_ms: 120000
 
 Audit Causes High Disk I/O
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -251,6 +278,7 @@ Some controls scan the entire filesystem. To reduce impact:
 
    .. code-block:: yaml
 
+      # Role variable (playbook runs); standalone uses run_heavy_tests in the vars file
       audit_run_heavy_tests: false
 
 3. Consider using ionice on Linux:
@@ -269,7 +297,7 @@ Variables File Not Found
 
 .. code-block:: bash
 
-   Error: vars file not found at /opt/RHEL10-CIS-Audit/vars/CIS.yml
+   passed option '-v' /path/to/your/vars/CIS.yml does not exist
 
 **Solutions:**
 
@@ -279,11 +307,11 @@ Variables File Not Found
 
       ls -la /opt/RHEL10-CIS-Audit/vars/
 
-2. Specify the vars file path explicitly:
+2. Check the path passed to ``-v`` exists, or omit ``-v`` to use the default ``vars/CIS.yml`` in the content directory:
 
    .. code-block:: console
 
-      ./run_audit.sh -v /path/to/your/vars/CIS.yml
+      ls -la /path/to/your/vars/CIS.yml
 
 Permission Denied Running Script
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -308,7 +336,7 @@ Permission Denied Running Script
 
       bash run_audit.sh
 
-3. Run with sudo if required:
+3. Run as root (the script exits if not run as root):
 
    .. code-block:: console
 
@@ -354,10 +382,7 @@ Containers lack many components that benchmarks assume exist:
 
 **Solution:**
 
-Set container mode:
-
-.. code-block:: yaml
-
-   is_container: true
+The role detects containers automatically and sets ``system_is_container: true``, loading the
+container rule set (``container_vars_file``, default ``is_container.yml``).
 
 See :doc:`Container and Docker Guide </container-guide>` for details.

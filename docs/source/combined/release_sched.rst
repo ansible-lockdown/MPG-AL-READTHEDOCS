@@ -12,21 +12,23 @@ STIG
 ----
 
 STIG (Security Technical Implementation Guide) releases are developed by vendors in conjunction with requirements from DISA.
-STIG release schedule is managed and released on a quarterly schedule.
+DISA releases STIG updates on a quarterly schedule.
 
 Playbook Releases
 -----------------
 
-We aim to release remediate benchmarks within 30 days of vendor release to subscribers, this is subject to the number of changes, with new benchmarks often taking significantly longer.
-Public releases will be approximately three months after subscriber release.
+We aim to release updated remediation roles to subscribers within 30 days of the vendor release.
+Timing depends on the number of changes; new benchmarks often take significantly longer.
+Public releases typically follow the subscriber release by about three months, so public releases
+have followed the vendor release by roughly three to five months.
 
 Example
 ^^^^^^^
 
-.. csv-table:: Example Release Schedule for updated benchmarks
+.. csv-table:: Illustrative release schedule for an updated benchmark (hypothetical dates, not an actual release)
    :header: "Benchmark", "Vendor Release", "Subscriber release", "Public Release"
    :widths: 25, 25, 25, 25
 
    "RHEL10-STIG", "27th January", "27th February", "27th May"
 
-Becoming a subscriber is simple, visit https://lockdownenterprise.com for more information.
+To become a subscriber, visit `Lockdown Enterprise <https://www.lockdownenterprise.com>`_.

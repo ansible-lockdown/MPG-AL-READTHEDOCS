@@ -45,7 +45,7 @@ Applications
    "AAP2-STIG", "True", "True", "False", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
    "Apache-2.4-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/APACHE-2.4-STIG?style=plastic"
    "TOMCAT-9-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/TOMCAT-9-STIG?style=plastic"
-   "Windows_Advance_Firewall-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/WinFWADV-STIG?style=plastic"
+   "WinFWADV-STIG_", "True", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/WinFWADV-STIG?style=plastic"
    "KUBERNETES-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/KUBERNETES-STIG?style=plastic"
 
 Archived Roles
@@ -56,16 +56,16 @@ Archived Roles
    :widths: 25, 15, 15, 15, 20
 
    "RHEL5-STIG_", "False", "True", "False", "N/A"
-   "RHEL6-STIG_", "False", "True", "False", "N/A"
+   "RHEL6-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL6-STIG?style=plastic"
    "RHEL7-STIG_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/RHEL7-STIG?style=plastic"
-   "UBUNTU18-STIG_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
-   "UBUNTU20-STIG_", "False", "True", "N/A", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-STIG?style=plastic"
+   "UBUNTU18-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-STIG?style=plastic"
+   "UBUNTU20-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-STIG?style=plastic"
    "Windows-2008R2-Member-Server-STIG_", "False", "True", "False", "N/A"
    "Windows-2012-Member-Server-STIG_", "False", "True", "False", "N/A"
    "Windows-2012-Domain-Controller-STIG_", "False", "True", "False", "N/A"
    "Windows-2016-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-STIG?style=plastic"
    "Windows-10-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-STIG?style=plastic"
-   "Postgres-9-STIG_", "False", "True", "False", "N/A"
+   "Postgres-9-STIG_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/POSTGRES-9-STIG?style=plastic"
 
 .. _AMAZON2023-STIG: https://github.com/ansible-lockdown/AMAZON2023-STIG
 .. _RHEL8-STIG: https://github.com/ansible-lockdown/RHEL8-STIG
@@ -90,7 +90,7 @@ Archived Roles
 .. _Apache-2.4-STIG: https://github.com/ansible-lockdown/APACHE-2.4-STIG
 .. _Postgres-9-STIG: https://github.com/ansible-lockdown/POSTGRES-9-STIG
 .. _TOMCAT-9-STIG: https://github.com/ansible-lockdown/TOMCAT-9-STIG
-.. _Windows_Advance_Firewall-STIG: https://github.com/ansible-lockdown/WinFWADV-STIG
+.. _WinFWADV-STIG: https://github.com/ansible-lockdown/WinFWADV-STIG
 .. _KUBERNETES-STIG: https://github.com/ansible-lockdown/KUBERNETES-STIG
 
 .. _RHEL5-STIG: https://github.com/ansible-lockdown/RHEL5-STIG

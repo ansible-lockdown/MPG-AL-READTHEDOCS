@@ -5,7 +5,7 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
 ## 2026_AUGUST_UPDATES
 
 ### Changed
-- Corrected the CIS and STIG benchmark tables against the live organisation: RHEL10-STIG now
+- Corrected the CIS and STIG benchmark tables against the live organization: RHEL10-STIG now
   carries a live release badge instead of Subscribers Only, and SUSE16-CIS and Windows-2025-STIG
   link to their now-public repositories. Both briefly carried an In Development badge and ended the
   cycle marked Subscribers Only.
@@ -26,8 +26,9 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
 - Corrected the Audit column for Windows-11-CIS from NA to WIP. Windows-11-CIS-Audit is public and
   carries a full goss suite, so NA wrongly claimed no audit exists. It has no release, so WIP
   matches how Windows-2022-CIS and Windows-2025-CIS are already described.
-- UBUNTU26 CIS and STIG remain Coming Soon: the Ubuntu 26.04 benchmarks are not published yet,
-  so their rows no longer link to placeholder repositories.
+- UBUNTU26 CIS and STIG remain Coming Soon: the Ubuntu 26.04 benchmarks are not published yet.
+  Their rows link to the public UBUNTU26-CIS and UBUNTU26-STIG repositories, which hold no role
+  content yet.
 - Removed hyperlinks to AAP2-STIG and NGINX-CIS, which are private and returned 404 for public
   readers. Their Subscribers Only and WIP status cells are unchanged.
 - Renamed Tyto Athene to Quantum Sky in documentation prose (conf.py copyright, intro and

@@ -6,16 +6,16 @@ What is STIG?
 ~~~~~~~~~~~~~
 
 Sometimes referred to as DISA STIG.
-DISA STIG refers to an organization (DISA — Defense Information Systems Agency) that provides technical guides (STIG — Security Technical Implementation Guide).
+A STIG (Security Technical Implementation Guide) is a configuration guide published by DISA (the Defense Information Systems Agency).
 
 
 What do the STIG roles do?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-This role follows the  Security Technical Implementation Guide (STIG) released for the OS/Platform/application.
-Each guide is different, some have in excess of 200 controls and apply to various part of an OS but each guide is
-updated regularly by (DISA).
+The roles follow the STIG that DISA releases for each OS, platform or application.
+Each guide is different; some have more than 200 controls that apply to various parts of an OS.
+DISA updates each guide regularly.
 
 .. note::
    DISA is part of the United States Department of Defense.

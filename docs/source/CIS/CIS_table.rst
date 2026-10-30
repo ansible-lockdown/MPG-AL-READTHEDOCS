@@ -1,5 +1,5 @@
 CIS Benchmarks
----------------
+--------------
 
 Operating Systems
 ^^^^^^^^^^^^^^^^^
@@ -32,7 +32,7 @@ Operating Systems
    "Windows-2025-CIS_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-CIS?style=plastic"
 
 Cloud Platforms
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 .. csv-table:: CIS Platform Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
@@ -42,7 +42,7 @@ Cloud Platforms
    "Azure-CIS_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/AZURE-CIS?style=plastic"
 
 Applications
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
 
 .. csv-table:: CIS Application Benchmark Availability
    :header: "Benchmark", "Maintained", "Remediate", "Audit", "Release"
@@ -64,7 +64,7 @@ Archived Roles
    "UBUNTU18-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU18-CIS?style=plastic"
    "UBUNTU20-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/UBUNTU20-CIS?style=plastic"
    "Windows-2016-CIS_", "False", "True", "True", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2016-CIS?style=plastic"
-   "Windows-10-CIS_", "False", "True", "NA", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-CIS?style=plastic"
+   "Windows-10-CIS_", "False", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-10-CIS?style=plastic"
 
 .. _AMAZON2-CIS: https://github.com/ansible-lockdown/AMAZON2-CIS
 .. _AMAZON2023-CIS: https://github.com/ansible-lockdown/AMAZON2023-CIS
@@ -90,7 +90,6 @@ Archived Roles
 .. _Windows-10-CIS: https://github.com/ansible-lockdown/Windows-10-CIS
 .. _Windows-11-CIS: https://github.com/ansible-lockdown/Windows-11-CIS
 
-.. _Cisco-IOS-L2S: https://github.com/ansible-lockdown/CISCO-IOS-L2S-STIG
 .. _AWS-Foundations: https://github.com/ansible-lockdown/AWS-FOUNDATIONS-CIS
 .. _Azure-CIS: https://github.com/ansible-lockdown/AZURE-CIS
 

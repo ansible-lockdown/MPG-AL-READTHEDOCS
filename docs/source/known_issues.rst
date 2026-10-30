@@ -48,7 +48,7 @@ can timeout on systems with large numbers of files.
 Container Environment Audit Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Affected:** All benchmarks when ``is_container: true``
+**Affected:** All benchmarks when running in a container (``system_is_container``)
 
 **Issue:** Many audit controls assume traditional OS components that don't exist in containers
 (systemd, bootloader, kernel modules, auditd).
@@ -78,8 +78,8 @@ Cloud-init Fails After Hardening
 
 **Affected:**
 
-- RHEL8-CIS - Control 1.1.3.3
-- RHEL8-STIG - RHEL-08-040134
+- RHEL8-CIS - Control 1.1.2.5.4 (noexec on ``/var/tmp``)
+- RHEL8-STIG - RHEL-08-040134 (noexec on ``/var/tmp``)
 
 **Issue:** Cloud-init may fail after applying certain filesystem mount options.
 
@@ -89,7 +89,11 @@ Cloud-init Fails After Hardening
 
 .. code-block:: yaml
 
-   rhel8cis_rule_1_1_3_3: false
+   # RHEL8-CIS
+   rhel8cis_rule_1_1_2_5_4: false
+
+   # RHEL8-STIG
+   rhel8stig_040134: false
 
 SELinux Modules Broken on RHEL 8.6 with EPEL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -111,6 +115,10 @@ SELinux Modules Broken on RHEL 8.6 with EPEL
 
 **Workaround:** Use RHEL-provided Ansible packages instead of EPEL, or upgrade to newer RHEL/Ansible versions.
 
+.. note::
+
+   This issue affects older Ansible versions only. Current roles require ansible-core 2.16.1 or newer.
+
 Python 3.8 Library Issues on RHEL 8
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -127,6 +135,10 @@ Python 3.8 Library Issues on RHEL 8
 - python38-3.8.12
 
 **Workaround:** Install missing dependencies or use Python 3.9+.
+
+.. note::
+
+   This issue affects older Ansible versions only. Current roles require ansible-core 2.16.1 or newer.
 
 FIPS Mode Breaks Certain Controls
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -152,9 +164,9 @@ Grub Password Lockout
 
 .. code-block:: yaml
 
-   # Document your GRUB password before enabling
-   rhel10cis_grub_user: root
-   rhel10cis_grub_password_hash: "grub.pbkdf2.sha512.10000.YOUR_HASH"
+   # Document your GRUB password before enabling (RHEL10-CIS)
+   rhel10cis_set_boot_pass: true
+   rhel10cis_bootloader_password_hash: "grub.pbkdf2.sha512.10000.YOUR_HASH"
 
 **Recovery:** Boot from rescue media and edit GRUB configuration.
 
@@ -175,9 +187,9 @@ SSH Lockout After Hardening
 
 .. code-block:: yaml
 
-   # Ensure your users are allowed
-   rhel10cis_sshd_allow_users: "admin ansible"
-   rhel10cis_sshd_allow_groups: "wheel ssh-users"
+   # Ensure your users are allowed (RHEL10-CIS)
+   rhel10cis_sshd_allowusers: "admin ansible"
+   rhel10cis_sshd_allowgroups: "wheel ssh-users"
 
 PAM Lockout Issues
 ^^^^^^^^^^^^^^^^^^
@@ -206,14 +218,14 @@ Amazon Linux 2023
 
 **Issue:** Some controls may behave differently due to AL2023's unique package management and systemd configuration.
 
-**Status:** Active development to address differences.
+**Status:** AMAZON2023-CIS is publicly released; raise any control that behaves differently on Amazon Linux 2023 as an issue on that role's repository.
 
 Ubuntu 24.04
 ^^^^^^^^^^^^
 
 **Issue:** Newer systemd and security features may require control adjustments.
 
-**Status:** Controls updated for Ubuntu 24.04 compatibility.
+**Status:** UBUNTU24-CIS and UBUNTU24-STIG are publicly released; raise any control that behaves differently on Ubuntu 24.04 as an issue on that role's repository.
 
 Windows Server 2025
 ^^^^^^^^^^^^^^^^^^^
@@ -221,15 +233,6 @@ Windows Server 2025
 **Issue:** New Windows Server version may have policy changes affecting certain controls.
 
 **Status:** Windows-2025-CIS and Windows-2025-STIG are publicly released; raise any control that behaves differently on Windows Server 2025 as an issue on that role's repository.
-
-RHEL 10 (Unofficial)
-^^^^^^^^^^^^^^^^^^^^
-
-**Issue:** RHEL 10 CIS benchmark is unofficial as CIS has not released an official benchmark.
-
-**Impact:** Controls based on RHEL 9 patterns; may not match future official benchmark.
-
-**Status:** Will be updated when official CIS RHEL 10 benchmark is released.
 
 Deprecation Notices
 -------------------

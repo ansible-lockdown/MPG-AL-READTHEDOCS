@@ -18,12 +18,12 @@ What do the CIS roles do?
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The roles follow the CIS provided guide (benchmark) released for the OS/platform/application.
-Each guide is different, some have in excess of 200 controls and apply to various parts of an
-OS/platform/application. Each guide is updated regularly by CIS.
+The roles follow the guide (benchmark) that CIS releases for each OS, platform or application.
+Each guide is different; some have more than 200 controls that apply to various parts of an
+OS, platform or application. CIS updates each guide regularly.
 
 .. note::
-   CIS is often used if there is absence for an appropriate released STIG version.
+   CIS is often used when no suitable STIG has been released.
 
 Control Severities
 ~~~~~~~~~~~~~~~~~~
@@ -31,16 +31,17 @@ Control Severities
 Controls are divided into groups based on the following properties:
 
 - **Level 1**
-  The majority of control are based at this level.
-  These controls are considered to have a low impact to a system.
-  By implementing these controls is considered low to medium risk of disruption.
+  The majority of controls are at this level.
+  These controls are intended to be practical and to have a low impact on a system,
+  with a low to medium risk of disruption when implemented.
 
 - **Level 2**
-  These controls are considered high risk with a chance of system disruption if implemented.
+  These controls are intended for environments where security is paramount (defense in depth).
+  They carry a higher risk of system disruption when implemented.
 
 .. note::
-    Along with severities it also shows the severity for servers vs workstations. You can have a control that is more
-    severe for servers than workstations or vice-versa. We tag each task with the full level, level1-server/level1-workstation
+    Levels are also split by profile, server or workstation. A control can be Level 1 for servers and Level 2 for
+    workstations, or the reverse. We tag each task with the full profile, e.g. level1-server or level1-workstation.
 
 .. note::
 
@@ -52,5 +53,5 @@ Controls are divided into groups based on the following properties:
      - standalone ``vars/CIS.yml``
      - combined ``vars/[system_hostname].yml``
 
-   For container environments, set ``is_container: true`` to skip controls incompatible with containers.
+   Container environments are detected automatically and skip controls that are incompatible with containers.
    See :doc:`Container Guide </container-guide>` for details.

@@ -10,7 +10,7 @@ Documentation for Ansible Lockdown security benchmark roles, hosted on [Read the
 
 ```
 ├── .github/
-│   └── workflows/main.yml    # CI/CD pipeline
+│   └── workflows/main.yml    # CI lint workflow
 ├── docs/
 │   ├── source/
 │   │   ├── conf.py           # Sphinx configuration
@@ -25,9 +25,10 @@ Documentation for Ansible Lockdown security benchmark roles, hosted on [Read the
 ├── requirements/
 │   ├── requirements.txt      # Build dependencies
 │   └── requirements-dev.txt  # Development dependencies
+├── .doc8.ini                 # doc8 configuration
 ├── .pre-commit-config.yaml   # Pre-commit hooks
 ├── .readthedocs.yaml         # RTD build configuration
-└── pyproject.toml            # Python project config
+└── CHANGELOG.md
 ```
 
 ## Local Development
@@ -66,9 +67,10 @@ Build HTML documentation:
 sphinx-build -b html docs/source docs/build/html
 ```
 
-Build with live reload (auto-refreshes on changes):
+Build with live reload (auto-refreshes on changes; `sphinx-autobuild` is not in the requirements files, so install it first):
 
 ```bash
+pip install sphinx-autobuild
 sphinx-autobuild docs/source docs/build/html
 ```
 
@@ -97,21 +99,18 @@ sphinx-build -b linkcheck docs/source docs/build/linkcheck
 
 ## CI/CD Pipeline
 
-The GitHub Actions workflow (`.github/workflows/main.yml`) runs on push/PR to `main` and `devel` branches:
+The GitHub Actions workflow (`.github/workflows/main.yml`) runs on push and pull request to `main` and `devel`. It has one job, **lint**, which runs doc8 and rstcheck. Both steps report problems but do not fail the job, so check the log.
 
-| Job | Description |
-|-----|-------------|
-| **build** | Builds Sphinx HTML documentation |
-| **linkcheck** | Validates external links |
-| **lint** | Runs doc8 and rstcheck |
+Read the Docs builds the published site from `main`, using `.readthedocs.yaml`. Run the HTML build and link check above locally before opening a pull request.
 
 ## Adding Content
 
 ### New Benchmark
 
 1. Add entry to the appropriate table in `docs/source/CIS/CIS_table.rst` or `docs/source/STIG/STIG_table.rst`
-2. Update `docs/source/intro.rst` if needed
-3. Run `pre-commit run --all-files` to validate changes
+2. When retiring a benchmark, move its row to the Archived Roles table and add it to the Archived Benchmarks list in `docs/source/known_issues.rst`
+3. Update `docs/source/intro.rst` if needed
+4. Run `pre-commit run --all-files` to validate changes
 
 ### New Documentation Page
 
@@ -121,7 +120,7 @@ The GitHub Actions workflow (`.github/workflows/main.yml`) runs on push/PR to `m
 
 ## Dependencies
 
-Dependencies are managed in `requirements/requirements.txt` with pinned versions for reproducible builds. Dependabot automatically creates PRs for updates weekly.
+Build dependencies are listed in `requirements/requirements.txt` as version ranges. pre-commit.ci opens pull requests to update the pre-commit hook versions.
 
 ## License
 

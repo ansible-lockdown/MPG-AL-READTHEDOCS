@@ -25,13 +25,20 @@ This documentation assumes that the reader has completed the steps within the
 
 and has a good understanding of using ansible
 
-* `Ansible User Guide <https://docs.ansible.com/ansible/latest/user_guide/index.html>`_.
+* `Getting started with Ansible <https://docs.ansible.com/projects/ansible/latest/getting_started/index.html>`_.
 
 .. note::
 
     The role requires elevated privileges and must be run as a user with ``sudo``
-    access. The example above uses the ``become`` option, which causes Ansible to use
+    access. The playbook examples below set ``become: true``, which causes Ansible to use
     sudo before running tasks.
+
+The roles require ansible-core 2.16.1 or newer (``min_ansible_version`` in each role's
+``meta/main.yml``). Install the collections a role needs from its own requirements file:
+
+.. code-block:: console
+
+   ansible-galaxy collection install -r collections/requirements.yml
 
 Installation
 ------------
@@ -52,30 +59,29 @@ RHEL10-CIS
 
    ansible-galaxy install git+https://github.com/ansible-lockdown/RHEL10-CIS.git
 
-The ``ansible-galaxy`` command will install the role into
-``/etc/ansible/roles/`` and this makes it easy to use with
-Ansible playbooks.
+The ``ansible-galaxy`` command installs the role into the first writable
+directory in ``roles_path``, by default ``~/.ansible/roles``, which makes it
+easy to use with Ansible playbooks.
 
 Using ``git``
 ~~~~~~~~~~~~~
 
-Start by cloning the role into a directory of your choice, this example uses ~/.ansible/roles which can be changed out for any folder.
-That folder needs to be empty:
+Start by cloning the role into a directory of your choice. This example uses ``~/CIS_Roles``,
+which can be changed to any folder.
 
 To clone and create a folder with the same name as the repo:
 
 .. code-block:: console
 
+   mkdir -p ~/CIS_Roles
    cd ~/CIS_Roles
    git clone https://github.com/ansible-lockdown/RHEL10-CIS.git
 
-
-To clone and put the files from the repo into a specific folder, folder does need to be empty:
+To clone into a folder with a different name (the folder must be empty or not exist yet):
 
 .. code-block:: console
 
-    mkdir ~/CIS_Roles
-    git clone https://github.com/ansible-lockdown/RHEL10-CIS.git ~/CIS_Roles
+   git clone https://github.com/ansible-lockdown/RHEL10-CIS.git ~/CIS_Roles/my-rhel10-cis
 
 Ansible looks for roles in ``~/.ansible/roles`` by default.
 
@@ -85,11 +91,11 @@ an example of a ``ansible.cfg`` file that uses a custom path for roles:
 
 .. code-block:: ini
 
-   [DEFAULTS]
+   [defaults]
    roles_path = /etc/ansible/roles:/home/myuser/custom/roles
 
 With this configuration, Ansible looks for roles in ``/etc/ansible/roles`` and
-``~/custom/roles``.
+``/home/myuser/custom/roles``.
 
 How to Use
 ----------
@@ -118,12 +124,12 @@ example of a basic playbook that uses this role:
     ---
 
     - hosts: servers
-      become: yes
+      become: true
       roles:
         - role: RHEL10-CIS
           when:
-            - ansible_os_family == 'RedHat'
-            - ansible_distribution_major_version | version_compare('10', '=')
+            - ansible_facts['os_family'] == 'RedHat'
+            - ansible_facts['distribution_major_version'] is version('10', '==')
 
 Variables and the Role
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,8 +137,8 @@ Variables and the Role
 The role is fully customizable by setting the variables provided in the ``defaults/main.yml`` file. These variables range in usage from toggling entire sections (CIS), categories (STIG), general groups (GUI related), individual controls, localized settings, etc.
 There are comments around these variables that have a description of what the variable does, what the value options are, and what controls are associated with the variable.
 Variables are also listed in order of appearance in the execution of the role, variables used early in the role are listed earlier in the file. Variables in this location are also very low in precedence,
-`here is the official list of variable precedence. <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence>`_
-This means they are over-written very easily via extra vars
+`here is the official list of variable precedence. <https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence>`_
+This means they are overwritten very easily via extra vars.
 
 This role has been written with ease of use in mind, which means it's written in a way that requires as little user interaction as possible. No need to modify any tasks at all!
 
@@ -148,31 +154,31 @@ Modifying Variables with Extra-Vars
 
 This is where the power of using variables via ``defaults/main.yml`` come into play. Anywhere you can use or set an extra var is place you can set these variables.
 
-CLI In-Line setting (Set to only run STIG CAT1)
+CLI In-Line setting (Set to only run STIG CAT1, RHEL10-STIG)
 
 .. code-block:: console
 
-  ansible-playbook -i host_file -e '{ "rhel10stig_cat2_patch":false,"rhel10stig_cat3_patch":false }' ./RHEL10-STIG/site.yml
+  ansible-playbook -i host_file -e '{ "rhel10stig_cat2":false,"rhel10stig_cat3":false }' ./RHEL10-STIG/site.yml
 
 Using Tags
 ~~~~~~~~~~
 Each  control is tagged with various pieces of information about the control to allow for more refined use with skipping or running controls.
-For STIG this includes all of the ID's, CIS has the level2 data, and both have info related to what the control relates to. For example all controls related to SSH will have the ``ssh`` tag.
+For STIG this includes all of the IDs, CIS has the level2 data, and both have info related to what the control relates to. For example all controls related to SSH will have the ``ssh`` tag.
 
-STIG Example:
+STIG Example (RHEL10-STIG, RHEL-10-000530):
 
 .. code-block:: yaml
 
     tags:
-      - RHEL-10-040137
+      - RHEL-10-000530
       - CAT2
-      - CCI-001764
-      - SRG-OS-000368-GPOS-00154
-      - SV-244546r809339_rule
-      - V-244546
-      - fapolicy
+      - CCI-002385
+      - SRG-OS-000420-GPOS-00186
+      - SV-280937r1184727_rule
+      - V-280937
+      - NIST800-53R4_SC-5
 
-CIS Example:
+CIS Example (RHEL10-CIS, 2.1.4):
 
 .. code-block:: yaml
 
@@ -182,4 +188,5 @@ CIS Example:
       - automated
       - patch
       - dhcp
-      - rule_2.2.5
+      - NIST800-53R5_CM-7
+      - rule_2.1.4
