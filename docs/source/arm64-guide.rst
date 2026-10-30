@@ -1,5 +1,5 @@
 ARM64/aarch64 Architecture Guide
-=================================
+================================
 
 .. contents::
    :local:
@@ -43,26 +43,29 @@ Prerequisites
    uname -m
    # Expected output: aarch64
 
-2. **Download ARM64 Goss Binary:**
+2. **Audit Binary:**
 
-For audit functionality, download the ARM64 version of the Goss binary:
+When the audit is run by the remediation role (``setup_audit`` / ``run_audit``), the role detects
+``aarch64`` and downloads and checksum-verifies the ARM64 binary automatically. A manual download is only
+needed for a standalone audit.
 
-- `Goss ARM64 Binary <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64>`_
-- `Goss ARM64 Checksum <https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64.sha256>`_
+The roles use `Syver <https://github.com/krameff/syver/releases>`_ (asset ``syver-linux-arm64``), a fork of Goss, or on some roles its earlier release
+under the name `krameff/goss <https://github.com/krameff/goss/releases>`_ (asset ``goss-linux-arm64``). The role's ``audit_bin_url`` and ``audit_bin_version`` defaults show which
+one and which release it pins, with the ARM64 checksum.
 
 .. code-block:: console
 
-   # Download and install Goss for ARM64
-   curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64 \
-       -o /usr/local/bin/goss
-   chmod +x /usr/local/bin/goss
+   # Example: install the release your role pins (replace <release>)
+   curl -L https://github.com/krameff/syver/releases/download/<release>/syver-linux-arm64 \
+       -o /usr/local/bin/syver
+   chmod +x /usr/local/bin/syver
 
    # Verify installation
-   goss --version
+   syver --version
 
 3. **Configure Audit Script:**
 
-Update the ``run_audit.sh`` script to use the ARM64 binary path if different from default.
+Set ``AUDIT_BIN`` if the binary is not at the script's default path.
 
 Running Remediation
 ~~~~~~~~~~~~~~~~~~~
@@ -80,7 +83,7 @@ Running Audit
 
 .. code-block:: console
 
-   # Run audit with ARM64 binary
+   # Run audit with the binary at a non-default path
    AUDIT_BIN=/usr/local/bin/goss ./run_audit.sh
 
 Known Limitations
@@ -101,11 +104,13 @@ names or don't exist on ARM64.
 
 **Affected Controls:**
 
-CIS and STIG benchmarks with auditd rules for the following are affected:
-- File access monitoring (open, creat, unlink syscalls)
-- Privileged command execution (execve syscall)
-- Network-related syscalls (socket, connect)
-- Process management syscalls (ptrace, kill)
+Legacy syscalls such as ``open``, ``creat``, ``unlink``, ``rename``, ``chmod`` and ``chown`` do not exist
+on aarch64; only their ``*at`` variants (for example ``openat`` and ``unlinkat``) do. Benchmark auditd rules
+that name the legacy syscalls are therefore affected.
+
+Several roles (for example RHEL10-CIS, RHEL9-CIS, RHEL10-STIG, UBUNTU24-CIS and AMAZON2023-CIS) drop
+syscalls the target does not support from the generated rules, using ``ausyscall --dump``. Audit checks that
+expect the x86_64 rule text may still report differences.
 
 Kernel Module Differences
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -151,7 +156,7 @@ Troubleshooting
 Audit Binary Issues
 ~~~~~~~~~~~~~~~~~~~
 
-**Error:** ``goss: cannot execute binary file: Exec format error``
+**Error:** ``cannot execute binary file: Exec format error``
 
 **Cause:** Wrong architecture binary (x86_64 binary on ARM64 system)
 
@@ -162,10 +167,7 @@ Audit Binary Issues
    # Verify current binary architecture
    file /usr/local/bin/goss
 
-   # Download correct ARM64 binary
-   curl -L https://github.com/aelsabbahy/goss/releases/download/v0.4.9/goss-linux-arm64 \
-       -o /usr/local/bin/goss
-   chmod +x /usr/local/bin/goss
+   # Then download the ARM64 asset of the release your role pins (see Prerequisites above)
 
 auditd Rule Failures
 ~~~~~~~~~~~~~~~~~~~~
@@ -178,7 +180,7 @@ auditd Rule Failures
 
 1. Accept that some audit controls will have different results on ARM64
 2. Document exceptions in your compliance reporting
-3. Use architecture-specific audit rule files if available
+3. Check that you are on a role release that filters unsupported syscalls (see Affected Controls above)
 
 Reporting ARM64 Issues
 ----------------------

@@ -17,7 +17,7 @@ Layout
 
 - Each control should be in its own file.
 - Use variables wherever possible.
-- Some controls were associated; possibly grouped.
+- Related controls may share one file:
 
   - Multiple stages test (config and running tests)
   - Similar tests (filesystem mount options)
@@ -35,8 +35,11 @@ Layout
 ..  code-block:: text
 
     |- section_1
-    |-- cis_1.1
-    |--- cis_1.1.x.yml
+    |-- cis_1.1.1.x
+    |--- cis_1.1.1.10.yml
+
+    |- cat_1
+    |-- RHEL-09-211010.yml
 
 Content
 """"""""
@@ -46,7 +49,7 @@ Content
   - Title
   - At least one control variable (whether control ID is to be run or not).
 
-    - If only one test add the variable prior to to the goss_module itself
+    - If only one test, add the variable before the goss_module itself
 
   - Use appropriate goss_modules before using command
 
@@ -54,18 +57,19 @@ Content
 
 For a full list of goss and how to use the goss_modules (tests).
 `Goss Docs <https://goss.readthedocs.io/en/stable/gossfile/#available-tests>`_
+(for roles that use Syver, see also `Syver Docs <https://syver.readthedocs.io/en/latest/>`_)
 
 **Example**
 
-*Basic test*
+*Basic test* (first test from ``section_1/cis_1.1.1.x/cis_1.1.1.10.yml`` in RHEL10-CIS-Audit)
 
-..  code-block:: yaml
+..  code-block:: text
 
     {{ if .Vars.rhel10cis_level_1 }}
-      {{ if .Vars.rhelcis10_1_1_10 }}
+      {{ if .Vars.rhel10cis_rule_1_1_1_10 }}
     command:
       usb-storage:
-        title: 1.1.10 | Disable USB Storage
+        title: 1.1.1.10 | Ensure usb-storage kernel module is not available
         exit-status: 0
         exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"
         stdout:
@@ -73,12 +77,15 @@ For a full list of goss and how to use the goss_modules (tests).
         meta:
           server: 1
           workstation: 2
-          CIS_ID: 1.1.10
-          CISv8:
-          - 10.3
-          CISv8_IG1: true
-          CISv8_IG2: true
-          CISv8_IG3: true
+          CIS_ID:
+          - 1.1.1.10
+          NIST800-53R5:
+          - CM-7
+          - IA-3
+          CCI:
+          - 000778
+          - 001958
+          - 003959
       {{ end }}
     {{ end }}
 
@@ -88,10 +95,10 @@ For a full list of goss and how to use the goss_modules (tests).
 ..  code-block:: text
 
     {{ if .Vars.rhel10cis_level_1 }}                                              ## if rhel10cis_level_1 is true
-      {{ if .Vars.rhelcis10_1_1_10 }}                                             ## if rhelcis10_1_1_10 is true
+      {{ if .Vars.rhel10cis_rule_1_1_1_10 }}                                      ## if rhel10cis_rule_1_1_1_10 is true
     command:                                                                      ## goss_module
       usb-storage:                                                                ## unique name associated with the command
-        title: 1.1.10 | Disable USB Storage                                       ## title  {{ control id }}| {{ control title }}
+        title: 1.1.1.10 | Ensure usb-storage kernel module is not available       ## title  {{ control id }} | {{ control title }}
         exit-status: 0                                                            ## Options for goss_module
         exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"      ## Options for goss_module
         stdout:                                                                   ## Options for goss_module
@@ -99,12 +106,15 @@ For a full list of goss and how to use the goss_modules (tests).
         meta:                                                                     ## Meta data used for reporting (see metadata)
           server: 1
           workstation: 2
-          CIS_ID: 1.1.10
-          CISv8:
-          - 10.3
-          CISv8_IG1: true
-          CISv8_IG2: true
-          CISv8_IG3: true
+          CIS_ID:
+          - 1.1.1.10
+          NIST800-53R5:
+          - CM-7
+          - IA-3
+          CCI:
+          - 000778
+          - 001958
+          - 003959
       {{ end }}                                                                   ## Close if statement
     {{ end }}                                                                     ## Close if statement
 
@@ -115,8 +125,8 @@ Variables should be added higher in the test based on the level of impact.
 
 ..  code-block:: text
 
-    {{ .Vars.section_1 }}
-      {{ .Vars.rhelcis10_1_1_1_1 }}
+    {{ .Vars.rhel10cis_section1 }}
+      {{ .Vars.rhel10cis_rule_1_1_1_1 }}
 
 
 Metadata
@@ -148,7 +158,10 @@ There are two levels of metadata:
     "host_hostname:", "{{ .Vars.os_hostname }}", "hostname"
     "host_system_type:", "{{ .Vars.system_type }}"
     " ", "Linux", "Server/Workstation Manually set (default server)"
-    " ", "Windows", "pulled from regkey and set"
+    " ", "Windows", "Set by -SystemType (default Server)"
+    "benchmark_type:", "{{ .Vars.benchmark_type }}", "benchmark type (e.g. CIS)"
+    "benchmark_version:", "{{ .Vars.benchmark_version }}", "benchmark version"
+    "benchmark_os:", "{{ .Vars.benchmark_os }}", "benchmark OS (e.g. RHEL10)"
 
 **Special Variables**
 
@@ -169,21 +182,26 @@ This contains the following:
 
 - ``server:`` cis level options: (1|2)
 - ``workstation:`` cis level: (1|2|NA)
-- ``CIS_ID:`` control reference
-- ``CISv8:`` list of associated groups the control is associated with
-- ``CISv8_IG1:`` Boolean (if meets that association)
+- ``CIS_ID:`` control reference (list)
+- Benchmark-dependent mappings:
+
+  - ``NIST800-53R5:`` and ``CCI:`` lists (newer benchmarks, e.g. RHEL10)
+  - ``CISv8:`` list plus ``CISv8_IG1``, ``CISv8_IG2``, ``CISv8_IG3`` Booleans (older benchmarks, e.g. RHEL9)
 
 ..  code-block:: yaml
 
     meta:
       server: 1
-      workstation: 1
-      CIS_ID: 1.1.1.1
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
+      workstation: 2
+      CIS_ID:
+      - 1.1.1.10
+      NIST800-53R5:
+      - CM-7
+      - IA-3
+      CCI:
+      - 000778
+      - 001958
+      - 003959
 
 **STIG Specific**
 
@@ -191,7 +209,8 @@ All can be found in the details of the control itself
 
 - ``Cat:`` the category control is associated with either (1|2|3)
 - ``CCI:`` Common identifier is found in the STIG documentation
-- ``Group_Title:`` is the associated group that particular control is a part of
+- ``Group_Title:`` list of the SRG groups the control is a part of
+- ``NIST800-53R4:`` list of associated NIST controls
 - ``Rule_ID:`` changes with every iteration of the control details
 - ``STIG_ID:`` control ID known by STIG
 - ``Vul_ID:`` vulnerability identifier
@@ -201,14 +220,14 @@ All can be found in the details of the control itself
     meta:
       Cat: 1
       CCI:
-      - CCI-001494
-      - CCI-001496
-      - CCI-002165
-      - CCI-002235
-      Group_Title: SRG-OS-000257-GPOS-00098
-      Rule_ID: SV-204392r646841_rule
-      STIG_ID: RHEL-10-010010
-      Vul_ID: V-204392
+      - CCI-000068
+      Group_Title:
+      - SRG-OS-000033-GPOS-00014
+      NIST800-53R4:
+      - AC-17
+      Rule_ID: SV-258232r1184335_rule
+      STIG_ID: RHEL-09-671020
+      Vul_ID: V-258232
 
 Gotchas
 ~~~~~~~
@@ -243,22 +262,22 @@ and
 
 ..  code-block:: yaml
 
-  file:
-  /etc/selinux/config:
-    title: 1.6.1.5 | Ensure the SELinux mode is enforcing | config
-    exists: true
-    contains:
-    - '/^SELINUX( |)=( |)enforcing/'
-    - '!/^SELINUX( |)=( |)disabled/'
-    meta:
-      server: 2
-      workstation: 2
-      CIS_ID:
-      - 1.6.1.5
-      CISv8:
-      - 3.3
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
+   file:
+    /etc/selinux/config:
+      title: 1.6.1.5 | Ensure the SELinux mode is enforcing | config
+      exists: true
+      contains:
+      - '/^SELINUX( |)=( |)enforcing/'
+      - '!/^SELINUX( |)=( |)disabled/'
+      meta:
+        server: 2
+        workstation: 2
+        CIS_ID:
+        - 1.6.1.5
+        CISv8:
+        - 3.3
+        CISv8_IG1: true
+        CISv8_IG2: true
+        CISv8_IG3: true
 
 **Only one will give you results**

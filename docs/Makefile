@@ -48,7 +48,7 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
-	rm source/auto_*
+	rm -f source/auto_*
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
@@ -86,9 +86,9 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/openstack-ansible.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/ansible-lockdown.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/openstack-ansible.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/ansible-lockdown.qhc"
 
 applehelp:
 	$(SPHINXBUILD) -b applehelp $(ALLSPHINXOPTS) $(BUILDDIR)/applehelp
@@ -103,8 +103,8 @@ devhelp:
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/openstack-ansible"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/openstack-ansible"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/ansible-lockdown"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/ansible-lockdown"
 	@echo "# devhelp"
 
 epub:

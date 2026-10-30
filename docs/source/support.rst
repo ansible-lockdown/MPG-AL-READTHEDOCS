@@ -8,15 +8,15 @@ Contact Us
 
 * `Official Subscription <https://www.lockdownenterprise.com/>`_ : If your organization requires you to have early release access, support, signed releases, or validated testing, those options are available.
 
-* `G2 <https://www.g2.com/products/ansible-lockdown/reviews>`_ : Read and Write our reviews at G2
+* `G2 <https://www.g2.com/products/ansible-lockdown/reviews>`_ : Read and write reviews of Ansible Lockdown on G2
 
 * `AnsibleLockdown@X <https://x.com/AnsibleLockdown>`_ : Get the latest news from our X feed on everything Ansible Lockdown.
 
 Quantum Sky Official Site and Services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* `Official Website <https://www.quantumsky.com/contact>`_ : If your organization has general questions regarding Cybersecurity or our Organization.
+* `Official Website <https://www.quantumsky.com/contact>`_ : If your organization has general questions about cybersecurity or about Quantum Sky.
 
-*  `LinkedIn <https://linkedin.com/company/gotyto/>`_ : Our official LinkedIn Business Page
+* `LinkedIn <https://linkedin.com/company/gotyto/>`_ : Our official LinkedIn Business Page
 
-*  `Facebook <https://www.facebook.com/tytoathene/>`_ : Our official Facebook Business Page
+* `Facebook <https://www.facebook.com/tytoathene/>`_ : Our official Facebook Business Page
