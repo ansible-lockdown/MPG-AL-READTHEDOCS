@@ -21,6 +21,8 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   on 30 October 2026, so the Subscribers Only placeholder no longer described it.
 - Reworded the Windows Server 2025 status in known_issues. It still read Under development, but
   Windows-2025-CIS and Windows-2025-STIG are both publicly released.
+- Corrected the Audit column for Windows-2025-STIG from WIP to False. No Windows-2025-STIG-Audit
+  repository exists, so False matches the other Windows STIG rows.
 - Corrected the Audit column for Windows-11-CIS from NA to WIP. Windows-11-CIS-Audit is public and
   carries a full goss suite, so NA wrongly claimed no audit exists. It has no release, so WIP
   matches how Windows-2022-CIS and Windows-2025-CIS are already described.
