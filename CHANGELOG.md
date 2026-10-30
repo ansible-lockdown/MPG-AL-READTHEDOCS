@@ -17,6 +17,8 @@ All notable changes to the Ansible Lockdown ReadTheDocs documentation will be do
   now match their tables exactly, in the same order.
 - SUSE16-CIS now carries a live release badge. It published CIS v1.0.0 on 23 September 2026, so the
   Subscribers Only placeholder no longer described it.
+- Windows-2025-STIG now carries a live release badge. It published release 1.2.0, based on STIG V1R2,
+  on 30 October 2026, so the Subscribers Only placeholder no longer described it.
 - Corrected the Audit column for Windows-11-CIS from NA to WIP. Windows-11-CIS-Audit is public and
   carries a full goss suite, so NA wrongly claimed no audit exists. It has no release, so WIP
   matches how Windows-2022-CIS and Windows-2025-CIS are already described.

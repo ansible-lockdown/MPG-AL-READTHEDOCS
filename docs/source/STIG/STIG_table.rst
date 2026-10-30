@@ -23,7 +23,7 @@ Operating Systems
    "Windows-11-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-11-STIG?style=plastic"
    "Windows-2019-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2019-STIG?style=plastic"
    "Windows-2022-STIG_", "True", "True", "False", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2022-STIG?style=plastic"
-   "Windows-2025-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/badge/Subscribers%20Only-0000FF?logo=ansible&labelColor=0000FF"
+   "Windows-2025-STIG_", "True", "True", "WIP", ".. image:: https://img.shields.io/github/v/release/ansible-lockdown/Windows-2025-STIG?style=plastic"
 
 Networking
 ^^^^^^^^^^
