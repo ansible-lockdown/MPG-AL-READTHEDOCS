@@ -220,7 +220,7 @@ Windows Server 2025
 
 **Issue:** New Windows Server version may have policy changes affecting certain controls.
 
-**Status:** Under development; some controls may need adjustment.
+**Status:** Windows-2025-CIS and Windows-2025-STIG are publicly released; raise any control that behaves differently on Windows Server 2025 as an issue on that role's repository.
 
 RHEL 10 (Unofficial)
 ^^^^^^^^^^^^^^^^^^^^
